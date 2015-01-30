@@ -1,0 +1,159 @@
+//= require normalize-css/normalize
+
+@import 'bourbon';
+@import 'neat';
+@import 'bitters';
+
+// colors
+$yellow: #fffd38;
+$black: tint(#000, 10%);
+$white: white;
+$grey: rgba(222, 222, 222, 0.8);
+$shadow-grey: $grey;
+$bottom-shadow: 0px 6px 6px 3px $shadow-grey;
+$full-width: em(1280);
+$header-height: em(113);
+$page-header-height: em(226) - 3.5em;
+$small-margin: em(20);
+$border-radius: 0.25em;
+$bigger-font: 2em;
+$item-pad: 0.5em 1em;
+
+// fonts
+@include font-face(Vegan, '../fonts/Vegan_Regular', normal);
+@include font-face(Vegan, '../fonts/Vegan_Black', bold);
+
+body {
+  background: $grey;
+}
+
+#container {
+  @include outer-container;
+  max-width: $full-width;
+  background: $white;
+  margin: $small-margin auto;
+
+  header {
+    @include row;
+    @include pad(2em 0 1em 0);
+    background: $yellow;
+    color: $black;
+    min-height: $header-height;
+    box-shadow: $bottom-shadow;
+
+    h1 {
+      padding: 0.25em 0 0 2em;
+      font-size: 1.75em;
+      font-family: Vegan;
+      font-weight: bold;
+    }
+
+    nav {
+      margin: 0 2em;
+      float: right;
+
+      a {
+        color: $black;
+        display: inline-block;
+        padding: 0.5em 1em;
+        margin: 0 1em;
+
+        &.active {
+          border-radius: $border-radius;
+          background: $grey;
+        }
+
+        &.cart {
+          border: thin solid $black;
+          border-radius: $border-radius;
+          margin: 0 16em 0 0;
+        }
+
+        &.profile {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  section {
+    @include row;
+    font-family: Vegan;
+    font-weight: normal;
+
+    div, nav, li {
+      box-shadow: $bottom-shadow;
+    }
+
+    & .header {
+      padding: 3.5em 3em 2em;
+      min-height: $page-header-height;
+
+      h2 {
+        font-size: 6em;
+        font-weight: normal;
+      }
+
+      a.buy-family {
+        color: $black;
+        display: block;
+        border-radius: $border-radius;
+        background: #2dfffe;
+        padding: 0.75em 0.5em 0.5em;
+        margin: 1em 0 0 0;
+        font-size: $bigger-font;
+        float: right;
+      }
+    }
+
+    nav {
+      padding: 1.75em 3em 1.75em;
+      min-height: $header-height;
+
+      a {
+        color: $black;
+        display: inline-block;
+        padding: $item-pad;
+        margin: 0 1em;
+
+        &.active {
+          border: thin solid $black;
+          border-radius: $border-radius;
+        }
+
+        &.share {
+          font-size: $bigger-font;
+          margin-left: 3em;
+        }
+      }
+    }
+
+    ul.styles {
+      li {
+        box-shadow: $bottom-shadow;
+        min-height: $page-header-height;
+
+        h3 {
+          padding: 0.75em 0.5em 0;
+          margin: 1em 0 0 0;
+          font-size: 3.5em;
+          font-weight: normal;
+        }
+
+        a.buy-style, span.price {
+          @include pad(1em);
+          margin: 1em 0 0 0;
+          font-size: $bigger-font;
+          float: right;
+          display: inline-block;
+          color: black;
+        }
+      }
+    }
+  }
+
+  footer {
+    @include pad(1em);
+    font-size: 0.75em;
+  }
+}
