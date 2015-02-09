@@ -8,7 +8,7 @@
 $yellow: #fffd38;
 $black: tint(#000, 10%);
 $white: white;
-$grey: rgba(222, 222, 222, 0.8);
+$grey: rgba(222, 222, 222, 0.9);
 $shadow-grey: $grey;
 $bottom-shadow: 0px 6px 6px 3px $shadow-grey;
 $full-width: em(1280);
@@ -46,6 +46,10 @@ body {
       font-size: 1.75em;
       font-family: Vegan;
       font-weight: bold;
+
+      a {
+        color: $black;
+      }
     }
 
     nav {
@@ -65,12 +69,8 @@ body {
 
         &.cart {
           border: thin solid $black;
-          border-radius: $border-radius;
-          margin: 0 16em 0 0;
-        }
-
-        &.profile {
-          font-weight: bold;
+          border-radius: $border-radius $border-radius 0;
+          margin: 0 1em;
         }
       }
     }
@@ -81,13 +81,10 @@ body {
     font-family: Vegan;
     font-weight: normal;
 
-    div, nav, li {
-      box-shadow: $bottom-shadow;
-    }
-
     & .header {
-      padding: 3.5em 3em 2em;
+      padding: 3em 3em 3em;
       min-height: $page-header-height;
+      box-shadow: $bottom-shadow;
 
       h2 {
         font-size: 6em;
@@ -100,13 +97,14 @@ body {
         border-radius: $border-radius;
         background: #2dfffe;
         padding: 0.75em 0.5em 0.5em;
-        margin: 1em 0 0 0;
+        margin: 1.25em 0 0 0;
         font-size: $bigger-font;
         float: right;
       }
     }
 
     nav {
+      box-shadow: $bottom-shadow;
       padding: 1.75em 3em 1.75em;
       min-height: $header-height;
 
@@ -134,8 +132,7 @@ body {
         min-height: $page-header-height;
 
         h3 {
-          padding: 0.75em 0.5em 0;
-          margin: 1em 0 0 0;
+          padding: 1em 1em;
           font-size: 3.5em;
           font-weight: normal;
         }
@@ -148,6 +145,31 @@ body {
           display: inline-block;
           color: black;
         }
+      }
+    }
+
+    ul.fonts {
+      li {
+        box-shadow: $bottom-shadow;
+      }
+
+      h3 {
+        padding: 1em 1em;
+        font-size: 3.5em;
+        font-weight: normal;
+
+        a {
+          color: $black;
+        }
+      }
+    }
+
+    &.animation {
+      margin: 4em 0 0;
+
+      a {
+        display: block;
+        color: $black;
       }
     }
   }

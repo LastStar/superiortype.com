@@ -30,7 +30,16 @@ html.nojs
         | to improve your experience.
 
     #container
+      header
+        nav
+          a.active.fonts href='/fonts' Fonts
+          a.custom href='#' Custom Fonts
+          a.info href='#' Info
+          a.cart href='#' Cart - 2 items &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;
+
+        h1
+          a.home href='/' Superior Type
+
       == yield
 
     = javascript_include_tag 'app'
-    = partial 'partials/_google_analytics'
