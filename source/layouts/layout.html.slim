@@ -43,3 +43,10 @@ html.nojs
       == yield
 
     = javascript_include_tag 'app'
+
+    coffee:
+      $('section.animation .rarr').velocity({ fontSize: '5em', translateX: '6em' }, { loop: true, duration: 2000 })
+      $('section.animation h2 a').mouseenter (e) ->
+        $(this).velocity { fontSize: '4em' }
+        $('section.animation .rarr').velocity 'stop'
+        $(this).unbind('mouseenter')
