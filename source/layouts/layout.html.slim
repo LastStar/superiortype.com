@@ -32,20 +32,16 @@ html.nojs
     #container
       header
         nav
-          a.active.fonts href='fonts' Fonts
+          a.active.fonts href='/fonts' Fonts
           a.custom href='#' Custom Fonts
           a.info href='#' Info
           a.cart href='#' Cart - 2 items &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;
+
+        form#search action='/fonts'
+          input class="awesomplete" data-list="Editor, Hrot, Kunda Book, Kunda Mono, Micro, Moniak Sans, Strana, Vegan" placeholder="search"
 
         h1 Superior Type
 
       == yield
 
     = javascript_include_tag 'app'
-
-    coffee:
-      $('section.animation .rarr').velocity({ fontSize: '5em', translateX: '6em' }, { loop: true, duration: 2000 })
-      $('section.animation h2 a').mouseenter (e) ->
-        $(this).velocity { fontSize: '4em' }
-        $('section.animation .rarr').velocity 'stop'
-        $(this).unbind('mouseenter')

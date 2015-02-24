@@ -1,4 +1,5 @@
 //= require normalize-css/normalize
+//= require awesomplete/awesomplete
 
 @import 'bourbon';
 @import 'neat';
@@ -11,18 +12,24 @@ $white: white;
 $grey: rgba(222, 222, 222, 0.9);
 $shadow-grey: $grey;
 $bottom-shadow: 0px 6px 6px 3px $shadow-grey;
-$full-width: em(1280);
-$header-height: em(113);
-$page-header-height: em(226) - 3.5em;
-$small-margin: em(20);
-$border-radius: 0.25em;
-$bigger-font: 2em;
-$item-pad: 0.5em 1em;
+$full-width: 80rem;
+$header-height: 7rem;
+$page-header-height: 10rem;
+$small-margin: 1.25rem;
+$border-radius: 0.25rem;
+$bigger-font: 2rem;
+$item-pad: 0.5rem 1rem;
 
 // fonts
 @include font-face(Vegan, '../fonts/Vegan_Regular', normal);
 @include font-face(Vegan, '../fonts/Vegan_Bold', bold);
 @include font-face(Vegan, '../fonts/Vegan_Black', 900);
+
+@mixin main-row {
+  @include row;
+  @include pad(2rem 2rem 1rem 2rem);
+}
+
 
 body {
   background: $grey;
@@ -37,19 +44,21 @@ body {
   background: $white;
   margin: $small-margin auto;
 
+  & > * > * {
+  }
+
   header {
-    @include row;
-    @include pad(2em 0 1em 0);
+    @include main-row;
     background: $yellow;
     color: $black;
     min-height: $header-height;
     box-shadow: $bottom-shadow;
 
     h1 {
-      padding: 0.25em 0 0 2em;
-      font-size: 1.75em;
+      font-size: 1.75rem;
       font-family: Vegan;
       font-weight: 900;
+      padding: 0.5rem 1rem;
 
       a {
         color: $black;
@@ -57,14 +66,13 @@ body {
     }
 
     nav {
-      margin: 0 2em;
       float: right;
 
       a {
         color: $black;
         display: inline-block;
-        padding: 0.5em 1em;
-        margin: 0 1em;
+        padding: 0.5rem 1rem;
+        margin: 0 1rem;
 
         &.active {
           border-radius: $border-radius;
@@ -72,26 +80,43 @@ body {
         }
 
         &.cart {
-          border: thin solid $black;
-          border-radius: $border-radius $border-radius 0;
-          margin: 0 1em;
+          border: 0.1rem solid $black;
+          border-radius: $border-radius $border-radius 0 0;
+          margin: 0 1rem;
+          width: 13rem;
+          text-align: center;
+
+          &:hover {
+            font-weight: 900;
+          }
         }
+      }
+    }
+
+    form {
+      float: right;
+
+      input {
+        border-radius: 2 * $border-radius;
+        border: thin solid $yellow;
+        font-size: 1.75rem;
+        padding: 0.5rem 1rem;
+        margin: 0 1rem;
       }
     }
   }
 
   section {
-    @include row;
     font-family: Vegan;
     font-weight: normal;
 
     & .header {
-      padding: 3em 3em 3em;
+      @include main-row;
       min-height: $page-header-height;
       box-shadow: $bottom-shadow;
 
       h2 {
-        font-size: 6em;
+        font-size: 6rem;
         font-weight: normal;
       }
 
@@ -100,8 +125,8 @@ body {
         display: block;
         border-radius: $border-radius;
         background: #2dfffe;
-        padding: 0.75em 0.5em 0.5em;
-        margin: 1.25em 0 0 0;
+        padding: 1.5rem 1rem 1rem;
+        margin: 1.25rem 0 0 0;
         font-size: $bigger-font;
         float: right;
       }
@@ -109,14 +134,14 @@ body {
 
     nav {
       box-shadow: $bottom-shadow;
-      padding: 1.75em 3em 1.75em;
+      padding: 1.75rem 3rem 1.75rem;
       min-height: $header-height;
 
       a {
         color: $black;
         display: inline-block;
         padding: $item-pad;
-        margin: 0 1em;
+        margin: 0 1rem;
 
         &.active {
           border: thin solid $black;
@@ -125,7 +150,7 @@ body {
 
         &.share {
           font-size: $bigger-font;
-          margin-left: 3em;
+          margin-left: 3rem;
         }
       }
     }
@@ -136,14 +161,13 @@ body {
         min-height: $page-header-height;
 
         h3 {
-          padding: 1em 1em;
-          font-size: 3.5em;
+          padding: 4rem 4rem 3rem;
+          font-size: 3.5rem;
         }
 
         a.buy-style, span.price {
-          @include pad(1em);
-          margin: 1.5em 0 0 0;
-          font-size: $bigger-font;
+          @include pad(1rem);
+          margin: 1.5rem 0 0 0;
           float: right;
           display: inline-block;
           color: black;
@@ -157,8 +181,8 @@ body {
       }
 
       h3 {
-        padding: 1em 1em;
-        font-size: 3.5em;
+        padding: 3rem 3rem;
+        font-size: 5rem;
         font-weight: normal;
 
         a {
@@ -168,17 +192,98 @@ body {
     }
 
     &.animation {
-      margin: 4em 0 0;
+      margin: 4rem 0 0;
 
       a {
         display: block;
         color: $black;
       }
     }
+
+    .show-room {
+      & > div {
+        text-align: center;
+      }
+
+      .to-animate {
+        background: $black;
+        color: $white;
+        height: 44rem;
+        padding: 2rem;
+
+        span {
+          font-size: 10rem;
+          display: inline-block;
+          transition: transform 500ms ease, rotate 200ms ease, scale 3s ease;
+          transition-duration: 2s;
+          transition-timing-function: ease;
+
+          &:first-child {
+            transform: translate(2.25em, 0.25em) rotate(-10deg) scale(1.25);
+
+            &.started {
+              transform: translate(0em, 1em) rotate(0deg);
+            }
+          }
+
+          &:nth-child(2) {
+            transform: translate(-3em, 1.5em) rotate(10deg) scale(1.25);
+
+            &.started {
+              transform: translate(0em, 1em) rotate(0deg);
+            }
+          }
+
+          &:nth-child(3) {
+            transform: translate(1.25em, 2em) rotate(-25deg) scale(1.25);
+
+            &.started {
+              transform: translate(0em, 2em) rotate(0deg);
+            }
+          }
+
+          &:nth-child(4) {
+            transform: translate(1.5em, 2em) rotate(-65deg) scale(1.25);
+
+            &.started {
+              transform: translate(0em, 2em) rotate(0deg);
+            }
+          }
+        }
+
+      }
+
+      div#controls {
+        background: $black;
+        color: $white;
+        height: 4rem;
+        text-align: right;
+
+        a {
+          display: inline-block;
+          padding: 1rem;
+          font-weight: bold;
+          font-size: 2rem;
+        }
+      }
+
+      .large {
+        font-size: 8rem;
+        font-weight: 900;
+        line-height: 1.5em;
+      }
+
+      .thin {
+        font-size: 6rem;
+        font-weight: normal;
+        line-height: 1.5em;
+      }
+    }
+
   }
 
   footer {
-    @include pad(1em);
-    font-size: 0.75em;
+    @include pad(1rem);
+    font-size: 0.75rem;
   }
 }
