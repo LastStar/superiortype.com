@@ -2,6 +2,12 @@
 //= require velocity/velocity.min
 //= require awesomplete/awesomplete.min
 
+on_screen = ->
+  $('.offscreen').addClass('onscreen').removeClass('offscreen')
+
+off_screen = ->
+  $('.onscreen').addClass('offscreen').removeClass('onscreen').removeClass('initial')
+
 
 jQuery ->
   if $('section.animation').size() > 0
@@ -16,18 +22,17 @@ jQuery ->
       $(el).mouseenter (e) ->
         $(this).removeClass('initial')
         if $('section.show-room span.initial').size() == 0
-          $('.offscreen').addClass('onscreen').removeClass('offscreen')
-
+          on_screen()
 
     $('#reset').click (e) ->
       $('section.show-room span').each((i, el) ->
         $(el).addClass('initial'))
-      $('.onscreen').addClass('offscreen').removeClass('onscreen').removeClass('initial')
+      off_screen()
 
     $('#play').click (e) ->
       $('section.show-room span').each((i, el) ->
         $(el).removeClass('initial'))
-      $('.offscreen').addClass('onscreen').removeClass('offscreen')
+      on_screen()
 
 
   if $('form#search').size() > 0

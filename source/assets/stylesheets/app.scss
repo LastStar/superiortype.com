@@ -245,7 +245,6 @@ body {
             @include transition-delay(1.1s);
           }
         }
-
       }
 
       div#controls {
@@ -262,29 +261,36 @@ body {
         }
       }
 
-      .large {
-        font-size: 8rem;
-        font-weight: 900;
-        line-height: 1.5em;
-      }
+      .specimen {
+        & > div {
+          @include animation(pulse 2s ease-in);
+          @include animation-iteration-count(infinite);
+        }
 
-      .thin {
-        font-size: 6rem;
-        font-weight: normal;
-        line-height: 1.5em;
-      }
+        .large {
+          font-size: 8rem;
+          font-weight: 900;
+          line-height: 1.5em;
+        }
 
-      .tall {
-        font-size: 14rem;
-        font-weight: normal;
-        font-style: italic;
-        line-height: 1.5em;
-      }
+        .thin {
+          font-size: 6rem;
+          font-weight: normal;
+          line-height: 1em;
+        }
 
-      .small {
-        font-size: 8rem;
-        font-weight: normal;
-        line-height: 1.5em;
+        .tall {
+          font-size: 14rem;
+          font-weight: normal;
+          font-style: italic;
+          line-height: 1.5em;
+        }
+
+        .small {
+          font-size: 8rem;
+          font-weight: normal;
+          line-height: 1.5em;
+        }
       }
     }
 
@@ -295,3 +301,15 @@ body {
     font-size: 0.75rem;
   }
 }
+@include keyframes(pulse) {
+  0% {
+    @include transform(scale(1))
+  }
+  50% {
+    @include transform(scale(1.05))
+  }
+  100% {
+    @include transform(scale(1))
+  }
+}
+
