@@ -1013,104 +1013,90 @@ body {
       background: black;
       color: white;
       height: 44rem;
-      padding: 2rem; }
+      padding: 3rem; }
       /* line 214, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       #container section .show-room .to-animate span {
         font-size: 10rem;
+        line-height: 1.25em;
         display: inline-block;
-        -webkit-transition: all 800ms ease;
-        -moz-transition: all 800ms ease;
-        transition: all 800ms ease; }
-        /* line 219, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-        #container section .show-room .to-animate span:first-child {
-          -webkit-transform: translate(2.25em, 0.25em) rotate(-10deg) scale(1.25);
-          -moz-transform: translate(2.25em, 0.25em) rotate(-10deg) scale(1.25);
-          -ms-transform: translate(2.25em, 0.25em) rotate(-10deg) scale(1.25);
-          -o-transform: translate(2.25em, 0.25em) rotate(-10deg) scale(1.25);
-          transform: translate(2.25em, 0.25em) rotate(-10deg) scale(1.25); }
-          /* line 222, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-          #container section .show-room .to-animate span:first-child.started {
-            -webkit-transform: translate(0em, 1em) rotate(0deg);
-            -moz-transform: translate(0em, 1em) rotate(0deg);
-            -ms-transform: translate(0em, 1em) rotate(0deg);
-            -o-transform: translate(0em, 1em) rotate(0deg);
-            transform: translate(0em, 1em) rotate(0deg); }
-        /* line 227, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-        #container section .show-room .to-animate span:nth-child(2) {
-          -webkit-transform: translate(-3em, 1.5em) rotate(10deg) scale(1.25);
-          -moz-transform: translate(-3em, 1.5em) rotate(10deg) scale(1.25);
-          -ms-transform: translate(-3em, 1.5em) rotate(10deg) scale(1.25);
-          -o-transform: translate(-3em, 1.5em) rotate(10deg) scale(1.25);
-          transform: translate(-3em, 1.5em) rotate(10deg) scale(1.25); }
-          /* line 230, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-          #container section .show-room .to-animate span:nth-child(2).started {
-            -webkit-transform: translate(0em, 1em) rotate(0deg);
-            -moz-transform: translate(0em, 1em) rotate(0deg);
-            -ms-transform: translate(0em, 1em) rotate(0deg);
-            -o-transform: translate(0em, 1em) rotate(0deg);
-            transform: translate(0em, 1em) rotate(0deg); }
-        /* line 235, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-        #container section .show-room .to-animate span:nth-child(3) {
-          -webkit-transform: translate(1.25em, 2em) rotate(-25deg) scale(1.25);
-          -moz-transform: translate(1.25em, 2em) rotate(-25deg) scale(1.25);
-          -ms-transform: translate(1.25em, 2em) rotate(-25deg) scale(1.25);
-          -o-transform: translate(1.25em, 2em) rotate(-25deg) scale(1.25);
-          transform: translate(1.25em, 2em) rotate(-25deg) scale(1.25); }
-          /* line 238, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-          #container section .show-room .to-animate span:nth-child(3).started {
-            -webkit-transform: translate(0em, 2em) rotate(0deg);
-            -moz-transform: translate(0em, 2em) rotate(0deg);
-            -ms-transform: translate(0em, 2em) rotate(0deg);
-            -o-transform: translate(0em, 2em) rotate(0deg);
-            transform: translate(0em, 2em) rotate(0deg); }
-        /* line 243, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-        #container section .show-room .to-animate span:nth-child(4) {
-          -webkit-transform: translate(1.5em, 2em) rotate(-65deg) scale(1.25);
-          -moz-transform: translate(1.5em, 2em) rotate(-65deg) scale(1.25);
-          -ms-transform: translate(1.5em, 2em) rotate(-65deg) scale(1.25);
-          -o-transform: translate(1.5em, 2em) rotate(-65deg) scale(1.25);
-          transform: translate(1.5em, 2em) rotate(-65deg) scale(1.25); }
-          /* line 246, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-          #container section .show-room .to-animate span:nth-child(4).started {
-            -webkit-transform: translate(0em, 2em) rotate(0deg);
-            -moz-transform: translate(0em, 2em) rotate(0deg);
-            -ms-transform: translate(0em, 2em) rotate(0deg);
-            -o-transform: translate(0em, 2em) rotate(0deg);
-            transform: translate(0em, 2em) rotate(0deg); }
-    /* line 254, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: ease-in;
+        -moz-transition-timing-function: ease-in;
+        transition-timing-function: ease-in; }
+        /* line 222, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container section .show-room .to-animate span:first-child.initial {
+          -webkit-transform: translate(2.25em, 0em) rotate(-10deg);
+          -moz-transform: translate(2.25em, 0em) rotate(-10deg);
+          -ms-transform: translate(2.25em, 0em) rotate(-10deg);
+          -o-transform: translate(2.25em, 0em) rotate(-10deg);
+          transform: translate(2.25em, 0em) rotate(-10deg); }
+        /* line 226, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container section .show-room .to-animate span:nth-child(2).initial {
+          -webkit-transform: translate(-3em, 0.5em) rotate(10deg);
+          -moz-transform: translate(-3em, 0.5em) rotate(10deg);
+          -ms-transform: translate(-3em, 0.5em) rotate(10deg);
+          -o-transform: translate(-3em, 0.5em) rotate(10deg);
+          transform: translate(-3em, 0.5em) rotate(10deg); }
+        /* line 230, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container section .show-room .to-animate span:nth-child(3).initial {
+          -webkit-transform: translate(1.25em, 1em) rotate(-25deg);
+          -moz-transform: translate(1.25em, 1em) rotate(-25deg);
+          -ms-transform: translate(1.25em, 1em) rotate(-25deg);
+          -o-transform: translate(1.25em, 1em) rotate(-25deg);
+          transform: translate(1.25em, 1em) rotate(-25deg); }
+        /* line 234, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container section .show-room .to-animate span:nth-child(4).initial {
+          -webkit-transform: translate(1.5em, 1em) rotate(-65deg);
+          -moz-transform: translate(1.5em, 1em) rotate(-65deg);
+          -ms-transform: translate(1.5em, 1em) rotate(-65deg);
+          -o-transform: translate(1.5em, 1em) rotate(-65deg);
+          transform: translate(1.5em, 1em) rotate(-65deg); }
+        /* line 238, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container section .show-room .to-animate span.offscreen {
+          -webkit-transform: translate(0em, 1em) scale(0);
+          -moz-transform: translate(0em, 1em) scale(0);
+          -ms-transform: translate(0em, 1em) scale(0);
+          -o-transform: translate(0em, 1em) scale(0);
+          transform: translate(0em, 1em) scale(0); }
+    /* line 245, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room div#controls {
       background: black;
       color: white;
       height: 4rem;
       text-align: right; }
-      /* line 260, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      /* line 251, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       #container section .show-room div#controls a {
         display: inline-block;
         padding: 1rem;
         font-weight: bold;
         font-size: 2rem; }
-    /* line 268, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 259, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room .large {
       font-size: 8rem;
       font-weight: 900;
       line-height: 1.5em; }
-    /* line 274, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 265, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room .thin {
       font-size: 6rem;
       font-weight: normal;
       line-height: 1.5em; }
-    /* line 280, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 271, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room .tall {
       font-size: 14rem;
       font-weight: normal;
       font-style: italic;
       line-height: 1.5em; }
-    /* line 287, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 278, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room .small {
       font-size: 8rem;
       font-weight: normal;
       line-height: 1.5em; }
-  /* line 296, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 287, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   #container footer {
     padding: 1rem;
     font-size: 0.75rem; }
