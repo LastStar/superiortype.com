@@ -209,43 +209,34 @@ body {
         background: $black;
         color: $white;
         height: 44rem;
-        padding: 2rem;
+        padding: 3rem;
 
         span {
           font-size: 10rem;
+          line-height: 1.25em;
           display: inline-block;
-          @include transition(all 800ms ease);
+          @include transition-property(all);
+          @include transition-duration(1.0s);
+          @include transition-timing-function(ease-in);
 
-          &:first-child {
-            @include transform(translate(2.25em, 0.25em) rotate(-10deg) scale(1.25));
-
-            &.started {
-              @include transform(translate(0em, 1em) rotate(0deg));
-            }
+          &:first-child.initial {
+            @include transform(translate(2.25em, 0em) rotate(-10deg));
           }
 
-          &:nth-child(2) {
-            @include transform(translate(-3em, 1.5em) rotate(10deg) scale(1.25));
-
-            &.started {
-              @include transform(translate(0em, 1em) rotate(0deg));
-            }
+          &:nth-child(2).initial {
+            @include transform(translate(-3em, 0.5em) rotate(10deg));
           }
 
-          &:nth-child(3) {
-            @include transform(translate(1.25em, 2em) rotate(-25deg) scale(1.25));
-
-            &.started {
-              @include transform(translate(0em, 2em) rotate(0deg));
-            }
+          &:nth-child(3).initial {
+            @include transform(translate(1.25em, 1em) rotate(-25deg));
           }
 
-          &:nth-child(4) {
-            @include transform(translate(1.5em, 2em) rotate(-65deg) scale(1.25));
+          &:nth-child(4).initial {
+            @include transform(translate(1.5em, 1em) rotate(-65deg));
+          }
 
-            &.started {
-              @include transform(translate(0em, 2em) rotate(0deg));
-            }
+          &.offscreen {
+            @include transform(translate(0em, 1em) scale(0));
           }
         }
 

@@ -12,18 +12,23 @@ jQuery ->
       $(this).unbind('mouseenter')
 
   if $('section.show-room').size() > 0
-    $('section.show-room span').each((i, el) ->
+    $('section.show-room span.initial').each((i, el) ->
       $(el).mouseenter (e) ->
-        $(this).addClass('started')
+        $(this).removeClass('initial')
+        if $('section.show-room span.initial').size() == 0
+          $('.offscreen').addClass('onscreen').removeClass('offscreen')
+
     )
 
     $('#reset').click (e) ->
       $('section.show-room span').each((i, el) ->
-        $(el).removeClass('started'))
+        $(el).addClass('initial'))
+      $('.onscreen').addClass('offscreen').removeClass('onscreen').removeClass('initial')
 
     $('#play').click (e) ->
       $('section.show-room span').each((i, el) ->
-        $(el).addClass('started'))
+        $(el).removeClass('initial'))
+      $('.offscreen').addClass('onscreen').removeClass('offscreen')
 
 
   if $('form#search').size() > 0
