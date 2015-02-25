@@ -1,0 +1,1073 @@
+/*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9.
+ * Hide the `template` element in IE, Safari, and Firefox < 22.
+ */
+
+[hidden],
+template {
+    display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+    font-family: sans-serif; /* 1 */
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+
+a {
+    background: transparent;
+}
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+
+b,
+strong {
+    font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+
+pre {
+    white-space: pre-wrap;
+}
+
+/**
+ * Set consistent quote types.
+ */
+
+q {
+    quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+
+img {
+    border: 0;
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+
+figure {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+    border: 0; /* 1 */
+    padding: 0; /* 2 */
+}
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 2 */
+    margin: 0; /* 3 */
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+[hidden] { display: none; }
+
+div.awesomplete {
+	display: inline-block;
+	position: relative;
+}
+
+div.awesomplete > input {
+	display: block;
+}
+
+div.awesomplete > ul {
+	position: absolute;
+	left: 0;
+	z-index: 1;
+	min-width: 100%;
+	box-sizing: border-box;
+	list-style: none;
+	padding: 0;
+	border-radius: .3em;
+	margin: .2em 0 0;
+	background: hsla(0,0%,100%,.9);
+	background: linear-gradient(to bottom right, white, hsla(0,0%,100%,.8));
+	border: 1px solid rgba(0,0,0,.3);
+	box-shadow: .05em .2em .6em rgba(0,0,0,.2);
+	text-shadow: none;
+}
+
+div.awesomplete > ul[hidden],
+div.awesomplete > ul:empty {
+	display: none;
+}
+
+@supports (transform: scale(0)) {
+	div.awesomplete > ul {
+		transition: .3s cubic-bezier(.4,.2,.5,1.4);
+		transform-origin: 1.43em -.43em;
+	}
+	
+	div.awesomplete > ul[hidden],
+	div.awesomplete > ul:empty {
+		opacity: 0;
+		transform: scale(0);
+		display: block;
+		transition-timing-function: ease;
+	}
+}
+
+	/* Pointer */
+	div.awesomplete > ul:before {
+		content: "";
+		position: absolute;
+		top: -.43em;
+		left: 1em;
+		width: 0; height: 0;
+		padding: .4em;
+		background: white;
+		border: inherit;
+		border-right: 0;
+		border-bottom: 0;
+		-webkit-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+
+	div.awesomplete > ul > li {
+		position: relative;
+		padding: .2em .5em;
+		cursor: pointer;
+	}
+	
+	div.awesomplete > ul > li:hover {
+		background: hsl(200, 40%, 80%);
+		color: black;
+	}
+	
+	div.awesomplete > ul > li[aria-selected="true"] {
+		background: hsl(205, 40%, 40%);
+		color: white;
+	}
+	
+		div.awesomplete mark {
+			background: hsl(65, 100%, 50%);
+		}
+		
+		div.awesomplete li:hover mark {
+			background: hsl(68, 101%, 41%);
+		}
+		
+		div.awesomplete li[aria-selected="true"] mark {
+			background: hsl(86, 102%, 21%);
+			color: inherit;
+		}
+/* line 2, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/neat-1.5.0/app/assets/stylesheets/grid/_grid.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 1, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/extends/_button.scss */
+button,
+input[type="submit"] {
+  border: 1px solid #2459a6;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 0 #89a8d5;
+  color: white;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: bold;
+  background-color: #477dca;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #477dca), color-stop(100%, #2760b2));
+  background-image: -webkit-linear-gradient(#477dca, #2760b2);
+  background-image: linear-gradient(#477dca, #2760b2);
+  padding: 7px 18px;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #1b4f9a;
+  background-clip: padding-box;
+  font-size: 1em; }
+  /* line 79, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_button.scss */
+  button:hover:not(:disabled),
+  input[type="submit"]:hover:not(:disabled) {
+    box-shadow: inset 0 1px 0 0 #628cc8;
+    cursor: pointer;
+    background-color: #3c71bb;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3c71bb), color-stop(100%, #255aa5));
+    background-image: -webkit-linear-gradient(#3c71bb, #255aa5);
+    background-image: linear-gradient(#3c71bb, #255aa5); }
+  /* line 95, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_button.scss */
+  button:active:not(:disabled),
+  input[type="submit"]:active:not(:disabled) {
+    border: 1px solid #2459a6;
+    box-shadow: inset 0 0 8px 4px #235397, inset 0 0 8px 4px #235397, 0 1px 1px 0 #eeeeee; }
+  /* line 38, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_button.scss */
+  button:disabled,
+  input[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed; }
+
+/* line 1, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+body {
+  color: #333333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5em; }
+
+/* line 9, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.25em;
+  margin: 0;
+  text-rendering: optimizeLegibility; }
+
+/* line 16, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+h1 {
+  font-size: 2.25em; }
+
+/* line 20, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+h2 {
+  font-size: 2em; }
+
+/* line 24, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+h3 {
+  font-size: 1.75em; }
+
+/* line 28, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+h4 {
+  font-size: 1.5em; }
+
+/* line 32, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+h5 {
+  font-size: 1.25em; }
+
+/* line 36, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+h6 {
+  font-size: 1em; }
+
+/* line 40, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+p {
+  margin: 0 0 0.75em; }
+
+/* line 44, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+a {
+  color: #477dca;
+  text-decoration: none;
+  -webkit-transition: color 0.1s linear;
+  -moz-transition: color 0.1s linear;
+  transition: color 0.1s linear; }
+  /* line 49, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+  a:hover {
+    color: #2c5999; }
+  /* line 53, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+  a:active, a:focus {
+    color: #2c5999;
+    outline: none; }
+
+/* line 59, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+hr {
+  border-bottom: 1px solid #dddddd;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin: 1.5em 0; }
+
+/* line 67, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+img {
+  margin: 0;
+  max-width: 100%; }
+
+/* line 72, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+abbr, acronym {
+  border-bottom: 1px dotted #dddddd;
+  cursor: help; }
+
+/* line 77, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+address {
+  display: block;
+  margin: 0 0 0.75em; }
+
+/* line 82, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+hgroup {
+  margin-bottom: 0.75em; }
+
+/* line 86, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+del {
+  color: #595959; }
+
+/* line 90, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+blockquote {
+  border-left: 2px solid #dddddd;
+  color: #595959;
+  margin: 1.5em 0;
+  padding-left: 0.75em; }
+
+/* line 97, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+cite {
+  color: #737373;
+  font-style: italic; }
+  /* line 101, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_typography.scss */
+  cite:before {
+    content: '\2014 \00A0'; }
+
+/* line 10, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+fieldset {
+  background: #f7f7f7;
+  border: 1px solid #dddddd;
+  margin: 0 0 0.75em 0;
+  padding: 1.5em; }
+
+/* line 19, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+input,
+label,
+select {
+  display: block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em; }
+
+/* line 25, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+label {
+  font-weight: bold;
+  margin-bottom: 0.375em; }
+  /* line 29, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+  label.required:after {
+    content: "*"; }
+  /* line 33, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+  label abbr {
+    display: none; }
+
+/* line 39, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+textarea,
+input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="time"], input[type="week"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: border-color;
+  -moz-transition: border-color;
+  transition: border-color;
+  background-color: white;
+  border-radius: 0.1875em;
+  border: 1px solid #dddddd;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  margin-bottom: 0.75em;
+  padding: 0.5em 0.5em;
+  resize: vertical;
+  width: 100%; }
+  /* line 53, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+  textarea:hover,
+  input[type="email"]:hover, input[type="number"]:hover, input[type="password"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="text"]:hover, input[type="url"]:hover, input[type="color"]:hover, input[type="date"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="month"]:hover, input[type="time"]:hover, input[type="week"]:hover {
+    border-color: #c4c4c4; }
+  /* line 57, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+  textarea:focus,
+  input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="url"]:focus, input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus {
+    border-color: #477dca;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(55, 112, 192, 0.7);
+    outline: none; }
+
+/* line 64, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+input[type="search"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none; }
+
+/* line 68, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+input[type="checkbox"], input[type="radio"] {
+  display: inline;
+  margin-right: 0.375em; }
+
+/* line 73, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+input[type="file"] {
+  width: 100%; }
+
+/* line 77, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+select {
+  width: auto;
+  margin-bottom: 1.5em; }
+
+/* line 83, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_forms.scss */
+button,
+input[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap; }
+
+/* line 1, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_tables.scss */
+table {
+  border-collapse: collapse;
+  margin: 0.75em 0;
+  table-layout: fixed;
+  width: 100%; }
+
+/* line 8, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_tables.scss */
+th {
+  border-bottom: 1px solid #b7b7b7;
+  font-weight: bold;
+  padding: 0.75em 0;
+  text-align: left; }
+
+/* line 15, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_tables.scss */
+td {
+  border-bottom: 1px solid #dddddd;
+  padding: 0.75em 0; }
+
+/* line 20, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_tables.scss */
+tr, td, th {
+  vertical-align: middle; }
+
+/* line 1, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_lists.scss */
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+/* line 19, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_lists.scss */
+dl {
+  line-height: 1.5em;
+  margin-bottom: 0.75em; }
+  /* line 23, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_lists.scss */
+  dl dt {
+    font-weight: bold;
+    margin-top: 0.75em; }
+  /* line 28, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_lists.scss */
+  dl dd {
+    margin: 0; }
+
+/* line 1, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_flashes.scss */
+.error, #flash_failure {
+  background: #fbe3e4;
+  color: #96151b;
+  font-weight: bold;
+  margin-bottom: 0.75em;
+  padding: 0.75em; }
+  /* line 8, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/mixins/_flash.scss */
+  .error a, #flash_failure a {
+    color: #6a0f13; }
+    /* line 11, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/mixins/_flash.scss */
+    .error a:hover, #flash_failure a:hover {
+      color: #110203; }
+
+/* line 5, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_flashes.scss */
+.notice, #flash_notice {
+  background: #fff6bf;
+  color: #8c7800;
+  font-weight: bold;
+  margin-bottom: 0.75em;
+  padding: 0.75em; }
+  /* line 8, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/mixins/_flash.scss */
+  .notice a, #flash_notice a {
+    color: #594c00; }
+    /* line 11, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/mixins/_flash.scss */
+    .notice a:hover, #flash_notice a:hover {
+      color: black; }
+
+/* line 9, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/_flashes.scss */
+.success, #flash_success {
+  background: #e6efc2;
+  color: #56651a;
+  font-weight: bold;
+  margin-bottom: 0.75em;
+  padding: 0.75em; }
+  /* line 8, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/mixins/_flash.scss */
+  .success a, #flash_success a {
+    color: #333c10; }
+    /* line 11, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bitters-0.9.2/app/assets/stylesheets/mixins/_flash.scss */
+    .success a:hover, #flash_success a:hover {
+      color: black; }
+
+@font-face {
+  font-family: Vegan;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/Vegan_Regular.eot");
+  src: url("../fonts/Vegan_Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Vegan_Regular-2f76991d.woff") format("woff"), url("../fonts/Vegan_Regular.ttf") format("truetype"), url("../fonts/Vegan_Regular.svg#Vegan") format("svg"); }
+
+@font-face {
+  font-family: Vegan;
+  font-weight: bold;
+  font-style: normal;
+  src: url("../fonts/Vegan_Bold.eot");
+  src: url("../fonts/Vegan_Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Vegan_Bold-2cebd14a.woff") format("woff"), url("../fonts/Vegan_Bold.ttf") format("truetype"), url("../fonts/Vegan_Bold.svg#Vegan") format("svg"); }
+
+@font-face {
+  font-family: Vegan;
+  font-weight: 900;
+  font-style: normal;
+  src: url("../fonts/Vegan_Black.eot");
+  src: url("../fonts/Vegan_Black.eot?#iefix") format("embedded-opentype"), url("../fonts/Vegan_Black-0cca8122.woff") format("woff"), url("../fonts/Vegan_Black.ttf") format("truetype"), url("../fonts/Vegan_Black.svg#Vegan") format("svg"); }
+
+/* line 34, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+body {
+  background: rgba(222, 222, 222, 0.9); }
+  /* line 36, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  body * {
+    font-family: Vegan; }
+
+/* line 41, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+#container {
+  *zoom: 1;
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80rem;
+  background: white;
+  margin: 1.25rem auto; }
+  /* line 18, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+  #container:before, #container:after {
+    content: " ";
+    display: table; }
+  /* line 23, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+  #container:after {
+    clear: both; }
+  /* line 50, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  #container header {
+    *zoom: 1;
+    display: block;
+    padding: 2rem 2rem 1rem 2rem;
+    background: #fffd38;
+    color: #191919;
+    min-height: 7rem;
+    box-shadow: 0px 6px 6px 3px rgba(222, 222, 222, 0.9); }
+    /* line 18, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+    #container header:before, #container header:after {
+      content: " ";
+      display: table; }
+    /* line 23, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+    #container header:after {
+      clear: both; }
+    /* line 57, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container header h1 {
+      font-size: 1.75rem;
+      font-family: Vegan;
+      font-weight: 900;
+      padding: 0.5rem 1rem; }
+      /* line 63, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container header h1 a {
+        color: #191919; }
+    /* line 68, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container header nav {
+      float: right; }
+      /* line 71, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container header nav a {
+        color: #191919;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin: 0 1rem; }
+        /* line 77, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container header nav a.active {
+          border-radius: 0.25rem;
+          background: rgba(222, 222, 222, 0.9); }
+        /* line 82, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container header nav a.cart {
+          border: 0.1rem solid #191919;
+          border-radius: 0.25rem 0.25rem 0 0;
+          margin: 0 1rem;
+          width: 13rem;
+          text-align: center; }
+          /* line 89, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+          #container header nav a.cart:hover {
+            font-weight: 900; }
+    /* line 96, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container header form {
+      float: right; }
+      /* line 99, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container header form input {
+        border-radius: 0.5rem;
+        border: thin solid #fffd38;
+        font-size: 1.75rem;
+        padding: 0.5rem 1rem;
+        margin: 0 1rem; }
+  /* line 109, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  #container section {
+    font-family: Vegan;
+    font-weight: normal; }
+    /* line 113, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .header {
+      *zoom: 1;
+      display: block;
+      padding: 2rem 2rem 1rem 2rem;
+      min-height: 10rem;
+      box-shadow: 0px 6px 6px 3px rgba(222, 222, 222, 0.9); }
+      /* line 18, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+      #container section .header:before, #container section .header:after {
+        content: " ";
+        display: table; }
+      /* line 23, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+      #container section .header:after {
+        clear: both; }
+      /* line 118, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container section .header h2 {
+        font-size: 6rem;
+        font-weight: normal; }
+      /* line 123, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container section .header a.buy-family {
+        color: #191919;
+        display: block;
+        border-radius: 0.25rem;
+        background: #2dfffe;
+        padding: 1.5rem 1rem 1rem;
+        margin: 1.25rem 0 0 0;
+        font-size: 2rem;
+        float: right; }
+    /* line 135, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section nav {
+      box-shadow: 0px 6px 6px 3px rgba(222, 222, 222, 0.9);
+      padding: 1.75rem 3rem 1.75rem;
+      min-height: 7rem; }
+      /* line 140, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container section nav a {
+        color: #191919;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin: 0 1rem; }
+        /* line 146, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container section nav a.active {
+          border: thin solid #191919;
+          border-radius: 0.25rem; }
+        /* line 151, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container section nav a.share {
+          font-size: 2rem;
+          margin-left: 3rem; }
+    /* line 159, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section ul.styles li {
+      box-shadow: 0px 6px 6px 3px rgba(222, 222, 222, 0.9);
+      min-height: 10rem; }
+      /* line 163, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container section ul.styles li h3 {
+        padding: 4rem 4rem 3rem;
+        font-size: 3.5rem; }
+      /* line 168, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container section ul.styles li a.buy-style, #container section ul.styles li span.price {
+        padding: 1rem;
+        margin: 1.5rem 0 0 0;
+        float: right;
+        display: inline-block;
+        color: black; }
+    /* line 179, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section ul.fonts li {
+      box-shadow: 0px 6px 6px 3px rgba(222, 222, 222, 0.9); }
+    /* line 183, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section ul.fonts h3 {
+      padding: 3rem 3rem;
+      font-size: 5rem;
+      font-weight: normal; }
+      /* line 188, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container section ul.fonts h3 a {
+        color: #191919; }
+    /* line 194, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section.animation {
+      margin: 4rem 0 0; }
+      /* line 197, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container section.animation a {
+        display: block;
+        color: #191919; }
+    /* line 204, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .show-room > div {
+      text-align: center; }
+    /* line 208, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .show-room .to-animate {
+      background: #191919;
+      color: white;
+      height: 44rem;
+      padding: 2rem; }
+      /* line 214, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container section .show-room .to-animate span {
+        font-size: 10rem;
+        display: inline-block;
+        transition: transform 500ms ease, rotate 200ms ease, scale 3s ease;
+        transition-duration: 2s;
+        transition-timing-function: ease; }
+        /* line 221, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container section .show-room .to-animate span:first-child {
+          transform: translate(2.25em, 0.25em) rotate(-10deg) scale(1.25); }
+          /* line 224, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+          #container section .show-room .to-animate span:first-child.started {
+            transform: translate(0em, 1em) rotate(0deg); }
+        /* line 229, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container section .show-room .to-animate span:nth-child(2) {
+          transform: translate(-3em, 1.5em) rotate(10deg) scale(1.25); }
+          /* line 232, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+          #container section .show-room .to-animate span:nth-child(2).started {
+            transform: translate(0em, 1em) rotate(0deg); }
+        /* line 237, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container section .show-room .to-animate span:nth-child(3) {
+          transform: translate(1.25em, 2em) rotate(-25deg) scale(1.25); }
+          /* line 240, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+          #container section .show-room .to-animate span:nth-child(3).started {
+            transform: translate(0em, 2em) rotate(0deg); }
+        /* line 245, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        #container section .show-room .to-animate span:nth-child(4) {
+          transform: translate(1.5em, 2em) rotate(-65deg) scale(1.25); }
+          /* line 248, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+          #container section .show-room .to-animate span:nth-child(4).started {
+            transform: translate(0em, 2em) rotate(0deg); }
+    /* line 256, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .show-room div#controls {
+      background: #191919;
+      color: white;
+      height: 4rem;
+      text-align: right; }
+      /* line 262, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      #container section .show-room div#controls a {
+        display: inline-block;
+        padding: 1rem;
+        font-weight: bold;
+        font-size: 2rem; }
+    /* line 270, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .show-room .large {
+      font-size: 8rem;
+      font-weight: 900;
+      line-height: 1.5em; }
+    /* line 276, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .show-room .thin {
+      font-size: 6rem;
+      font-weight: normal;
+      line-height: 1.5em; }
+  /* line 285, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  #container footer {
+    padding: 1rem;
+    font-size: 0.75rem; }
