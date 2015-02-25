@@ -238,6 +238,12 @@ body {
           &.offscreen {
             @include transform(translate(0em, 1em) scale(0));
           }
+
+          &.onscreen {
+            @include transition-timing-function(ease-out);
+            @include transition-duration(0.3s);
+            @include transition-delay(1.1s);
+          }
         }
 
       }
