@@ -869,7 +869,7 @@ body {
     display: block;
     padding: 2rem 2rem 1rem 2rem;
     background: #fffd38;
-    color: #191919;
+    color: black;
     min-height: 7rem;
     box-shadow: 0px 6px 6px 3px rgba(222, 222, 222, 0.9); }
     /* line 18, /Users/pepe/.rvm/gems/ruby-2.1.5@superiortype.com/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
@@ -887,13 +887,13 @@ body {
       padding: 0.5rem 1rem; }
       /* line 63, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       #container header h1 a {
-        color: #191919; }
+        color: black; }
     /* line 68, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container header nav {
       float: right; }
       /* line 71, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       #container header nav a {
-        color: #191919;
+        color: black;
         display: inline-block;
         padding: 0.5rem 1rem;
         margin: 0 1rem; }
@@ -903,7 +903,7 @@ body {
           background: rgba(222, 222, 222, 0.9); }
         /* line 82, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
         #container header nav a.cart {
-          border: 0.1rem solid #191919;
+          border: 0.1rem solid black;
           border-radius: 0.25rem 0.25rem 0 0;
           margin: 0 1rem;
           width: 13rem;
@@ -945,7 +945,7 @@ body {
         font-weight: normal; }
       /* line 123, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       #container section .header a.buy-family {
-        color: #191919;
+        color: black;
         display: block;
         border-radius: 0.25rem;
         background: #2dfffe;
@@ -960,13 +960,13 @@ body {
       min-height: 7rem; }
       /* line 140, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       #container section nav a {
-        color: #191919;
+        color: black;
         display: inline-block;
         padding: 0.5rem 1rem;
         margin: 0 1rem; }
         /* line 146, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
         #container section nav a.active {
-          border: thin solid #191919;
+          border: thin solid black;
           border-radius: 0.25rem; }
         /* line 151, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
         #container section nav a.share {
@@ -997,20 +997,20 @@ body {
       font-weight: normal; }
       /* line 188, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       #container section ul.fonts h3 a {
-        color: #191919; }
+        color: black; }
     /* line 194, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section.animation {
       margin: 4rem 0 0; }
       /* line 197, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       #container section.animation a {
         display: block;
-        color: #191919; }
+        color: black; }
     /* line 204, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room > div {
       text-align: center; }
     /* line 208, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room .to-animate {
-      background: #191919;
+      background: black;
       color: white;
       height: 44rem;
       padding: 2rem; }
@@ -1018,9 +1018,9 @@ body {
       #container section .show-room .to-animate span {
         font-size: 10rem;
         display: inline-block;
-        -webkit-transition: transform 500ms ease, rotate 200ms ease, scale 3s ease;
-        -moz-transition: transform 500ms ease, rotate 200ms ease, scale 3s ease;
-        transition: transform 500ms ease, rotate 200ms ease, scale 3s ease; }
+        -webkit-transition: all 800ms ease;
+        -moz-transition: all 800ms ease;
+        transition: all 800ms ease; }
         /* line 219, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
         #container section .show-room .to-animate span:first-child {
           -webkit-transform: translate(2.25em, 0.25em) rotate(-10deg) scale(1.25);
@@ -1079,7 +1079,7 @@ body {
             transform: translate(0em, 2em) rotate(0deg); }
     /* line 254, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room div#controls {
-      background: #191919;
+      background: black;
       color: white;
       height: 4rem;
       text-align: right; }
@@ -1099,7 +1099,18 @@ body {
       font-size: 6rem;
       font-weight: normal;
       line-height: 1.5em; }
-  /* line 283, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 280, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .show-room .tall {
+      font-size: 14rem;
+      font-weight: normal;
+      font-style: italic;
+      line-height: 1.5em; }
+    /* line 287, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .show-room .small {
+      font-size: 8rem;
+      font-weight: normal;
+      line-height: 1.5em; }
+  /* line 296, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   #container footer {
     padding: 1rem;
     font-size: 0.75rem; }
