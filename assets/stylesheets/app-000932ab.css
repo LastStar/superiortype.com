@@ -1074,40 +1074,100 @@ body {
           -webkit-transition-delay: 1.1s;
           -moz-transition-delay: 1.1s;
           transition-delay: 1.1s; }
-    /* line 251, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 250, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room div#controls {
       background: black;
       color: white;
       height: 4rem;
       text-align: right; }
-      /* line 257, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      /* line 256, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       #container section .show-room div#controls a {
         display: inline-block;
         padding: 1rem;
         font-weight: bold;
         font-size: 2rem; }
     /* line 265, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-    #container section .show-room .large {
+    #container section .show-room .specimen > div {
+      -webkit-animation: pulse 2s ease-in;
+      -moz-animation: pulse 2s ease-in;
+      animation: pulse 2s ease-in;
+      -webkit-animation-iteration-count: infinite;
+      -moz-animation-iteration-count: infinite;
+      animation-iteration-count: infinite; }
+    /* line 270, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .show-room .specimen .large {
       font-size: 8rem;
       font-weight: 900;
       line-height: 1.5em; }
-    /* line 271, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-    #container section .show-room .thin {
+    /* line 276, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .show-room .specimen .thin {
       font-size: 6rem;
       font-weight: normal;
-      line-height: 1.5em; }
-    /* line 277, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-    #container section .show-room .tall {
+      line-height: 1em; }
+    /* line 282, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .show-room .specimen .tall {
       font-size: 14rem;
       font-weight: normal;
       font-style: italic;
       line-height: 1.5em; }
-    /* line 284, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-    #container section .show-room .small {
+    /* line 289, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    #container section .show-room .specimen .small {
       font-size: 8rem;
       font-weight: normal;
       line-height: 1.5em; }
-  /* line 293, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 299, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   #container footer {
     padding: 1rem;
     font-size: 0.75rem; }
+
+@-webkit-keyframes pulse {
+  /* line 305, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -webkit-transform: scale(1); }
+
+  /* line 308, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    -webkit-transform: scale(1.05); }
+
+  /* line 311, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -webkit-transform: scale(1); } }
+
+@-moz-keyframes pulse {
+  /* line 305, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -moz-transform: scale(1); }
+
+  /* line 308, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    -moz-transform: scale(1.05); }
+
+  /* line 311, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -moz-transform: scale(1); } }
+
+@-o-keyframes pulse {
+  /* line 305, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -o-transform: scale(1); }
+
+  /* line 308, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    -o-transform: scale(1.05); }
+
+  /* line 311, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -o-transform: scale(1); } }
+
+@keyframes pulse {
+  /* line 305, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    transform: scale(1); }
+
+  /* line 308, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    transform: scale(1.05); }
+
+  /* line 311, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    transform: scale(1); } }
