@@ -7,7 +7,7 @@
 
 // colors
 $yellow: #fffd38;
-$black: tint(#000, 10%);
+$black: #000;
 $white: white;
 $grey: rgba(222, 222, 222, 0.9);
 $shadow-grey: $grey;
@@ -273,6 +273,19 @@ body {
 
       .thin {
         font-size: 6rem;
+        font-weight: normal;
+        line-height: 1.5em;
+      }
+
+      .tall {
+        font-size: 14rem;
+        font-weight: normal;
+        font-style: italic;
+        line-height: 1.5em;
+      }
+
+      .small {
+        font-size: 8rem;
         font-weight: normal;
         line-height: 1.5em;
       }
