@@ -214,39 +214,37 @@ body {
         span {
           font-size: 10rem;
           display: inline-block;
-          transition: transform 500ms ease, rotate 200ms ease, scale 3s ease;
-          transition-duration: 2s;
-          transition-timing-function: ease;
+          @include transition(transform 500ms ease, rotate 200ms ease, scale 3s ease);
 
           &:first-child {
-            transform: translate(2.25em, 0.25em) rotate(-10deg) scale(1.25);
+            @include transform(translate(2.25em, 0.25em) rotate(-10deg) scale(1.25));
 
             &.started {
-              transform: translate(0em, 1em) rotate(0deg);
+              @include transform(translate(0em, 1em) rotate(0deg));
             }
           }
 
           &:nth-child(2) {
-            transform: translate(-3em, 1.5em) rotate(10deg) scale(1.25);
+            @include transform(translate(-3em, 1.5em) rotate(10deg) scale(1.25));
 
             &.started {
-              transform: translate(0em, 1em) rotate(0deg);
+              @include transform(translate(0em, 1em) rotate(0deg));
             }
           }
 
           &:nth-child(3) {
-            transform: translate(1.25em, 2em) rotate(-25deg) scale(1.25);
+            @include transform(translate(1.25em, 2em) rotate(-25deg) scale(1.25));
 
             &.started {
-              transform: translate(0em, 2em) rotate(0deg);
+              @include transform(translate(0em, 2em) rotate(0deg));
             }
           }
 
           &:nth-child(4) {
-            transform: translate(1.5em, 2em) rotate(-65deg) scale(1.25);
+            @include transform(translate(1.5em, 2em) rotate(-65deg) scale(1.25));
 
             &.started {
-              transform: translate(0em, 2em) rotate(0deg);
+              @include transform(translate(0em, 2em) rotate(0deg));
             }
           }
         }
