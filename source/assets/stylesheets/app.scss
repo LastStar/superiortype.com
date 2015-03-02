@@ -262,24 +262,25 @@ body {
       }
 
       .specimen {
-        & > div {
-          @include animation(pulse 2s ease-in);
-          @include animation-iteration-count(infinite);
-        }
-
         .large {
+          @include animation(pulse 2s ease-in);
+          @include animation-iteration-count(3);
           font-size: 8rem;
           font-weight: 900;
           line-height: 1.5em;
         }
 
         .thin {
+          @include animation(side-slide 1.75s ease);
+          @include animation-iteration-count(6);
           font-size: 6rem;
           font-weight: normal;
           line-height: 1em;
         }
 
         .tall {
+          @include animation(top-slide 1.5s ease);
+          @include animation-iteration-count(8);
           font-size: 14rem;
           font-weight: normal;
           font-style: italic;
@@ -287,6 +288,8 @@ body {
         }
 
         .small {
+          @include animation(wiggle 3s ease);
+          @include animation-iteration-count(6);
           font-size: 8rem;
           font-weight: normal;
           line-height: 1.5em;
@@ -301,12 +304,67 @@ body {
     font-size: 0.75rem;
   }
 }
+
+@include keyframes(wiggle) {
+  0% {
+    @include transform(rotate(0))
+  }
+  33% {
+    @include transform(rotate(5deg))
+  }
+  66% {
+    @include transform(rotate(-5deg))
+  }
+  100% {
+    @include transform(rotate(0))
+  }
+}
+
+@include keyframes(top-slide) {
+  0% {
+    @include transform(translateY(0))
+  }
+  25% {
+    @include transform(translateY(0.25em))
+  }
+  50% {
+    @include transform(translateY(0))
+  }
+  75% {
+    @include transform(translateY(-0.25em))
+  }
+  100% {
+    @include transform(translateY(0))
+  }
+}
+
+@include keyframes(side-slide) {
+  0% {
+    @include transform(translateX(0))
+  }
+  25% {
+    @include transform(translateX(0.5em))
+  }
+  50% {
+    @include transform(translateX(0))
+  }
+  75% {
+    @include transform(translateX(-0.5em))
+  }
+  100% {
+    @include transform(translateX(0))
+  }
+}
+
 @include keyframes(pulse) {
   0% {
     @include transform(scale(1))
   }
-  50% {
+  33% {
     @include transform(scale(1.05))
+  }
+  66% {
+    @include transform(scale(.95))
   }
   100% {
     @include transform(scale(1))
