@@ -1087,87 +1087,355 @@ body {
         font-weight: bold;
         font-size: 2rem; }
     /* line 265, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-    #container section .show-room .specimen > div {
+    #container section .show-room .specimen .large {
       -webkit-animation: pulse 2s ease-in;
       -moz-animation: pulse 2s ease-in;
       animation: pulse 2s ease-in;
-      -webkit-animation-iteration-count: infinite;
-      -moz-animation-iteration-count: infinite;
-      animation-iteration-count: infinite; }
-    /* line 270, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-    #container section .show-room .specimen .large {
+      -webkit-animation-iteration-count: 3;
+      -moz-animation-iteration-count: 3;
+      animation-iteration-count: 3;
       font-size: 8rem;
       font-weight: 900;
       line-height: 1.5em; }
-    /* line 276, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 273, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room .specimen .thin {
+      -webkit-animation: side-slide 1.75s ease;
+      -moz-animation: side-slide 1.75s ease;
+      animation: side-slide 1.75s ease;
+      -webkit-animation-iteration-count: 6;
+      -moz-animation-iteration-count: 6;
+      animation-iteration-count: 6;
       font-size: 6rem;
       font-weight: normal;
       line-height: 1em; }
-    /* line 282, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 281, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room .specimen .tall {
+      -webkit-animation: top-slide 1.5s ease;
+      -moz-animation: top-slide 1.5s ease;
+      animation: top-slide 1.5s ease;
+      -webkit-animation-iteration-count: 8;
+      -moz-animation-iteration-count: 8;
+      animation-iteration-count: 8;
       font-size: 14rem;
       font-weight: normal;
       font-style: italic;
       line-height: 1.5em; }
-    /* line 289, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 290, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     #container section .show-room .specimen .small {
+      -webkit-animation: wiggle 3s ease;
+      -moz-animation: wiggle 3s ease;
+      animation: wiggle 3s ease;
+      -webkit-animation-iteration-count: 6;
+      -moz-animation-iteration-count: 6;
+      animation-iteration-count: 6;
       font-size: 8rem;
       font-weight: normal;
       line-height: 1.5em; }
-  /* line 299, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 302, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   #container footer {
     padding: 1rem;
     font-size: 0.75rem; }
 
+@-webkit-keyframes wiggle {
+  /* line 309, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -webkit-transform: rotate(0); }
+
+  /* line 312, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  33% {
+    -webkit-transform: rotate(5deg); }
+
+  /* line 315, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  66% {
+    -webkit-transform: rotate(-5deg); }
+
+  /* line 318, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -webkit-transform: rotate(0); } }
+
+@-moz-keyframes wiggle {
+  /* line 309, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -moz-transform: rotate(0); }
+
+  /* line 312, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  33% {
+    -moz-transform: rotate(5deg); }
+
+  /* line 315, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  66% {
+    -moz-transform: rotate(-5deg); }
+
+  /* line 318, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -moz-transform: rotate(0); } }
+
+@-o-keyframes wiggle {
+  /* line 309, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -o-transform: rotate(0); }
+
+  /* line 312, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  33% {
+    -o-transform: rotate(5deg); }
+
+  /* line 315, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  66% {
+    -o-transform: rotate(-5deg); }
+
+  /* line 318, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -o-transform: rotate(0); } }
+
+@keyframes wiggle {
+  /* line 309, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    transform: rotate(0); }
+
+  /* line 312, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  33% {
+    transform: rotate(5deg); }
+
+  /* line 315, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  66% {
+    transform: rotate(-5deg); }
+
+  /* line 318, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    transform: rotate(0); } }
+
+@-webkit-keyframes top-slide {
+  /* line 324, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -webkit-transform: translateY(0); }
+
+  /* line 327, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  25% {
+    -webkit-transform: translateY(0.25em); }
+
+  /* line 330, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    -webkit-transform: translateY(0); }
+
+  /* line 333, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  75% {
+    -webkit-transform: translateY(-0.25em); }
+
+  /* line 336, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -webkit-transform: translateY(0); } }
+
+@-moz-keyframes top-slide {
+  /* line 324, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -moz-transform: translateY(0); }
+
+  /* line 327, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  25% {
+    -moz-transform: translateY(0.25em); }
+
+  /* line 330, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    -moz-transform: translateY(0); }
+
+  /* line 333, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  75% {
+    -moz-transform: translateY(-0.25em); }
+
+  /* line 336, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -moz-transform: translateY(0); } }
+
+@-o-keyframes top-slide {
+  /* line 324, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -o-transform: translateY(0); }
+
+  /* line 327, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  25% {
+    -o-transform: translateY(0.25em); }
+
+  /* line 330, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    -o-transform: translateY(0); }
+
+  /* line 333, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  75% {
+    -o-transform: translateY(-0.25em); }
+
+  /* line 336, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -o-transform: translateY(0); } }
+
+@keyframes top-slide {
+  /* line 324, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    transform: translateY(0); }
+
+  /* line 327, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  25% {
+    transform: translateY(0.25em); }
+
+  /* line 330, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    transform: translateY(0); }
+
+  /* line 333, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  75% {
+    transform: translateY(-0.25em); }
+
+  /* line 336, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    transform: translateY(0); } }
+
+@-webkit-keyframes side-slide {
+  /* line 342, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -webkit-transform: translateX(0); }
+
+  /* line 345, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  25% {
+    -webkit-transform: translateX(0.5em); }
+
+  /* line 348, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    -webkit-transform: translateX(0); }
+
+  /* line 351, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  75% {
+    -webkit-transform: translateX(-0.5em); }
+
+  /* line 354, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -webkit-transform: translateX(0); } }
+
+@-moz-keyframes side-slide {
+  /* line 342, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -moz-transform: translateX(0); }
+
+  /* line 345, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  25% {
+    -moz-transform: translateX(0.5em); }
+
+  /* line 348, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    -moz-transform: translateX(0); }
+
+  /* line 351, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  75% {
+    -moz-transform: translateX(-0.5em); }
+
+  /* line 354, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -moz-transform: translateX(0); } }
+
+@-o-keyframes side-slide {
+  /* line 342, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    -o-transform: translateX(0); }
+
+  /* line 345, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  25% {
+    -o-transform: translateX(0.5em); }
+
+  /* line 348, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    -o-transform: translateX(0); }
+
+  /* line 351, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  75% {
+    -o-transform: translateX(-0.5em); }
+
+  /* line 354, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    -o-transform: translateX(0); } }
+
+@keyframes side-slide {
+  /* line 342, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  0% {
+    transform: translateX(0); }
+
+  /* line 345, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  25% {
+    transform: translateX(0.5em); }
+
+  /* line 348, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  50% {
+    transform: translateX(0); }
+
+  /* line 351, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  75% {
+    transform: translateX(-0.5em); }
+
+  /* line 354, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  100% {
+    transform: translateX(0); } }
+
 @-webkit-keyframes pulse {
-  /* line 305, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 360, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   0% {
     -webkit-transform: scale(1); }
 
-  /* line 308, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-  50% {
+  /* line 363, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  33% {
     -webkit-transform: scale(1.05); }
 
-  /* line 311, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 366, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  66% {
+    -webkit-transform: scale(0.95); }
+
+  /* line 369, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   100% {
     -webkit-transform: scale(1); } }
 
 @-moz-keyframes pulse {
-  /* line 305, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 360, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   0% {
     -moz-transform: scale(1); }
 
-  /* line 308, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-  50% {
+  /* line 363, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  33% {
     -moz-transform: scale(1.05); }
 
-  /* line 311, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 366, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  66% {
+    -moz-transform: scale(0.95); }
+
+  /* line 369, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   100% {
     -moz-transform: scale(1); } }
 
 @-o-keyframes pulse {
-  /* line 305, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 360, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   0% {
     -o-transform: scale(1); }
 
-  /* line 308, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-  50% {
+  /* line 363, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  33% {
     -o-transform: scale(1.05); }
 
-  /* line 311, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 366, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  66% {
+    -o-transform: scale(0.95); }
+
+  /* line 369, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   100% {
     -o-transform: scale(1); } }
 
 @keyframes pulse {
-  /* line 305, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 360, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   0% {
     transform: scale(1); }
 
-  /* line 308, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-  50% {
+  /* line 363, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  33% {
     transform: scale(1.05); }
 
-  /* line 311, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 366, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  66% {
+    transform: scale(0.95); }
+
+  /* line 369, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   100% {
     transform: scale(1); } }
