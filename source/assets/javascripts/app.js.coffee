@@ -20,17 +20,6 @@ jQuery ->
         if $('section.show-room span.initial').size() == 0
           on_screen()
 
-    $('#reset').click (e) ->
-      $('section.show-room span').each((i, el) ->
-        $(el).addClass('initial'))
-      off_screen()
-
-    $('#play').click (e) ->
-      $('section.show-room span').each((i, el) ->
-        $(el).removeClass('initial'))
-      on_screen()
-
-
   if $('form#search').size() > 0
     $(this).on('submit', (e) ->
       font = $('input:first').val()
