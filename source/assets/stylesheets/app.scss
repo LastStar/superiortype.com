@@ -70,7 +70,7 @@ header {
 
 main {
   .show-room {
-    margin: 16rem auto;
+    margin: 12rem auto;
     width: 50%;
     min-width: 62rem;
 
@@ -131,42 +131,52 @@ main {
         padding: 1rem;
         font-weight: bold;
         font-size: 2rem;
+        color: $white;
       }
     }
 
     .specimen {
-      .large {
-        @include animation(pulse 2s ease-in);
-        @include animation-iteration-count(3);
-        font-size: 8rem;
-        font-weight: 900;
-        line-height: 1.5em;
-      }
+      color: $black;
 
-      .thin {
-        @include animation(side-slide 1.75s ease);
-        @include animation-iteration-count(6);
-        font-size: 6rem;
-        font-weight: normal;
-        line-height: 1em;
-      }
+      span {
+        font-size: 4rem;
+        display: inline-block;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 2rem;
+        background: $yellow;
 
-      .tall {
-        @include animation(top-slide 1.5s ease);
-        @include animation-iteration-count(8);
-        font-size: 14rem;
-        font-weight: normal;
-        font-style: italic;
-        line-height: 1.5em;
-      }
+        &.expanded {
+          @include transition-timing-function(ease-in);
+          @include transition-duration(0.7s);
+          @include transition-delay(2.1s);
+          font-size: 8rem;
+          width: 10rem;
+          height: 10rem;
+          margin: 0.5rem;
+          border-radius: 5rem;
+        }
 
-      .small {
-        @include animation(wiggle 3s ease);
-        @include animation-iteration-count(6);
-        font-size: 8rem;
-        font-weight: normal;
-        line-height: 1.5em;
+        &.bouncing {
+          @include animation(pulse 3s infinite ease);
+          @include animation-delay(3.1s);
+        }
       }
     }
+  }
+}
+
+@include keyframes(pulse) {
+  0% {
+    @include transform(scale(1))
+  }
+  33% {
+    @include transform(scale(1.05))
+  }
+  66% {
+    @include transform(scale(.95))
+  }
+  100% {
+    @include transform(scale(1))
   }
 }

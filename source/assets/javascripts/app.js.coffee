@@ -4,19 +4,15 @@
 
 on_screen = ->
   $('.offscreen').addClass('onscreen').removeClass('offscreen')
+  $('.contracted').addClass('expanded').each (i, el) ->
+    $(el).addClass('bouncing')
+
 
 off_screen = ->
   $('.onscreen').addClass('offscreen').removeClass('onscreen').removeClass('initial')
 
 
 jQuery ->
-  if $('section.animation').size() > 0
-    $('section.animation .rarr').velocity({ fontSize: '5em', translateX: '6em' }, { loop: true, duration: 2000 })
-    $('section.animation h2 a').mouseenter (e) ->
-      $(this).velocity { fontSize: '4em' }
-      $('section.animation .rarr').velocity 'stop'
-      $(this).unbind('mouseenter')
-
   if $('section.show-room').size() > 0
     $('section.show-room span.initial').each (i, el) ->
       $(el).mouseenter (e) ->
