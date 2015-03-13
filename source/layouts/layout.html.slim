@@ -29,19 +29,12 @@ html.nojs
         a<> href="http://browsehappy.com/" upgrade your browser
         | to improve your experience.
 
-    #container
-      header
-        nav
-          a.active.fonts href='/fonts' Fonts
-          a.custom href='#' Custom Fonts
-          a.info href='#' Info
-          a.cart href='#' Cart - 2 items &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;
-
-        form#search action='/fonts'
-          input class="awesomplete" data-list="Editor, Hrot, Kunda Book, Kunda Mono, Micro, Moniak Sans, Strana, Vegan" placeholder="search"
-
-        h1 Superior Type
-
+    header
+      h1
+        a href='/' alt='Superior Type Home' S
+      form#search action='/fonts'
+        input class="awesomplete" data-list="Editor, Hrot, Kunda Book, Kunda Mono, Micro, Moniak Sans, Strana, Vegan" placeholder="search"
+    main
       == yield
 
     = javascript_include_tag 'app'

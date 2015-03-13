@@ -1,373 +1,172 @@
 //= require normalize-css/normalize
 //= require awesomplete/awesomplete
 
-@import 'bourbon';
-@import 'neat';
-@import 'bitters';
+@import "bourbon";
+@import "neat";
+
+@import "base/base";
 
 // colors
 $yellow: #fffd38;
-$black: #000;
-$white: white;
-$grey: rgba(222, 222, 222, 0.9);
-$shadow-grey: $grey;
-$bottom-shadow: 0px 6px 6px 3px $shadow-grey;
-$full-width: 80rem;
-$header-height: 7rem;
-$page-header-height: 10rem;
-$small-margin: 1.25rem;
-$border-radius: 0.25rem;
-$bigger-font: 2rem;
-$item-pad: 0.5rem 1rem;
+$black: #111;
+$white: #EEE;
 
 // fonts
 @include font-face(Vegan, '../fonts/Vegan_Regular', normal);
 @include font-face(Vegan, '../fonts/Vegan_Bold', bold);
 @include font-face(Vegan, '../fonts/Vegan_Black', 900);
 
-@mixin main-row {
-  @include row;
-  @include pad(2rem 2rem 1rem 2rem);
-}
-
-
 body {
-  background: $grey;
+  background-color: $black;
+
   * {
     font-family: Vegan;
   }
 }
 
-#container {
-  @include outer-container;
-  max-width: $full-width;
-  background: $white;
-  margin: $small-margin auto;
+header {
+  @include row;
+  position: fixed;
+  top: 3.5rem;
+  left: 25%;
+  min-width: 62rem;
+  width: 50%;
 
-  & > * > * {
-  }
+  h1 {
+    @include span-columns(2);
+    text-align: center;
 
-  header {
-    @include main-row;
-    background: $yellow;
-    color: $black;
-    min-height: $header-height;
-    box-shadow: $bottom-shadow;
+    a {
+      height: 8rem;
+      width: 8rem;
+      padding-top: 2rem;
+      font-size: 4rem;
+      display: block;
+      background-color: $yellow;
+      border-radius: 50%;
+      color: $black;
 
-    h1 {
-      font-size: 1.75rem;
-      font-family: Vegan;
-      font-weight: 900;
-      padding: 0.5rem 1rem;
-
-      a {
-        color: $black;
+      &:hover {
+        padding-top: 2.062rem;
+        color: $white;
       }
     }
+  }
 
-    nav {
-      float: right;
+  #search {
+    @include span-columns(4);
+    height: 8rem;
+    padding-top: 3rem;
 
-      a {
-        color: $black;
+    input {
+      background-color: $yellow;
+      border-radius: 1rem;
+      border: none;
+      padding: 0.5rem;
+      color: $black;
+    }
+  }
+}
+
+main {
+  .show-room {
+    margin: 16rem auto;
+    width: 50%;
+    min-width: 62rem;
+
+    & > div {
+      text-align: center;
+    }
+
+    .to-animate {
+      background: $black;
+      color: $white;
+      height: 44rem;
+      padding: 3rem;
+
+      span {
+        font-size: 10rem;
+        line-height: 1.25em;
         display: inline-block;
-        padding: 0.5rem 1rem;
-        margin: 0 1rem;
+        @include transition-property(all);
+        @include transition-duration(1.0s);
+        @include transition-timing-function(ease-in);
 
-        &.active {
-          border-radius: $border-radius;
-          background: $grey;
+        &:first-child.initial {
+          @include transform(translate(2.25em, 0em) rotate(-10deg));
         }
 
-        &.cart {
-          border: 0.1rem solid $black;
-          border-radius: $border-radius $border-radius 0 0;
-          margin: 0 1rem;
-          width: 13rem;
-          text-align: center;
+        &:nth-child(2).initial {
+          @include transform(translate(-3em, 0.5em) rotate(10deg));
+        }
 
-          &:hover {
-            font-weight: 900;
-          }
+        &:nth-child(3).initial {
+          @include transform(translate(1.25em, 1em) rotate(-25deg));
+        }
+
+        &:nth-child(4).initial {
+          @include transform(translate(1.5em, 1em) rotate(-65deg));
+        }
+
+        &.offscreen {
+          @include transform(translate(0em, 1em) scale(0));
+        }
+
+        &.onscreen {
+          @include transition-timing-function(ease-out);
+          @include transition-duration(0.3s);
+          @include transition-delay(1.1s);
         }
       }
     }
 
-    form {
-      float: right;
+    div#controls {
+      background: $black;
+      color: $white;
+      height: 4rem;
+      text-align: right;
 
-      input {
-        border-radius: 2 * $border-radius;
-        border: thin solid $yellow;
-        font-size: 1.75rem;
-        padding: 0.5rem 1rem;
-        margin: 0 1rem;
+      a {
+        display: inline-block;
+        padding: 1rem;
+        font-weight: bold;
+        font-size: 2rem;
       }
     }
-  }
 
-  section {
-    font-family: Vegan;
-    font-weight: normal;
+    .specimen {
+      .large {
+        @include animation(pulse 2s ease-in);
+        @include animation-iteration-count(3);
+        font-size: 8rem;
+        font-weight: 900;
+        line-height: 1.5em;
+      }
 
-    & .header {
-      @include main-row;
-      min-height: $page-header-height;
-      box-shadow: $bottom-shadow;
-
-      h2 {
+      .thin {
+        @include animation(side-slide 1.75s ease);
+        @include animation-iteration-count(6);
         font-size: 6rem;
         font-weight: normal;
+        line-height: 1em;
       }
 
-      a.buy-family {
-        color: $black;
-        display: block;
-        border-radius: $border-radius;
-        background: #2dfffe;
-        padding: 1.5rem 1rem 1rem;
-        margin: 1.25rem 0 0 0;
-        font-size: $bigger-font;
-        float: right;
-      }
-    }
-
-    nav {
-      box-shadow: $bottom-shadow;
-      padding: 1.75rem 3rem 1.75rem;
-      min-height: $header-height;
-
-      a {
-        color: $black;
-        display: inline-block;
-        padding: $item-pad;
-        margin: 0 1rem;
-
-        &.active {
-          border: thin solid $black;
-          border-radius: $border-radius;
-        }
-
-        &.share {
-          font-size: $bigger-font;
-          margin-left: 3rem;
-        }
-      }
-    }
-
-    ul.styles {
-      li {
-        box-shadow: $bottom-shadow;
-        min-height: $page-header-height;
-
-        h3 {
-          padding: 4rem 4rem 3rem;
-          font-size: 3.5rem;
-        }
-
-        a.buy-style, span.price {
-          @include pad(1rem);
-          margin: 1.5rem 0 0 0;
-          float: right;
-          display: inline-block;
-          color: black;
-        }
-      }
-    }
-
-    ul.fonts {
-      li {
-        box-shadow: $bottom-shadow;
-      }
-
-      h3 {
-        padding: 3rem 3rem;
-        font-size: 5rem;
+      .tall {
+        @include animation(top-slide 1.5s ease);
+        @include animation-iteration-count(8);
+        font-size: 14rem;
         font-weight: normal;
+        font-style: italic;
+        line-height: 1.5em;
+      }
 
-        a {
-          color: $black;
-        }
+      .small {
+        @include animation(wiggle 3s ease);
+        @include animation-iteration-count(6);
+        font-size: 8rem;
+        font-weight: normal;
+        line-height: 1.5em;
       }
     }
-
-    &.animation {
-      margin: 4rem 0 0;
-
-      a {
-        display: block;
-        color: $black;
-      }
-    }
-
-    .show-room {
-      & > div {
-        text-align: center;
-      }
-
-      .to-animate {
-        background: $black;
-        color: $white;
-        height: 44rem;
-        padding: 3rem;
-
-        span {
-          font-size: 10rem;
-          line-height: 1.25em;
-          display: inline-block;
-          @include transition-property(all);
-          @include transition-duration(1.0s);
-          @include transition-timing-function(ease-in);
-
-          &:first-child.initial {
-            @include transform(translate(2.25em, 0em) rotate(-10deg));
-          }
-
-          &:nth-child(2).initial {
-            @include transform(translate(-3em, 0.5em) rotate(10deg));
-          }
-
-          &:nth-child(3).initial {
-            @include transform(translate(1.25em, 1em) rotate(-25deg));
-          }
-
-          &:nth-child(4).initial {
-            @include transform(translate(1.5em, 1em) rotate(-65deg));
-          }
-
-          &.offscreen {
-            @include transform(translate(0em, 1em) scale(0));
-          }
-
-          &.onscreen {
-            @include transition-timing-function(ease-out);
-            @include transition-duration(0.3s);
-            @include transition-delay(1.1s);
-          }
-        }
-      }
-
-      div#controls {
-        background: $black;
-        color: $white;
-        height: 4rem;
-        text-align: right;
-
-        a {
-          display: inline-block;
-          padding: 1rem;
-          font-weight: bold;
-          font-size: 2rem;
-        }
-      }
-
-      .specimen {
-        .large {
-          @include animation(pulse 2s ease-in);
-          @include animation-iteration-count(3);
-          font-size: 8rem;
-          font-weight: 900;
-          line-height: 1.5em;
-        }
-
-        .thin {
-          @include animation(side-slide 1.75s ease);
-          @include animation-iteration-count(6);
-          font-size: 6rem;
-          font-weight: normal;
-          line-height: 1em;
-        }
-
-        .tall {
-          @include animation(top-slide 1.5s ease);
-          @include animation-iteration-count(8);
-          font-size: 14rem;
-          font-weight: normal;
-          font-style: italic;
-          line-height: 1.5em;
-        }
-
-        .small {
-          @include animation(wiggle 3s ease);
-          @include animation-iteration-count(6);
-          font-size: 8rem;
-          font-weight: normal;
-          line-height: 1.5em;
-        }
-      }
-    }
-
-  }
-
-  footer {
-    @include pad(1rem);
-    font-size: 0.75rem;
   }
 }
-
-@include keyframes(wiggle) {
-  0% {
-    @include transform(rotate(0))
-  }
-  33% {
-    @include transform(rotate(5deg))
-  }
-  66% {
-    @include transform(rotate(-5deg))
-  }
-  100% {
-    @include transform(rotate(0))
-  }
-}
-
-@include keyframes(top-slide) {
-  0% {
-    @include transform(translateY(0))
-  }
-  25% {
-    @include transform(translateY(0.25em))
-  }
-  50% {
-    @include transform(translateY(0))
-  }
-  75% {
-    @include transform(translateY(-0.25em))
-  }
-  100% {
-    @include transform(translateY(0))
-  }
-}
-
-@include keyframes(side-slide) {
-  0% {
-    @include transform(translateX(0))
-  }
-  25% {
-    @include transform(translateX(0.5em))
-  }
-  50% {
-    @include transform(translateX(0))
-  }
-  75% {
-    @include transform(translateX(-0.5em))
-  }
-  100% {
-    @include transform(translateX(0))
-  }
-}
-
-@include keyframes(pulse) {
-  0% {
-    @include transform(scale(1))
-  }
-  33% {
-    @include transform(scale(1.05))
-  }
-  66% {
-    @include transform(scale(.95))
-  }
-  100% {
-    @include transform(scale(1))
-  }
-}
-
