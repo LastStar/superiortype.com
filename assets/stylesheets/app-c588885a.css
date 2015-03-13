@@ -808,7 +808,7 @@ header {
 
 /* line 72, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
 main .show-room {
-  margin: 16rem auto;
+  margin: 12rem auto;
   width: 50%;
   min-width: 62rem; }
   /* line 77, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
@@ -891,49 +891,84 @@ main .show-room {
       display: inline-block;
       padding: 1rem;
       font-weight: bold;
-      font-size: 2rem; }
+      font-size: 2rem;
+      color: #EEE; }
   /* line 138, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-  main .show-room .specimen .large {
-    -webkit-animation: pulse 2s ease-in;
-    -moz-animation: pulse 2s ease-in;
-    animation: pulse 2s ease-in;
-    -webkit-animation-iteration-count: 3;
-    -moz-animation-iteration-count: 3;
-    animation-iteration-count: 3;
-    font-size: 8rem;
-    font-weight: 900;
-    line-height: 1.5em; }
-  /* line 146, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-  main .show-room .specimen .thin {
-    -webkit-animation: side-slide 1.75s ease;
-    -moz-animation: side-slide 1.75s ease;
-    animation: side-slide 1.75s ease;
-    -webkit-animation-iteration-count: 6;
-    -moz-animation-iteration-count: 6;
-    animation-iteration-count: 6;
-    font-size: 6rem;
-    font-weight: normal;
-    line-height: 1em; }
-  /* line 154, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-  main .show-room .specimen .tall {
-    -webkit-animation: top-slide 1.5s ease;
-    -moz-animation: top-slide 1.5s ease;
-    animation: top-slide 1.5s ease;
-    -webkit-animation-iteration-count: 8;
-    -moz-animation-iteration-count: 8;
-    animation-iteration-count: 8;
-    font-size: 14rem;
-    font-weight: normal;
-    font-style: italic;
-    line-height: 1.5em; }
-  /* line 163, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
-  main .show-room .specimen .small {
-    -webkit-animation: wiggle 3s ease;
-    -moz-animation: wiggle 3s ease;
-    animation: wiggle 3s ease;
-    -webkit-animation-iteration-count: 6;
-    -moz-animation-iteration-count: 6;
-    animation-iteration-count: 6;
-    font-size: 8rem;
-    font-weight: normal;
-    line-height: 1.5em; }
+  main .show-room .specimen {
+    color: #111; }
+    /* line 141, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    main .show-room .specimen span {
+      font-size: 4rem;
+      display: inline-block;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 2rem;
+      background: #fffd38; }
+      /* line 149, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      main .show-room .specimen span.expanded {
+        -webkit-transition-timing-function: ease-in;
+        -moz-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+        -webkit-transition-duration: 0.7s;
+        -moz-transition-duration: 0.7s;
+        transition-duration: 0.7s;
+        -webkit-transition-delay: 2.1s;
+        -moz-transition-delay: 2.1s;
+        transition-delay: 2.1s;
+        font-size: 8rem;
+        width: 10rem;
+        height: 10rem;
+        margin: 0.5rem;
+        border-radius: 5rem; }
+      /* line 160, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      main .show-room .specimen span.bouncing {
+        -webkit-animation: pulse 3s infinite ease;
+        -moz-animation: pulse 3s infinite ease;
+        animation: pulse 3s infinite ease;
+        -webkit-animation-delay: 3.1s;
+        -moz-animation-delay: 3.1s;
+        animation-delay: 3.1s; }
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1); }
+  33% {
+    -webkit-transform: scale(1.05); }
+  66% {
+    -webkit-transform: scale(0.95); }
+  100% {
+    -webkit-transform: scale(1); } }
+@-moz-keyframes pulse {
+  0% {
+    -moz-transform: scale(1); }
+  33% {
+    -moz-transform: scale(1.05); }
+  66% {
+    -moz-transform: scale(0.95); }
+  100% {
+    -moz-transform: scale(1); } }
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+  33% {
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05); }
+  66% {
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    transform: scale(0.95); }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); } }
