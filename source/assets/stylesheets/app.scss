@@ -93,8 +93,8 @@ main {
 
     svg {
       @include span-columns(12 of 12);
-      height: 50rem;
-      width: 64rem;
+      height: 75rem;
+      width: 100%;
       margin: auto;
     }
 
