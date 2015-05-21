@@ -15,26 +15,26 @@ $blue: #2cfefe;
 $grey: lighten($black, 60);
 
 // fonts
-@include font-face(KundaBook, '../fonts/Kunda_Book_Bold_Italic', bold, italic, $file-formats: woff);
-@include font-face(KundaBook, '../fonts/Kunda_Book_Bold', bold, $file-formats: woff);
-@include font-face(KundaBook, '../fonts/Kunda_Book_Italic', italic, $file-formats: woff);
-@include font-face(KundaBook, '../fonts/Kunda_Book_Medium_Italic', 500, italic , $file-formats: woff);
-@include font-face(KundaBook, '../fonts/Kunda_Book_Medium', 500, $file-formats: woff);
 @include font-face(KundaBook, '../fonts/Kunda_Book_Regular', normal, $file-formats: woff);
-@include font-face(KundaBook, '../fonts/Kunda_Book_Semibold_Italic', 600, italic, $file-formats: woff);
+@include font-face(KundaBook, '../fonts/Kunda_Book_Italic', normal, italic, $file-formats: woff);
+@include font-face(KundaBook, '../fonts/Kunda_Book_Medium', 500, $file-formats: woff);
+@include font-face(KundaBook, '../fonts/Kunda_Book_Medium_Italic', 500, italic , $file-formats: woff);
 @include font-face(KundaBook, '../fonts/Kunda_Book_Semibold', 600, $file-formats: woff);
-@include font-face(VeganSans, '../fonts/Vegan_Sans_Black_Italic', 800, italic, $file-formats: woff);
-@include font-face(VeganSans, '../fonts/Vegan_Sans_Black', 800, italic, $file-formats: woff);
-@include font-face(VeganSans, '../fonts/Vegan_Sans_Bold_Italic', bold, italic, $file-formats: woff);
-@include font-face(VeganSans, '../fonts/Vegan_Sans_Bold', bold, $file-formats: woff);
-@include font-face(VeganSans, '../fonts/Vegan_Sans_Italic', italic, $file-formats: woff);
-@include font-face(VeganSans, '../fonts/Vegan_Sans_Light_Italic', 300, italic, $file-formats: woff);
+@include font-face(KundaBook, '../fonts/Kunda_Book_Semibold_Italic', 600, italic, $file-formats: woff);
+@include font-face(KundaBook, '../fonts/Kunda_Book_Bold', bold, $file-formats: woff);
+@include font-face(KundaBook, '../fonts/Kunda_Book_Bold_Italic', bold, italic, $file-formats: woff);
 @include font-face(VeganSans, '../fonts/Vegan_Sans_Light', 300, $file-formats: woff);
-@include font-face(VeganSans, '../fonts/Vegan_Sans_Medium_Italic', 500, italic, $file-formats: woff);
-@include font-face(VeganSans, '../fonts/Vegan_Sans_Medium', 500, $file-formats: woff);
+@include font-face(VeganSans, '../fonts/Vegan_Sans_Light_Italic', 300, italic, $file-formats: woff);
 @include font-face(VeganSans, '../fonts/Vegan_Sans_Regular', normal, $file-formats: woff);
-@include font-face(VeganSans, '../fonts/Vegan_Sans_Semibold_Italic', 600, italic, $file-formats: woff);
+@include font-face(VeganSans, '../fonts/Vegan_Sans_Italic', normal, italic, $file-formats: woff);
+@include font-face(VeganSans, '../fonts/Vegan_Sans_Medium', 500, $file-formats: woff);
+@include font-face(VeganSans, '../fonts/Vegan_Sans_Medium_Italic', 500, italic, $file-formats: woff);
 @include font-face(VeganSans, '../fonts/Vegan_Sans_Semibold', 600, $file-formats: woff);
+@include font-face(VeganSans, '../fonts/Vegan_Sans_Semibold_Italic', 600, italic, $file-formats: woff);
+@include font-face(VeganSans, '../fonts/Vegan_Sans_Bold', bold, $file-formats: woff);
+@include font-face(VeganSans, '../fonts/Vegan_Sans_Bold_Italic', bold, italic, $file-formats: woff);
+@include font-face(VeganSans, '../fonts/Vegan_Sans_Black', 800, italic, $file-formats: woff);
+@include font-face(VeganSans, '../fonts/Vegan_Sans_Black_Italic', 800, italic, $file-formats: woff);
 
 
 body {
@@ -118,17 +118,57 @@ main {
     }
 
 
-    &.font-list {
-      * {
-        font-family: VeganSans;
-      }
-
+    &.fonts {
       opacity: 0;
       transition-property: opacity;
       transition-duration: 750ms;
 
+      .light {
+        font-weight: 300;
+      }
+
+      .regular {
+        font-weight: normal;
+      }
+
+      .medium {
+        font-weight: 500;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+
+      .semibold {
+        font-weight: 600;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
       nav {
+        & > .font {
+          @include span-columns(12);
+          margin: 0 0 2rem 2rem;
+          border-bottom: thin solid $grey;
+        }
+
+        .vegan-sans * {
+          font-family: VeganSans;
+        }
+
+        .kunda-book * {
+          font-family: KundaBook;
+        }
+
+        .hrot * {
+          font-family: Hrot;
+        }
+
         .tools {
+          @include span-columns(12 of 12);
+          margin: 0 2rem;
           font-size: 1rem;
 
           span {
@@ -136,11 +176,11 @@ main {
             padding: 0.125rem;
 
             &.minus {
-              font-size: 0.75rem;
+              font-size: 0.875rem;
             }
 
             &.plus {
-              font-size: 1.25rem;
+              font-size: 1.125rem;
             }
 
           }
@@ -148,16 +188,23 @@ main {
 
         h3 {
           @include span-columns(12);
-          background: $white;
           font-size: 4rem;
           font-weight: normal;
-          margin-bottom: 0.125rem;
-          padding: 1rem 0 0 1rem;
-          border-bottom: thin solid $grey;
+          margin: 0 0 0 0.125rem;
+          padding: 0;
+          font-style: normal;
 
           a {
             color: black;
           }
+        }
+
+        h4 {
+          @include span-columns(12);
+          @include span-columns(12);
+          font-size: 2rem;
+          padding: 1rem 0 0 1rem;
+          margin-bottom: 0.125rem;
         }
       }
     }

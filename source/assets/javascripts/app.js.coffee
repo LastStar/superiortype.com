@@ -12,7 +12,7 @@ if $('#show-room')
   kundaBook = null
   hrot = null
   zero = 'translate(0, 0)'
-  scale = 2.9
+  scale = 2.5
 
   positions = {
     veganSans: {
@@ -51,10 +51,11 @@ if $('#show-room')
     hrot.attr { transform: zero }
     hrot.selectAll('g').attr { transform: positions.hrot.initial }
 
-    moveButtons 0
+    setTimeout moveButtons, 350
+    setTimeout showFontList, 1000
 
 
-  moveButtons = (index) ->
+  moveButtons = (index = 0) ->
     if index > 1
       index = 0
 
@@ -69,9 +70,22 @@ if $('#show-room')
     setTimeout restart, 4000
 
   returnButtons = (index, callback) ->
-    veganSans.selectAll('g')[index].animate { transform: positions.veganSans.initial}, positions.veganSans.speed/2, mina.easein, callback
-    kundaBook.selectAll('g')[index].animate { transform: positions.kundaBook.initial}, positions.kundaBook.speed/2, mina.easein
-    hrot.selectAll('g')[index].animate { transform: positions.hrot.initial}, positions.hrot.speed/2, mina.easein
+    delayedCallback = ->
+      setTimeout callback, 750
+    veganSans.selectAll('g')[index].animate { transform: positions.veganSans.initial}, positions.veganSans.speed/2, mina.easeout, delayedCallback
+    kundaBook.selectAll('g')[index].animate { transform: positions.kundaBook.initial}, positions.kundaBook.speed/2, mina.easeout
+    hrot.selectAll('g')[index].animate { transform: positions.hrot.initial}, positions.hrot.speed/2, mina.easeout
+
+  showFontList = ->
+    $('.tools .minus').on 'click', ->
+      title  = $(this).parent().siblings('h3')
+      size = (parseInt(title.css('font-size'))*0.875)+'px'
+      title.css({ 'font-size': size })
+    $('.tools .plus').on 'click', ->
+      title  = $(this).parent().siblings('h3')
+      size = (parseInt(title.css('font-size'))*1.125)+'px'
+      title.css({ 'font-size': size })
+    $('.fonts').css { opacity: 1 }
 
 
   # $.each buttons, (i, item) ->
