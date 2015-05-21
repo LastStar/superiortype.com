@@ -17,19 +17,19 @@ if $('#show-room')
   config = {
     veganSans: {
       name: 'vegan-sans',
-      initial: 't0, '+(height+160)+'s0.1',
-      final: 't'+(width/2-240)+' 520 s'+scale,
+      initial: 't0, '+height+'s0.01',
+      final: 't'+(width/2-220)+' 500 s'+scale,
       speed: 700
     }
     kundaBook: {
       name: 'kunda-book',
-      initial: 't'+(width+160)+', '+(height+150)+'s0.1',
-      final: 't'+(width/2+240)+' 520 s'+scale,
+      initial: 't'+(width+160)+', '+height+'s0.01',
+      final: 't'+(width/2+220)+' 500 s'+scale,
       speed: 800
     }
     hrot: {
       name: 'hrot',
-      initial: 't'+(width/2)+', -160'+'s0.1',
+      initial: 't'+(width/2)+', -76'+'s0.01',
       final: 't'+(width/2)+' 150 s'+scale,
       speed: 900
     }
