@@ -73,7 +73,8 @@ header {
     @include span-columns(3);
     transform: translateX(-200px);
     transition-property: transform, opacity;
-    transition-duration: 300ms;
+    transition-duration: 750ms;
+    transition-timing-function: cubic-bezier(0.5, -0.5, 0.5, 1.5);
     opacity: 0;
     z-index: 10;
 
@@ -81,9 +82,9 @@ header {
       transform: translateX(0px);
       opacity: 1;
     }
+
     a {
       @include span-columns(1 of 3);
-      text-align: center;
       color: $black;
 
       &:hover {
@@ -113,7 +114,6 @@ main {
     svg {
       @include span-columns(12 of 12);
       height: 60rem;
-      width: 100%;
       margin: auto;
     }
 
@@ -150,7 +150,7 @@ main {
       nav {
         & > .font {
           @include span-columns(12);
-          margin: 0 0 2rem 2rem;
+          padding: 0 0 2rem 2rem;
           border-bottom: thin solid $grey;
         }
 
@@ -168,12 +168,14 @@ main {
 
         .tools {
           @include span-columns(12 of 12);
-          margin: 0 2rem;
           font-size: 1rem;
 
           span {
             display: inline-block;
             padding: 0.125rem;
+            font-family: VeganSans;
+            cursor: pointer;
+
 
             &.minus {
               font-size: 0.875rem;
@@ -190,9 +192,9 @@ main {
           @include span-columns(12);
           font-size: 4rem;
           font-weight: normal;
-          margin: 0 0 0 0.125rem;
-          padding: 0;
+          padding: 0 0 0 0.125rem;
           font-style: normal;
+          margin: 0;
 
           a {
             color: black;

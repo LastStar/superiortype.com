@@ -14,22 +14,22 @@ if $('#show-room')
   zero = 'translate(0, 0)'
   scale = 2.5
 
-  positions = {
+  config = {
     veganSans: {
       name: 'vegan-sans',
-      initial: 't0, '+(height+160),
+      initial: 't0, '+(height+160)+'s0.1',
       final: 't'+(width/2-240)+' 520 s'+scale,
       speed: 700
     }
     kundaBook: {
       name: 'kunda-book',
-      initial: 't'+(width+160)+', '+(height+150),
+      initial: 't'+(width+160)+', '+(height+150)+'s0.1',
       final: 't'+(width/2+240)+' 520 s'+scale,
       speed: 800
     }
     hrot: {
       name: 'hrot',
-      initial: 't'+(width/2)+', -160',
+      initial: 't'+(width/2)+', -160'+'s0.1',
       final: 't'+(width/2)+' 150 s'+scale,
       speed: 900
     }
@@ -39,29 +39,30 @@ if $('#show-room')
     buttons = canvas.select 'g#Buttons'
     s.append buttons
 
-    veganSans = buttons.select 'g#'+positions.veganSans.name
+    veganSans = buttons.select 'g#'+config.veganSans.name
     veganSans.attr { transform: zero }
-    veganSans.selectAll('g').attr { transform: positions.veganSans.initial }
+    veganSans.selectAll('g').attr { transform: config.veganSans.initial }
 
-    kundaBook = buttons.select 'g#'+positions.kundaBook.name
+    kundaBook = buttons.select 'g#'+config.kundaBook.name
     kundaBook.attr { transform: zero }
-    kundaBook.selectAll('g').attr { transform: positions.kundaBook.initial }
+    kundaBook.selectAll('g').attr { transform: config.kundaBook.initial }
 
-    hrot = buttons.select 'g#'+positions.hrot.name
+    hrot = buttons.select 'g#'+config.hrot.name
     hrot.attr { transform: zero }
-    hrot.selectAll('g').attr { transform: positions.hrot.initial }
+    hrot.selectAll('g').attr { transform: config.hrot.initial }
 
     setTimeout moveButtons, 350
     setTimeout showFontList, 1000
+    enableMenu()
 
 
   moveButtons = (index = 0) ->
-    if index > 1
+    if index > 3
       index = 0
 
-    veganSans.selectAll('g')[index].animate { transform: positions.veganSans.final}, positions.veganSans.speed, mina.bounce
-    kundaBook.selectAll('g')[index].animate { transform: positions.kundaBook.final}, positions.kundaBook.speed, mina.bounce
-    hrot.selectAll('g')[index].animate { transform: positions.hrot.final}, positions.hrot.speed, mina.bounce
+    veganSans.selectAll('g')[index].animate { transform: config.veganSans.final}, config.veganSans.speed, mina.bounce
+    kundaBook.selectAll('g')[index].animate { transform: config.kundaBook.final}, config.kundaBook.speed, mina.bounce
+    hrot.selectAll('g')[index].animate { transform: config.hrot.final}, config.hrot.speed, mina.bounce
 
     restart = ->
       returnButtons index, ->
@@ -72,28 +73,34 @@ if $('#show-room')
   returnButtons = (index, callback) ->
     delayedCallback = ->
       setTimeout callback, 750
-    veganSans.selectAll('g')[index].animate { transform: positions.veganSans.initial}, positions.veganSans.speed/2, mina.easeout, delayedCallback
-    kundaBook.selectAll('g')[index].animate { transform: positions.kundaBook.initial}, positions.kundaBook.speed/2, mina.easeout
-    hrot.selectAll('g')[index].animate { transform: positions.hrot.initial}, positions.hrot.speed/2, mina.easeout
+    veganSans.selectAll('g')[index].animate { transform: config.veganSans.initial}, config.veganSans.speed/2, mina.easeout, delayedCallback
+    kundaBook.selectAll('g')[index].animate { transform: config.kundaBook.initial}, config.kundaBook.speed/2, mina.easeout
+    hrot.selectAll('g')[index].animate { transform: config.hrot.initial}, config.hrot.speed/2, mina.easeout
 
   showFontList = ->
     $('.tools .minus').on 'click', ->
-      title  = $(this).parent().siblings('h3')
-      size = (parseInt(title.css('font-size'))*0.875)+'px'
-      title.css({ 'font-size': size })
+      family  = $(this).parent().siblings('h3')
+      styles = $(this).parent().siblings('.styles').children('h4')
+      familySize = (parseInt(family.css('font-size'))*0.875)+'px'
+      family.css({ 'font-size': familySize })
+      stylesSize = (parseInt(styles.first().css('font-size'))*0.875)+'px'
+      styles.css({ 'font-size': stylesSize })
     $('.tools .plus').on 'click', ->
-      title  = $(this).parent().siblings('h3')
-      size = (parseInt(title.css('font-size'))*1.125)+'px'
-      title.css({ 'font-size': size })
+      family  = $(this).parent().siblings('h3')
+      styles = $(this).parent().siblings('.styles').children('h4')
+      familySize = (parseInt(family.css('font-size'))*1.125)+'px'
+      family.css({ 'font-size': familySize })
+      stylesSize = (parseInt(styles.first().css('font-size'))*1.125)+'px'
+      styles.css({ 'font-size': stylesSize })
     $('.fonts').css { opacity: 1 }
 
+  enableMenu = ->
+    $('header').on 'mouseenter', ->
+      $('header nav').addClass('visible')
 
-  # $.each buttons, (i, item) ->
-  #   Snap.load '/assets/images/'+item.name+'.svg', (f) ->
-  #     g = f.select("g")
-  #     s.append g
-  #     console.log item.name, item.speed
-  #     g.attr { transform: "translate("+item.initial+")"  }
-  #     if item.speed > 0
-  #       g.animate { transform: item.final }, item.speed, mina.bounce
+
+    $('header').on 'mouseout', ->
+      hideMenu = ->
+        $('header nav').removeClass('visible')
+      setTimeout hideMenu, 2000
 
