@@ -917,31 +917,31 @@ header {
     width: 23.23176%;
     transform: translateX(-200px);
     transition-property: transform, opacity;
-    transition-duration: 300ms;
+    transition-duration: 750ms;
+    transition-timing-function: cubic-bezier(0.5, -0.5, 0.5, 1.5);
     opacity: 0;
     z-index: 10; }
     /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.1@superiortype.com/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
     header nav:last-child {
       margin-right: 0; }
-    /* line 80, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 81, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     header nav.visible {
       transform: translateX(0px);
       opacity: 1; }
-    /* line 84, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 86, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     header nav a {
       float: left;
       display: block;
       margin-right: 10.1484%;
       width: 26.56773%;
-      text-align: center;
       color: #111; }
       /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.1@superiortype.com/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
       header nav a:last-child {
         margin-right: 0; }
-      /* line 89, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      /* line 90, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       header nav a:hover {
         color: #111; }
-  /* line 95, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 96, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   header #cart {
     float: left;
     display: block;
@@ -952,7 +952,7 @@ header {
     /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.1@superiortype.com/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
     header #cart:last-child {
       margin-right: 0; }
-    /* line 99, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 100, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     header #cart a {
       display: inline-block;
       background-color: #2cfefe;
@@ -960,7 +960,7 @@ header {
       border-radius: 1rem;
       padding: 0.15rem 0.5rem 0.075rem 0.5rem; }
 
-/* line 110, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+/* line 111, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
 main section {
   float: left;
   display: block;
@@ -969,14 +969,13 @@ main section {
   /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.1@superiortype.com/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
   main section:last-child {
     margin-right: 0; }
-  /* line 113, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 114, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   main section svg {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 100%;
     height: 60rem;
-    width: 100%;
     margin: auto; }
     /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.1@superiortype.com/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
     main section svg:last-child {
@@ -1010,7 +1009,7 @@ main section {
       display: block;
       margin-right: 2.35765%;
       width: 100%;
-      margin: 0 0 2rem 2rem;
+      padding: 0 0 2rem 2rem;
       border-bottom: thin solid #aaaaaa; }
       /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.1@superiortype.com/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
       main section.fonts nav > .font:last-child {
@@ -1030,22 +1029,23 @@ main section {
       display: block;
       margin-right: 2.35765%;
       width: 100%;
-      margin: 0 2rem;
       font-size: 1rem; }
       /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.1@superiortype.com/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
       main section.fonts nav .tools:last-child {
         margin-right: 0; }
-      /* line 174, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      /* line 173, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       main section.fonts nav .tools span {
         display: inline-block;
-        padding: 0.125rem; }
-        /* line 178, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        padding: 0.125rem;
+        font-family: VeganSans;
+        cursor: pointer; }
+        /* line 180, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
         main section.fonts nav .tools span.minus {
           font-size: 0.875rem; }
-        /* line 182, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+        /* line 184, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
         main section.fonts nav .tools span.plus {
           font-size: 1.125rem; }
-    /* line 189, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 191, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     main section.fonts nav h3 {
       float: left;
       display: block;
@@ -1053,16 +1053,16 @@ main section {
       width: 100%;
       font-size: 4rem;
       font-weight: normal;
-      margin: 0 0 0 0.125rem;
-      padding: 0;
-      font-style: normal; }
+      padding: 0 0 0 0.125rem;
+      font-style: normal;
+      margin: 0; }
       /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.1@superiortype.com/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
       main section.fonts nav h3:last-child {
         margin-right: 0; }
-      /* line 197, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+      /* line 199, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       main section.fonts nav h3 a {
         color: black; }
-    /* line 202, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 204, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     main section.fonts nav h4 {
       float: left;
       display: block;
@@ -1081,15 +1081,15 @@ main section {
       /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.1@superiortype.com/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
       main section.fonts nav h4:last-child {
         margin-right: 0; }
-  /* line 212, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 214, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   main section.font-header {
     border-bottom: thin solid #919191; }
-    /* line 214, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 216, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     main section.font-header h2 {
       font-size: 3rem;
       font-weight: normal;
       margin: 1rem 0; }
-    /* line 221, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 223, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     main section.font-header nav a {
       float: left;
       display: block;
@@ -1100,7 +1100,7 @@ main section {
       /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.1@superiortype.com/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
       main section.font-header nav a:last-child {
         margin-right: 0; }
-  /* line 231, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+  /* line 233, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
   main section.font-styles ul li {
     float: left;
     display: block;
@@ -1112,9 +1112,9 @@ main section {
     /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.1@superiortype.com/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
     main section.font-styles ul li:last-child {
       margin-right: 0; }
-    /* line 237, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 239, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     main section.font-styles ul li a {
       color: black; }
-    /* line 241, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
+    /* line 243, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
     main section.font-styles ul li h3 {
       font-size: 8rem; }
