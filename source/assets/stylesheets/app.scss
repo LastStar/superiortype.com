@@ -33,16 +33,13 @@ $grey: lighten($black, 60);
 @include font-face(VeganSans, '../fonts/Vegan_Sans_Semibold_Italic', 600, italic, $file-formats: woff);
 @include font-face(VeganSans, '../fonts/Vegan_Sans_Bold', bold, $file-formats: woff);
 @include font-face(VeganSans, '../fonts/Vegan_Sans_Bold_Italic', bold, italic, $file-formats: woff);
-@include font-face(VeganSans, '../fonts/Vegan_Sans_Black', 800, italic, $file-formats: woff);
+@include font-face(VeganSans, '../fonts/Vegan_Sans_Black', 800, $file-formats: woff);
 @include font-face(VeganSans, '../fonts/Vegan_Sans_Black_Italic', 800, italic, $file-formats: woff);
 
 
 body {
   min-width: 64rem;
   margin: auto;
-  transition-property: background-color;
-  transition-duration: 200ms;
-
 }
 
 header {
@@ -71,15 +68,13 @@ header {
 
   nav {
     @include span-columns(3);
-    transform: translateX(-200px);
-    transition-property: transform, opacity;
-    transition-duration: 750ms;
-    transition-timing-function: cubic-bezier(0.5, -0.5, 0.5, 1.5);
+    @include transform(translateX(-200px));
+    @include transition-property(transform, opacity);
+    @include transition-duration(750ms);
     opacity: 0;
-    z-index: 10;
 
     &.visible {
-      transform: translateX(0px);
+      @include transform(translateX(0px));
       opacity: 1;
     }
 
@@ -120,38 +115,28 @@ main {
 
     &.fonts {
       opacity: 0;
-      transition-property: opacity;
-      transition-duration: 750ms;
+      @include transition-property(opacity);
+      @include transition-duration(750ms);
 
-      .light {
-        font-weight: 300;
-      }
+      .light { font-weight: 300 }
 
-      .regular {
-        font-weight: normal;
-      }
+      .regular { font-weight: normal }
 
-      .medium {
-        font-weight: 500;
-      }
+      .medium { font-weight: 500 }
 
-      .bold {
-        font-weight: bold;
-      }
+      .bold { font-weight: bold }
 
-      .semibold {
-        font-weight: 600;
-      }
+      .semibold { font-weight: 600 }
 
-      .italic {
-        font-style: italic;
-      }
+      .italic { font-style: italic }
+
+      .black { font-weight: 800 }
 
       nav {
         & > .font {
           @include span-columns(12);
           padding: 0 0 2rem 2rem;
-          border-bottom: thin solid $grey;
+          border-top: thin solid $grey;
         }
 
         .vegan-sans * {
@@ -167,7 +152,8 @@ main {
         }
 
         .tools {
-          @include span-columns(12 of 12);
+          @include shift(10);
+          @include span-columns(2 of 12);
           font-size: 1rem;
 
           span {
