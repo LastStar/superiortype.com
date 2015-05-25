@@ -1,5 +1,6 @@
 //= require jquery/dist/jquery.min
 //= require snap.svg/dist/snap.svg-min
+//= require jquery.scrollTo/jquery.scrollTo.min
 
 if $('#show-room')
   svg = $('svg')
@@ -12,26 +13,26 @@ if $('#show-room')
   scale = { initial: '0.01', final: '2.5' }
 
   config = {
-    veganSans: {
-      id: 'vegan-sans',
-      initial: [0, height],
-      final: [(width/2-220), 500],
-      title: [(width/2-248), 464],
-      speed: 700
+    hrot: {
+      id: 'hrot',
+      initial: [(width/2) - 75, -76],
+      final: [(width/2) - 85, 140],
+      title: [(width/2) - 103, 104],
+      speed: 900
     }
     kundaBook: {
       id: 'kunda-book',
       initial: [(width+160), height],
-      final: [(width/2+220), 500],
-      title: [(width/2+192), 464],
+      final: [(width/2+140), 500],
+      title: [(width/2+123), 464],
       speed: 800
     }
-    hrot: {
-      id: 'hrot',
-      initial: [(width/2), -76],
-      final: [(width/2), 150],
-      title: [(width/2) - 28, 114],
-      speed: 900
+    veganSans: {
+      id: 'vegan-sans',
+      initial: [0, height],
+      final: [(width/2-300), 500],
+      title: [(width/2-328), 464],
+      speed: 700
     }
   }
 
@@ -48,7 +49,7 @@ if $('#show-room')
 
     setTimeout showFontList, 1000
     enableMenu()
-
+    window.scrollTo($('20px'))
 
   moveButton = (group, item, index) ->
     index = 0 if index > 3
@@ -73,7 +74,6 @@ if $('#show-room')
     elementToMove.mouseout ->
       title.stop()
       title.attr { opacity: 0, transform: 'translate('+item.title+') scale('+scale.final+')' }
-
 
   returnButtons = (element, item, callback) ->
     delayedCallback = ->
@@ -102,9 +102,7 @@ if $('#show-room')
     $('header').on 'mouseenter', ->
       $('header nav').addClass('visible')
 
-
     $('header').on 'mouseout', ->
       hideMenu = ->
         $('header nav').removeClass('visible')
       setTimeout hideMenu, 2000
-
