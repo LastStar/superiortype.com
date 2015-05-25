@@ -4,8 +4,8 @@
 
 # Meta.
 set :meta, {
-  title: 'Foo',
-  url: 'http://foo.com',
+  title: 'Superior Type',
+  url: 'http://superior.com',
 }
 
 # Change to your Google Analytics key (e.g. UA-XXXXXXXX-Y).

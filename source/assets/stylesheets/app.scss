@@ -236,3 +236,20 @@ main {
 
 }
 
+$ipad-portrait: new-breakpoint(max-width 769px 4);
+$iphone-landscape: new-breakpoint(max-width 480px 4);
+
+@include media($ipad-portrait) {
+  body {
+    font-size: modular-scale(-2, 1rem);
+    min-width: 60rem;
+  }
+
+  header {
+    nav {
+      opacity: 1;
+      @include transform(translateX(0px));
+    }
+  }
+}
+
