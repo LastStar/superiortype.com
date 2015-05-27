@@ -2,26 +2,128 @@
 title: 'Vegan Sans'
 ---
 section.font-header
-  h2= current_page.data.title
+  header
+    h2
+      = current_page.data.title
+      a.previous href='#' <
+      a.next href='#' >
 
+    nav
+      a.styles href="javascript:$.scrollTo('#styles', 'max')" Styles
+      a.glyphs href="javascript:$.scrollTo('#glyphs', 'max')" Glyphs
+      a.glyphs href='#' Details
+      a.pdf href='#' Specimen
+
+
+section.fonts#styles
   nav
-    a.active.showroom href='#' Showroom
-    a.styles href='#' Styles
-    a.glyphs href='#' Glyphs
-    a.about href='#' Details
-    a.pdf href='#' Specimen
+    .vegan-sans
+      .styles.visible
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.light Vegan Sans Light
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.light.italic Vegan Sans Light Italic
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.regular Vegan Sans Regular
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.italic Vegan Sans Italic
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.medium Vegan Sans Medium
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.medium.italic Vegan Sans Medium Italic
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.semibold Vegan Sans Semibold
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.semibold.italic Vegan Sans Semibold Italic
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.bold Vegan Sans Bold
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.bold.italic Vegan Sans Bold Italic
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.black Vegan Sans Black
+        .style
+          .tools
+            span.minus A
+            span.plus A
+          h4.black.italic Vegan Sans Black Italic
 
-section.font-styles
-  ul.styles
-    li
-      span.price $69
-      a.buy-style href='#' Add to cart
-      h3 style='font-weight: normal' Vegan Regular
-    li
-      span.price $69
-      a.buy-style href='#' Add to cart
-      h3 style='font-weight: bold' Vegan Bold
-    li
-      span.price $69
-      a.buy-style href='#' Add to cart
-      h3 style='font-weight: 900' Vegan Black
+section.about#details
+  p.text
+    | Vegan is a modern, structured sans featuring delicate, humanist elements.
+    |  the distinctive shadow font Vega, which was created by Czech typographer
+    |  Stanislav Maršo in the 1960s, was a source of inspiration for the designer.
+  p.text
+    |  The overall skeleton of the typeface is pleasantly optically narrowed and
+    |  features a slight shadow. as a result of these characteristics, Vegan is a
+    |  practical font that appears fresh and new. the font family contains six
+    |  styles, from Light to Black and the corresponding italics. It can be used
+    |  to set long texts, news papers and magazines, but is also perfect for
+    |  large, striking headlines and posters.
+
+  p.features
+    p.feature
+      | Styles in font family
+      br
+      | 12
+    p.feature
+      | Number of glyphs per font
+      br
+      | 848
+    p.feature
+      | Language Support
+      br
+      | Latin Std
+    p.feature
+      | Designer
+      br
+      | Vojtěch Říha
+    p.feature
+      | Release year
+      br
+      | 2015
+
+
+section#glyphs
+  h2 Glyphs
+  table
+    - for i in (3..22)
+      tr
+      -for j in (0..5)
+        - char = ((i*5) + j + 25)
+        - if char > 127
+          - next
+        td= char.chr
+

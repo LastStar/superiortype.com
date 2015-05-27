@@ -16,13 +16,12 @@ html.nojs
     title = current_page.data.title
     meta name="description" content=""
     meta name="viewport" content="width=device-width, initial-scale=1"
-    meta name="viewport" content="width=device-width, minimum-scale=1.0"
 
     / Place favicon.ico and apple-touch-icon.png in the root directory.
 
     = stylesheet_link_tag 'app'
 
-  body
+  body.dark
     /[if lte IE 7]
       / Ancient browser notice.
       p.browsehappy

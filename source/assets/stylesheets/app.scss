@@ -12,7 +12,8 @@ $yellow: #fffd38;
 $black: #111;
 $white: #fff;
 $blue: #2cfefe;
-$grey: lighten($black, 60);
+$grey: lighten($black, 75);
+$darkgrey: lighten($black, 33.3);
 
 // fonts
 @include font-face(KundaBook, '../fonts/Kunda_Book_Regular', normal, $file-formats: woff);
@@ -40,19 +41,23 @@ $grey: lighten($black, 60);
 body {
   min-width: 64rem;
   margin: auto;
+
+  &.dark {
+    background-color: $darkgrey;
+  }
 }
 
-header {
+header.main {
   * {
     font-family: VeganSans;
   }
 
   @include row;
   margin-top: 1rem;
+  padding: 0 2rem;
 
   h1 {
-    @include span-columns(2);
-    text-align: center;
+    @include span-columns(3);
     z-index: 10;
 
     a {
@@ -68,9 +73,9 @@ header {
 
   nav {
     @include span-columns(3);
-    @include transform(translateX(-200px));
+    @include transform(translateX(-130px));
     @include transition-property(transform, opacity);
-    @include transition-duration(750ms);
+    @include transition-duration(500ms);
     opacity: 0;
 
     &.visible {
@@ -104,14 +109,13 @@ header {
 
 main {
   section {
-    @include span-columns(12);
+    @include row;
 
     svg {
-      @include span-columns(12 of 12);
+      @include span-columns(12);
       height: 60rem;
       margin: auto;
     }
-
 
     &.fonts {
       opacity: 0;
@@ -133,10 +137,12 @@ main {
       .black { font-weight: 800 }
 
       nav {
+        padding: 0 2rem;
+
         & > .font {
           @include span-columns(12);
-          padding: 0 0 2rem 2rem;
-          border-top: thin solid $grey;
+          padding: 0 0 0.5rem 0;
+          border-top: 1px solid $grey;
         }
 
         .vegan-sans * {
@@ -152,13 +158,13 @@ main {
         }
 
         .tools {
-          @include shift(10);
-          @include span-columns(2 of 12);
+          @include span-columns(2);
           font-size: 1rem;
+          padding-bottom: 0.5rem;
 
           span {
             display: inline-block;
-            padding: 0.125rem;
+            padding: 0.5rem;
             font-family: VeganSans;
             cursor: pointer;
 
@@ -178,78 +184,246 @@ main {
           @include span-columns(12);
           font-size: 4rem;
           font-weight: normal;
-          padding: 0 0 0 0.125rem;
+          padding: 1.5rem 0;
           font-style: normal;
           margin: 0;
 
           a {
             color: black;
           }
+
+          input {
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            margin: 0;
+          }
         }
 
-        h4 {
-          @include span-columns(12);
-          @include span-columns(12);
-          font-size: 2rem;
-          padding: 1rem 0 0 1rem;
-          margin-bottom: 0.125rem;
+        .styles {
+          @include transform(translateX(-500px));
+          @include transition-property(transform, opacity);
+          @include transition-duration(750ms);
+          @include row;
+          opacity: 0;
+          display: none;
+
+          &.visible {
+            opacity: 1;
+            display: block;
+            @include transform(translateX(0px));
+          }
+
+          h4 {
+            @include span-columns(12);
+            font-size: 2rem;
+            padding: 1.5rem 0;
+            margin: 0;
+            border-top: 1px solid $grey;
+          }
+
+          .style {
+            h4 {
+              border-top: none;
+              border-bottom: 1px solid $grey;
+              padding: 0.25rem 0 1.5rem;
+            }
+
+            .tools {
+              padding: 0.25rem 0;
+            }
+          }
+        }
+      }
+    }
+
+    &.foundry {
+      @include span-columns(12);
+      * {
+        font-family: VeganSans;
+      }
+
+      h2 {
+        padding: 0 2rem;
+        font-size: 1.5rem;
+        font-weight: normal;
+        @include shift(2);
+        @include span-columns(5);
+        margin-top: 3rem;
+      }
+
+      address {
+        @include span-columns(4);
+        @include omega;
+        @include transform(translateY(-180px));
+        font-style: normal;
+        font-size: 1.25rem;
+        padding: 3rem;
+        background-color: $grey;
+        border-radius: 3rem;
+
+
+      }
+
+      .light-green {
+        background-color: #00FFA0;
+        @include span-columns(12 of 12);
+      }
+
+      .text {
+        @include span-columns(6 of 12);
+        @include shift;
+        padding: 3rem 0;
+
+        p {
+          padding: 0 2rem;
+        }
+      }
+
+      .people {
+        @include row;
+
+        .person {
+          @include span-columns(4 of 12);
+          margin-top: 3rem;
+
+          .photo {
+            @include shift(3);
+            @include span-columns(2 of 4);
+            padding: 0 0 3rem 0;
+            img {
+              border-radius: 50%;
+            }
+          }
+
+          p {
+            @include shift(1);
+            @include span-columns(2 of 4);
+          }
+        }
+      }
+
+      .nonstop {
+        @include shift(1);
+        @include span-columns(6 of 12);
+        margin-top: 3rem;
+        background-color: $yellow;
+        border-radius: 2rem;
+        padding: 3rem 0;
+
+        h3 {
+          @include span-columns(6 of 6);
+          font-size: 6rem;
+          text-align: center;
+          @include transform(rotate(-30deg));
+        }
+      }
+    }
+
+    &.custom {
+      @include span-columns(12);
+      font-family: VeganSans;
+
+      h2 {
+        @include span-columns(5);
+        padding: 0 3rem;
+        font-size: 3rem;
+        font-weight: normal;
+        margin-top: 3rem;
+      }
+
+      .text {
+        p {
+          @include shift(3);
+          @include span-columns(5);
         }
       }
     }
 
     &.font-header {
-      border-bottom: thin solid lighten($black, 50);
-      h2 {
-        font-size: 3rem;
-        font-weight: normal;
-        margin: 1rem 0;
-      }
+      font-family: VeganSans;
+      padding: 0 2rem;
 
-      nav {
-        a {
-          @include span-columns(1);
-          color: $black;
-          text-align: center;
-        }
-      }
-    }
+      header {
+        border-bottom: thin solid lighten($black, 50);
+        padding: 3rem 0;
+        @include row;
 
-    &.font-styles {
-      ul {
-        li {
-          @include span-columns(12);
-          background: $white;
-          margin-bottom: 0.125rem;
-          padding: 1rem 0 0 1rem;
-
+        h2 {
+          @include span-columns(5);
+          font-size: 3rem;
+          font-weight: normal;
+          margin: 1rem 0;
           a {
-            color: black;
+            font-weight: 300;
+            color: $black;
+
+            &.next {
+              padding: 0 2rem 0 0;
+            }
+
+            &.previous {
+              padding: 0 1rem 0 2rem;
+            }
           }
 
-          h3 {
-            font-size: 8rem;
+        }
+
+        nav {
+          a {
+            @include span-columns(1);
+            padding-top: 3rem;
+            color: $black;
+            text-align: center;
+
           }
         }
       }
     }
-  }
 
-}
+    &.about {
+      margin: 3rem 0;
+      p.text {
+        @include span-columns(9);
+        padding: 0 2rem;
+        font-size: 1.5rem;
+      }
 
-$ipad-portrait: new-breakpoint(max-width 769px 4);
-$iphone-landscape: new-breakpoint(max-width 480px 4);
-
-@include media($ipad-portrait) {
-  body {
-    font-size: modular-scale(-2, 1rem);
-    min-width: 60rem;
-  }
-
-  header {
-    nav {
-      opacity: 1;
-      @include transform(translateX(0px));
+      p.features {
+        @include span-columns(3);
+      }
     }
+
+    &#glyphs {
+      padding: 3rem 2rem;
+      table {
+        border: none;
+        td {
+          border: none;
+          text-align: center;
+          font-size: 4rem;
+        }
+      }
+    }
+
   }
+
 }
+
+// $ipad-portrait: new-breakpoint(max-width 769px 4);
+// $iphone-landscape: new-breakpoint(max-width 480px 4);
+
+// @include media($ipad-portrait) {
+//   body {
+//     font-size: modular-scale(-2, 1rem);
+//     min-width: 60rem;
+//   }
+
+//   header {
+//     nav {
+//       opacity: 1;
+//       @include transform(translateX(0px));
+//     }
+//   }
+// }
 

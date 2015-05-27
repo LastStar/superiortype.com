@@ -2,7 +2,7 @@
 //= require snap.svg/dist/snap.svg-min
 //= require jquery.scrollTo/jquery.scrollTo.min
 
-if $('#show-room')
+if $('#show-room').size() > 0
   svg = $('svg')
   width = svg.width() - 150
   height = svg.height()
@@ -15,28 +15,28 @@ if $('#show-room')
   config = {
     hrot: {
       id: 'hrot',
-      initial: [(width/2-70) - 75, -76],
+      initial: [(width/2+70) - 85, -76],
       final: [(width/2-70) - 85, 80],
-      title: [(width/2-70) - 103, 44],
       speed: 900
     }
     kundaBook: {
       id: 'kunda-book',
       initial: [(width+90), height],
       final: [(width/2+70), 440],
-      title: [(width/2+53), 404],
       speed: 800
     }
     veganSans: {
       id: 'vegan-sans',
       initial: [0, height],
       final: [(width/2-370), 440],
-      title: [(width/2-398), 404],
       speed: 700
     }
   }
 
+  restartDelay = 3000
+
   buttons = null
+
   Snap.load '/assets/images/buttons.svg', (canvas) ->
     buttons = canvas.select 'g#Buttons'
     snap.append buttons
@@ -44,63 +44,38 @@ if $('#show-room')
     $.each config, (name, item) ->
       group = buttons.select 'g#'+item.id
       group.attr { transform: zero }
-      group.selectAll('g').attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
-      moveButton group, item, 0
+      buttons.selectAll('g#'+item.id+' > g').attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
+      moveButton item, 0
 
-    setTimeout showFontList, 1000
-    enableMenu()
-    # window.scrollTo($('20px'))
+    $.scrollTo('svg', 'max')
 
-  moveButton = (group, item, index) ->
+  moveButton = (item, index) ->
     index = 0 if index > 3
 
-    elementToMove = group.selectAll('g')[index]
+    elementToMove = buttons.selectAll('g#'+item.id+' > g')[index]
     elementToMove.animate { transform: 'translate('+item.final+') scale('+scale.final+')' }, item.speed, mina.bounce
 
-    title = buttons.select 'g#'+item.id+'-title'
-    title.attr { opacity: 0, transform: 'translate('+item.title+') scale('+scale.final+')' }
     restart = ->
       title.attr { opacity: 0 }
-      elementToMove.unmouseover
-      elementToMove.unmouseoout
+      title.unmouseover
+      title.unmouseoout
       returnButtons elementToMove, item, ->
-        moveButton group, item, ++index
+        restartDelay += 300
+        moveButton item, ++index
 
-    timeout = setTimeout restart, 8000
+    timeout = setTimeout restart, restartDelay
 
-    elementToMove.mouseover ->
-      title.attr { opacity: 1 }
-      title.animate { transform: 'translate('+item.title+') scale('+scale.final+') rotate(720deg)' }, 8000
-    elementToMove.mouseout ->
+    title = buttons.select 'g#'+item.id+'-title'
+    title.attr { opacity: 0, transform: 'translate('+item.final+') scale('+scale.final+')'  }
+
+    title.mouseover ->
+      title.animate { opacity: 1 }, 150, mina.linear
+      clearTimeout(timeout)
+
+    title.mouseout ->
       title.stop()
-      title.attr { opacity: 0, transform: 'translate('+item.title+') scale('+scale.final+')' }
-
-    elementToMove.click ->
-      Snap.load '/assets/images/vegan-sans-show-room.svg', (canvas) ->
-        snap.clear()
-
-        show = canvas.select 'g#VeganSans'
-        snap.append show
-
-        slide = show.selectAll('g#canvas > g#slide-1').attr(transform: 'translate(-'+width+', 0)')
-        show.selectAll('g#canvas > g#slide-2').attr(transform: 'translate(80, '+height+')')
-
-        hideSlide = ->
-          show.select('g#canvas > g#slide-1').animate { transform: 'translate(80, -'+height+')' }, 750, mina.easein
-          show.select('g#canvas > g#slide-2').animate { transform: 'translate(80, 120)' }, 750, mina.easein, ->
-            setTimeout(
-              ->
-                show.selectAll('g#slide-2 path')[1].animate { transform: 'translate(80, '+height+')' }, 350
-              , 300)
-
-        showSlide = ->
-          slide.animate { transform: 'translate(80 0)' }, 1000, mina.easeout
-
-        setTimeout showSlide, 50
-        setTimeout hideSlide, 2950
-
-
-
+      title.attr { opacity: 0, transform: 'translate('+item.final+') scale('+scale.final+')' }
+      timeout = setTimeout restart, 1000
 
   returnButtons = (element, item, callback) ->
     delayedCallback = ->
@@ -108,28 +83,43 @@ if $('#show-room')
 
     element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, delayedCallback
 
-  showFontList = ->
-    $('.tools .minus').on 'click', ->
-      family  = $(this).parent().siblings('h3')
-      styles = $(this).parent().siblings('.styles').children('h4')
-      familySize = (parseInt(family.css('font-size'))*0.875)+'px'
-      family.css({ 'font-size': familySize })
-      stylesSize = (parseInt(styles.first().css('font-size'))*0.875)+'px'
-      styles.css({ 'font-size': stylesSize })
-    $('.tools .plus').on 'click', ->
-      family  = $(this).parent().siblings('h3')
-      styles = $(this).parent().siblings('.styles').children('h4')
-      familySize = (parseInt(family.css('font-size'))*1.125)+'px'
-      family.css({ 'font-size': familySize })
-      stylesSize = (parseInt(styles.first().css('font-size'))*1.125)+'px'
-      styles.css({ 'font-size': stylesSize })
-    $('.fonts').css { opacity: 1 }
+showFontList = ->
+  $('.tools .minus').on 'click', ->
+    family  = $(this).parent().siblings('h3')
+    styles = $(this).parent().siblings('.styles').children('h4')
+    familySize = (parseInt(family.css('font-size'))*0.875)+'px'
+    family.css({ 'font-size': familySize })
+    stylesSize = (parseInt(styles.first().css('font-size'))*0.875)+'px'
+    styles.css({ 'font-size': stylesSize })
+  $('.tools .plus').on 'click', ->
+    family  = $(this).parent().siblings('h3')
+    styles = $(this).parent().siblings('.styles').children('h4')
+    familySize = (parseInt(family.css('font-size'))*1.125)+'px'
+    family.css({ 'font-size': familySize })
+    stylesSize = (parseInt(styles.first().css('font-size'))*1.125)+'px'
+    styles.css({ 'font-size': stylesSize })
+  $('.tools .list').on 'click', ->
+    styles = $(this).parent().siblings('.styles')
+    styles.addClass('visible')
+    $.scrollTo(styles, 'max')
+  $('.fonts').css { opacity: 1 }
 
-  enableMenu = ->
-    $('header').on 'mouseenter', ->
-      $('header nav').addClass('visible')
+showFontList()
 
-    $('header').on 'mouseout', ->
-      hideMenu = ->
-        $('header nav').removeClass('visible')
-      setTimeout hideMenu, 2000
+$('header.main').on 'mouseenter', ->
+  $('header.main nav').addClass('visible')
+
+$('header.main').on 'mouseout', ->
+  hideMenu = ->
+    $('heade.main nav').removeClass('visible')
+  setTimeout hideMenu, 2000
+
+$('.fonts input.tester').on 'change', ->
+  $(this).parent('h3').siblings('.styles').children('h4').html($(this).val())
+
+if $('address').size() > 0
+  $(window).scroll ->
+    scrolled = $(window).scrollTop()
+    console.log scrolled
+    if scrolled > 20 && scrolled < 380
+      $('address').css({ transform: 'translate(0, '+(-(200-scrolled))+'px)' })
