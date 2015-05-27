@@ -103,6 +103,30 @@ showFontList = ->
     styles.addClass('visible')
     $.scrollTo(styles, 'max')
   $('.fonts').css { opacity: 1 }
+    # elementToMove.click ->
+    #   Snap.load '/assets/images/vegan-sans-show-room.svg', (canvas) ->
+    #     snap.clear()
+
+    #     show = canvas.select 'g#VeganSans'
+    #     snap.append show
+
+    #     slide = show.selectAll('g#canvas > g#slide-1').attr(transform: 'translate(-'+width+', 0)')
+    #     show.selectAll('g#canvas > g#slide-2').attr(transform: 'translate(80, '+height+')')
+
+    #     hideSlide = ->
+    #       show.select('g#canvas > g#slide-1').animate { transform: 'translate(80, -'+height+')' }, 750, mina.easein
+    #       show.select('g#canvas > g#slide-2').animate { transform: 'translate(80, 120)' }, 750, mina.easein, ->
+    #         setTimeout(
+    #           ->
+    #             show.selectAll('g#slide-2 path')[1].animate { transform: 'translate(80, '+height+')' }, 350
+    #           , 300)
+
+    #     showSlide = ->
+    #       slide.animate { transform: 'translate(80 0)' }, 1000, mina.easeout
+
+    #     setTimeout showSlide, 50
+    #     setTimeout hideSlide, 2950
+
 
 showFontList()
 
