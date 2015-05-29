@@ -15,8 +15,8 @@ if $('#show-room').size() > 0
   config = {
     hrot: {
       id: 'hrot',
-      initial: [(width/2+70) - 85, -76],
-      final: [(width/2-70) - 85, 80],
+      initial: [(width/2) - 5, -76],
+      final: [(width/2) - 150, 80],
       speed: 900
     }
     kundaBook: {
@@ -53,35 +53,36 @@ if $('#show-room').size() > 0
     index = 0 if index > 3
 
     elementToMove = buttons.selectAll('g#'+item.id+' > g')[index]
+    title = buttons.select 'g#'+item.id+'-title'
+
     elementToMove.animate { transform: 'translate('+item.final+') scale('+scale.final+')' }, item.speed, mina.bounce
+    title.attr { opacity: 0, transform: 'translate(0, 0) scale(0)'  }
 
     restart = ->
-      title.attr { opacity: 0 }
+      title.attr { opacity: 0, transform: 'translate(0, 0) scale(0)'  }
       title.unmouseover
       title.unmouseoout
+      ++index
+      restartDelay += 300
       returnButtons elementToMove, item, ->
-        restartDelay += 300
-        moveButton item, ++index
+        moveButton item, index
 
     timeout = setTimeout restart, restartDelay
 
-    title = buttons.select 'g#'+item.id+'-title'
-    title.attr { opacity: 0, transform: 'translate('+item.final+') scale('+scale.final+')'  }
-
-    title.mouseover ->
-      title.animate { opacity: 1 }, 150, mina.linear
+    elementToMove.mouseover ->
       clearTimeout(timeout)
+      title.attr { opacity: 0, transform: 'translate('+item.final+') scale('+scale.final+')'  }
+      title.animate { opacity: 1 }, 150, mina.linear
 
     title.mouseout ->
+      timeout = setTimeout restart, 1000
       title.stop()
       title.attr { opacity: 0, transform: 'translate('+item.final+') scale('+scale.final+')' }
-      timeout = setTimeout restart, 1000
 
   returnButtons = (element, item, callback) ->
-    delayedCallback = ->
+    element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, ->
       setTimeout callback, 1500 - item.speed
 
-    element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, delayedCallback
 
 showFontList = ->
   $('.tools .minus').on 'click', ->
