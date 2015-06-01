@@ -70,29 +70,53 @@ if $('#show-room').size() > 0
     timeout = setTimeout restart, restartDelay
 
     elementToMove.click ->
-      Snap.load '/assets/images/vegan-sans-show-room.svg', (canvas) ->
+      Snap.load '/assets/images/'+item.id+'-show-room.svg', (canvas) ->
         snap.clear()
 
-        show = canvas.select 'g#VeganSans'
-        snap.append show
+        if item.id == 'vegan-sans'
+          show = canvas.select 'g#VeganSans'
+          snap.append show
 
-        slide = show.selectAll('g#canvas > g#slide-1').attr(transform: 'translate(-'+width+', 0)')
-        show.selectAll('g#canvas > g#slide-2').attr(transform: 'translate(80, '+height+')')
+          slide = show.selectAll('g#canvas > g#slide-1').attr(transform: 'translate(-'+width+', 0)')
+          show.selectAll('g#canvas > g#slide-2').attr(transform: 'translate(80, '+height+')')
 
-        hideSlide = ->
-          show.select('g#canvas > g#slide-1').animate { transform: 'translate(80, -'+height+')' }, 750, mina.easein
-          show.select('g#canvas > g#slide-2').animate { transform: 'translate(80, 120)' }, 750, mina.easein, ->
-            setTimeout(
-              ->
-                show.selectAll('g#slide-2 path')[1].animate { transform: 'translate(80, '+height+')' }, 350
-                show.selectAll('g#slide-2 path')[0].animate { transform: 'scale(2)' }, 350
-              , 350)
+          showSlide = ->
+            slide.animate { transform: 'translate(80 0)' }, 1000, mina.easeout
 
-        showSlide = ->
-          slide.animate { transform: 'translate(80 0)' }, 1000, mina.easeout
+          changeSlide = ->
+            show.select('g#canvas > g#slide-1').animate { transform: 'translate(80, -'+height+')' }, 750, mina.easein
+            show.select('g#canvas > g#slide-2').animate { transform: 'translate(80, 120)' }, 750, mina.easein, ->
+              setTimeout(
+                ->
+                  show.selectAll('g#slide-2 path')[1].animate { transform: 'translate(80, '+height+')' }, 350
+                  show.selectAll('g#slide-2 path')[0].animate { transform: 'scale(2)' }, 350
+                , 350)
+
+        else if item.id == 'kunda-book'
+          show = canvas.select 'g#KundaBook'
+          snap.append show
+          slides = [show.selectAll('g#canvas > g#MU').attr(transform: 'translate(-'+width+', 0)')]
+          slides.push(show.selectAll('g#canvas > g#SE').attr(transform: 'translate(-'+width+', 0)'))
+          slides.push(show.selectAll('g#canvas > g#UM').attr(transform: 'translate(-'+width+', 0)'))
+
+          showSlide = ->
+            $.each(slides, (index, slide) ->
+              slide.animate { transform: 'translate(40, '+index*250+')' }, index*250
+            )
+
+          changeSlide = ->
+            $.each(slides, (index, slide) ->
+              slide.animate { transform: 'translate(40, 0)' }, index*250, mina.easeout, ->
+                setTimeout(
+                  ->
+                    slide.animate { transform: 'translate('+index*850+', 0)' }, index*250
+                  , 550)
+
+            )
+
 
         setTimeout showSlide, 50
-        setTimeout hideSlide, 2950
+        setTimeout changeSlide, 2950
 
     # elementToMove.mouseover ->
     #   clearTimeout(timeout)
