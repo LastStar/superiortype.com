@@ -24,12 +24,14 @@ if $('#show-room').size() > 0
       initial: [(width+90), height],
       final: [(width/2+70), 440],
       speed: 800
+      showRoom: '/assets/images/kunda-book-show-room.svg'
     }
     veganSans: {
       id: 'vegan-sans',
       initial: [0, height],
       final: [(width/2-370), 440],
       speed: 700
+      showRoom: '/assets/images/vegan-sans-show-room.svg'
     }
   }
 
