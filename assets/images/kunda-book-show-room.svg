@@ -4,25 +4,30 @@
     <title>canvas</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="KundaBook" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="canvas" sketch:type="MSArtboardGroup" font-family="Kunda Book" fill="#000000">
-            <g id="MU" sketch:type="MSLayerGroup" transform="translate(156.000000, 0.000000)" font-size="512" font-weight="526">
-                <text sketch:type="MSTextLayer">
-                    <tspan x="0" y="463">MU</tspan>
-                </text>
+    <g id="kunda-book" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="canvas" sketch:type="MSArtboardGroup">
+            <g id="background" sketch:type="MSLayerGroup" fill="#000000">
+                <rect id="Rectangle-1" sketch:type="MSShapeGroup" x="0" y="0" width="1024" height="768"></rect>
             </g>
-            <g id="SE" sketch:type="MSLayerGroup" transform="translate(82.000000, 89.000000)" font-size="512" font-weight="526">
-                <text sketch:type="MSTextLayer">
-                    <tspan x="0" y="463">SE</tspan>
-                </text>
+            <g id="slide-1" sketch:type="MSLayerGroup" transform="translate(82.000000, 0.000000)" font-weight="526" font-family="Kunda Book" fill="#000000" font-size="512">
+                <g id="MU" transform="translate(74.000000, 0.000000)" sketch:type="MSTextLayer">
+                    <text>
+                        <tspan x="0" y="463">MU</tspan>
+                    </text>
+                </g>
+                <g id="SE" transform="translate(0.000000, 89.000000)" sketch:type="MSTextLayer">
+                    <text>
+                        <tspan x="0" y="463">SE</tspan>
+                    </text>
+                </g>
+                <g id="UM" transform="translate(36.000000, 201.000000)" sketch:type="MSTextLayer">
+                    <text>
+                        <tspan x="0" y="463">UM</tspan>
+                    </text>
+                </g>
             </g>
-            <g id="UM" sketch:type="MSLayerGroup" transform="translate(118.000000, 201.000000)" font-size="512" font-weight="526">
-                <text sketch:type="MSTextLayer">
-                    <tspan x="0" y="463">UM</tspan>
-                </text>
-            </g>
-            <g id="is-calling" sketch:type="MSLayerGroup" transform="translate(22.000000, 438.000000)" font-weight="686" font-size="284" font-style="italic">
-                <text sketch:type="MSTextLayer">
+            <g id="slide-2" sketch:type="MSLayerGroup" transform="translate(52.000000, 439.000000)" font-weight="686" font-family="Kunda Book" fill="#FF3C32" font-size="284" font-style="italic">
+                <text id="is-calling" sketch:type="MSTextLayer">
                     <tspan x="0" y="257">is calling</tspan>
                 </text>
             </g>
