@@ -4,27 +4,50 @@
 
 if $('#show-room').size() > 0
   svg = $('svg')
+  maxWidth = svg.width()
   width = svg.width() - 150
   height = svg.height()
 
   snap = Snap "#show-room"
 
   zero = 'translate(0, 0)'
-  scale = { initial: '0.01', final: 2.5 }
+  scale = { initial: 0.01, final: 1.9 }
 
   config = {
     hrot: {
       id: 'hrot',
       initial: [(width/2) - 5, -76],
-      final: [(width/2) - 150, 80],
+      final: [(width/2) - 145, 80],
       speed: 900
     }
     kundaBook: {
-      id: 'kunda-book',
-      initial: [(width+90), height],
-      final: [(width/2+70), 440],
+      id: 'kunda-book'
+      initial: [(width+90), height]
+      final: [(width/2+70), 440]
       speed: 800
       showRoom: '/assets/images/kunda-book-show-room.svg'
+      preSlide: (show) ->
+        show.selectAll('g#slide-1 > g').attr(transform: 'translate(-'+width+', 0)')
+        show.select('g#slide-2').attr(opacity: 0)
+        show.select('g#background rect').attr { width: maxWidth, height: height, opacity: 0 }
+
+      showSlide: (show) ->
+        slides = show.selectAll('g#canvas > g#slide-1 > g').attr(transform: 'translate(-'+width+', 0)')
+        $.each(slides, (index, slide) ->
+          slide.animate { transform: 'translate(80, '+(index*250-80)+')' }, 150+index*250
+        )
+
+      changeSlide: (show) ->
+        $.each(show.selectAll('g#slide-1 > g'), (index, slide) ->
+          slide.animate { transform: 'translate(80, -80)' }, index*250, mina.easeout, ->
+            setTimeout(
+              ->
+                slide.animate { transform: 'translate('+(index*850-80)+', -80)' }, 150+index*250
+              , 550)
+
+        )
+        show.select('g#slide-2').animate { opacity: 1, transform: 'translate(100, 439) scale(1.05)' }, 3000, mina.bounce
+        show.select('g#background rect').animate { opacity: 1 }, 8000, mina.bounce
     }
     veganSans: {
       id: 'vegan-sans',
@@ -32,6 +55,22 @@ if $('#show-room').size() > 0
       final: [(width/2-370), 440],
       speed: 700
       showRoom: '/assets/images/vegan-sans-show-room.svg'
+      color: '#ff0'
+      preSlide: (show) ->
+        show.select('g#slide-1').attr(transform: 'translate(-'+width+', 0)')
+        show.select('g#slide-2').attr(transform: 'translate(80, '+height+')')
+
+      showSlide: (show) ->
+        show.select('g#slide-1').animate { transform: 'translate(80, 10)' }, 1000, mina.easeout
+
+      changeSlide: (show) ->
+        show.select('g#slide-1').animate { transform: 'translate(80, -'+height+')' }, 750, mina.easein
+        show.select('g#slide-2').animate { transform: 'translate(80, 120)' }, 750, mina.easein, ->
+          setTimeout(
+            ->
+              show.selectAll('g#slide-2 path')[1].animate { transform: 'translate(80, '+height+')' }, 350
+              show.selectAll('g#slide-2 path')[0].animate { transform: 'scale(2)', fill: '#ff0' }, 350
+            , 750)
     }
   }
 
@@ -55,15 +94,15 @@ if $('#show-room').size() > 0
     index = 0 if index > 3
 
     elementToMove = buttons.selectAll('g#'+item.id+' > g')[index]
-    title = buttons.select 'g#'+item.id+'-title'
+    # title = buttons.select 'g#'+item.id+'-title'
 
     elementToMove.animate { transform: 'translate('+item.final+') scale('+scale.final+')' }, item.speed, mina.bounce
-    title.attr { opacity: 0, transform: 'translate(0, 0) scale(0)'  }
+    # title.attr { opacity: 0, transform: 'translate(0, 0) scale(0)'  }
 
     restart = ->
-      title.attr { opacity: 0, transform: 'translate(0, 0) scale(0)'  }
-      title.unmouseover
-      title.unmouseoout
+      # title.attr { opacity: 0, transform: 'translate(0, 0) scale(0)'  }
+      # title.unmouseover
+      # title.unmouseoout
       ++index
       restartDelay += 300
       returnButtons elementToMove, item, ->
@@ -73,54 +112,22 @@ if $('#show-room').size() > 0
 
     elementToMove.click ->
       Snap.load '/assets/images/'+item.id+'-show-room.svg', (canvas) ->
-        snap.clear()
+        show = canvas.select 'g#'+item.id
 
-        if item.id == 'vegan-sans'
-          show = canvas.select 'g#VeganSans'
+        item.preSlide(show)
+
+        buttons.selectAll('g#canvas > g').animate { opacity: 0 }, 150, mina.easeout, ->
+          snap.clear()
           snap.append show
 
-          slide = show.selectAll('g#canvas > g#slide-1').attr(transform: 'translate(-'+width+', 0)')
-          show.selectAll('g#canvas > g#slide-2').attr(transform: 'translate(80, '+height+')')
-
-          showSlide = ->
-            slide.animate { transform: 'translate(80 0)' }, 1000, mina.easeout
-
           changeSlide = ->
-            show.select('g#canvas > g#slide-1').animate { transform: 'translate(80, -'+height+')' }, 750, mina.easein
-            show.select('g#canvas > g#slide-2').animate { transform: 'translate(80, 120)' }, 750, mina.easein, ->
-              setTimeout(
-                ->
-                  show.selectAll('g#slide-2 path')[1].animate { transform: 'translate(80, '+height+')' }, 350
-                  show.selectAll('g#slide-2 path')[0].animate { transform: 'scale(2)' }, 350
-                , 350)
-
-        else if item.id == 'kunda-book'
-          show = canvas.select 'g#KundaBook'
-          snap.append show
-          slides = [show.selectAll('g#canvas > g#MU').attr(transform: 'translate(-'+width+', 0)')]
-          slides.push(show.selectAll('g#canvas > g#SE').attr(transform: 'translate(-'+width+', 0)'))
-          slides.push(show.selectAll('g#canvas > g#UM').attr(transform: 'translate(-'+width+', 0)'))
-          calling = show.select('g#canvas > g#is-calling').attr(opacity: 0)
-
-          showSlide = ->
-            $.each(slides, (index, slide) ->
-              slide.animate { transform: 'translate(40, '+index*250+')' }, index*250
-            )
-
-          changeSlide = ->
-            $.each(slides, (index, slide) ->
-              slide.animate { transform: 'translate(40, 0)' }, index*250, mina.easeout, ->
-                setTimeout(
-                  ->
-                    slide.animate { transform: 'translate('+index*850+', 0)' }, index*250
-                  , 550)
-
-            )
-            calling.animate { opacity: 1 }, 3000
+            item.changeSlide(show)
+            show.click ->
+              document.location = '/fonts/'+item.id
 
 
-        setTimeout showSlide, 50
-        setTimeout changeSlide, 2950
+          item.showSlide(show)
+          setTimeout changeSlide, 4000
 
     # elementToMove.mouseover ->
     #   clearTimeout(timeout)
