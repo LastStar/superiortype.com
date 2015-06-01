@@ -5,20 +5,25 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="KundaBook" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="canvas" sketch:type="MSArtboardGroup" font-weight="526" font-family="Kunda Book" font-size="512" fill="#000000">
-            <g id="MU" sketch:type="MSLayerGroup" transform="translate(156.000000, 0.000000)">
+        <g id="canvas" sketch:type="MSArtboardGroup" font-family="Kunda Book" fill="#000000">
+            <g id="MU" sketch:type="MSLayerGroup" transform="translate(156.000000, 0.000000)" font-size="512" font-weight="526">
                 <text sketch:type="MSTextLayer">
                     <tspan x="0" y="463">MU</tspan>
                 </text>
             </g>
-            <g id="SE" sketch:type="MSLayerGroup" transform="translate(82.000000, 89.000000)">
+            <g id="SE" sketch:type="MSLayerGroup" transform="translate(82.000000, 89.000000)" font-size="512" font-weight="526">
                 <text sketch:type="MSTextLayer">
                     <tspan x="0" y="463">SE</tspan>
                 </text>
             </g>
-            <g id="UM" sketch:type="MSLayerGroup" transform="translate(118.000000, 201.000000)">
+            <g id="UM" sketch:type="MSLayerGroup" transform="translate(118.000000, 201.000000)" font-size="512" font-weight="526">
                 <text sketch:type="MSTextLayer">
                     <tspan x="0" y="463">UM</tspan>
+                </text>
+            </g>
+            <g id="is-calling" sketch:type="MSLayerGroup" transform="translate(22.000000, 438.000000)" font-weight="686" font-size="284" font-style="italic">
+                <text sketch:type="MSTextLayer">
+                    <tspan x="0" y="257">is calling</tspan>
                 </text>
             </g>
         </g>
