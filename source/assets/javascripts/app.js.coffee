@@ -98,6 +98,7 @@ if $('#show-room').size() > 0
           slides = [show.selectAll('g#canvas > g#MU').attr(transform: 'translate(-'+width+', 0)')]
           slides.push(show.selectAll('g#canvas > g#SE').attr(transform: 'translate(-'+width+', 0)'))
           slides.push(show.selectAll('g#canvas > g#UM').attr(transform: 'translate(-'+width+', 0)'))
+          calling = show.select('g#canvas > g#is-calling').attr(opacity: 0)
 
           showSlide = ->
             $.each(slides, (index, slide) ->
@@ -113,6 +114,7 @@ if $('#show-room').size() > 0
                   , 550)
 
             )
+            calling.animate { opacity: 1 }, 3000
 
 
         setTimeout showSlide, 50
