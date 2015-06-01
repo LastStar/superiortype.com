@@ -72,7 +72,7 @@ if $('#show-room').size() > 0
     timeout = setTimeout restart, restartDelay
 
     elementToMove.click ->
-      Snap.load item.show-room, (canvas) ->
+      Snap.load '/assets/images/'+item.id+'-show-room.svg', (canvas) ->
         snap.clear()
 
         if item.id == 'vegan-sans'
