@@ -197,6 +197,31 @@ main {
           }
         }
       }
+
+      &#styles {
+        .vegan-sans {
+          input[type=text] {
+            // FIXME add mixin
+            &.light { font-weight: 300 }
+
+            &.regular { font-weight: normal }
+
+            &.medium { font-weight: 500 }
+
+            &.bold { font-weight: bold }
+
+            &.semibold { font-weight: 600 }
+
+            &.italic { font-style: italic }
+
+            &.black { font-weight: 800 }
+
+            font-family: VeganSans;
+            border: none;
+            box-shadow: none;
+          }
+        }
+      }
     }
 
     &.foundry {
@@ -325,6 +350,19 @@ main {
       padding: 0 2rem;
 
       header {
+      .light { font-weight: 300 }
+
+      .regular { font-weight: normal }
+
+      .medium { font-weight: 500 }
+
+      .bold { font-weight: bold }
+
+      .semibold { font-weight: 600 }
+
+      .italic { font-style: italic }
+
+      .black { font-weight: 800 }
         border-bottom: thin solid lighten($black, 50);
         padding: 3rem 0;
         @include row;
@@ -376,6 +414,7 @@ main {
 
     &#glyphs {
       padding: 3rem 2rem;
+
       table {
         border: none;
         td {

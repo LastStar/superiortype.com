@@ -144,7 +144,7 @@ if $('#show-room').size() > 0
       setTimeout callback, 1500 - item.speed
 
 
-showFontList = ->
+if $('section.fonts').size() > 0
   $('.tools .minus').on 'click', ->
     family  = $(this).parent().siblings('h3')
     styles = $(this).parent().siblings('.styles').children('h4')
@@ -165,7 +165,16 @@ showFontList = ->
     $.scrollTo(styles, 'max')
   $('.fonts').css { opacity: 1 }
 
-showFontList()
+if $('section.fonts#styles').size() > 0
+  $('.tools .minus').on 'click', ->
+    styles = $(this).parent().siblings('h4')
+    stylesSize = (parseInt(styles.first().css('font-size'))*0.875)+'px'
+    styles.css({ 'font-size': stylesSize })
+  $('.tools .plus').on 'click', ->
+    styles = $(this).parent().siblings('h4')
+    stylesSize = (parseInt(styles.first().css('font-size'))*1.125)+'px'
+    styles.css({ 'font-size': stylesSize })
+
 
 $('header.main').on 'mouseenter', ->
   $('header.main nav').addClass('visible')
