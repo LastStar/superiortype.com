@@ -1,68 +1,26 @@
 ---
 title: 'Vegan Sans'
+id: 'vegan-sans'
 ---
-section.font-header
-  header
-    h2
-      = current_page.data.title
-      a.previous href='#' <
-      a.next href='#' >
-
-    nav
-      a.styles href="javascript:$.scrollTo('#styles', 'max')" Styles
-      a.glyphs href="javascript:$.scrollTo('#details', 'max')" Details
-      a.glyphs href="javascript:$.scrollTo('#glyphs', 'max')" Glyphs
-      a.pdf href='#' Specimen
+= partial 'font_header'
 
 
 section.fonts#styles
   nav
-    .vegan-sans
+    div class=current_page.data.id
       .styles.visible
-        .style
-          = partial('tools')
-          h4
-            input.light type='text' placeholder='Vegan Sans Light'
-        .style
-          = partial('tools')
-          h4
-            input.light.italic type='text' placeholder='Vegan Sans Light Italic'
-        .style
-          = partial('tools')
-          h4
-            input.regular type='text' placeholder='Vegan Sans Regular'
-        .style
-          = partial('tools')
-          h4
-            input.italic type='text' placeholder='Vegan Sans Italic'
-        .style
-          = partial('tools')
-          h4
-            input.medium type='text' placeholder='Vegan Sans Medium'
-        .style
-          = partial('tools')
-          h4
-            input.medium.italic type='text' placeholder='Vegan Sans Medium Italic'
-        .style
-          = partial('tools')
-          h4
-            input.semibold type='text' placeholder='Vegan Sans Semibold'
-        .style
-          = partial('tools')
-          h4
-            input.bold type='text' placeholder='Vegan Sans Bold'
-        .style
-          = partial('tools')
-          h4
-            input.bold.italic type='text' placeholder='Vegan Sans Bold Italic'
-        .style
-          = partial('tools')
-          h4
-            input.black type='text' placeholder='Vegan Sans Black'
-        .style
-          = partial('tools')
-          h4
-            input.black.italic type='text' placeholder='Vegan Sans Black Italic'
+        = partial 'style', locals: { name: 'Vegan Sans Light' }
+        = partial 'style', locals: { name: 'Vegan Sans Light Italic' }
+        = partial 'style', locals: { name: 'Vegan Sans Regular' }
+        = partial 'style', locals: { name: 'Vegan Sans Italic' }
+        = partial 'style', locals: { name: 'Vegan Sans Medium' }
+        = partial 'style', locals: { name: 'Vegan Sans Medium Italic' }
+        = partial 'style', locals: { name: 'Vegan Sans Semibold' }
+        = partial 'style', locals: { name: 'Vegan Sans Semibold Italic' }
+        = partial 'style', locals: { name: 'Vegan Sans Bold' }
+        = partial 'style', locals: { name: 'Vegan Sans Bold Italic' }
+        = partial 'style', locals: { name: 'Vegan Sans Black' }
+        = partial 'style', locals: { name: 'Vegan Sans Black Italic' }
 
 section.about#details
   p.text
@@ -100,14 +58,13 @@ section.about#details
       | 2015
 
 
-section#glyphs
+section#glyphs.vegan-sans
   h2 Glyphs
   table
-    - for i in (3..22)
-      tr
-      -for j in (0..5)
-        - char = ((i*5) + j + 25)
-        - if char > 127
-          - next
-        td= char.chr
+    - i = 0
+    - "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghi\"“”‘’‹›«»#(/)[]{|}-–—_.,:;©®™ªº^+-×=<>•".each_codepoint do |c|
+      - if i%5 == 0
+        tr
+      td= c.chr(Encoding::UTF_8)
+      - i += 1
 

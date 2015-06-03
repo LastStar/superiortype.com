@@ -250,9 +250,14 @@ main {
             @include placeholder {
               color: $black;
             }
+
           }
         }
       }
+    }
+
+    &#glyphs {
+      font-family: VeganSans;
     }
 
     &.foundry {
