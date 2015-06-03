@@ -151,7 +151,7 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
     Snap.load('/assets/images/buttons.svg', function(canvas) {
       buttons = canvas.select('g#Buttons');
       snap.append(buttons);
-      $.each(config, function(name, item) {
+      return $.each(config, function(name, item) {
         var group;
         group = buttons.select('g#' + item.id);
         group.attr({
@@ -162,8 +162,6 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
         });
         return moveButton(item, 0);
       });
-      $.scrollTo('svg', 'max');
-      return console.log($(window).scrollTop());
     });
     moveButton = function(item, index) {
       var elementToMove, restart, timeout;
@@ -212,16 +210,6 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
         return setTimeout(callback, 1500 - item.speed);
       });
     };
-    $(window).on('scroll', function() {
-      var scrolled;
-      scrolled = $(window).scrollTop();
-      if (scrolled > 60 && scrolled < height) {
-        $(window).stop(true).scrollTo('.fonts', {
-          duration: 600
-        });
-        return $(window).off('scroll');
-      }
-    });
   }
 
   if ($('section.fonts').size() > 0) {
@@ -284,10 +272,12 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
       });
     });
     $(window).on('scroll', function() {
-      if ($(window).scrollTop() > 32) {
-        return $('.font-header').addClass('fixed');
+      if ($(window).scrollTop() > 62) {
+        $('.font-header').addClass('fixed');
+        return $('.font-header header').addClass('fixed');
       } else {
-        return $('.font-header').removeClass('fixed');
+        $('.font-header').removeClass('fixed');
+        return $('.font-header header').removeClass('fixed');
       }
     });
   }
