@@ -391,7 +391,6 @@ main {
         top: 0;
         z-index: 10;
         width: 100%;
-        margin-bottom: 6rem;
       }
 
       header {
@@ -399,13 +398,18 @@ main {
         padding: 3rem 0 2rem;
         @include row;
 
+        &.fixed {
+          padding: 1rem 0 1rem;
+        }
+
         h2 {
+          font-family: VeganSans;
           @include span-columns(5);
           font-size: 3rem;
           font-weight: normal;
           margin: 1rem 0;
           a {
-            font-weight: 300;
+            font-weight: 100;
             color: $black;
 
             &.next {

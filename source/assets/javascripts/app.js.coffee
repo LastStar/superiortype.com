@@ -88,9 +88,6 @@ if $('#show-room').size() > 0
       buttons.selectAll('g#'+item.id+' > g').attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
       moveButton item, 0
 
-    $.scrollTo('svg', 'max')
-    console.log $(window).scrollTop()
-
   moveButton = (item, index) ->
     index = 0 if index > 3
 
@@ -144,11 +141,11 @@ if $('#show-room').size() > 0
     element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, ->
       setTimeout callback, 1500 - item.speed
 
-  $(window).on 'scroll', ->
-    scrolled = $(window).scrollTop()
-    if scrolled > 60 and scrolled < height
-      $(window).stop(true).scrollTo('.fonts', { duration: 600 })
-      $(window).off 'scroll'
+  # $(window).on 'scroll', ->
+  #   scrolled = $(window).scrollTop()
+  #   if scrolled > 60 and scrolled < height
+  #     $(window).stop(true).scrollTo('.fonts', { duration: 600 })
+  #     $(window).off 'scroll'
 
 if $('section.fonts').size() > 0
   family = (el) ->
@@ -186,10 +183,12 @@ if $('section.fonts#styles').size() > 0
     styles($(this)).css({ 'font-size': stylesSize })
 
   $(window).on 'scroll', ->
-    if $(window).scrollTop() > 32
+    if $(window).scrollTop() > 62
       $('.font-header').addClass('fixed')
+      $('.font-header header').addClass('fixed')
     else
       $('.font-header').removeClass('fixed')
+      $('.font-header header').removeClass('fixed')
 
 
 $('header.main').on 'mouseenter', ->
