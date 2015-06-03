@@ -6,25 +6,14 @@ section
 section.fonts
   nav
     .hrot.font
-      .tools
-        .apperance
-          span.minus A
-          span.plus A
-          span.list &darr;
-        .cart
-          span.buy Buy
+      = partial 'tools_w_list'
       h3
         a href='fonts/hrot' Hrot
       .styles
         h4.light Hrot Light
         h4.black Hrot Black
     .kunda-book.font
-      .tools
-        span.minus A
-        span.plus A
-        span.list &darr;
-      .cart
-        span.buy Buy
+      = partial 'tools_w_list'
       h3
         a href='fonts/kunda-book' Kunda Book
       .styles
@@ -37,17 +26,10 @@ section.fonts
         h4.bold Kunda Book Bold
         h4.bold.italic Kunda Book Bold Italic
     .vegan-sans.font
-      .tools
-        span.minus A
-        span.plus A
-        span.list &darr;
-      .cart
-        span.buy Buy
+      = partial 'tools_w_list'
       h3
         a href='fonts/vegan-sans' Vegan Sans
       .styles
-        .cart
-          span.buy Buy
         h4.light Vegan Sans Light
         h4.light.italic Vegan Sans Light Italic
         h4.regular Vegan Sans Regular

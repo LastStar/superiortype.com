@@ -149,6 +149,9 @@ if $('section.fonts').size() > 0
     el.parent().parent().siblings('h3')
   styles = (el) ->
     el.parent().siblings('.styles').children('h4')
+  stylesGr = (el) ->
+    el.parent().parent().siblings('.styles')
+
 
   $('.apperance .minus').on 'click', ->
     familySize = (parseInt(family($(this)).css('font-size'))*0.875)+'px'
@@ -161,8 +164,8 @@ if $('section.fonts').size() > 0
     stylesSize = (parseInt(styles($(this)).first().css('font-size'))*1.125)+'px'
     styles($(this)).css({ 'font-size': stylesSize })
   $('.apperance .list').on 'click', ->
-    styles($(this)).addClass('visible')
-    $.scrollTo(styles, 'max')
+    stylesGr($(this)).addClass('visible')
+    $.scrollTo(stylesGr($(this)), 'max')
   $('.fonts').css { opacity: 1 }
 
 if $('section.fonts#styles').size() > 0
