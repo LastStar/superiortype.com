@@ -284,7 +284,7 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
       });
     });
     $(window).on('scroll', function() {
-      if ($(window).scrollTop() > 54) {
+      if ($(window).scrollTop() > 32) {
         return $('.font-header').addClass('fixed');
       } else {
         return $('.font-header').removeClass('fixed');
