@@ -384,6 +384,15 @@ main {
     &.font-header {
       font-family: VeganSans;
       padding: 0 2rem;
+      background-color: $white;
+
+      &.fixed {
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        width: 100%;
+        margin-bottom: 6rem;
+      }
 
       header {
         border-bottom: thin solid lighten($black, 50);

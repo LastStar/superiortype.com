@@ -89,6 +89,7 @@ if $('#show-room').size() > 0
       moveButton item, 0
 
     $.scrollTo('svg', 'max')
+    console.log $(window).scrollTop()
 
   moveButton = (item, index) ->
     index = 0 if index > 3
@@ -143,6 +144,11 @@ if $('#show-room').size() > 0
     element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, ->
       setTimeout callback, 1500 - item.speed
 
+  $(window).on 'scroll', ->
+    scrolled = $(window).scrollTop()
+    if scrolled > 60 and scrolled < height
+      $(window).stop(true).scrollTo('.fonts', { duration: 600 })
+      $(window).off 'scroll'
 
 if $('section.fonts').size() > 0
   family = (el) ->
@@ -179,6 +185,12 @@ if $('section.fonts#styles').size() > 0
     stylesSize = (parseInt(styles($(this)).first().css('font-size'))*1.125)+'px'
     styles($(this)).css({ 'font-size': stylesSize })
 
+  $(window).on 'scroll', ->
+    if $(window).scrollTop() > 54
+      $('.font-header').addClass('fixed')
+    else
+      $('.font-header').removeClass('fixed')
+
 
 $('header.main').on 'mouseenter', ->
   $('header.main nav').addClass('visible')
@@ -197,3 +209,4 @@ if $('address').size() > 0
     console.log scrolled
     if scrolled > 20 && scrolled < 380
       $('address').css({ transform: 'translate(0, '+(-(200-scrolled))+'px)' })
+
