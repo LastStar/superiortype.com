@@ -186,7 +186,7 @@ if $('section.fonts#styles').size() > 0
     styles($(this)).css({ 'font-size': stylesSize })
 
   $(window).on 'scroll', ->
-    if $(window).scrollTop() > 54
+    if $(window).scrollTop() > 32
       $('.font-header').addClass('fixed')
     else
       $('.font-header').removeClass('fixed')
