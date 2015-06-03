@@ -1042,6 +1042,10 @@ main section {
           display: table; }
         /* line 135, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
         main section.fonts nav > .font .tools .cart span.buy {
+          -webkit-transform: translateY(6rem);
+          -moz-transform: translateY(6rem);
+          -ms-transform: translateY(6rem);
+          -o-transform: translateY(6rem);
           transform: translateY(6rem); }
       /* line 142, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       main section.fonts nav .tools {
@@ -1095,6 +1099,10 @@ main section {
             background-color: #2cfefe;
             border-radius: 0.25rem;
             color: #f00;
+            -webkit-transform: translateY(4rem);
+            -moz-transform: translateY(4rem);
+            -ms-transform: translateY(4rem);
+            -o-transform: translateY(4rem);
             transform: translateY(4rem); }
       /* line 181, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.scss */
       main section.fonts nav h3 {
