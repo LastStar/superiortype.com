@@ -162,7 +162,8 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
         });
         return moveButton(item, 0);
       });
-      return $.scrollTo('svg', 'max');
+      $.scrollTo('svg', 'max');
+      return console.log($(window).scrollTop());
     });
     moveButton = function(item, index) {
       var elementToMove, restart, timeout;
@@ -211,6 +212,16 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
         return setTimeout(callback, 1500 - item.speed);
       });
     };
+    $(window).on('scroll', function() {
+      var scrolled;
+      scrolled = $(window).scrollTop();
+      if (scrolled > 60 && scrolled < height) {
+        $(window).stop(true).scrollTo('.fonts', {
+          duration: 600
+        });
+        return $(window).off('scroll');
+      }
+    });
   }
 
   if ($('section.fonts').size() > 0) {
@@ -271,6 +282,13 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
       return styles($(this)).css({
         'font-size': stylesSize
       });
+    });
+    $(window).on('scroll', function() {
+      if ($(window).scrollTop() > 54) {
+        return $('.font-header').addClass('fixed');
+      } else {
+        return $('.font-header').removeClass('fixed');
+      }
     });
   }
 
