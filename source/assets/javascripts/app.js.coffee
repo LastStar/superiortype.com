@@ -57,11 +57,11 @@ if $('#show-room').size() > 0
       showRoom: '/assets/images/vegan-sans-show-room.svg'
       color: '#ff0'
       preSlide: (show) ->
-        show.select('g#slide-1').attr(transform: 'translate(-'+width+', 0)')
+        show.select('g#slide-1').attr(transform: 'translate(-'+width/2+', 0)')
         show.select('g#slide-2').attr(transform: 'translate(80, '+height+')')
 
       showSlide: (show) ->
-        show.select('g#slide-1').animate { transform: 'translate(80, 10)' }, 1000, mina.easeout
+        show.select('g#slide-1').animate { transform: 'translate(80, 10)' }, 1000, mina.bounce
 
       changeSlide: (show) ->
         show.select('g#slide-1').animate { transform: 'translate(80, -'+height+')' }, 750, mina.easein
