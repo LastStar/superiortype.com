@@ -145,35 +145,36 @@ if $('#show-room').size() > 0
 
 
 if $('section.fonts').size() > 0
-  $('.tools .minus').on 'click', ->
-    family  = $(this).parent().siblings('h3')
-    styles = $(this).parent().siblings('.styles').children('h4')
-    familySize = (parseInt(family.css('font-size'))*0.875)+'px'
-    family.css({ 'font-size': familySize })
-    stylesSize = (parseInt(styles.first().css('font-size'))*0.875)+'px'
-    styles.css({ 'font-size': stylesSize })
-  $('.tools .plus').on 'click', ->
-    family  = $(this).parent().siblings('h3')
-    styles = $(this).parent().siblings('.styles').children('h4')
-    familySize = (parseInt(family.css('font-size'))*1.125)+'px'
-    family.css({ 'font-size': familySize })
-    stylesSize = (parseInt(styles.first().css('font-size'))*1.125)+'px'
-    styles.css({ 'font-size': stylesSize })
-  $('.tools .list').on 'click', ->
-    styles = $(this).parent().siblings('.styles')
-    styles.addClass('visible')
+  family = (el) ->
+    el.parent().parent().siblings('h3')
+  styles = (el) ->
+    el.parent().siblings('.styles').children('h4')
+
+  $('.apperance .minus').on 'click', ->
+    familySize = (parseInt(family($(this)).css('font-size'))*0.875)+'px'
+    family($(this)).css({ 'font-size': familySize })
+    stylesSize = (parseInt(styles($(this)).first().css('font-size'))*0.875)+'px'
+    styles($(this)).css({ 'font-size': stylesSize })
+  $('.apperance .plus').on 'click', ->
+    familySize = (parseInt(family($(this)).css('font-size'))*1.125)+'px'
+    family($(this)).css({ 'font-size': familySize })
+    stylesSize = (parseInt(styles($(this)).first().css('font-size'))*1.125)+'px'
+    styles($(this)).css({ 'font-size': stylesSize })
+  $('.apperance .list').on 'click', ->
+    styles($(this)).addClass('visible')
     $.scrollTo(styles, 'max')
   $('.fonts').css { opacity: 1 }
 
 if $('section.fonts#styles').size() > 0
-  $('.tools .minus').on 'click', ->
-    styles = $(this).parent().siblings('h4')
-    stylesSize = (parseInt(styles.first().css('font-size'))*0.875)+'px'
-    styles.css({ 'font-size': stylesSize })
-  $('.tools .plus').on 'click', ->
-    styles = $(this).parent().siblings('h4')
-    stylesSize = (parseInt(styles.first().css('font-size'))*1.125)+'px'
-    styles.css({ 'font-size': stylesSize })
+  styles = (el) ->
+    el.parent().parent().siblings('h4').children('input')
+
+  $('.apperance .minus').on 'click', ->
+    stylesSize = (parseInt(styles($(this)).first().css('font-size'))*0.875)+'px'
+    styles($(this)).css({ 'font-size': stylesSize })
+  $('.apperance .plus').on 'click', ->
+    stylesSize = (parseInt(styles($(this)).first().css('font-size'))*1.125)+'px'
+    styles($(this)).css({ 'font-size': stylesSize })
 
 
 $('header.main').on 'mouseenter', ->

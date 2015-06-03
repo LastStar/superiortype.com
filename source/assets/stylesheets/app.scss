@@ -11,6 +11,34 @@
 @import "_partials/fonts";
 @import "_partials/settings";
 
+@mixin cart {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-family: VeganSans;
+  cursor: pointer;
+  background-color: $blue;
+  border-radius: 0.25rem;
+  color: $red;
+}
+
+@mixin font-weights {
+  .light { font-weight: 300 }
+
+  .regular { font-weight: normal }
+
+  .medium { font-weight: 500 }
+
+  .bold { font-weight: bold }
+
+  .semibold { font-weight: 600 }
+
+  .italic { font-style: italic }
+
+  .black { font-weight: 800 }
+}
+
+
+
 
 body {
   min-width: 64rem;
@@ -69,14 +97,11 @@ header.main {
 
   #cart {
     @include span-columns(2);
-    @include shift(5);
-    text-align: center;
-    a {
-      display: inline-block;
-      background-color: $blue;
-      color: $black;
-      border-radius: 1rem;
-      padding: 0.15rem 0.5rem 0.075rem 0.5rem;
+    @include shift(4);
+    text-align: right;
+
+    span {
+      @include cart;
     }
   }
 }
@@ -96,49 +121,60 @@ main {
       @include transition-property(opacity);
       @include transition-duration(750ms);
 
-      .light { font-weight: 300 }
-
-      .regular { font-weight: normal }
-
-      .medium { font-weight: 500 }
-
-      .bold { font-weight: bold }
-
-      .semibold { font-weight: 600 }
-
-      .italic { font-style: italic }
-
-      .black { font-weight: 800 }
+      @include font-weights;
 
       nav {
         padding: 0 2rem;
 
         & > .font {
-          @include span-columns(12);
+          @include row;
           padding: 0 0 0.5rem 0;
           border-top: 1px solid $grey;
+          .tools {
+            .cart {
+              span.buy {
+                transform: translateY(6rem);
+              }
+            }
+          }
         }
 
         .tools {
-          @include span-columns(2);
+          @include row;
           font-size: 1rem;
           padding-bottom: 0.5rem;
 
-          span {
-            display: inline-block;
-            padding: 0.5rem;
-            font-family: VeganSans;
-            cursor: pointer;
+          .apperance {
+            @include span-columns(2);
+
+            span {
+              display: inline-block;
+              padding: 0.5rem;
+              font-family: VeganSans;
+              cursor: pointer;
 
 
-            &.minus {
-              font-size: 0.875rem;
+              &.minus {
+                font-size: 0.875rem;
+              }
+
+              &.plus {
+                font-size: 1.125rem;
+              }
             }
 
-            &.plus {
-              font-size: 1.125rem;
-            }
+          }
 
+          .cart {
+            @include shift(9);
+            @include span-columns(1);
+            @include omega;
+            text-align: right;
+
+            span.buy {
+              @include cart;
+              transform: translateY(4rem);
+            }
           }
         }
 
@@ -185,6 +221,8 @@ main {
           }
 
           .style {
+            @include row;
+
             h4 {
               border-top: none;
               border-bottom: 1px solid $grey;
@@ -201,24 +239,17 @@ main {
       &#styles {
         .vegan-sans {
           input[type=text] {
-            // FIXME add mixin
-            &.light { font-weight: 300 }
-
-            &.regular { font-weight: normal }
-
-            &.medium { font-weight: 500 }
-
-            &.bold { font-weight: bold }
-
-            &.semibold { font-weight: 600 }
-
-            &.italic { font-style: italic }
-
-            &.black { font-weight: 800 }
+            @include font-weights;
 
             font-family: VeganSans;
             border: none;
             box-shadow: none;
+            margin-bottom: 0;
+            font-size: 2rem;
+
+            @include placeholder {
+              color: $black;
+            }
           }
         }
       }
@@ -350,21 +381,8 @@ main {
       padding: 0 2rem;
 
       header {
-      .light { font-weight: 300 }
-
-      .regular { font-weight: normal }
-
-      .medium { font-weight: 500 }
-
-      .bold { font-weight: bold }
-
-      .semibold { font-weight: 600 }
-
-      .italic { font-style: italic }
-
-      .black { font-weight: 800 }
         border-bottom: thin solid lighten($black, 50);
-        padding: 3rem 0;
+        padding: 3rem 0 2rem;
         @include row;
 
         h2 {
