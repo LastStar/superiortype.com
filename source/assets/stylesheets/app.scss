@@ -133,7 +133,7 @@ main {
           .tools {
             .cart {
               span.buy {
-                transform: translateY(6rem);
+                @include transform(translateY(6rem));
               }
             }
           }
@@ -173,7 +173,7 @@ main {
 
             span.buy {
               @include cart;
-              transform: translateY(4rem);
+              @include transform(translateY(4rem));
             }
           }
         }
