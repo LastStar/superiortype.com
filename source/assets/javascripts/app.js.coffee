@@ -185,13 +185,17 @@ if $('section.fonts#styles').size() > 0
     if !isNaN(offset)
       $('.font-header').addClass('fixed')
       $('.font-header header').addClass('fixed')
+      $('#styles').addClass('with-bumper')
       fixHeader = false
       $(window).scrollTo $($(this).attr('href')), { duration: 300, offset: -offset }
     else
       $('.font-header').removeClass('fixed')
       $('.font-header header').removeClass('fixed')
+      $('#styles').removeClass('with-bumper')
       fixHeader = true
       $(window).scrollTo 0, { duration: 500 }
+    $('.sections a.active').removeClass('active')
+    $(this).addClass('active')
     e.stopPropagation()
     false
 

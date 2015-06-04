@@ -148,6 +148,7 @@ main
             box-shadow: none
             margin-bottom: 0
             font-size: 2rem
+            padding: 0
             +placeholder
               color: $black
     &.with-bumper
@@ -265,8 +266,10 @@ main
           a
             +span-columns(1)
             padding-top: 3rem
-            color: $black
-            text-align: center
+            color: $darkgrey
+            text-align: left
+            &.active
+              color: $black
     &.about
       margin: 3rem 0
       p.text
