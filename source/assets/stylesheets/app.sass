@@ -111,9 +111,10 @@ main
             text-align: right
             span.buy
               +cart
+              +transform(translateY($small-spacer))
+              border: solid thin $blue
               &:hover
                 background-color: $blue
-              +transform(translateY($default-spacer))
         h3
           +span-columns(12)
           font-size: 4rem
