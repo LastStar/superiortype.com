@@ -54,7 +54,7 @@ header.main
     text-align: right
     span
       +cart
-
+      background-color: $blue
       &.empty
         background-color: $white
 
@@ -111,6 +111,8 @@ main
             text-align: right
             span.buy
               +cart
+              &:hover
+                background-color: $blue
               +transform(translateY($default-spacer))
         h3
           +span-columns(12)
@@ -298,6 +300,46 @@ main
           border: none
           text-align: center
           font-size: 4rem
+    &#your-cart
+      +row
+      padding: $default-spacer 2rem
+      background-color: $blue
+      header
+        +row
+        h2
+          +span-columns(1)
+          font-size: 1rem
+          border-radius: 1rem
+          background-color: $black
+          color: $white
+          text-align: center
+          padding: 0.5rem
+        .remove-all
+          +span-columns(1)
+          +omega
+          +shift(10)
+          color: black
+      ul.items
+        border-bottom: solid thin $grey
+        li
+          +row
+          height: $default-spacer
+          border-top: solid thin $grey
+          padding-top: 0.75rem
+          .name
+            +span-columns(10)
+          .price
+            +span-columns(1)
+            +omega
+          .remover
+            +span-columns(1)
+            +omega
+            text-align: center
+            color: $black
+            &:hover
+              border-radius: 1rem
+              background-color: $darkgrey
+              cursor: pointer
 
 $big-desktop:  new-breakpoint(min-width 1280px 18)
 // $ipad-portrait: new-breakpoint(max-width 769px 4);

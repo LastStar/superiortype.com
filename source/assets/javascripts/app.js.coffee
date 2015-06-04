@@ -6,11 +6,12 @@
 
 itemFromBuy = (el) ->
   el.parents('.tools').siblings('h4').children('input')
+
 currentCart = ->
   $.localStorage.get 'cart'
 
 refreshCart = (cart) ->
-  size = currentCart().length
+  size = cart.length
   if size > 0
     content = 'Cart - '
     if size == 1
@@ -18,8 +19,12 @@ refreshCart = (cart) ->
     else
       content += "#{size} items"
 
-    $('#cart span').html content
-    $('#cart span').removeClass 'empty'
+    cartSpan = $('#cart span')
+
+    cartSpan.html content
+    cartSpan.removeClass 'empty'
+    cartSpan.on 'click', ->
+      window.location = '/cart'
 
 inCart = (name) ->
   if $.inArray(name, currentCart()) == -1
@@ -27,13 +32,26 @@ inCart = (name) ->
   else
     true
 
+addToCart = (name) ->
+  tempCart = currentCart()
+  tempCart.push(name)
+  tempCart = $.unique tempCart
+  $.localStorage.set 'cart', tempCart
+  refreshCart tempCart
+
+removeFromCart = (name) ->
+  tempCart = currentCart()
+  tempCart.splice($.inArray(name, currentCart()), 1)
+  $.localStorage.set 'cart', tempCart
+  refreshCart tempCart
+
 if $.localStorage.get('cart') == null
   $.localStorage.set 'cart', []
 else
   $.each $('.buy'), (index, button) ->
     if inCart(itemFromBuy($(button)).data('name'))
       $(button).hide()
-  refreshCart cart
+  refreshCart currentCart()
 
 
 if $('#show-room').size() > 0
@@ -183,7 +201,10 @@ if $('section.fonts').size() > 0
     stylesSize = (parseInt(styles($(this)).first().css('font-size'))*1.125)+'px'
     styles($(this)).css({ 'font-size': stylesSize })
   $('.apperance .list').on 'click', ->
-    stylesGr($(this)).addClass('visible')
+    if stylesGr($(this)).hasClass('visible')
+      stylesGr($(this)).removeClass('visible')
+    else
+      stylesGr($(this)).addClass('visible')
     $.scrollTo(stylesGr($(this)), 'max')
   $('.fonts').css { opacity: 1 }
 
@@ -254,9 +275,20 @@ if $('address').size() > 0
 if $('.buy').size() > 0
   $('.buy').on 'click', ->
     name = itemFromBuy($(this)).data('name')
-    tempCart = currentCart()
-    tempCart.push(name)
-    tempCart = $.unique tempCart
-    $.localStorage.set 'cart', tempCart
-    refreshCart tempCart
-    $(this).hide()
+    addToCart name
+    $(this).fadeOut()
+
+if $('#your-cart').size() > 0
+  $('.remove-all').on 'click', ->
+    $.localStorage.removeAll()
+    $.localStorage.set 'cart', []
+    $('ul.items').html('')
+    refreshCart(currentCart())
+  items = []
+  $.each currentCart(), (index, item) ->
+    items.push $("<li><div class='name'>#{item}</div><div class='price'>$69</div><a class='remover' data-name='#{item}'>Remove</a></li>")
+  $('ul.items').html(items)
+  $('.remover').on 'click', ->
+    name = $(this).data('name')
+    removeFromCart name
+    $(this).parent('li').fadeOut()
