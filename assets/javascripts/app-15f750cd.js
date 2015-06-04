@@ -217,7 +217,7 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
       return el.parent().parent().siblings('h3');
     };
     styles = function(el) {
-      return el.parent().siblings('.styles').children('h4');
+      return el.parent().parent().siblings('.styles').children('h4');
     };
     stylesGr = function(el) {
       return el.parent().parent().siblings('.styles');
