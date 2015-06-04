@@ -1,6 +1,40 @@
 //= require jquery/dist/jquery.min
 //= require snap.svg/dist/snap.svg-min
 //= require jquery.scrollTo/jquery.scrollTo.min
+//= require jQuery-Storage-API/jquery.storageapi.min.js
+
+
+itemFromBuy = (el) ->
+  el.parents('.tools').siblings('h4').children('input')
+currentCart = ->
+  $.localStorage.get 'cart'
+
+refreshCart = (cart) ->
+  size = currentCart().length
+  if size > 0
+    content = 'Cart - '
+    if size == 1
+      content += '1 item'
+    else
+      content += "#{size} items"
+
+    $('#cart span').html content
+    $('#cart span').removeClass 'empty'
+
+inCart = (name) ->
+  if $.inArray(name, currentCart()) == -1
+    false
+  else
+    true
+
+if $.localStorage.get('cart') == null
+  $.localStorage.set 'cart', []
+else
+  $.each $('.buy'), (index, button) ->
+    if inCart(itemFromBuy($(button)).data('name'))
+      $(button).hide()
+  refreshCart cart
+
 
 if $('#show-room').size() > 0
   svg = $('svg')
@@ -217,3 +251,12 @@ if $('address').size() > 0
     if scrolled > 20 && scrolled < 380
       $('address').css({ transform: 'translate(0, '+(-(200-scrolled))+'px)' })
 
+if $('.buy').size() > 0
+  $('.buy').on 'click', ->
+    name = itemFromBuy($(this)).data('name')
+    tempCart = currentCart()
+    tempCart.push(name)
+    tempCart = $.unique tempCart
+    $.localStorage.set 'cart', tempCart
+    refreshCart tempCart
+    $(this).hide()

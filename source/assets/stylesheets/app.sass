@@ -111,7 +111,7 @@ main
             text-align: right
             span.buy
               +cart
-              +transform(translateY(3rem))
+              +transform(translateY($default-spacer))
         h3
           +span-columns(12)
           font-size: 4rem
@@ -177,34 +177,34 @@ main
         font-weight: normal
         +shift(2)
         +span-columns(5)
-        margin-top: 3rem
+        margin-top: $default-spacer
       address
         +span-columns(4)
         +omega
         +transform(translateY(-180px))
         font-style: normal
         font-size: 1.25rem
-        padding: 3rem
+        padding: $default-spacer
         background-color: $grey
-        border-radius: 3rem
+        border-radius: $default-spacer
       .light-green
-        background-color: #00FFA0
+        background-color: $light-green
         +span-columns(12 of 12)
       .text
         +span-columns(6 of 12)
         +shift
-        padding: 3rem 0
+        padding: $default-spacer 0
         p
           padding: 0 2rem
       .people
         +row
         .person
           +span-columns(4 of 12)
-          margin-top: 3rem
+          margin-top: $default-spacer
           .photo
             +shift(3)
             +span-columns(2 of 4)
-            padding: 0 0 3rem 0
+            padding: 0 0 $default-spacer 0
             img
               border-radius: 50%
           p
@@ -213,10 +213,10 @@ main
       .nonstop
         +shift(1)
         +span-columns(6 of 12)
-        margin-top: 3rem
+        margin-top: $default-spacer
         background-color: $yellow
         border-radius: 2rem
-        padding: 3rem 0
+        padding: $default-spacer 0
         h3
           +span-columns(6 of 6)
           font-size: 6rem
@@ -227,10 +227,10 @@ main
       font-family: VeganSans
       h2
         +span-columns(7)
-        padding: 0 3rem
-        font-size: 3rem
+        padding: 0 $default-spacer
+        font-size: $default-spacer
         font-weight: normal
-        margin-top: 3rem
+        margin-top: $default-spacer
       .text
         p
           +shift(3)
@@ -238,10 +238,10 @@ main
       .cases
         +shift(3)
         +span-columns(5)
-        padding: 3rem 0
+        padding: $default-spacer 0
         h3
           font-size: 5rem
-          margin: 3rem 0
+          margin: $default-spacer 0
         .highlite
           color: $white
           h3
@@ -257,14 +257,14 @@ main
         width: 100%
       header
         border-bottom: thin solid $grey
-        padding: 3rem 0 2rem
+        padding: $default-spacer 0 2rem
         +row
         &.fixed
           padding: 1rem 0 1rem
         h2
           font-family: VeganSans
           +span-columns(5)
-          font-size: 3rem
+          font-size: $default-spacer
           font-weight: normal
           margin: 1rem 0
           a
@@ -277,13 +277,13 @@ main
         nav
           a
             +span-columns(1)
-            padding-top: 3rem
+            padding-top: $default-spacer
             color: $darkgrey
             text-align: left
             &.active
               color: $black
     &.about
-      margin: 3rem 0
+      margin: $default-spacer 0
       p.text
         +span-columns(9)
         padding: 0 2rem
@@ -291,7 +291,7 @@ main
       p.features
         +span-columns(3)
     &#glyphs
-      padding: 3rem 2rem
+      padding: $default-spacer 2rem
       table
         border: none
         td
@@ -299,6 +299,7 @@ main
           text-align: center
           font-size: 4rem
 
+$big-desktop:  new-breakpoint(min-width 1280px 18)
 // $ipad-portrait: new-breakpoint(max-width 769px 4);
 // $iphone-landscape: new-breakpoint(max-width 480px 4);
 
