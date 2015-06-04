@@ -134,7 +134,7 @@ if $('section.fonts').size() > 0
   family = (el) ->
     el.parent().parent().siblings('h3')
   styles = (el) ->
-    el.parent().siblings('.styles').children('h4')
+    el.parent().parent().siblings('.styles').children('h4')
   stylesGr = (el) ->
     el.parent().parent().siblings('.styles')
 

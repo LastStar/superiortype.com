@@ -55,6 +55,9 @@ header.main
     span
       +cart
 
+      &.empty
+        background-color: $white
+
 main
   section
     +row
@@ -63,6 +66,7 @@ main
       height: 60rem
       margin: auto
     &.fonts
+      overflow: hidden
       opacity: 0
       +transition-property(opacity)
       +transition-duration(750ms)
@@ -77,6 +81,14 @@ main
             .cart
               span.buy
                 +transform(translateY(6rem))
+          h3 a
+            display: block
+            overflow: hidden
+            width: 1000rem
+          .styles h4
+            display: block
+            overflow: hidden
+            width: 1000rem
         .tools
           +row
           font-size: 1rem
@@ -99,7 +111,7 @@ main
             text-align: right
             span.buy
               +cart
-              +transform(translateY(4rem))
+              +transform(translateY(3rem))
         h3
           +span-columns(12)
           font-size: 4rem
@@ -244,7 +256,7 @@ main
         z-index: 10
         width: 100%
       header
-        border-bottom: thin solid lighten($black, 50)
+        border-bottom: thin solid $grey
         padding: 3rem 0 2rem
         +row
         &.fixed
