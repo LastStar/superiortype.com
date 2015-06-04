@@ -1,6 +1,20 @@
 ---
 title: 'Vegan Sans'
 id: 'vegan-sans'
+styles:
+  - 'Vegan Sans Light'
+  - 'Vegan Sans Light Italic'
+  - 'Vegan Sans Regular'
+  - 'Vegan Sans Italic'
+  - 'Vegan Sans Medium'
+  - 'Vegan Sans Medium Italic'
+  - 'Vegan Sans Semibold'
+  - 'Vegan Sans Semibold Italic'
+  - 'Vegan Sans Bold'
+  - 'Vegan Sans Bold Italic'
+  - 'Vegan Sans Black'
+  - 'Vegan Sans Black Italic'
+
 ---
 = partial 'font_header'
 
@@ -9,19 +23,7 @@ section.fonts#styles
   nav
     div class=current_page.data.id
       .styles.visible
-        = partial 'style', locals: { name: 'Vegan Sans Light' }
-        = partial 'style', locals: { name: 'Vegan Sans Light Italic' }
-        = partial 'style', locals: { name: 'Vegan Sans Regular' }
-        = partial 'style', locals: { name: 'Vegan Sans Italic' }
-        = partial 'style', locals: { name: 'Vegan Sans Medium' }
-        = partial 'style', locals: { name: 'Vegan Sans Medium Italic' }
-        = partial 'style', locals: { name: 'Vegan Sans Semibold' }
-        = partial 'style', locals: { name: 'Vegan Sans Semibold Italic' }
-        = partial 'style', locals: { name: 'Vegan Sans Bold' }
-        = partial 'style', locals: { name: 'Vegan Sans Bold Italic' }
-        = partial 'style', locals: { name: 'Vegan Sans Black' }
-        = partial 'style', locals: { name: 'Vegan Sans Black Italic' }
-
+        = partial 'styles', locals: { styles: current_page.data.styles }
 section.about#details
   p.text
     | Vegan is a modern, structured sans featuring delicate, humanist elements.
@@ -59,7 +61,6 @@ section.about#details
 
 
 section#glyphs.vegan-sans
-  h2 Glyphs
   table
     - i = 0
     - "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghi\"“”‘’‹›«»#(/)[]{|}-–—_.,:;©®™ªº^+-×=<>•".each_codepoint do |c|

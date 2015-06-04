@@ -2,12 +2,15 @@ section.font-header
   header
     h2
       = current_page.data.title
-      a.previous href='#' <
-      a.next href='#' >
+      a.previous href='/fonts/kunda'
+        img src='/assets/images/left-arrow.svg'
 
-    nav
-      a.styles href="javascript:$(window).scrollTo('32')" Styles
-      a.glyphs href="javascript:$(window).scrollTo('1680')" Details
-      a.glyphs href="javascript:$(window).scrollTo('2220')" Glyphs
+      a.next href='/fonts/hrot'
+        img src='/assets/images/right-arrow.svg'
+
+    nav.sections
+      a.styles href="#styles" Styles
+      a.glyphs href="#details" data-offset='160' Details
+      a.glyphs href="#glyphs" data-offset='80' Glyphs
       a.pdf href='#' Specimen
 

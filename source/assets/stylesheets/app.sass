@@ -1,0 +1,304 @@
+//= require normalize-css/normalize
+//= require awesomplete/awesomplete
+
+@import bourbon
+@import neat
+
+// Bitters import
+@import base/base
+
+// Partials import
+@import partials/fonts
+@import partials/settings
+@import partials/mixins
+
+
+body
+  min-width: 64rem
+  margin: auto
+  &.dark
+    background-color: $darkgrey
+
+header.main
+  *
+    font-family: VeganSans
+  +row
+  margin-top: 1rem
+  padding: 0 2rem
+  h1
+    +span-columns(3)
+    z-index: 10
+    a
+      font-size: modular-scale(1, 1rem)
+      display: block
+      color: $black
+      &:hover
+        color: $black
+  nav
+    +span-columns(3)
+    +transform(translateX(-130px))
+    +transition-property(transform, opacity)
+    +transition-duration(500ms)
+    opacity: 0
+    &.visible
+      +transform(translateX(0px))
+      opacity: 1
+    a
+      +span-columns(1 of 3)
+      color: $black
+      &:hover
+        color: $black
+  #cart
+    +span-columns(2)
+    +shift(4)
+    text-align: right
+    span
+      +cart
+
+main
+  section
+    +row
+    svg
+      +span-columns(12)
+      height: 60rem
+      margin: auto
+    &.fonts
+      opacity: 0
+      +transition-property(opacity)
+      +transition-duration(750ms)
+      +font-weights
+      nav
+        padding: 0 2rem
+        & > .font
+          +row
+          padding: 0 0 0.5rem 0
+          border-top: 1px solid $grey
+          .tools
+            .cart
+              span.buy
+                +transform(translateY(6rem))
+        .tools
+          +row
+          font-size: 1rem
+          padding-bottom: 0.5rem
+          .apperance
+            +span-columns(2)
+            span
+              display: inline-block
+              padding: 0.5rem
+              font-family: VeganSans
+              cursor: pointer
+              &.minus
+                font-size: 0.875rem
+              &.plus
+                font-size: 1.125rem
+          .cart
+            +shift(9)
+            +span-columns(1)
+            +omega
+            text-align: right
+            span.buy
+              +cart
+              +transform(translateY(4rem))
+        h3
+          +span-columns(12)
+          font-size: 4rem
+          font-weight: normal
+          padding: 1.5rem 0
+          font-style: normal
+          margin: 0
+          a
+            color: black
+          input
+            border: none
+            box-shadow: none
+            padding: 0
+            margin: 0
+        .styles
+          +transform(translateX(-500px))
+          +transition-property(transform, opacity)
+          +transition-duration(750ms)
+          +row
+          opacity: 0
+          display: none
+          &.visible
+            opacity: 1
+            display: block
+            +transform(translateX(0px))
+          h4
+            +span-columns(12)
+            font-size: 2rem
+            padding: 1.5rem 0
+            margin: 0
+            border-top: 1px solid $grey
+          .style
+            +row
+            h4
+              border-top: none
+              border-bottom: 1px solid $grey
+              padding: 0.25rem 0 1.5rem
+            .tools
+              padding: 0.25rem 0
+      &#styles
+        .vegan-sans
+          input[type=text]
+            +font-weights
+            font-family: VeganSans
+            border: none
+            box-shadow: none
+            margin-bottom: 0
+            font-size: 2rem
+            +placeholder
+              color: $black
+    &.with-bumper
+      padding-top: 7.5rem
+    &#glyphs
+      font-family: VeganSans
+    &.foundry
+      +span-columns(12)
+      *
+        font-family: VeganSans
+      h2
+        padding: 0 2rem
+        font-size: 1.5rem
+        font-weight: normal
+        +shift(2)
+        +span-columns(5)
+        margin-top: 3rem
+      address
+        +span-columns(4)
+        +omega
+        +transform(translateY(-180px))
+        font-style: normal
+        font-size: 1.25rem
+        padding: 3rem
+        background-color: $grey
+        border-radius: 3rem
+      .light-green
+        background-color: #00FFA0
+        +span-columns(12 of 12)
+      .text
+        +span-columns(6 of 12)
+        +shift
+        padding: 3rem 0
+        p
+          padding: 0 2rem
+      .people
+        +row
+        .person
+          +span-columns(4 of 12)
+          margin-top: 3rem
+          .photo
+            +shift(3)
+            +span-columns(2 of 4)
+            padding: 0 0 3rem 0
+            img
+              border-radius: 50%
+          p
+            +shift(1)
+            +span-columns(2 of 4)
+      .nonstop
+        +shift(1)
+        +span-columns(6 of 12)
+        margin-top: 3rem
+        background-color: $yellow
+        border-radius: 2rem
+        padding: 3rem 0
+        h3
+          +span-columns(6 of 6)
+          font-size: 6rem
+          text-align: center
+          +transform(rotate(-30deg))
+    &.custom
+      +span-columns(12)
+      font-family: VeganSans
+      h2
+        +span-columns(7)
+        padding: 0 3rem
+        font-size: 3rem
+        font-weight: normal
+        margin-top: 3rem
+      .text
+        p
+          +shift(3)
+          +span-columns(5)
+      .cases
+        +shift(3)
+        +span-columns(5)
+        padding: 3rem 0
+        h3
+          font-size: 5rem
+          margin: 3rem 0
+        .highlite
+          color: $white
+          h3
+            font-size: 8rem
+    &.font-header
+      font-family: VeganSans
+      padding: 0 2rem
+      background-color: $white
+      &.fixed
+        position: fixed
+        top: 0
+        z-index: 10
+        width: 100%
+      header
+        border-bottom: thin solid lighten($black, 50)
+        padding: 3rem 0 2rem
+        +row
+        &.fixed
+          padding: 1rem 0 1rem
+        h2
+          font-family: VeganSans
+          +span-columns(5)
+          font-size: 3rem
+          font-weight: normal
+          margin: 1rem 0
+          a
+            font-weight: 100
+            color: $black
+            &.next
+              padding: 0 2rem 0 0
+            &.previous
+              padding: 0 1rem 0 2rem
+        nav
+          a
+            +span-columns(1)
+            padding-top: 3rem
+            color: $black
+            text-align: center
+    &.about
+      margin: 3rem 0
+      p.text
+        +span-columns(9)
+        padding: 0 2rem
+        font-size: 1.5rem
+      p.features
+        +span-columns(3)
+    &#glyphs
+      padding: 3rem 2rem
+      table
+        border: none
+        td
+          border: none
+          text-align: center
+          font-size: 4rem
+
+// $ipad-portrait: new-breakpoint(max-width 769px 4);
+// $iphone-landscape: new-breakpoint(max-width 480px 4);
+
+// @include media($ipad-portrait) {
+//   body {
+//     font-size: modular-scale(-2, 1rem);
+//     min-width: 60rem;
+//   }
+
+//   header {
+//     nav {
+//       opacity: 1;
+//       @include transform(translateX(0px));
+//     }
+//   }
+// }
+
+

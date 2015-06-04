@@ -123,29 +123,12 @@ if $('#show-room').size() > 0
             show.click ->
               document.location = '/fonts/'+item.id
 
-
           item.showSlide(show)
           setTimeout changeSlide, 4000
-
-    # elementToMove.mouseover ->
-    #   clearTimeout(timeout)
-    #   title.attr { opacity: 0, transform: 'translate('+item.final+') scale('+scale.final+')'  }
-    #   title.animate { opacity: 1 }, 150, mina.linear
-
-    # title.mouseout ->
-    #   timeout = setTimeout restart, 1000
-    #   title.stop()
-    #   title.attr { opacity: 0, transform: 'translate('+item.final+') scale('+scale.final+')' }
 
   returnButtons = (element, item, callback) ->
     element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, ->
       setTimeout callback, 1500 - item.speed
-
-  # $(window).on 'scroll', ->
-  #   scrolled = $(window).scrollTop()
-  #   if scrolled > 60 and scrolled < height
-  #     $(window).stop(true).scrollTo('.fonts', { duration: 600 })
-  #     $(window).off 'scroll'
 
 if $('section.fonts').size() > 0
   family = (el) ->
@@ -154,7 +137,6 @@ if $('section.fonts').size() > 0
     el.parent().siblings('.styles').children('h4')
   stylesGr = (el) ->
     el.parent().parent().siblings('.styles')
-
 
   $('.apperance .minus').on 'click', ->
     familySize = (parseInt(family($(this)).css('font-size'))*0.875)+'px'
@@ -182,14 +164,36 @@ if $('section.fonts#styles').size() > 0
     stylesSize = (parseInt(styles($(this)).first().css('font-size'))*1.125)+'px'
     styles($(this)).css({ 'font-size': stylesSize })
 
+  fixHeader = true
   $(window).on 'scroll', ->
-    if $(window).scrollTop() > 62
+    topBound = $('header.main').height()
+    if fixHeader && ($(window).scrollTop() > topBound)
       $('.font-header').addClass('fixed')
       $('.font-header header').addClass('fixed')
+      $('#styles').addClass('with-bumper')
+      fixHeader = false
+    if !fixHeader && ($(window).scrollTop() < topBound)
+      $('.font-header').removeClass('fixed')
+      $('.font-header header').removeClass('fixed')
+      $('#styles').removeClass('with-bumper')
+      fixHeader = true
+
+
+  $('.sections a').on 'click', (e) ->
+    offset = parseInt $(this).data('offset')
+    console.log offset
+    if !isNaN(offset)
+      $('.font-header').addClass('fixed')
+      $('.font-header header').addClass('fixed')
+      fixHeader = false
+      $(window).scrollTo $($(this).attr('href')), { duration: 300, offset: -offset }
     else
       $('.font-header').removeClass('fixed')
       $('.font-header header').removeClass('fixed')
-
+      fixHeader = true
+      $(window).scrollTo 0, { duration: 500 }
+    e.stopPropagation()
+    false
 
 $('header.main').on 'mouseenter', ->
   $('header.main nav').addClass('visible')
