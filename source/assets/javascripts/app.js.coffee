@@ -45,6 +45,15 @@ removeFromCart = (name) ->
   $.localStorage.set 'cart', tempCart
   refreshCart tempCart
 
+renderCart = ->
+  items = []
+  total = 0
+  $.each currentCart(), (index, item) ->
+    items.push $("<li><div class='name'>#{item}</div><div class='price'>$69</div><a class='remover' data-name='#{item}'>Remove</a></li>")
+    total += 69
+  items.push "<li class='total'><div class='name'>Total</div><div class='price'>$#{total}</div><a class='checkout'>Checkout</a></li>"
+  $('ul.items').html items
+
 if $.localStorage.get('cart') == null
   $.localStorage.set 'cart', []
 else
@@ -284,11 +293,11 @@ if $('#your-cart').size() > 0
     $.localStorage.set 'cart', []
     $('ul.items').html('')
     refreshCart(currentCart())
-  items = []
-  $.each currentCart(), (index, item) ->
-    items.push $("<li><div class='name'>#{item}</div><div class='price'>$69</div><a class='remover' data-name='#{item}'>Remove</a></li>")
-  $('ul.items').html(items)
+
+  renderCart()
+
   $('.remover').on 'click', ->
-    name = $(this).data('name')
+    name = $(this).data 'name'
     removeFromCart name
     $(this).parent('li').fadeOut()
+

@@ -320,6 +320,7 @@ main
           +omega
           +shift(10)
           color: black
+          text-align: center
       ul.items
         border-bottom: solid thin $grey
         li
@@ -327,12 +328,14 @@ main
           height: $default-spacer
           border-top: solid thin $grey
           padding-top: 0.75rem
+          &.total
+            font-weight: bold
           .name
             +span-columns(10)
           .price
             +span-columns(1)
             +omega
-          .remover
+          .remover, .checkout
             +span-columns(1)
             +omega
             text-align: center
