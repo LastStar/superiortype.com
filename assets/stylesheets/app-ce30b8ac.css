@@ -1585,14 +1585,15 @@ main section {
         width: 6.17215%;
         margin-right: 0;
         margin-left: 85.29804%;
-        color: black; }
+        color: black;
+        text-align: center; }
         /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
         main section#your-cart header .remove-all:last-child {
           margin-right: 0; }
-    /* line 323, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 324, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     main section#your-cart ul.items {
       border-bottom: solid thin #d0d0d0; }
-      /* line 325, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 326, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       main section#your-cart ul.items li {
         display: block;
         height: 3rem;
@@ -1603,7 +1604,10 @@ main section {
           clear: both;
           content: "";
           display: table; }
-        /* line 330, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+        /* line 331, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+        main section#your-cart ul.items li.total {
+          font-weight: bold; }
+        /* line 333, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
         main section#your-cart ul.items li .name {
           float: left;
           display: block;
@@ -1612,7 +1616,7 @@ main section {
           /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
           main section#your-cart ul.items li .name:last-child {
             margin-right: 0; }
-        /* line 332, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+        /* line 335, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
         main section#your-cart ul.items li .price {
           float: left;
           display: block;
@@ -1622,8 +1626,8 @@ main section {
           /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
           main section#your-cart ul.items li .price:last-child {
             margin-right: 0; }
-        /* line 335, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
-        main section#your-cart ul.items li .remover {
+        /* line 338, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+        main section#your-cart ul.items li .remover, main section#your-cart ul.items li .checkout {
           float: left;
           display: block;
           margin-right: 2.35765%;
@@ -1632,10 +1636,10 @@ main section {
           text-align: center;
           color: #111; }
           /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
-          main section#your-cart ul.items li .remover:last-child {
+          main section#your-cart ul.items li .remover:last-child, main section#your-cart ul.items li .checkout:last-child {
             margin-right: 0; }
-          /* line 340, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
-          main section#your-cart ul.items li .remover:hover {
+          /* line 343, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+          main section#your-cart ul.items li .remover:hover, main section#your-cart ul.items li .checkout:hover {
             border-radius: 1rem;
             background-color: #666666;
             cursor: pointer; }
