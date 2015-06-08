@@ -404,7 +404,7 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
   $('header.main').on('mouseout', function() {
     var hideMenu;
     hideMenu = function() {
-      return $('heade.main nav').removeClass('visible');
+      return $('header.main nav').removeClass('visible');
     };
     return setTimeout(hideMenu, 2000);
   });
