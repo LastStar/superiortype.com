@@ -1,45 +1,65 @@
 ---
 title: 'Welcome to Superior Type'
+fonts:
+  -
+    name: 'Hrot'
+    id: 'hrot'
+    styles:
+      - 'Hrot Hair'
+      - 'Hrot Hair Italic'
+      - 'Hrot Thin'
+      - 'Hrot Thin Italic'
+      - 'Hrot Light'
+      - 'Hrot Light Italic'
+      - 'Hrot Regular'
+      - 'Hrot Italic'
+      - 'Hrot Medium'
+      - 'Hrot Medium Italic'
+      - 'Hrot Semibold'
+      - 'Hrot Semibold Italic'
+      - 'Hrot Bold'
+      - 'Hrot Bold Italic'
+      - 'Hrot Black'
+      - 'Hrot Black Italic'
+  -
+    name: 'Kunda Book'
+    id: 'kunda-book'
+    styles:
+      - 'Kunda Book Regular'
+      - 'Kunda Book Italic'
+      - 'Kunda Book Medium'
+      - 'Kunda Book Medium Italic'
+      - 'Kunda Book Semibold'
+      - 'Kunda Book Semibold Italic'
+      - 'Kunda Book Bold'
+      - 'Kunda Book Bold Italic'
+  -
+    name: 'Vegan Sans'
+    id: 'vegan-sans'
+    styles:
+      - 'Vegan Sans Light'
+      - 'Vegan Sans Light Italic'
+      - 'Vegan Sans Regular'
+      - 'Vegan Sans Italic'
+      - 'Vegan Sans Medium'
+      - 'Vegan Sans Medium Italic'
+      - 'Vegan Sans Semibold'
+      - 'Vegan Sans Semibold Italic'
+      - 'Vegan Sans Bold'
+      - 'Vegan Sans Bold Italic'
+      - 'Vegan Sans Black'
+      - 'Vegan Sans Black Italic'
 ---
 section
   svg#show-room
 section.fonts
   nav
-    .hrot.font
-      = partial 'tools_w_list'
-      h3
-        a href='fonts/hrot' Hrot
-      .styles
-        h4.light Hrot Light
-        h4.black Hrot Black
-    .kunda-book.font
-      = partial 'tools_w_list'
-      h3
-        a href='fonts/kunda-book' Kunda Book
-      .styles
-        h4.regular Kunda Book Regular
-        h4.italic Kunda Book Italic
-        h4.medium Kunda Book Medium
-        h4.medium.italic Kunda Book Medium Italic
-        h4.semibold Kunda Book Semibold
-        h4.semibold.italic Kunda Book Semibold Italic
-        h4.bold Kunda Book Bold
-        h4.bold.italic Kunda Book Bold Italic
-    .vegan-sans.font
-      = partial 'tools_w_list'
-      h3
-        a href='fonts/vegan-sans' Vegan Sans
-      .styles
-        h4.light Vegan Sans Light
-        h4.light.italic Vegan Sans Light Italic
-        h4.regular Vegan Sans Regular
-        h4.italic Vegan Sans Italic
-        h4.medium Vegan Sans Medium
-        h4.medium.italic Vegan Sans Medium Italic
-        h4.semibold Vegan Sans Semibold
-        h4.semibold.italic Vegan Sans Semibold Italic
-        h4.bold Vegan Sans Bold
-        h4.bold.italic Vegan Sans Bold Italic
-        h4.black Vegan Sans Black
-        h4.black.italic Vegan Sans Black Italic
-
+    - for font in current_page.data.fonts
+      div class="font #{font[:id]}"
+        = partial 'tools_w_list'
+        h3
+          a href="fonts/#{font[:id]}" = font[:name]
+        .styles
+          - for style in font.styles
+            - weight = style.split(font[:name]).last.downcase.strip
+            h4 class=weight = style
