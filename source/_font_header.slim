@@ -1,11 +1,11 @@
 section.font-header
   header
-    h2
+    h2 class=current_page.data.id
       = current_page.data.title
-      a.previous href='/fonts/kunda'
+      a.previous href="/fonts/#{current_page.data.previous}"
         img src='/assets/images/left-arrow.svg'
 
-      a.next href='/fonts/hrot'
+      a.next href="/fonts/#{current_page.data.next}"
         img src='/assets/images/right-arrow.svg'
 
     nav.sections

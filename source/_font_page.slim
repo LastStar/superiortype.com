@@ -1,0 +1,41 @@
+section.fonts#styles
+  nav
+    div class=current_page.data.id
+      .styles.visible
+        = partial 'styles', locals: { styles: current_page.data.styles }
+section.about#details
+  - for p in current_page.data.details.split("\n")
+    p.text= p
+  .features
+    p.feature
+      | Styles in font family
+      br
+      = current_page.data.styles.size
+    p.feature
+      | Number of glyphs per font
+      br
+      = current_page.data.glyphs
+    p.feature
+      | Language Support
+      br
+      | Latin Std
+    p.feature
+      | Designer
+      br
+      | Vojtěch Říha
+    p.feature
+      | Release year
+      br
+      | 2015
+
+
+section id='glyphs' class=current_page.data.id
+  table
+    - i = 0
+    - "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghi\"“”‘’‹›«»#(/)[]{|}-–—_.,:;©®™ªº^+-×=<>•".each_codepoint do |c|
+      - if i%5 == 0
+        tr
+      td= c.chr(Encoding::UTF_8)
+      - i += 1
+
+

@@ -1,5 +1,6 @@
         .style
           = partial('tools')
           h4
-            input.light type='text' data-name=locals[:name] placeholder=locals[:name]
+            - weight = locals[:name].split(current_page.data.title).last.downcase.strip
+            input class=weight type='text' data-name=locals[:name] placeholder=locals[:name]
 

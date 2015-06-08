@@ -155,10 +155,9 @@ main
             .tools
               padding: 0.25rem 0
       &#styles
-        .vegan-sans
+        .vegan-sans, .kunda-book, .hrot
           input[type=text]
             +font-weights
-            font-family: VeganSans
             border: none
             box-shadow: none
             margin-bottom: 0
@@ -166,6 +165,15 @@ main
             padding: 0
             +placeholder
               color: $black
+        .vegan-sans
+          input[type=text]
+            font-family: VeganSans
+        .kunda-book
+          input[type=text]
+            font-family: KundaBook
+        .hrot
+          input[type=text]
+            font-family: Hrot
     &.with-bumper
       padding-top: 7.5rem
     &#glyphs
@@ -291,8 +299,10 @@ main
         +span-columns(9)
         padding: 0 2rem
         font-size: 1.5rem
-      p.features
+      div.features
         +span-columns(3)
+        .feature
+          +span-columns(3 of 3)
     &#glyphs
       padding: $default-spacer 2rem
       table
@@ -308,17 +318,14 @@ main
       header
         +row
         h2
-          +span-columns(1)
-          font-size: 1rem
-          border-radius: 1rem
-          background-color: $black
-          color: $white
-          text-align: center
-          padding: 0.5rem
+          +span-columns(2)
+          font-size: 1.5rem
+          padding: 0.5rem 0
         .remove-all
           +span-columns(1)
           +omega
-          +shift(10)
+          +shift(9)
+          +white-hover
           color: black
           text-align: center
       ul.items
@@ -328,22 +335,23 @@ main
           height: $default-spacer
           border-top: solid thin $grey
           padding-top: 0.75rem
-          &.total
-            font-weight: bold
           .name
-            +span-columns(10)
-          .price
+            +span-columns(11)
+          .remover,
             +span-columns(1)
             +omega
-          .remover, .checkout
-            +span-columns(1)
-            +omega
+            +white-hover
             text-align: center
             color: $black
-            &:hover
-              border-radius: 1rem
-              background-color: $darkgrey
-              cursor: pointer
+      .check-offer
+        +span-columns(3)
+        +shift(9)
+        +omega
+        +pad(1rem 0)
+        text-align: center
+        font-size: 1.5rem
+        a
+          color: $black
 
 $big-desktop:  new-breakpoint(min-width 1280px 18)
 // $ipad-portrait: new-breakpoint(max-width 769px 4);

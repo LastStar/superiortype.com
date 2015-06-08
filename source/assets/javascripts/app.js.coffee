@@ -13,7 +13,7 @@ currentLiked = ->
 refreshLiked = (liked) ->
   size = liked.length
   if size > 0
-    content = 'Liked - '
+    content = 'Liked '
     if size == 1
       content += '1 item'
     else
@@ -47,12 +47,10 @@ removeFromLiked = (name) ->
 
 renderLiked = ->
   items = []
-  total = 0
   $.each currentLiked(), (index, item) ->
-    items.push $("<li><div class='name'>#{item}</div><div class='price'>$69</div><a class='remover' data-name='#{item}'>Remove</a></li>")
-    total += 69
-  items.push "<li class='total'><div class='name'>Total</div><div class='price'>$#{total}</div><a class='checkout'>Checkout</a></li>"
+    items.push $("<li><div class='name'>#{item}</div><a class='remover' data-name='#{item}'>Remove</a></li>")
   $('ul.items').html items
+  $('ul.items').after "<div class='check-offer'><a>Check the Offer</a></div>"
 
 if $.localStorage.get('liked') == null
   $.localStorage.set 'liked', []

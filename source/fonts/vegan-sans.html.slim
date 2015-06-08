@@ -14,58 +14,21 @@ styles:
   - 'Vegan Sans Bold Italic'
   - 'Vegan Sans Black'
   - 'Vegan Sans Black Italic'
+glyphs: 848
+details: '
+Vegan Sans is a modern, structured sans featuring delicate, humanist elements.  the
+distinctive shadow font Vega, which was created by Czech typographer Stanislav
+Maršo in the 1960s, was a source of inspiration for the designer.
 
+The overall skeleton of the typeface is pleasantly optically narrowed and
+features a slight shadow. as a result of these characteristics, Vegan is a
+practical font that appears fresh and new. the font family contains six styles,
+from Light to Black and the corresponding italics. It can be used to set long
+texts, news papers and magazines, but is also perfect for large, striking
+headlines and posters.'
+previous: 'kunda-book'
+next: 'hrot'
 ---
 = partial 'font_header'
 
-
-section.fonts#styles
-  nav
-    div class=current_page.data.id
-      .styles.visible
-        = partial 'styles', locals: { styles: current_page.data.styles }
-section.about#details
-  p.text
-    | Vegan is a modern, structured sans featuring delicate, humanist elements.
-    |  the distinctive shadow font Vega, which was created by Czech typographer
-    |  Stanislav Maršo in the 1960s, was a source of inspiration for the designer.
-  p.text
-    |  The overall skeleton of the typeface is pleasantly optically narrowed and
-    |  features a slight shadow. as a result of these characteristics, Vegan is a
-    |  practical font that appears fresh and new. the font family contains six
-    |  styles, from Light to Black and the corresponding italics. It can be used
-    |  to set long texts, news papers and magazines, but is also perfect for
-    |  large, striking headlines and posters.
-
-  p.features
-    p.feature
-      | Styles in font family
-      br
-      | 12
-    p.feature
-      | Number of glyphs per font
-      br
-      | 848
-    p.feature
-      | Language Support
-      br
-      | Latin Std
-    p.feature
-      | Designer
-      br
-      | Vojtěch Říha
-    p.feature
-      | Release year
-      br
-      | 2015
-
-
-section#glyphs.vegan-sans
-  table
-    - i = 0
-    - "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghi\"“”‘’‹›«»#(/)[]{|}-–—_.,:;©®™ªº^+-×=<>•".each_codepoint do |c|
-      - if i%5 == 0
-        tr
-      td= c.chr(Encoding::UTF_8)
-      - i += 1
-
+= partial 'font_page'
