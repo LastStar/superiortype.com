@@ -266,7 +266,7 @@ $('header.main').on 'mouseenter', ->
 
 $('header.main').on 'mouseout', ->
   hideMenu = ->
-    $('heade.main nav').removeClass('visible')
+    $('header.main nav').removeClass('visible')
   setTimeout hideMenu, 2000
 
 $('.fonts input.tester').on 'change', ->
