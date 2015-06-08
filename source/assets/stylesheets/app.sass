@@ -48,12 +48,12 @@ header.main
       color: $black
       &:hover
         color: $black
-  #cart
+  #liked
     +span-columns(2)
     +shift(4)
     text-align: right
     span
-      +cart
+      +liked
       background-color: $blue
       &.empty
         background-color: $white
@@ -78,8 +78,8 @@ main
           padding: 0 0 0.5rem 0
           border-top: 1px solid $grey
           .tools
-            .cart
-              span.buy
+            .liked
+              span.like
                 +transform(translateY(6rem))
           h3 a
             display: block
@@ -104,13 +104,13 @@ main
                 font-size: 0.875rem
               &.plus
                 font-size: 1.125rem
-          .cart
+          .liked
             +shift(9)
             +span-columns(1)
             +omega
             text-align: right
-            span.buy
-              +cart
+            span.like
+              +liked
               +transform(translateY($small-spacer))
               border: solid thin $blue
               &:hover
@@ -301,7 +301,7 @@ main
           border: none
           text-align: center
           font-size: 4rem
-    &#your-cart
+    &#your-liked
       +row
       padding: $default-spacer 2rem
       background-color: $blue

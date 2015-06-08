@@ -4,63 +4,63 @@
 //= require jQuery-Storage-API/jquery.storageapi.min.js
 
 
-itemFromBuy = (el) ->
+itemFromLike = (el) ->
   el.parents('.tools').siblings('h4').children('input')
 
-currentCart = ->
-  $.localStorage.get 'cart'
+currentLiked = ->
+  $.localStorage.get 'liked'
 
-refreshCart = (cart) ->
-  size = cart.length
+refreshLiked = (liked) ->
+  size = liked.length
   if size > 0
-    content = 'Cart - '
+    content = 'Liked - '
     if size == 1
       content += '1 item'
     else
       content += "#{size} items"
 
-    cartSpan = $('#cart span')
+    likedSpan = $('#liked span')
 
-    cartSpan.html content
-    cartSpan.removeClass 'empty'
-    cartSpan.on 'click', ->
-      window.location = '/cart'
+    likedSpan.html content
+    likedSpan.removeClass 'empty'
+    likedSpan.on 'click', ->
+      window.location = '/liked'
 
-inCart = (name) ->
-  if $.inArray(name, currentCart()) == -1
+inLiked = (name) ->
+  if $.inArray(name, currentLiked()) == -1
     false
   else
     true
 
-addToCart = (name) ->
-  tempCart = currentCart()
-  tempCart.push(name)
-  tempCart = $.unique tempCart
-  $.localStorage.set 'cart', tempCart
-  refreshCart tempCart
+addToLiked = (name) ->
+  tempLiked = currentLiked()
+  tempLiked.push(name)
+  tempLiked = $.unique tempLiked
+  $.localStorage.set 'liked', tempLiked
+  refreshLiked tempLiked
 
-removeFromCart = (name) ->
-  tempCart = currentCart()
-  tempCart.splice($.inArray(name, currentCart()), 1)
-  $.localStorage.set 'cart', tempCart
-  refreshCart tempCart
+removeFromLiked = (name) ->
+  tempLiked = currentLiked()
+  tempLiked.splice($.inArray(name, currentLiked()), 1)
+  $.localStorage.set 'liked', tempLiked
+  refreshLiked tempLiked
 
-renderCart = ->
+renderLiked = ->
   items = []
   total = 0
-  $.each currentCart(), (index, item) ->
+  $.each currentLiked(), (index, item) ->
     items.push $("<li><div class='name'>#{item}</div><div class='price'>$69</div><a class='remover' data-name='#{item}'>Remove</a></li>")
     total += 69
   items.push "<li class='total'><div class='name'>Total</div><div class='price'>$#{total}</div><a class='checkout'>Checkout</a></li>"
   $('ul.items').html items
 
-if $.localStorage.get('cart') == null
-  $.localStorage.set 'cart', []
+if $.localStorage.get('liked') == null
+  $.localStorage.set 'liked', []
 else
-  $.each $('.buy'), (index, button) ->
-    if inCart(itemFromBuy($(button)).data('name'))
+  $.each $('.like'), (index, button) ->
+    if inLiked(itemFromLike($(button)).data('name'))
       $(button).hide()
-  refreshCart currentCart()
+  refreshLiked currentLiked()
 
 
 if $('#show-room').size() > 0
@@ -281,23 +281,23 @@ if $('address').size() > 0
     if scrolled > 20 && scrolled < 380
       $('address').css({ transform: 'translate(0, '+(-(200-scrolled))+'px)' })
 
-if $('.buy').size() > 0
-  $('.buy').on 'click', ->
-    name = itemFromBuy($(this)).data('name')
-    addToCart name
+if $('.like').size() > 0
+  $('.like').on 'click', ->
+    name = itemFromLike($(this)).data('name')
+    addToLiked name
     $(this).fadeOut()
 
-if $('#your-cart').size() > 0
+if $('#your-liked').size() > 0
   $('.remove-all').on 'click', ->
     $.localStorage.removeAll()
-    $.localStorage.set 'cart', []
+    $.localStorage.set 'liked', []
     $('ul.items').html('')
-    refreshCart(currentCart())
+    refreshLiked(currentLiked())
 
-  renderCart()
+  renderLiked()
 
   $('.remover').on 'click', ->
     name = $(this).data 'name'
-    removeFromCart name
+    removeFromLiked name
     $(this).parent('li').fadeOut()
 
