@@ -172,8 +172,6 @@ main
             font-family: Hrot
     &.with-bumper
       padding-top: 7.5rem
-    &#glyphs
-      font-family: VeganSans
     &.foundry
       +span-columns(12)
       *
@@ -297,9 +295,9 @@ main
         font-size: 1.5rem
       div.features
         +span-columns(3)
-        .feature
-          +span-columns(3 of 3)
+        +omega
     &#glyphs
+      +font-weights
       padding: $default-spacer 2rem
       table
         border: none
