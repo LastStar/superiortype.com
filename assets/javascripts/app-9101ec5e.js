@@ -294,7 +294,7 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
     });
     moveButton = function(item, index) {
       var elementToMove, restart, timeout;
-      if (index > 3) {
+      if (index > 11) {
         index = 0;
       }
       elementToMove = buttons.selectAll('g#' + item.id + ' > g')[index];
@@ -303,7 +303,7 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
       }, item.speed, mina.bounce);
       restart = function() {
         ++index;
-        restartDelay += 300;
+        restartDelay += 100;
         return returnButtons(elementToMove, item, function() {
           return moveButton(item, index);
         });
