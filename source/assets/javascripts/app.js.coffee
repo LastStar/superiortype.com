@@ -185,20 +185,15 @@ showSlideShow = ->
       moveButton item, 0
 
   moveButton = (item, index) ->
-    index = 0 if index > 3
+    index = 0 if index > 11
 
     elementToMove = buttons.selectAll('g#'+item.id+' > g')[index]
-    # title = buttons.select 'g#'+item.id+'-title'
 
     elementToMove.animate { transform: 'translate('+item.final+') scale('+scale.final+')' }, item.speed, mina.bounce
-    # title.attr { opacity: 0, transform: 'translate(0, 0) scale(0)'  }
 
     restart = ->
-      # title.attr { opacity: 0, transform: 'translate(0, 0) scale(0)'  }
-      # title.unmouseover
-      # title.unmouseoout
       ++index
-      restartDelay += 300
+      restartDelay += 100
       returnButtons elementToMove, item, ->
         moveButton item, index
 
