@@ -37,10 +37,11 @@ html.nojs
         a href="/custom" Custom
         a href="/foundry" Foundry
       #liked
-        span.empty Nothing liked yet!
-
+        span.empty
 
     main
       == yield
+    section.liked-box
+      = partial 'partials/liked'
 
     = javascript_include_tag 'app'

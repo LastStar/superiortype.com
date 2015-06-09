@@ -4,12 +4,24 @@
 //= require jQuery-Storage-API/jquery.storageapi.min.js
 
 
-itemFromLike = (el) ->
-  el.parents('.tools').siblings('h4').children('input')
-
-currentLiked = ->
-  $.localStorage.get 'liked'
-
+likedSpan = $('#liked span')
+likedClose = $('.close')
+likedBox = $('.liked-box')
+hideLikedBox = ->
+  likedClose.off 'click'
+  likedBox.hide()
+  $('main').removeClass('faded')
+  $('body').removeClass('faded')
+  $('header.main').removeClass('faded')
+  likedSpan.show()
+  likedSpan.on 'click', showLikedBox
+showLikedBox = ->
+  likedSpan.hide().off 'click'
+  likedBox.show()
+  $('main').addClass('faded')
+  $('body').addClass('faded')
+  $('header.main').addClass('faded')
+  likedClose.on 'click', hideLikedBox
 refreshLiked = (liked) ->
   size = liked.length
   if size > 0
@@ -18,14 +30,32 @@ refreshLiked = (liked) ->
       content += '1 item'
     else
       content += "#{size} items"
-
-    likedSpan = $('#liked span')
-
     likedSpan.html content
     likedSpan.removeClass 'empty'
-    likedSpan.on 'click', ->
-      window.location = '/liked'
+    likedSpan.on 'click', showLikedBox
 
+    hideHelp = ->
+      $('.faq').hide()
+      $('.items').show()
+      $('.contact-form').show()
+      $(this).html('What\'s this')
+      $(this).on 'click', showHelp
+    showHelp = ->
+      $('.items').hide()
+      $('.faq').show()
+      $('.contact-form').hide()
+      $(this).html('Got it!')
+      $(this).on 'click', hideHelp
+    $('a.help').on 'click', showHelp
+  else
+    likedSpan.html ''
+    likedSpan.addClass 'empty'
+    $('.like').show()
+
+itemFromLike = (el) ->
+  el.parents('.tools').siblings('h4').children('input')
+currentLiked = ->
+  $.localStorage.get 'liked'
 inLiked = (name) ->
   if $.inArray(name, currentLiked()) == -1
     false
@@ -37,20 +67,27 @@ addToLiked = (name) ->
   tempLiked.push(name)
   tempLiked = $.unique tempLiked
   $.localStorage.set 'liked', tempLiked
-  refreshLiked tempLiked
 
 removeFromLiked = (name) ->
   tempLiked = currentLiked()
   tempLiked.splice($.inArray(name, currentLiked()), 1)
   $.localStorage.set 'liked', tempLiked
-  refreshLiked tempLiked
 
 renderLiked = ->
   items = []
   $.each currentLiked(), (index, item) ->
     items.push $("<li><div class='name'>#{item}</div><a class='remover' data-name='#{item}'>Remove</a></li>")
   $('ul.items').html items
-  $('ul.items').after "<div class='check-offer'><a>Check the Offer</a></div>"
+  $('.remover').on 'click', ->
+    name = $(this).data 'name'
+    removeFromLiked name
+    $(this).parent('li').fadeOut()
+    if currentLiked().length > 0
+      refreshLiked(currentLiked())
+      renderLiked()
+    else
+      refreshLiked(currentLiked())
+      hideLikedBox()
 
 if $.localStorage.get('liked') == null
   $.localStorage.set 'liked', []
@@ -60,14 +97,14 @@ else
       $(button).hide()
   refreshLiked currentLiked()
 
-
-if $('#show-room').size() > 0
+showSlideShow = ->
   svg = $('svg')
   maxWidth = svg.width()
   width = svg.width() - 150
   height = svg.height()
 
   snap = Snap "#show-room"
+  snap.clear()
 
   zero = 'translate(0, 0)'
   scale = { initial: 0.01, final: 1.9 }
@@ -189,6 +226,13 @@ if $('#show-room').size() > 0
     element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, ->
       setTimeout callback, 1500 - item.speed
 
+if $('#show-room').size() > 0
+  showSlideShow()
+
+$(window).resize ->
+  showSlideShow()
+
+
 if $('section.fonts').size() > 0
   family = (el) ->
     el.parent().parent().siblings('h3')
@@ -283,19 +327,17 @@ if $('.like').size() > 0
   $('.like').on 'click', ->
     name = itemFromLike($(this)).data('name')
     addToLiked name
-    $(this).fadeOut()
-
-if $('#your-liked').size() > 0
-  $('.remove-all').on 'click', ->
-    $.localStorage.removeAll()
-    $.localStorage.set 'liked', []
-    $('ul.items').html('')
+    $(this).addClass('pushed')
+    renderLiked()
     refreshLiked(currentLiked())
 
-  renderLiked()
+$('.remove-all').on 'click', ->
+  $.localStorage.removeAll()
+  $.localStorage.set 'liked', []
+  $('ul.items').html('')
+  refreshLiked(currentLiked())
+  hideLikedBox()
 
-  $('.remover').on 'click', ->
-    name = $(this).data 'name'
-    removeFromLiked name
-    $(this).parent('li').fadeOut()
+renderLiked()
+
 

@@ -17,9 +17,14 @@ body
   min-width: 64rem
   margin: auto
   &.dark
-    background-color: $darkgrey
+    background-color: $dark-grey
+  &.faded
+    overflow: hidden
+
 
 header.main
+  &.faded
+    opacity: 0.25
   *
     font-family: VeganSans
   +row
@@ -59,6 +64,8 @@ header.main
         background-color: $white
 
 main
+  &.faded
+    opacity: 0.25
   section
     +row
     svg
@@ -97,7 +104,7 @@ main
             +span-columns(2)
             span
               display: inline-block
-              padding: 0.5rem
+              padding: 0.5rem 0.25rem
               font-family: VeganSans
               cursor: pointer
           .liked
@@ -111,6 +118,11 @@ main
               border: solid thin $blue
               &:hover
                 background-color: $blue
+              &.pushed
+                +transform(translateY(0))
+                +transition-property(transform, opacity)
+                +transition-duration(750ms)
+                opacity: 0
         h3
           +span-columns(12)
           font-size: 4rem
@@ -283,7 +295,7 @@ main
           a
             +span-columns(1)
             padding-top: $default-spacer
-            color: $darkgrey
+            color: $dark-grey
             text-align: left
             &.active
               color: $black
@@ -305,64 +317,98 @@ main
           border: none
           text-align: center
           font-size: 4rem
-    &#your-liked
-      +row
-      padding: $default-spacer 2rem
-      background-color: $blue
-      header
-        +row
-        h2
-          +span-columns(2)
-          font-size: 1.5rem
-          padding: 0.5rem 0
-        .remove-all
-          +span-columns(1)
-          +omega
-          +shift(9)
-          +white-hover
-          color: black
-          text-align: center
-      ul.items
-        border-bottom: solid thin $grey
-        li
-          +row
-          height: $default-spacer
-          border-top: solid thin $grey
-          padding-top: 0.75rem
-          .name
-            +span-columns(11)
-          .remover,
-            +span-columns(1)
-            +omega
-            +white-hover
-            text-align: center
-            color: $black
-      .check-offer
-        +span-columns(3)
-        +shift(9)
+
+section.liked-box
+  +row
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  display: none
+  opacity: 1
+  overflow: scroll
+  width: 80%
+  height: 80%
+  margin: 3% 10%
+  background-color: $blue
+  border-radius: 1.5rem
+  .close
+    position: fixed
+    top: 3rem
+    right: 12%
+    text-align: center
+  header
+    +span-columns(11)
+    padding: $small-spacer 0 0
+    opacity: 1
+    h2
+      +span-columns(3 of 11)
+      +shift(1)
+      font-size: 1.5rem
+      padding: 0.5rem 0
+      color: $white
+      background-color: $black
+      border-radius: 1.5rem
+      text-align: center
+    a
+      +span-columns(2 of 11)
+      +omega(3)
+      text-align: center
+      color: black
+      text-align: center
+      +white-hover
+      &:nth-child(2)
+        +shift(3)
+
+  ul.items
+    +span-columns(10)
+    +shift(1)
+    opacity: 1
+    border-bottom: solid thin $grey
+    li
+      height: $default-spacer
+      border-top: solid thin $grey
+      padding-top: 0.75rem
+      .name
+        +span-columns(8 of 10)
+      .remover,
+        +span-columns(2)
         +omega
-        +pad(1rem 0)
+        +grey-hover
         text-align: center
-        font-size: 1.5rem
-        a
-          color: $black
+        color: $black
+  .faq
+    +span-columns(10)
+    +shift(1)
+    display: none
+  .contact-form
+    +span-columns(10)
+    +shift(1)
+    padding-top: $default-spacer
+    input
+      +span-columns(3 of 10)
+      +omega(3)
+      border-radius: 1rem
+      border: none
+      box-shadow: none
+      padding: 0.5rem 1rem
+      &.check-offer
+        +shift
+        +span-columns(3 of 10)
+        background-color: $white
+        color: $black
 
 $big-desktop:  new-breakpoint(min-width 1280px 18)
-// $ipad-portrait: new-breakpoint(max-width 769px 4);
-// $iphone-landscape: new-breakpoint(max-width 480px 4);
+$ipad-portrait: new-breakpoint(max-width 769px 4)
+$iphone-landscape: new-breakpoint(max-width 480px 4)
 
-// @include media($ipad-portrait) {
-//   body {
-//     font-size: modular-scale(-2, 1rem);
-//     min-width: 60rem;
-//   }
++media($ipad-portrait)
+  body
+    font-size: modular-scale(-2, 1rem)
+    min-width: 60rem
 
-//   header {
-//     nav {
-//       opacity: 1;
-//       @include transform(translateX(0px));
-//     }
-//   }
-// }
-
-
+  header
+    nav
+      opacity: 1
+      @include transform(translateX(0px))

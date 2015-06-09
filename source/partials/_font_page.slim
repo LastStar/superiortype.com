@@ -2,7 +2,7 @@ section.fonts#styles
   nav
     div class=current_page.data.id
       .styles.visible
-        = partial 'styles', locals: { styles: current_page.data.styles }
+        = partial 'partials/styles', locals: { styles: current_page.data.styles }
 section.about#details
   - for p in current_page.data.details.split("\n")
     p.text= p
