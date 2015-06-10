@@ -346,13 +346,6 @@ $('header.main h1').on 'mouseout', ->
 $('.fonts input.tester').on 'change', ->
   $(this).parent('h3').siblings('.styles').children('h4').html($(this).val())
 
-if $('address').size() > 0
-  $(window).scroll ->
-    scrolled = $(window).scrollTop()
-    console.log scrolled
-    if scrolled > 20 && scrolled < 380
-      $('address').css({ transform: 'translate(0, '+(-(200-scrolled))+'px)' })
-
 if $('.like').size() > 0
   $('.like').on 'click', ->
     name = $(this).data('name')

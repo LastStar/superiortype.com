@@ -82,7 +82,7 @@ main
         & > .font
           +row
           padding: 0 0 0.5rem 0
-          border-top: 1px solid $grey
+          border-top: thin solid $grey
           .tools
             .liked
               span.like
@@ -166,12 +166,12 @@ main
             font-size: 2rem
             padding: 1.5rem 0
             margin: 0
-            border-top: 1px solid $grey
+            border-top: thin solid $grey
           .style
             +row
             h4
               border-top: none
-              border-bottom: 1px solid $grey
+              border-bottom: thin solid $grey
               padding: 0.25rem 0 1.5rem
             .tools
               padding: 0.25rem 0
@@ -211,7 +211,7 @@ main
       address
         +span-columns(4)
         +omega
-        +transform(translateY(-180px))
+        +transform(translateY(-10rem))
         font-style: normal
         font-size: 1.25rem
         padding: $default-spacer
@@ -429,7 +429,7 @@ section.liked-box
       text-align: center
       padding: 3rem
 
-$big-desktop:  new-breakpoint(min-width 1280px 18)
+$big-desktop:  new-breakpoint(min-width 1280px 12)
 $large-desktop:  new-breakpoint(min-width 1600px 18)
 $ipad-portrait: new-breakpoint(max-width 769px 4)
 $iphone-landscape: new-breakpoint(max-width 480px 4)
@@ -438,11 +438,11 @@ $iphone-landscape: new-breakpoint(max-width 480px 4)
   body
     font-size: modular-scale(-2, 1rem)
     min-width: 60rem
-
   header
     nav
       opacity: 1
-      @include transform(translateX(0px))
+      @include transform(translateX(0))
+
 +media($big-desktop)
   header.main
     nav
@@ -457,7 +457,6 @@ $iphone-landscape: new-breakpoint(max-width 480px 4)
 +media($large-desktop)
   body
     font-size: modular-scale(1, 1rem)
-
   header.main
     nav
       +transform(translateX(-26rem))
