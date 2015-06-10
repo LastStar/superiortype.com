@@ -3,6 +3,14 @@ section.fonts#styles
     div class=current_page.data.id
       .styles.visible
         = partial 'partials/styles', locals: { styles: current_page.data.styles }
+section id='glyphs' class=current_page.data.id
+  table
+    - i = 0
+    - "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghi\"“”‘’‹›«»#(/)[]{|}-–—_.,:;©®™ªº^+-×=<>•".each_codepoint do |c|
+      - if i%5 == 0
+        tr
+      td= c.chr(Encoding::UTF_8)
+      - i += 1
 section.about#details
   - for p in current_page.data.details.split("\n")
     p.text= p
@@ -27,15 +35,3 @@ section.about#details
       | Release year
       br
       | 2015
-
-
-section id='glyphs' class=current_page.data.id
-  table
-    - i = 0
-    - "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghi\"“”‘’‹›«»#(/)[]{|}-–—_.,:;©®™ªº^+-×=<>•".each_codepoint do |c|
-      - if i%5 == 0
-        tr
-      td= c.chr(Encoding::UTF_8)
-      - i += 1
-
-

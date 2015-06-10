@@ -3,10 +3,10 @@
 //= require jquery.scrollTo/jquery.scrollTo.min
 //= require jQuery-Storage-API/jquery.storageapi.min.js
 
-
 likedSpan = $('#liked span')
 likedClose = $('.close')
 likedBox = $('.liked-box')
+
 hideLikedBox = ->
   likedClose.off 'click'
   likedBox.hide()
@@ -15,6 +15,7 @@ hideLikedBox = ->
   $('header.main').removeClass('faded')
   likedSpan.show()
   likedSpan.on 'click', showLikedBox
+
 showLikedBox = ->
   likedSpan.hide().off 'click'
   likedBox.show()
@@ -22,6 +23,7 @@ showLikedBox = ->
   $('body').addClass('faded')
   $('header.main').addClass('faded')
   likedClose.on 'click', hideLikedBox
+
 refreshLiked = (liked) ->
   size = liked.length
   if size > 0
@@ -40,22 +42,23 @@ refreshLiked = (liked) ->
       $('.contact-form').show()
       $(this).html('What\'s this')
       $(this).on 'click', showHelp
+
     showHelp = ->
       $('.items').hide()
       $('.faq').show()
       $('.contact-form').hide()
       $(this).html('Got it!')
       $(this).on 'click', hideHelp
+
     $('a.help').on 'click', showHelp
   else
     likedSpan.html ''
     likedSpan.addClass 'empty'
     $('.like').show()
 
-itemFromLike = (el) ->
-  el.parents('.tools').siblings('h4').children('input')
 currentLiked = ->
   $.localStorage.get 'liked'
+
 inLiked = (name) ->
   if $.inArray(name, currentLiked()) == -1
     false
@@ -82,50 +85,52 @@ renderLiked = ->
     name = $(this).data 'name'
     removeFromLiked name
     $(this).parent('li').fadeOut()
+    $(".like[data-name='#{name}']").removeClass('pushed')
     if currentLiked().length > 0
       refreshLiked(currentLiked())
       renderLiked()
     else
-      refreshLiked(currentLiked())
       hideLikedBox()
 
 if $.localStorage.get('liked') == null
   $.localStorage.set 'liked', []
 else
   $.each $('.like'), (index, button) ->
-    if inLiked(itemFromLike($(button)).data('name'))
-      $(button).hide()
+    if inLiked($(button).data('name'))
+      $(button).addClass('pushed')
   refreshLiked currentLiked()
 
 showSlideShow = ->
+  return false if $('#show-room').size() == 0
   svg = $('svg')
-  maxWidth = svg.width()
-  width = svg.width() - 150
-  height = svg.height()
+  height = $(window).height() - 53
+  width = svg.width()
+  svg.css({ height: height })
 
   snap = Snap "#show-room"
   snap.clear()
 
   zero = 'translate(0, 0)'
-  scale = { initial: 0.01, final: 1.9 }
+  scale = { initial: 0.0001, final: $(window).height()/550 }
+  halfCircle = 110*scale.final
 
   config = {
     hrot: {
       id: 'hrot',
-      initial: [(width/2) - 5, -76],
-      final: [(width/2) - 145, 80],
+      initial: [(width/2) - 5, 0],
+      final: [(width/2) - halfCircle, height/7],
       speed: 900
     }
     kundaBook: {
       id: 'kunda-book'
       initial: [(width+90), height]
-      final: [(width/2+70), 440]
+      final: [(width/2), height/2]
       speed: 800
       showRoom: '/assets/images/kunda-book-show-room.svg'
       preSlide: (show) ->
         show.selectAll('g#slide-1 > g').attr(transform: 'translate(-'+width+', 0)')
         show.select('g#slide-2').attr(opacity: 0)
-        show.select('g#background rect').attr { width: maxWidth, height: height, opacity: 0 }
+        show.select('g#background rect').attr { width: width, height: height, opacity: 0 }
 
       showSlide: (show) ->
         slides = show.selectAll('g#canvas > g#slide-1 > g').attr(transform: 'translate(-'+width+', 0)')
@@ -148,7 +153,7 @@ showSlideShow = ->
     veganSans: {
       id: 'vegan-sans',
       initial: [0, height],
-      final: [(width/2-370), 440],
+      final: [(width/2) - 2*halfCircle, height/2],
       speed: 700
       showRoom: '/assets/images/vegan-sans-show-room.svg'
       color: '#ff0'
@@ -169,6 +174,7 @@ showSlideShow = ->
             , 750)
     }
   }
+  console.log config
 
   restartDelay = 3000
 
@@ -300,10 +306,10 @@ if $('section.fonts#styles').size() > 0
     e.stopPropagation()
     false
 
-$('header.main').on 'mouseenter', ->
+$('header.main h1').on 'mouseenter', ->
   $('header.main nav').addClass('visible')
 
-$('header.main').on 'mouseout', ->
+$('header.main h1').on 'mouseout', ->
   hideMenu = ->
     $('header.main nav').removeClass('visible')
   setTimeout hideMenu, 2000
@@ -320,7 +326,7 @@ if $('address').size() > 0
 
 if $('.like').size() > 0
   $('.like').on 'click', ->
-    name = itemFromLike($(this)).data('name')
+    name = $(this).data('name')
     addToLiked name
     $(this).addClass('pushed')
     renderLiked()
@@ -328,11 +334,10 @@ if $('.like').size() > 0
 
 $('.remove-all').on 'click', ->
   $.localStorage.removeAll()
+  $('.pushed').removeClass('pushed')
   $.localStorage.set 'liked', []
   $('ul.items').html('')
   refreshLiked(currentLiked())
   hideLikedBox()
 
 renderLiked()
-
-

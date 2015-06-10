@@ -56,7 +56,7 @@ section.fonts
   nav
     - for font in current_page.data.fonts
       div class="font #{font[:id]}"
-        = partial 'tools_w_list'
+        = partial 'tools_w_list', locals: { name: font[:name] }
         h3
           a href="fonts/#{font[:id]}" = font[:name]
         .styles

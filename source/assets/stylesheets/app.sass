@@ -70,7 +70,6 @@ main
     +row
     svg
       +span-columns(12)
-      height: 60rem
       margin: auto
     &.fonts
       overflow: hidden
@@ -119,7 +118,7 @@ main
               &:hover
                 background-color: $blue
               &.pushed
-                +transform(translateY(0))
+                +transform(translateY(-$small-spacer))
                 +transition-property(transform, opacity)
                 +transition-duration(750ms)
                 opacity: 0
@@ -279,11 +278,16 @@ main
         &.fixed
           padding: 1rem 0 1rem
         h2
-          font-family: VeganSans
           +span-columns(5)
           font-size: $default-spacer
           font-weight: normal
           margin: 1rem 0
+          &.hrot
+            font-family: Hrot
+          &.kunda-book
+            font-family: KundaBook
+          &.vegan-sans
+            font-family: VeganSans
           a
             font-weight: 100
             color: $black
