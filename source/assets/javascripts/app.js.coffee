@@ -7,22 +7,40 @@ likedSpan = $('#liked span')
 likedClose = $('.close')
 likedBox = $('.liked-box')
 
+emailIsValid = (email) ->
+  pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i)
+  pattern.test(email)
+
+clearMessage = ->
+  $('.message').html('')
+
 hideLikedBox = ->
   likedClose.off 'click'
-  likedBox.hide()
+  likedBox.hide('slow')
   $('main').removeClass('faded')
   $('body').removeClass('faded')
   $('header.main').removeClass('faded')
   likedSpan.show()
   likedSpan.on 'click', showLikedBox
+  clearMessage()
 
 showLikedBox = ->
   likedSpan.hide().off 'click'
-  likedBox.show()
+  likedBox.show('fast')
   $('main').addClass('faded')
   $('body').addClass('faded')
   $('header.main').addClass('faded')
   likedClose.on 'click', hideLikedBox
+  $('.contact-form').on 'submit', (e) ->
+    email = $(this).children("input[type='email']").val()
+    if email != '' and emailIsValid(email)
+      e.stopPropagation()
+      $('.message').html('<h2>Thank you! Check your email soon.</h2>')
+      setTimeout hideLikedBox, 2500
+    else
+      $('.message').html('<h2>Please provide email in valid format!</h2>')
+      setTimeout clearMessage, 2500
+    false
 
 refreshLiked = (liked) ->
   size = liked.length
@@ -90,6 +108,7 @@ renderLiked = ->
       refreshLiked(currentLiked())
       renderLiked()
     else
+      refreshLiked(currentLiked())
       hideLikedBox()
 
 if $.localStorage.get('liked') == null
@@ -254,22 +273,32 @@ if $('section.fonts').size() > 0
     styles($(this)).css({ 'font-size': stylesSize })
   $('.apperance .list').on 'click', ->
     if stylesGr($(this)).hasClass('visible')
-      stylesGr($(this)).removeClass('visible')
+      $(this).removeClass('open')
+      curStylesGr = stylesGr($(this))
+      curStylesGr.removeClass('visible')
+      hide = ->
+        curStylesGr.hide()
+      setTimeout hide, 750
     else
-      stylesGr($(this)).addClass('visible')
-    $.scrollTo(stylesGr($(this)), 'max')
+      $(this).addClass('open')
+      stylesGr($(this)).show 150, ->
+        $.scrollTo($(this), 'max')
+        $(this).addClass('visible')
   $('.fonts').css { opacity: 1 }
 
 if $('section.fonts#styles').size() > 0
-  styles = (el) ->
+  style = (el) ->
     el.parent().parent().siblings('h4').children('input')
 
   $('.apperance .minus').on 'click', ->
-    stylesSize = (parseInt(styles($(this)).first().css('font-size'))*0.875)+'px'
-    styles($(this)).css({ 'font-size': stylesSize })
+    styleSize = (parseInt(style($(this)).first().css('font-size'))*0.75)
+    $(this).siblings('.size').html(parseInt(styleSize)+'pt')
+    style($(this)).css({ 'font-size': styleSize+'px' })
+
   $('.apperance .plus').on 'click', ->
-    stylesSize = (parseInt(styles($(this)).first().css('font-size'))*1.125)+'px'
-    styles($(this)).css({ 'font-size': stylesSize })
+    styleSize = (parseInt(style($(this)).first().css('font-size'))*1.25)
+    $(this).siblings('.size').html(parseInt(styleSize)+'pt')
+    style($(this)).css({ 'font-size': styleSize+'px' })
 
   fixHeader = true
   $(window).on 'scroll', ->
@@ -340,4 +369,23 @@ $('.remove-all').on 'click', ->
   refreshLiked(currentLiked())
   hideLikedBox()
 
+if $('#styles .styles').size() > 0
+  $('.styles .style input').on 'input', ->
+    if $(this).val() == ''
+      $(this).parent().siblings('.tools').children('.apperance').children('.name').removeClass('visible')
+    else
+      $(this).parent().siblings('.tools').children('.apperance').children('.name').addClass('visible')
+  $('.like').addClass('pushed')
+  $('#styles .styles').show 150, ->
+    $('#styles .styles').addClass('visible')
+    showLike = ->
+      $('.like').removeClass('pushed')
+      if $.localStorage.get('liked') == null
+        $.localStorage.set 'liked', []
+      else
+        $.each $('.like'), (index, button) ->
+          if !inLiked($(button).data('name'))
+            $(button).removeClass('pushed')
+        refreshLiked currentLiked()
+    setTimeout showLike, 750
 renderLiked()

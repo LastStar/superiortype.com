@@ -41,12 +41,12 @@ header.main
         color: $black
   nav
     +span-columns(3)
-    +transform(translateX(-130px))
+    +transform(translateX(-13rem))
     +transition-property(transform, opacity)
     +transition-duration(500ms)
     opacity: 0
     &.visible
-      +transform(translateX(0px))
+      +transform(translateX(-3rem))
       opacity: 1
     a
       +span-columns(1 of 3)
@@ -86,7 +86,7 @@ main
           .tools
             .liked
               span.like
-                +transform(translateY(6rem))
+                +transform(translateY(5rem))
           h3 a
             display: block
             overflow: hidden
@@ -106,6 +106,21 @@ main
               padding: 0.5rem 0.25rem
               font-family: VeganSans
               cursor: pointer
+              font-size: modular-scale(-1, 1rem)
+              &.list
+                opacity: 0.5
+              &.open
+                opacity: 1
+              &.name, &.size
+                vertical-align: top
+              &.name
+                +transition-property(opacity)
+                +transition-duration($medium-delay)
+                opacity: 0
+              &.visible
+                opacity: 1
+
+
           .liked
             +shift(9)
             +span-columns(1)
@@ -120,7 +135,7 @@ main
               &.pushed
                 +transform(translateY(-$small-spacer))
                 +transition-property(transform, opacity)
-                +transition-duration(750ms)
+                +transition-duration($medium-delay)
                 opacity: 0
         h3
           +span-columns(12)
@@ -130,23 +145,22 @@ main
           font-style: normal
           margin: 0
           a
-            color: black
+            color: $black
           input
             border: none
             box-shadow: none
             padding: 0
             margin: 0
         .styles
-          +transform(translateX(-500px))
+          +transform(translateX(-50rem))
           +transition-property(transform, opacity)
-          +transition-duration(750ms)
+          +transition-duration($medium-delay)
           +row
           opacity: 0
           display: none
           &.visible
             opacity: 1
-            display: block
-            +transform(translateX(0px))
+            +transform(translateX(0))
           h4
             +span-columns(12)
             font-size: 2rem
@@ -298,11 +312,15 @@ main
         nav
           a
             +span-columns(1)
-            padding-top: $default-spacer
+            margin-top: $default-spacer - 0.5rem
             color: $dark-grey
-            text-align: left
+            text-align: center
             &.active
               color: $black
+              font-weight: bold
+              border-radius: 1rem
+              border: none
+              background-color: $grey
     &.about
       margin: $default-spacer 0
       p.text
@@ -359,7 +377,7 @@ section.liked-box
       +span-columns(2 of 11)
       +omega(3)
       text-align: center
-      color: black
+      color: $black
       text-align: center
       +white-hover
       &:nth-child(2)
@@ -402,8 +420,17 @@ section.liked-box
         +span-columns(3 of 10)
         background-color: $white
         color: $black
+  .message
+    +span-columns(10)
+    +shift(1)
+    h2
+      font-family: VeganSans
+      font-size: modular-scale(2, 1rem)
+      text-align: center
+      padding: 3rem
 
 $big-desktop:  new-breakpoint(min-width 1280px 18)
+$large-desktop:  new-breakpoint(min-width 1600px 18)
 $ipad-portrait: new-breakpoint(max-width 769px 4)
 $iphone-landscape: new-breakpoint(max-width 480px 4)
 
@@ -416,3 +443,27 @@ $iphone-landscape: new-breakpoint(max-width 480px 4)
     nav
       opacity: 1
       @include transform(translateX(0px))
++media($big-desktop)
+  header.main
+    nav
+      +transform(translateX(-18rem))
+      &.visible
+        +transform(translateX(-8rem))
+  section.font-header
+    header
+      nav
+        +transform(translateX(-6rem))
+
++media($large-desktop)
+  body
+    font-size: modular-scale(1, 1rem)
+
+  header.main
+    nav
+      +transform(translateX(-26rem))
+      &.visible
+        +transform(translateX(-13rem))
+  section.font-header
+    header
+      nav
+        +transform(translateX(-16rem))
