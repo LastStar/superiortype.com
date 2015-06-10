@@ -514,19 +514,6 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
     return $(this).parent('h3').siblings('.styles').children('h4').html($(this).val());
   });
 
-  if ($('address').size() > 0) {
-    $(window).scroll(function() {
-      var scrolled;
-      scrolled = $(window).scrollTop();
-      console.log(scrolled);
-      if (scrolled > 20 && scrolled < 380) {
-        return $('address').css({
-          transform: 'translate(0, ' + (-(200 - scrolled)) + 'px)'
-        });
-      }
-    });
-  }
-
   if ($('.like').size() > 0) {
     $('.like').on('click', function() {
       var name;
