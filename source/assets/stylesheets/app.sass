@@ -198,7 +198,7 @@ main
     &.with-bumper
       padding-top: 7.5rem
     &.foundry
-      +span-columns(12)
+      +row
       *
         font-family: VeganSans
       h2
@@ -208,50 +208,81 @@ main
         +shift(2)
         +span-columns(5)
         margin-top: $default-spacer
-      address
-        +span-columns(4)
-        +omega
-        font-style: normal
-        font-size: 1.25rem
-        margin-top: $default-spacer
-        padding: $default-spacer
-        background-color: $grey
-        border-radius: $default-spacer
-      .light-green
+      .about-address
         background-color: $light-green
-        +span-columns(12 of 12)
-      .text
-        +span-columns(6 of 12)
-        +shift
-        padding: $default-spacer 0
-        p
-          padding: 0 2rem
+        +span-columns(12)
+        .contact-lost
+          +span-columns(6 of 12)
+          +omega
+          address
+            font-style: normal
+            font-size: 1.25rem
+            margin: $default-spacer $default-spacer
+            padding: $default-spacer
+            background-color: $grey
+            border-radius: $default-spacer
+            .social
+              padding-top: 1rem
+              a
+                +span-columns(2 of 6)
+                border-radius: 1rem
+                border: none
+                padding: 0.25rem 0.5rem
+                margin: 0 0.5rem 0 0
+                color: $white
+                font-size: modular-scale(-1, 1rem)
+                text-align: center
+                &.facebook
+                  background-color: #0060ff
+                &.twitter
+                  background-color: #00beff
+                &.instagram
+                  background-color: #a04aff
+          .lost
+            font-size: modular-scale(-1, 1rem)
+            padding: 0 $default-spacer
+        .text
+          +span-columns(6 of 12)
+          padding: $default-spacer 0
+          p
+            padding: 0 2rem
       .people
         +row
+        background-color: $light-green
         .person
-          +span-columns(4 of 12)
+          +span-columns(6)
+          +omega(2)
           margin-top: $default-spacer
           .photo
-            +shift(3)
-            +span-columns(2 of 4)
-            padding: 0 0 $default-spacer 0
+            padding: $default-spacer
+            text-align: center
             img
               border-radius: 50%
           p
-            +shift(1)
-            +span-columns(2 of 4)
+            padding: $small-spacer
+      .studio
+        +span-columns(6)
+        +shift(3)
+        margin-bottom: $default-spacer
+        &.hidden
+          display: none
+        img
+          border-radius: 2rem
       .nonstop
-        +shift(1)
-        +span-columns(6 of 12)
-        margin-top: $default-spacer
+        +span-columns(6)
+        +shift(3)
+        display: none
+        margin-bottom: $default-spacer
         background-color: $yellow
         border-radius: 2rem
-        padding: $default-spacer 0
+        height: 24rem
+        &.visible
+          display: block
         h3
           +span-columns(6 of 6)
           font-size: 6rem
           text-align: center
-          +transform(rotate(-30deg))
+          +transform(rotate(-15deg) translate(-1rem, 5rem))
     &.custom
       +span-columns(12)
       font-family: VeganSans

@@ -380,4 +380,11 @@ if $('#styles .styles').size() > 0
             $(button).removeClass('pushed')
         refreshLiked currentLiked()
     setTimeout showLike, 750
+
+if $('#foundry')
+  $('.studio').on 'mouseenter', ->
+    $(this).addClass('hidden')
+    $('.nonstop').addClass('visible').on 'mouseout', ->
+      $(this).removeClass('visible')
+      $('.studio').removeClass('hidden')
 renderLiked()
