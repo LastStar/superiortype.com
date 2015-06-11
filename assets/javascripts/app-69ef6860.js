@@ -498,16 +498,13 @@ if(1==arguments.length){if(d.is(a,"object")){for(var f in a)a[t](f)&&this.data(f
     });
   }
 
-  $('header.main h1').on('mouseenter', function() {
-    return $('header.main nav').addClass('visible');
-  });
-
-  $('header.main h1').on('mouseout', function() {
+  $('header.main').on('mouseenter', function() {
     var hideMenu;
+    $('header.main nav').addClass('visible');
     hideMenu = function() {
       return $('header.main nav').removeClass('visible');
     };
-    return setTimeout(hideMenu, 2000);
+    return setTimeout(hideMenu, 10000);
   });
 
   $('.fonts input.tester').on('change', function() {
