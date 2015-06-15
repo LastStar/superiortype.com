@@ -316,7 +316,7 @@ main
         position: fixed
         top: 0
         z-index: 10
-        width: 100%
+        width: 100vw
       header
         border-bottom: thin solid $grey
         padding: $default-spacer 0 2rem
@@ -486,7 +486,7 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
   html
     font-size: modular-scale(-1, 16px)
   body
-    min-width: 45rem
+    min-width: 53rem
   header
     nav
       opacity: 1
@@ -495,20 +495,21 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
     #liked
       +shift(3)
       +span-columns(3)
-+media($phone-landscape)
-  html
-    font-size: modular-scale(-2, 16px)
-  body
-    min-width: 25rem
-  header
-    nav
-      opacity: 1
-      @include transform(translateX(0))
-+media($phone-portrait)
-  html
-    font-size: modular-scale(-2, 16px)
-  body
-    min-width: 20rem
+  main
+    section
+      svg#show-room
+        display: none
+      &.fonts
+        nav
+          .tools
+            .apperance
+              +span-columns(3)
+            .liked
+              +span-columns(1)
+              +shift(0)
+              +omega
+              span.like
+                +transform(translateY($tiny-spacer))
   header.main
     h1, nav
       +span-columns(2)
@@ -529,39 +530,46 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
         +omega(1)
   main
     section
-      svg#show-room
-        display: none
-      &.fonts
-        nav
-          .tools
-            .apperance
-              +span-columns(3)
-            .liked
-              +span-columns(1)
+      &.liked-box
+        header
+          +span-columns(4)
+          h2
+            +span-columns(4)
+            +shift(0)
+          a
+            +span-columns(2 of 4)
+            +omega(2)
+            +pad(1rem 0)
+            &:nth-child(2)
               +shift(0)
-              +omega
-              span.like
-                +transform(translateY($tiny-spacer))
-  section.liked-box
-    header
-      +span-columns(4)
-      h2
-        +span-columns(4)
-        +shift(0)
-      a
-        +span-columns(2 of 4)
-        +omega(2)
-        +pad(1rem 0)
-        &:nth-child(2)
+        .contact-form
+          +span-columns(4)
           +shift(0)
-    .contact-form
-      +span-columns(4)
-      +shift(0)
-      input
-        +span-columns(2 of 4)
-        +shift(1)
-        +omega(2)
-        &.check-offer
-          +span-columns(2 of 4)
-          +shift(1)
+          input
+            +span-columns(2 of 4)
+            +shift(1)
+            +omega(2)
+            &.check-offer
+              +span-columns(2 of 4)
+              +shift(1)
+      &.font-header
+        header
+          h2
+            +span-columns(4)
+            a
+              img
+                width: $small-spacer
+          nav
+            +span-columns(4)
+            a
+              +span-columns(1 of 4)
+              +omega(4)
 
++media($phone-landscape)
+  html
+    font-size: modular-scale(-2, 16px)
+  body
+    min-width: 53rem
++media($phone-portrait)
+  body
+    min-width: 35rem
