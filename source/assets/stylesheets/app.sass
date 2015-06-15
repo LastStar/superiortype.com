@@ -377,16 +377,17 @@ section.liked-box
   top: 0
   left: 0
   width: 80vw
-  height: 80vh
   display: none
   opacity: 1
   overflow: scroll
   margin: 10vh 10vw
   background-color: $blue
   border-radius: 1.5rem
+  border: thin solid $black
   .close
     position: relative
-    top: 1rem
+    top: $tiny-spacer
+    right: -$tiny-spacer
     text-align: center
   header
     +span-columns(11)
@@ -409,6 +410,9 @@ section.liked-box
       text-align: center
       +white-hover
       &:nth-child(2)
+        border-radius: 1rem
+        border: thin solid $black
+      &:nth-child(3)
         +shift(3)
   ul.items
     +span-columns(10)
@@ -434,7 +438,7 @@ section.liked-box
   .contact-form
     +span-columns(10)
     +shift(1)
-    padding-top: $default-spacer
+    padding: $default-spacer 0
     input
       +span-columns(3 of 10)
       +omega(3)
