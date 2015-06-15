@@ -345,7 +345,7 @@ main
           a
             +span-columns(1)
             +omega(4)
-            margin-top: $default-spacer - 0.5rem
+            margin-top: $small-spacer
             padding: 0.25rem 1rem
             color: $dark-grey
             text-align: center
@@ -552,8 +552,13 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
             &.check-offer
               +span-columns(2 of 4)
               +shift(1)
+      &.fonts
+        nav
+          h3
+            font-size: 9rem
       &.font-header
         header
+          +pad($tiny-spacer 0 $tiny-spacer)
           h2
             +span-columns(4)
             a
@@ -564,12 +569,26 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
             a
               +span-columns(1 of 4)
               +omega(4)
+              margin-top: $tiny-spacer
 
 +media($phone-landscape)
   html
     font-size: modular-scale(-2, 16px)
   body
     min-width: 53rem
+  main
+    section
+      &.fonts
+        nav
+          h3
+            font-size: 4rem
+
 +media($phone-portrait)
   body
     min-width: 35rem
+  main
+    section
+      &.fonts
+        nav
+          h3
+            font-size: 5rem
