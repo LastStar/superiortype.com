@@ -12,8 +12,9 @@ section id='glyphs' class=current_page.data.id
       td= c.chr(Encoding::UTF_8)
       - i += 1
 section.about#details
-  - for p in current_page.data.details.split("\n")
-    p.text= p
+  .description
+    - for p in current_page.data.details.split("\n")
+      p.text= p
   .features
     p.feature
       | Styles in font family
@@ -35,3 +36,16 @@ section.about#details
       | Release year
       br
       | 2015
+
+  .opentype
+    h4 OpenType features
+    img src="/assets/images/#{current_page.data.id}-opentype.svg"
+  - if current_page.data.inuse
+    .inuse
+      h4 In use
+      figure
+        img src="/assets/images/#{current_page.data.id}-inuse.jpg"
+        figcaption
+          - for p in current_page.data.inuse.split("\n")
+            = p
+            br

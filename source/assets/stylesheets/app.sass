@@ -103,7 +103,7 @@ main
           font-size: 1rem
           padding-bottom: 0.5rem
           .apperance
-            +span-columns(2)
+            +span-columns(4)
             span
               display: inline-block
               padding: 0.5rem 0.25rem
@@ -123,7 +123,7 @@ main
               &.visible
                 opacity: 1
           .liked
-            +shift(9)
+            +shift(7)
             +span-columns(1)
             +omega
             text-align: right
@@ -354,13 +354,34 @@ main
               font-weight: bold
     &.about
       margin: $default-spacer 0
-      p.text
+      .description
         +span-columns(9)
-        padding: 0 2rem
-        font-size: 1.5rem
-      div.features
-        +span-columns(3)
-        +omega
+        p.text
+          padding: 0 2rem
+          font-size: 1.5rem
+      div
+        h4
+          +pad($small-spacer 0)
+          font-size: 1rem
+          font-weight: normal
+        &.features
+          +span-columns(3)
+          +omega
+        &.opentype
+          +span-columns(12)
+          padding: 0 $small-spacer
+          background-color: $grey
+        &.inuse
+          +span-columns(12)
+          padding: 0 $small-spacer
+          background-color: $black
+          color: $white
+          figure
+            +pad($default-spacer)
+            img
+              border-radius: 1rem
+
+
     &#glyphs
       +font-weights
       padding: $default-spacer 2rem
