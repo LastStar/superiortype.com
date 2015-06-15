@@ -2,6 +2,7 @@
 //= require snap.svg/dist/snap.svg-min
 //= require jquery.scrollTo/jquery.scrollTo.min
 //= require jQuery-Storage-API/jquery.storageapi.min.js
+//= require jquery-waypoints/lib/jquery.waypoints.min.js
 
 likedSpan = $('#liked span')
 likedClose = $('.close')
