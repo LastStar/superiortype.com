@@ -46,9 +46,10 @@ header.main
         &:hover
           color: $black
     nav
-      +transform(translateX(-13rem))
+      +transform(translateX(-2rem))
       +transition-property(transform, opacity)
-      +transition-duration(500ms)
+      +transition-duration(125ms)
+      z-index: 1
       opacity: 0
       display: inline-block
       &.visible
@@ -56,7 +57,6 @@ header.main
         opacity: 1
       a
         +pad(0 $tiny-spacer)
-        display: inline-block
         color: $black
         &:first-child
           +pad(0 $tiny-spacer 0 $small-spacer)

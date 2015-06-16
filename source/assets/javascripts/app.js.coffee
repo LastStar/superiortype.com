@@ -337,12 +337,12 @@ if $('section.fonts#styles').size() > 0
     e.stopPropagation()
     false
 
-$('header.main').on 'mouseenter', ->
+$('header.main .menu *').on 'mouseenter', ->
   $('header.main nav').addClass('visible')
+$('header.main').on 'mouseleave', ->
   hideMenu = ->
-    $('header.main nav').removeClass('visible')
-
-  setTimeout hideMenu, 10000
+      $('header.main nav').removeClass('visible')
+  setTimeout hideMenu, 500
 
 $('.fonts input.tester').on 'change', ->
   $(this).parent('h3').siblings('.styles').children('h4').html($(this).val())
