@@ -18,20 +18,20 @@ clearMessage = ->
 
 hideLikedBox = ->
   likedClose.off 'click'
-  likedBox.hide('slow')
+  likedBox.hide 'fast', ->
+    likedSpan.show()
   $('main').removeClass('faded')
   $('body').removeClass('faded')
   $('header.main').removeClass('faded')
-  likedSpan.show()
   likedSpan.on 'click', showLikedBox
   clearMessage()
 
 showLikedBox = ->
   likedSpan.hide().off 'click'
-  likedBox.show('fast')
-  $('main').addClass('faded')
-  $('body').addClass('faded')
-  $('header.main').addClass('faded')
+  likedBox.show 'fast', ->
+    $('main').addClass('faded')
+    $('body').addClass('faded')
+    $('header.main').addClass('faded')
   likedClose.on 'click', hideLikedBox
   $('.contact-form').on 'submit', (e) ->
     email = $(this).children("input[type='email']").val()

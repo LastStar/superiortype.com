@@ -410,7 +410,7 @@ section.liked-box
   +row
   position: absolute
   top: 0
-  left: 0
+  right: 0
   width: 80vw
   display: none
   opacity: 1
@@ -418,12 +418,15 @@ section.liked-box
   margin: 10vh 10vw
   background-color: $blue
   border-radius: 1.5rem
-  border: thin solid $black
+  border: none
   .close
     position: relative
     top: $tiny-spacer
     right: -$tiny-spacer
     text-align: center
+    img
+      width: 1.5rem
+      height: 1.5rem
   header
     +span-columns(11)
     padding: $small-spacer 0 0
@@ -443,7 +446,7 @@ section.liked-box
       text-align: center
       color: $black
       text-align: center
-      +white-hover
+      +grey-hover
       &:nth-child(2)
         border-radius: 1rem
         border: thin solid $black
@@ -453,15 +456,15 @@ section.liked-box
     +span-columns(10)
     +shift(1)
     opacity: 1
-    border-bottom: solid thin $grey
+    border-bottom: solid thin $black
     li
       height: $default-spacer
-      border-top: solid thin $grey
+      border-top: solid thin $black
       padding-top: 0.75rem
       .name
         +span-columns(8 of 10)
       .remover,
-        +span-columns(2)
+        +span-columns(2 of 10)
         +omega
         +grey-hover
         text-align: center
