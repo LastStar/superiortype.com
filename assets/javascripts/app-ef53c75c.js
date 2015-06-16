@@ -718,9 +718,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   }
 
   if ($('#foundry')) {
-    $('.studio').on('mouseenter', function() {
-      $(this).addClass('hidden');
-      return $('.nonstop').addClass('visible').on('mouseout', function() {
+    $('.studio img').on('mouseenter', function() {
+      $(this).parent().addClass('hidden');
+      return $('.nonstop').addClass('visible').on('mouseleave', function() {
         $(this).removeClass('visible');
         return $('.studio').removeClass('hidden');
       });
