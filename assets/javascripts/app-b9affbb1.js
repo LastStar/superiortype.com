@@ -610,13 +610,16 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     });
   }
 
-  $('header.main').on('mouseenter', function() {
+  $('header.main .menu *').on('mouseenter', function() {
+    return $('header.main nav').addClass('visible');
+  });
+
+  $('header.main').on('mouseleave', function() {
     var hideMenu;
-    $('header.main nav').addClass('visible');
     hideMenu = function() {
       return $('header.main nav').removeClass('visible');
     };
-    return setTimeout(hideMenu, 10000);
+    return setTimeout(hideMenu, 500);
   });
 
   $('.fonts input.tester').on('change', function() {

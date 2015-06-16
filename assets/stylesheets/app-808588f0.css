@@ -1019,20 +1019,21 @@ header.main {
           color: #000; }
     /* line 48, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     header.main .menu nav {
-      -webkit-transform: translateX(-13rem);
-      -moz-transform: translateX(-13rem);
-      -ms-transform: translateX(-13rem);
-      -o-transform: translateX(-13rem);
-      transform: translateX(-13rem);
+      -webkit-transform: translateX(-2rem);
+      -moz-transform: translateX(-2rem);
+      -ms-transform: translateX(-2rem);
+      -o-transform: translateX(-2rem);
+      transform: translateX(-2rem);
       -webkit-transition-property: -webkit-transform, opacity;
       -moz-transition-property: -moz-transform, opacity;
       transition-property: transform, opacity;
-      -webkit-transition-duration: 500ms;
-      -moz-transition-duration: 500ms;
-      transition-duration: 500ms;
+      -webkit-transition-duration: 125ms;
+      -moz-transition-duration: 125ms;
+      transition-duration: 125ms;
+      z-index: 1;
       opacity: 0;
       display: inline-block; }
-      /* line 54, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 55, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       header.main .menu nav.visible {
         -webkit-transform: translateX(0rem);
         -moz-transform: translateX(0rem);
@@ -1040,10 +1041,9 @@ header.main {
         -o-transform: translateX(0rem);
         transform: translateX(0rem);
         opacity: 1; }
-      /* line 57, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 58, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       header.main .menu nav a {
         padding: 0 1rem;
-        display: inline-block;
         color: #000; }
         /* line 61, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
         header.main .menu nav a:first-child {
