@@ -3,6 +3,7 @@
 //= require jquery.scrollTo/jquery.scrollTo.min
 //= require jQuery-Storage-API/jquery.storageapi.min.js
 //= require jquery-waypoints/lib/jquery.waypoints.min.js
+//= require jquery-waypoints/lib/shortcuts/inview.js
 
 likedSpan = $('#liked span')
 likedClose = $('.close')
@@ -381,6 +382,43 @@ if $('#styles .styles').size() > 0
             $(button).removeClass('pushed')
         refreshLiked currentLiked()
     setTimeout showLike, 750
+  detailsActive = ->
+    $('a.active').removeClass 'active'
+    $('a.details').addClass 'active'
+  glyphsActive = ->
+    $('a.active').removeClass 'active'
+    $('a.glyphs').addClass 'active'
+  stylesActive = ->
+    $('a.active').removeClass 'active'
+    $('a.styles').addClass 'active'
+
+
+  details = new Waypoint.Inview {
+    element: $('#details')[0],
+    enter: (direction) ->
+      if direction == 'down'
+        detailsActive()
+    ,
+    exited: (direction) ->
+      if direction == 'up'
+        glyphsActive()
+  }
+  glyphs = new Waypoint.Inview {
+    element: $('#glyphs')[0],
+    exited: (direction) ->
+      if direction == 'up'
+        stylesActive()
+  }
+  styles = new Waypoint.Inview {
+    element: $('#styles')[0],
+    enter: (direction) ->
+      stylesActive()
+    ,
+    exited: (direction) ->
+      glyphsActive()
+
+  }
+
 
 if $('#foundry')
   $('.studio').on 'mouseenter', ->
