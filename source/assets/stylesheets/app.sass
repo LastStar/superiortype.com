@@ -210,18 +210,20 @@ main
       +row
       *
         font-family: VeganSans
-      h2
-        padding: 0 2rem
-        font-size: 1.5rem
-        font-weight: normal
-        +shift(2)
-        +span-columns(5)
-        margin-top: $default-spacer
+      header
+        +row
+        h2
+          +shift(2)
+          +span-columns(5)
+          padding: 0 2rem
+          font-size: 1.5rem
+          font-weight: normal
+          margin-top: $default-spacer
       .about-address
         background-color: $light-green
-        +span-columns(12)
+        +row
         .contact-lost
-          +span-columns(6 of 12)
+          +span-columns(6)
           +omega
           address
             font-style: normal
@@ -272,28 +274,31 @@ main
             font-size: 1rem
             padding: $small-spacer
       .studio
-        +span-columns(6)
-        +shift(3)
+        +span-columns(12)
+        padding: $small-spacer
         margin-bottom: $default-spacer
         &.hidden
           display: none
         img
           border-radius: 2rem
       .nonstop
-        +span-columns(6)
-        +shift(3)
+        +span-columns(12)
+        padding: $small-spacer
         display: none
-        margin-bottom: $default-spacer
-        background-color: $yellow
-        border-radius: 2rem
-        height: 24rem
         &.visible
           display: block
-        h3
-          +span-columns(6 of 6)
-          font-size: 6rem
-          text-align: center
-          +transform(rotate(-15deg) translate(-1rem, 5rem))
+        .text
+          background-color: $yellow
+          border-radius: 2rem
+          padding: 25vh 25vw
+          height: 66vw
+          h3
+            +span-columns(10 of 12)
+            font-size: 9rem
+            text-align: center
+            color: $red
+            font-style: italic
+            +transform(rotate(-15deg) translate(-1rem, 5rem))
     &.custom
       +span-columns(12)
       font-family: VeganSans

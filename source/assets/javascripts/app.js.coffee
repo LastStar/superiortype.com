@@ -421,9 +421,9 @@ if $('#styles .styles').size() > 0
 
 
 if $('#foundry')
-  $('.studio').on 'mouseenter', ->
-    $(this).addClass('hidden')
-    $('.nonstop').addClass('visible').on 'mouseout', ->
+  $('.studio img').on 'mouseenter', ->
+    $(this).parent().addClass('hidden')
+    $('.nonstop').addClass('visible').on 'mouseleave', ->
       $(this).removeClass('visible')
       $('.studio').removeClass('hidden')
 renderLiked()
