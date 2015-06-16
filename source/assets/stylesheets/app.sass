@@ -27,43 +27,47 @@ body
 
 
 header.main
+  +display(flex)
+  +flex-direction(row)
   &.faded
     opacity: 0.25
   *
     font-family: VeganSans
-  +row
   margin-top: 1rem
   padding: 0 2rem
-  h1
-    +span-columns(3)
-    z-index: 10
-    font-size: modular-scale(1, 1rem)
-    a
-      display: block
-      color: $black
-      &:hover
+  .menu
+    +flex(1)
+    h1
+      z-index: 10
+      font-size: modular-scale(1, 1rem)
+      display: inline-block
+      a
         color: $black
-  nav
-    +span-columns(3)
-    +transform(translateX(-13rem))
-    +transition-property(transform, opacity)
-    +transition-duration(500ms)
-    opacity: 0
-    &.visible
-      +transform(translateX(-3rem))
-      opacity: 1
-    a
-      +span-columns(1 of 3)
-      color: $black
-      &:hover
+        &:hover
+          color: $black
+    nav
+      +transform(translateX(-13rem))
+      +transition-property(transform, opacity)
+      +transition-duration(500ms)
+      opacity: 0
+      display: inline-block
+      &.visible
+        +transform(translateX(0rem))
+        opacity: 1
+      a
+        +pad(0 $tiny-spacer)
+        display: inline-block
         color: $black
+        &:hover
+          color: $black
   #liked
-    +span-columns(2)
-    +shift(4)
-    text-align: center
+    +flex(2)
+    +align-self(flex-start)
+    text-align: right
     span
       +liked
       background-color: $blue
+      text-align: center
       &.empty
         background-color: $white
 
@@ -489,8 +493,6 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
   header.main
     nav
       +transform(translateX(-26rem))
-      &.visible
-        +transform(translateX(-13rem))
   section.font-header
     header
       nav
@@ -499,8 +501,6 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
   header.main
     nav
       +transform(translateX(-18rem))
-      &.visible
-        +transform(translateX(-8rem))
   section.font-header
     header
       nav
@@ -514,10 +514,6 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
     nav
       opacity: 1
       @include transform(translateX(0))
-  header.main
-    #liked
-      +shift(3)
-      +span-columns(3)
   main
     section
       svg#show-room
