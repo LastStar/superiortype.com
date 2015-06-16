@@ -58,6 +58,9 @@ header.main
         +pad(0 $tiny-spacer)
         display: inline-block
         color: $black
+        &:first-child
+          +pad(0 $tiny-spacer 0 $small-spacer)
+
         &:hover
           color: $black
   #liked
@@ -358,6 +361,7 @@ main
               color: $black
               font-weight: bold
     &.about
+      font-family: VeganSans
       margin: $default-spacer 0
       .description
         +span-columns(9)
