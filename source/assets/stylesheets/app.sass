@@ -254,6 +254,7 @@ main
           +span-columns(6 of 12)
           padding: $default-spacer 0
           p
+            font-size: 1rem
             padding: 0 2rem
       .people
         +row
@@ -263,11 +264,12 @@ main
           +omega(2)
           margin-top: $default-spacer
           .photo
-            padding: $default-spacer
+            padding: $small-spacer
             text-align: center
             img
               border-radius: 50%
           p
+            font-size: 1rem
             padding: $small-spacer
       .studio
         +span-columns(6)
@@ -495,6 +497,8 @@ $big-desktop:  new-breakpoint(min-width 1280px 12)
 $large-desktop:  new-breakpoint(min-width 1600px 18)
 
 +media($large-desktop)
+  html
+    font-size: modular-scale(2, 16px)
   header.main
     nav
       +transform(translateX(-26rem))
@@ -503,6 +507,8 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
       nav
         +transform(translateX(-16rem))
 +media($big-desktop)
+  html
+    font-size: modular-scale(1, 16px)
   header.main
     nav
       +transform(translateX(-18rem))
