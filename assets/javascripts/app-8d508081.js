@@ -170,21 +170,23 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
   hideLikedBox = function() {
     likedClose.off('click');
-    likedBox.hide('slow');
+    likedBox.hide('fast', function() {
+      return likedSpan.show();
+    });
     $('main').removeClass('faded');
     $('body').removeClass('faded');
     $('header.main').removeClass('faded');
-    likedSpan.show();
     likedSpan.on('click', showLikedBox);
     return clearMessage();
   };
 
   showLikedBox = function() {
     likedSpan.hide().off('click');
-    likedBox.show('fast');
-    $('main').addClass('faded');
-    $('body').addClass('faded');
-    $('header.main').addClass('faded');
+    likedBox.show('fast', function() {
+      $('main').addClass('faded');
+      $('body').addClass('faded');
+      return $('header.main').addClass('faded');
+    });
     likedClose.on('click', hideLikedBox);
     return $('.contact-form').on('submit', function(e) {
       var email;
