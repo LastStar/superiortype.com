@@ -24,6 +24,8 @@ body
     background-color: $dark-grey
   &.faded
     overflow: hidden
+h1, h2, h3, h4, h5
+  font-family: VeganSans
 
 
 header.main
@@ -390,6 +392,8 @@ main
           +span-columns(12)
           padding: 0 $small-spacer
           background-color: $grey
+          img
+            width: 100%
         &.inuse
           +span-columns(12)
           padding: 0 $small-spacer
@@ -509,8 +513,8 @@ section.wished-box
 $phone-portrait: new-breakpoint(max-width 320px 4)
 $phone-landscape: new-breakpoint(max-width 480px 4)
 $tablet-portrait: new-breakpoint(max-width 769px 4)
-$big-desktop:  new-breakpoint(min-width 1280px 12)
-$large-desktop:  new-breakpoint(min-width 1600px 18)
+$big-desktop:  new-breakpoint(min-width 1340px 12)
+$large-desktop:  new-breakpoint(min-width 1600px 12)
 
 +media($large-desktop)
   html
