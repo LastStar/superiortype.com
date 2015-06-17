@@ -338,16 +338,20 @@ main
         z-index: 10
         width: 100vw
       header
+        +display(flex)
+        +flex-direction(row)
         border-bottom: thin solid $grey
         padding: $default-spacer 0 2rem
-        +row
         &.fixed
           padding: 1rem 0 1rem
         h2
-          +span-columns(5)
+          +flex(2)
+          +order(1)
+          +align-self(flex-end)
+          display: inline-block
           font-size: $default-spacer
           font-weight: normal
-          margin: 1rem 0
+          margin: 0
           &.hrot
             font-family: Hrot
           &.kunda-book
@@ -362,16 +366,38 @@ main
             &.previous
               padding: 0 1rem 0 2rem
         nav
+          +flex(3)
+          +order(2)
+          +align-self(flex-end)
+          display: inline-block
+          margin-bottom: $tiny-spacer
           a
-            +span-columns(1)
-            +omega(4)
             margin-top: $small-spacer
-            padding: 0.25rem 1rem
+            padding: 0.5rem 1rem
             color: $dark-grey
             text-align: center
             &.active
               color: $black
               font-weight: bold
+              background-color: $grey
+              border-radius: $small-spacer
+        .wished
+          +flex(1)
+          +order(3)
+          +align-self(flex-end)
+          text-align: right
+          margin-bottom: $tiny-spacer
+          span.wish
+            +wished
+            border: solid thin $blue
+            &:hover
+              background-color: $blue
+            &.pushed
+              +transform(translateY(-$small-spacer))
+              +transition-property(transform, opacity)
+              +transition-duration($medium-delay)
+              opacity: 0
+
     &.about
       font-family: VeganSans
       margin: $default-spacer 0
