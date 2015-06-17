@@ -279,8 +279,7 @@ main
       .studio
         +span-columns(8)
         +shift(2)
-        padding: $small-spacer
-        margin-bottom: $default-spacer
+        padding: $small-spacer $small-spacer 0
         &.hidden
           display: none
         img
@@ -455,55 +454,78 @@ section.wished-box
   border-radius: 1.5rem
   border: none
   .close
-    position: relative
-    top: $tiny-spacer
-    right: -$tiny-spacer
+    position: absolute
+    top: $half-tiny-spacer
+    right: $half-tiny-spacer
     text-align: center
     img
       width: $big-size
       height: $big-size
   header
-    +span-columns(11)
-    padding: $small-spacer 0 0
+    +display(flex)
+    +justify-content(space-between)
+    +small-pad
     opacity: 1
-    h2
-      +span-columns(3 of 11)
-      +shift(1)
-      font-size: 1.5rem
-      padding: 0.5rem 0
-      color: $white
-      background-color: $black
-      border-radius: 1.5rem
-      text-align: center
+    .title-wrap
+      +order(1)
+      +flex(2)
+      +align-self(flex-end)
+      h2
+        +button-pad
+        font-size: 1.5rem
+        font-weight: 600
+        margin-bottom: 0
+        color: $white
+        background-color: $black
+        border-radius: 1.5rem
+        text-align: center
+        display: inline-block
     a
-      +span-columns(2 of 11)
-      +omega(3)
       text-align: center
       color: $black
-      text-align: center
-      +grey-hover
-      &:nth-child(2)
+    .help
+      +order(2)
+      +flex(2)
+      +align-self(flex-end)
+      text-align: left
+      a
+        +black-hover
+        +button-pad
         border-radius: 1rem
         border: thin solid $black
-      &:nth-child(3)
-        +shift(3)
+    .remove-all
+      +order(3)
+      +flex(3)
+      +align-self(flex-end)
+      text-align: right
+      a
+        +grey-hover
+        padding: 0.25rem $tiny-spacer
+      .hidden
+        opacity: 0
   ul.items
-    +span-columns(10)
-    +shift(1)
     opacity: 1
-    border-bottom: solid thin $black
+    +small-pad
     li
+      +display(flex)
       height: $default-spacer
-      border-top: solid thin $black
+      border-top: $thin-border
       padding-top: 0.75rem
       .name
-        +span-columns(8 of 10)
-      .remover,
-        +span-columns(2 of 10)
-        +omega
-        +grey-hover
-        text-align: center
-        color: $black
+        +order(1)
+        +flex(6)
+      .remove-wrap
+        +order(1)
+        +flex(1)
+        text-align: right
+        .remover,
+          +grey-hover
+          +button-pad
+          text-align: center
+          color: $black
+      &:last-child
+        border-bottom: $thin-border
+
   .faq
     +span-columns(10)
     +shift(1)
@@ -514,19 +536,18 @@ section.wished-box
       +span-columns(5 of 10)
 
   .contact-form
-    +span-columns(10)
-    +shift(1)
-    padding: $default-spacer 0
+    +display(flex)
+    +small-pad
     input
-      +span-columns(3 of 10)
-      +omega(3)
+      +order(1)
+      +flex(2)
       border-radius: 1rem
       border: none
       box-shadow: none
       padding: 0.5rem 1rem
+      margin: 0 $tiny-spacer 0 0
       &.check-offer
-        +shift
-        +span-columns(3 of 10)
+        +flex(1)
         background-color: $white
         color: $black
   .message

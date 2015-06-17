@@ -68,11 +68,11 @@ refreshWished = (wished) ->
       $('.items').hide()
       $('.faq').show()
       $('.contact-form').hide()
-      $('.remove-all').hide()
+      $('.remove-all').addClass('hidden')
       $(this).html('Got it!')
       $(this).on 'click', hideHelp
 
-    $('a.help').on 'click', showHelp
+    $('.help a').on 'click', showHelp
   else
     wishedSpan.html ''
     wishedSpan.addClass 'empty'
@@ -101,7 +101,7 @@ removeFromWished = (name) ->
 renderWished = ->
   items = []
   $.each currentWished(), (index, item) ->
-    items.push $("<li><div class='name'>#{item}</div><a class='remover' data-name='#{item}'>Remove</a></li>")
+    items.push $("<li><div class='name'>#{item}</div><div class='remove-wrap'><a class='remover' data-name='#{item}'>Remove</a></div></li>")
   $('ul.items').html items
   $('.remover').on 'click', ->
     name = $(this).data 'name'
