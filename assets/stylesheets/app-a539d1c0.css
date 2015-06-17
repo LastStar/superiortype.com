@@ -2252,8 +2252,8 @@ section.wished-box {
 @media screen and (min-width: 2800px) {
   /* line 584, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   section.wished-box {
-    width: 50vw;
-    margin: 10vh 25vw; } }
+    width: 40vw;
+    margin: 10vh 30vw; } }
 @media screen and (min-width: 1600px) {
   /* line 589, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   html {
