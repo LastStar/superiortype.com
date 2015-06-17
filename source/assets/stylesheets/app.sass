@@ -442,6 +442,7 @@ main
           font-size: 4rem
 section.wished-box
   +row
+  font-family: VeganSans
   position: absolute
   top: 0
   right: 0
@@ -527,13 +528,19 @@ section.wished-box
         border-bottom: $thin-border
 
   .faq
-    +span-columns(10)
-    +shift(1)
+    +small-pad
     display: none
+    &.visible
+      display: block
     h3
       font-size: $bigger-size
-    .column
-      +span-columns(5 of 10)
+    .text
+      +display(flex)
+      .column
+        +order(1)
+        +flex(1)
+        &:first-child
+          +pad(0 $tiny-spacer $tiny-spacer 0)
 
   .contact-form
     +display(flex)
@@ -554,7 +561,7 @@ section.wished-box
       +flex(1)
       input
         background-color: $white
-        color: $black
+        color: $dark-grey
   .message
     +span-columns(10)
     +shift(1)
@@ -569,6 +576,13 @@ $phone-landscape: new-breakpoint(max-width 480px 4)
 $tablet-portrait: new-breakpoint(max-width 769px 4)
 $big-desktop:  new-breakpoint(min-width 1340px 12)
 $large-desktop:  new-breakpoint(min-width 1600px 12)
+$huge-desktop:  new-breakpoint(min-width 2800px 12)
+
++media($huge-desktop)
+  section
+    &.wished-box
+      width: 50vw
+      margin: 10vh 25vw
 
 +media($large-desktop)
   html
@@ -583,9 +597,6 @@ $large-desktop:  new-breakpoint(min-width 1600px 12)
 +media($big-desktop)
   html
     font-size: modular-scale(1, 16px)
-  header.main
-    nav
-      +transform(translateX(-18rem))
   section
     &.wished-box
       width: 70vw

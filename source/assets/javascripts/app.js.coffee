@@ -57,7 +57,7 @@ refreshWished = (wished) ->
     wishedSpan.on 'click', showWishedBox
 
     hideHelp = ->
-      $('.faq').hide()
+      $('.faq').removeClass('visible')
       $('.items').show()
       $('.contact-form').show()
       $('.remove-all').show()
@@ -66,7 +66,7 @@ refreshWished = (wished) ->
 
     showHelp = ->
       $('.items').hide()
-      $('.faq').show()
+      $('.faq').addClass('visible')
       $('.contact-form').hide()
       $('.remove-all').addClass('hidden')
       $(this).html('Got it!')
