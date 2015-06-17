@@ -228,11 +228,11 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         $('.items').hide();
         $('.faq').show();
         $('.contact-form').hide();
-        $('.remove-all').hide();
+        $('.remove-all').addClass('hidden');
         $(this).html('Got it!');
         return $(this).on('click', hideHelp);
       };
-      return $('a.help').on('click', showHelp);
+      return $('.help a').on('click', showHelp);
     } else {
       wishedSpan.html('');
       wishedSpan.addClass('empty');
@@ -271,7 +271,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     var items;
     items = [];
     $.each(currentWished(), function(index, item) {
-      return items.push($("<li><div class='name'>" + item + "</div><a class='remover' data-name='" + item + "'>Remove</a></li>"));
+      return items.push($("<li><div class='name'>" + item + "</div><div class='remove-wrap'><a class='remover' data-name='" + item + "'>Remove</a></div></li>"));
     });
     $('ul.items').html(items);
     return $('.remover').on('click', function() {
