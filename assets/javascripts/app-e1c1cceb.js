@@ -150,7 +150,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 }())
 ;
 (function() {
-  var addToWished, clearMessage, currentWished, details, detailsActive, emailIsValid, family, fixHeader, glyphs, glyphsActive, hideWishedBox, inWished, refreshWished, removeFromWished, renderWished, showSlideShow, showWishedBox, style, styles, stylesActive, stylesGr, wishedBox, wishedClose, wishedSpan;
+  var addToWished, clearMessage, currentWished, detailsActive, detailsIn, emailIsValid, family, fixHeader, glyphsActive, glyphsIn, hideWishedBox, inWished, refreshWished, removeFromWished, renderWished, showSlideShow, showWishedBox, style, styles, stylesActive, stylesGr, stylesIn, wishedBox, wishedClose, wishedSpan;
 
   wishedSpan = $('#wished span');
 
@@ -689,7 +689,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       $('a.active').removeClass('active');
       return $('a.styles').addClass('active');
     };
-    details = new Waypoint.Inview({
+    detailsIn = new Waypoint.Inview({
       element: $('#details')[0],
       enter: function(direction) {
         if (direction === 'down') {
@@ -702,7 +702,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         }
       }
     });
-    glyphs = new Waypoint.Inview({
+    glyphsIn = new Waypoint.Inview({
       element: $('#glyphs')[0],
       exited: function(direction) {
         if (direction === 'up') {
@@ -713,7 +713,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         return glyphsActive();
       }
     });
-    styles = new Waypoint.Inview({
+    stylesIn = new Waypoint.Inview({
       element: $('#styles')[0],
       enter: function(direction) {
         return stylesActive();
