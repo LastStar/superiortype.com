@@ -220,6 +220,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         $('.faq').hide();
         $('.items').show();
         $('.contact-form').show();
+        $('.remove-all').show();
         $(this).html('What\'s this');
         return $(this).on('click', showHelp);
       };
@@ -227,6 +228,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         $('.items').hide();
         $('.faq').show();
         $('.contact-form').hide();
+        $('.remove-all').hide();
         $(this).html('Got it!');
         return $(this).on('click', hideHelp);
       };
