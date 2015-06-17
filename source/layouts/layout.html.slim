@@ -37,12 +37,12 @@ html.nojs
         nav
           a href="/custom" Custom
           a href="/foundry" Foundry
-      #liked
+      #wished
         span.empty
 
     main
       == yield
-    section.liked-box
-      = partial 'partials/liked'
+    section.wished-box
+      = partial 'partials/wished'
 
     = javascript_include_tag 'app'

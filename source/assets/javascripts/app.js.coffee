@@ -5,9 +5,9 @@
 //= require jquery-waypoints/lib/jquery.waypoints.min.js
 //= require jquery-waypoints/lib/shortcuts/inview.js
 
-likedSpan = $('#liked span')
-likedClose = $('.close')
-likedBox = $('.liked-box')
+wishedSpan = $('#wished span')
+wishedClose = $('.close')
+wishedBox = $('.wished-box')
 
 emailIsValid = (email) ->
   pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i)
@@ -16,45 +16,45 @@ emailIsValid = (email) ->
 clearMessage = ->
   $('.message').html('')
 
-hideLikedBox = ->
-  likedClose.off 'click'
-  likedBox.hide 'fast', ->
-    likedSpan.show()
+hideWishedBox = ->
+  wishedClose.off 'click'
+  wishedBox.hide 'fast', ->
+    wishedSpan.show()
   $('main').removeClass('faded')
   $('body').removeClass('faded')
   $('header.main').removeClass('faded')
-  likedSpan.on 'click', showLikedBox
+  wishedSpan.on 'click', showWishedBox
   clearMessage()
 
-showLikedBox = ->
-  likedSpan.hide().off 'click'
-  likedBox.show 'fast', ->
+showWishedBox = ->
+  wishedSpan.hide().off 'click'
+  wishedBox.show 'fast', ->
     $('main').addClass('faded')
     $('body').addClass('faded')
     $('header.main').addClass('faded')
-  likedClose.on 'click', hideLikedBox
+  wishedClose.on 'click', hideWishedBox
   $('.contact-form').on 'submit', (e) ->
     email = $(this).children("input[type='email']").val()
     if email != '' and emailIsValid(email)
       e.stopPropagation()
       $('.message').html('<h2>Thank you! Check your email soon.</h2>')
-      setTimeout hideLikedBox, 2500
+      setTimeout hideWishedBox, 2500
     else
       $('.message').html('<h2>Please provide email in valid format!</h2>')
       setTimeout clearMessage, 2500
     false
 
-refreshLiked = (liked) ->
-  size = liked.length
+refreshWished = (wished) ->
+  size = wished.length
   if size > 0
-    content = 'Liked '
+    content = 'Wished '
     if size == 1
       content += '1 item'
     else
       content += "#{size} items"
-    likedSpan.html content
-    likedSpan.removeClass 'empty'
-    likedSpan.on 'click', showLikedBox
+    wishedSpan.html content
+    wishedSpan.removeClass 'empty'
+    wishedSpan.on 'click', showWishedBox
 
     hideHelp = ->
       $('.faq').hide()
@@ -72,54 +72,54 @@ refreshLiked = (liked) ->
 
     $('a.help').on 'click', showHelp
   else
-    likedSpan.html ''
-    likedSpan.addClass 'empty'
-    $('.like').show()
+    wishedSpan.html ''
+    wishedSpan.addClass 'empty'
+    $('.wish').show()
 
-currentLiked = ->
-  $.localStorage.get 'liked'
+currentWished = ->
+  $.localStorage.get 'wished'
 
-inLiked = (name) ->
-  if $.inArray(name, currentLiked()) == -1
+inWished = (name) ->
+  if $.inArray(name, currentWished()) == -1
     false
   else
     true
 
-addToLiked = (name) ->
-  tempLiked = currentLiked()
-  tempLiked.push(name)
-  tempLiked = $.unique tempLiked
-  $.localStorage.set 'liked', tempLiked
+addToWished = (name) ->
+  tempWished = currentWished()
+  tempWished.push(name)
+  tempWished = $.unique tempWished
+  $.localStorage.set 'wished', tempWished
 
-removeFromLiked = (name) ->
-  tempLiked = currentLiked()
-  tempLiked.splice($.inArray(name, currentLiked()), 1)
-  $.localStorage.set 'liked', tempLiked
+removeFromWished = (name) ->
+  tempWished = currentWished()
+  tempWished.splice($.inArray(name, currentWished()), 1)
+  $.localStorage.set 'wished', tempWished
 
-renderLiked = ->
+renderWished = ->
   items = []
-  $.each currentLiked(), (index, item) ->
+  $.each currentWished(), (index, item) ->
     items.push $("<li><div class='name'>#{item}</div><a class='remover' data-name='#{item}'>Remove</a></li>")
   $('ul.items').html items
   $('.remover').on 'click', ->
     name = $(this).data 'name'
-    removeFromLiked name
+    removeFromWished name
     $(this).parent('li').fadeOut()
-    $(".like[data-name='#{name}']").removeClass('pushed')
-    if currentLiked().length > 0
-      refreshLiked(currentLiked())
-      renderLiked()
+    $(".wish[data-name='#{name}']").removeClass('pushed')
+    if currentWished().length > 0
+      refreshWished(currentWished())
+      renderWished()
     else
-      refreshLiked(currentLiked())
-      hideLikedBox()
+      refreshWished(currentWished())
+      hideWishedBox()
 
-if $.localStorage.get('liked') == null
-  $.localStorage.set 'liked', []
+if $.localStorage.get('wished') == null
+  $.localStorage.set 'wished', []
 else
-  $.each $('.like'), (index, button) ->
-    if inLiked($(button).data('name'))
+  $.each $('.wish'), (index, button) ->
+    if inWished($(button).data('name'))
       $(button).addClass('pushed')
-  refreshLiked currentLiked()
+  refreshWished currentWished()
 
 showSlideShow = ->
   return false if $('#show-room').size() == 0
@@ -347,21 +347,21 @@ $('header.main').on 'mouseleave', ->
 $('.fonts input.tester').on 'change', ->
   $(this).parent('h3').siblings('.styles').children('h4').html($(this).val())
 
-if $('.like').size() > 0
-  $('.like').on 'click', ->
+if $('.wish').size() > 0
+  $('.wish').on 'click', ->
     name = $(this).data('name')
-    addToLiked name
+    addToWished name
     $(this).addClass('pushed')
-    renderLiked()
-    refreshLiked(currentLiked())
+    renderWished()
+    refreshWished(currentWished())
 
 $('.remove-all').on 'click', ->
   $.localStorage.removeAll()
   $('.pushed').removeClass('pushed')
-  $.localStorage.set 'liked', []
+  $.localStorage.set 'wished', []
   $('ul.items').html('')
-  refreshLiked(currentLiked())
-  hideLikedBox()
+  refreshWished(currentWished())
+  hideWishedBox()
 
 if $('#styles .styles').size() > 0
   $('.styles .style input').on 'input', ->
@@ -369,19 +369,19 @@ if $('#styles .styles').size() > 0
       $(this).parent().siblings('.tools').children('.apperance').children('.name').removeClass('visible')
     else
       $(this).parent().siblings('.tools').children('.apperance').children('.name').addClass('visible')
-  $('.like').addClass('pushed')
+  $('.wish').addClass('pushed')
   $('#styles .styles').show 150, ->
     $('#styles .styles').addClass('visible')
-    showLike = ->
-      $('.like').removeClass('pushed')
-      if $.localStorage.get('liked') == null
-        $.localStorage.set 'liked', []
+    showWish = ->
+      $('.wish').removeClass('pushed')
+      if $.localStorage.get('wished') == null
+        $.localStorage.set 'wished', []
       else
-        $.each $('.like'), (index, button) ->
-          if !inLiked($(button).data('name'))
+        $.each $('.wish'), (index, button) ->
+          if !inWished($(button).data('name'))
             $(button).removeClass('pushed')
-        refreshLiked currentLiked()
-    setTimeout showLike, 750
+        refreshWished currentWished()
+    setTimeout showWish, 750
   detailsActive = ->
     $('a.active').removeClass 'active'
     $('a.details').addClass 'active'
@@ -391,8 +391,6 @@ if $('#styles .styles').size() > 0
   stylesActive = ->
     $('a.active').removeClass 'active'
     $('a.styles').addClass 'active'
-
-
   details = new Waypoint.Inview {
     element: $('#details')[0],
     enter: (direction) ->
@@ -408,15 +406,15 @@ if $('#styles .styles').size() > 0
     exited: (direction) ->
       if direction == 'up'
         stylesActive()
+    ,
+    enter: (direction) ->
+      glyphsActive()
+
   }
   styles = new Waypoint.Inview {
     element: $('#styles')[0],
     enter: (direction) ->
       stylesActive()
-    ,
-    exited: (direction) ->
-      glyphsActive()
-
   }
 
 
@@ -426,4 +424,4 @@ if $('#foundry')
     $('.nonstop').addClass('visible').on 'mouseleave', ->
       $(this).removeClass('visible')
       $('.studio').removeClass('hidden')
-renderLiked()
+renderWished()
