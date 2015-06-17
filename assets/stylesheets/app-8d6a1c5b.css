@@ -1919,6 +1919,7 @@ main section {
 /* line 443, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
 section.wished-box {
   display: block;
+  font-family: VeganSans;
   position: absolute;
   top: 0;
   right: 0;
@@ -1935,17 +1936,17 @@ section.wished-box {
     clear: both;
     content: "";
     display: table; }
-  /* line 456, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 457, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   section.wished-box .close {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
     text-align: center; }
-    /* line 461, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 462, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box .close img {
       width: 1.77689rem;
       height: 1.77689rem; }
-  /* line 464, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 465, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   section.wished-box header {
     display: -webkit-box;
     display: -moz-box;
@@ -1965,7 +1966,7 @@ section.wished-box {
     -ms-flex-pack: justify;
     padding: 2rem;
     opacity: 1; }
-    /* line 469, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 470, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box header .title-wrap {
       -webkit-box-ordinal-group: 1;
       -moz-box-ordinal-group: 1;
@@ -1985,7 +1986,7 @@ section.wished-box {
       -moz-align-self: flex-end;
       align-self: flex-end;
       -ms-flex-item-align: end; }
-      /* line 473, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 474, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box header .title-wrap h2 {
         padding: 0.5rem 1rem 0.25rem;
         font-size: 1.5rem;
@@ -1996,11 +1997,11 @@ section.wished-box {
         border-radius: 1.5rem;
         text-align: center;
         display: inline-block; }
-    /* line 483, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 484, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box header a {
       text-align: center;
       color: #000; }
-    /* line 486, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 487, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box header .help {
       -webkit-box-ordinal-group: 2;
       -moz-box-ordinal-group: 2;
@@ -2021,7 +2022,7 @@ section.wished-box {
       align-self: flex-end;
       -ms-flex-item-align: end;
       text-align: left; }
-      /* line 491, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 492, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box header .help a {
         padding: 0.25rem 1rem;
         border-radius: 1rem;
@@ -2032,7 +2033,7 @@ section.wished-box {
           background-color: #000;
           color: #fff;
           cursor: pointer; }
-    /* line 496, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 497, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box header .remove-all {
       -webkit-box-ordinal-group: 3;
       -moz-box-ordinal-group: 3;
@@ -2053,7 +2054,7 @@ section.wished-box {
       align-self: flex-end;
       -ms-flex-item-align: end;
       text-align: right; }
-      /* line 501, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 502, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box header .remove-all a {
         padding: 0.25rem 1rem; }
         /* line 37, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/partials/_mixins.sass */
@@ -2062,14 +2063,14 @@ section.wished-box {
           background-color: #555555;
           color: #000;
           cursor: pointer; }
-      /* line 504, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 505, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box header .remove-all .hidden {
         opacity: 0; }
-  /* line 506, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 507, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   section.wished-box ul.items {
     opacity: 1;
     padding: 2rem; }
-    /* line 509, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 510, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box ul.items li {
       display: -webkit-box;
       display: -moz-box;
@@ -2081,7 +2082,7 @@ section.wished-box {
       height: 3rem;
       border-top: solid thin #000;
       padding-top: 0.75rem; }
-      /* line 514, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 515, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box ul.items li .name {
         -webkit-box-ordinal-group: 1;
         -moz-box-ordinal-group: 1;
@@ -2097,7 +2098,7 @@ section.wished-box {
         -moz-flex: 6;
         -ms-flex: 6;
         flex: 6; }
-      /* line 517, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 518, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box ul.items li .remove-wrap {
         -webkit-box-ordinal-group: 1;
         -moz-box-ordinal-group: 1;
@@ -2114,7 +2115,7 @@ section.wished-box {
         -ms-flex: 1;
         flex: 1;
         text-align: right; }
-        /* line 521, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+        /* line 522, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
         section.wished-box ul.items li .remove-wrap .remover {
           padding: 0.25rem 1rem;
           text-align: center;
@@ -2125,33 +2126,48 @@ section.wished-box {
             background-color: #555555;
             color: #000;
             cursor: pointer; }
-      /* line 526, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 527, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box ul.items li:last-child {
         border-bottom: solid thin #000; }
-  /* line 529, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 530, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   section.wished-box .faq {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 82.94039%;
-    margin-left: 8.5298%;
+    padding: 2rem;
     display: none; }
-    /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
-    section.wished-box .faq:last-child {
-      margin-right: 0; }
     /* line 533, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    section.wished-box .faq.visible {
+      display: block; }
+    /* line 535, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box .faq h3 {
       font-size: 1.333rem; }
-    /* line 535, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
-    section.wished-box .faq .column {
-      float: left;
-      display: block;
-      margin-right: 2.84259%;
-      width: 48.57871%; }
-      /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
-      section.wished-box .faq .column:last-child {
-        margin-right: 0; }
-  /* line 538, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 537, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    section.wished-box .faq .text {
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex; }
+      /* line 539, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      section.wished-box .faq .text .column {
+        -webkit-box-ordinal-group: 1;
+        -moz-box-ordinal-group: 1;
+        box-ordinal-group: 1;
+        -webkit-order: 1;
+        -moz-order: 1;
+        order: 1;
+        -ms-flex-order: 1;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        box-flex: 1;
+        -webkit-flex: 1;
+        -moz-flex: 1;
+        -ms-flex: 1;
+        flex: 1; }
+        /* line 542, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+        section.wished-box .faq .text .column:first-child {
+          padding: 0 1rem 1rem 0; }
+  /* line 545, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   section.wished-box .contact-form {
     display: -webkit-box;
     display: -moz-box;
@@ -2161,7 +2177,7 @@ section.wished-box {
     display: -ms-flexbox;
     display: flex;
     padding: 2rem; }
-    /* line 541, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 548, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box .contact-form input {
       -webkit-box-ordinal-group: 1;
       -moz-box-ordinal-group: 1;
@@ -2195,7 +2211,7 @@ section.wished-box {
       /* line 4, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/bourbon-4.2.1/app/assets/stylesheets/css3/_placeholder.scss */
       section.wished-box .contact-form input:-ms-input-placeholder {
         color: #000; }
-    /* line 552, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 559, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box .contact-form .check-offer {
       -webkit-box-ordinal-group: 2;
       -moz-box-ordinal-group: 2;
@@ -2211,11 +2227,11 @@ section.wished-box {
       -moz-flex: 1;
       -ms-flex: 1;
       flex: 1; }
-      /* line 555, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 562, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box .contact-form .check-offer input {
         background-color: #fff;
-        color: #000; }
-  /* line 558, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+        color: #555555; }
+  /* line 565, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   section.wished-box .message {
     float: left;
     display: block;
@@ -2225,19 +2241,24 @@ section.wished-box {
     /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
     section.wished-box .message:last-child {
       margin-right: 0; }
-    /* line 561, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 568, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box .message h2 {
       font-family: VeganSans;
       font-size: 1.77689rem;
       text-align: center;
       padding: 3rem; }
 
+@media screen and (min-width: 2800px) {
+  /* line 583, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  section.wished-box {
+    width: 50vw;
+    margin: 10vh 25vw; } }
 @media screen and (min-width: 1600px) {
-  /* line 574, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 588, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   html {
     font-size: 28.43022px; }
 
-  /* line 577, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 591, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   header.main nav {
     -webkit-transform: translateX(-26rem);
     -moz-transform: translateX(-26rem);
@@ -2245,37 +2266,29 @@ section.wished-box {
     -o-transform: translateX(-26rem);
     transform: translateX(-26rem); }
 
-  /* line 580, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 594, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   section.wished-box {
     width: 60vw;
     margin: 10vh 20vw; } }
 @media screen and (min-width: 1340px) {
-  /* line 584, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 598, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   html {
     font-size: 21.328px; }
 
-  /* line 587, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
-  header.main nav {
-    -webkit-transform: translateX(-18rem);
-    -moz-transform: translateX(-18rem);
-    -ms-transform: translateX(-18rem);
-    -o-transform: translateX(-18rem);
-    transform: translateX(-18rem); }
-
-  /* line 590, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 601, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   section.wished-box {
     width: 70vw;
     margin: 10vh 15vw; } }
 @media screen and (max-width: 769px) {
-  /* line 594, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 605, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   html {
     font-size: 12.003px; }
 
-  /* line 596, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 607, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   body {
     min-width: 53rem; }
 
-  /* line 599, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 610, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   header nav {
     opacity: 1;
     -webkit-transform: translateX(0);
@@ -2284,10 +2297,10 @@ section.wished-box {
     -o-transform: translateX(0);
     transform: translateX(0); }
 
-  /* line 604, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 615, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   main section svg#show-room {
     display: none; }
-  /* line 609, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 620, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   main section.fonts nav .tools .apperance {
     float: left;
     display: block;
@@ -2296,7 +2309,7 @@ section.wished-box {
     /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
     main section.fonts nav .tools .apperance:last-child {
       margin-right: 0; }
-  /* line 611, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 622, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   main section.fonts nav .tools .wished {
     float: left;
     display: block;
@@ -2307,7 +2320,7 @@ section.wished-box {
     /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
     main section.fonts nav .tools .wished:last-child {
       margin-right: 0; }
-    /* line 615, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 626, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     main section.fonts nav .tools .wished span.wish {
       -webkit-transform: translateY(1rem);
       -moz-transform: translateY(1rem);
@@ -2315,7 +2328,7 @@ section.wished-box {
       -o-transform: translateY(1rem);
       transform: translateY(1rem); }
 
-  /* line 618, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 629, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   header.main h1, header.main nav {
     float: left;
     display: block;
@@ -2327,7 +2340,7 @@ section.wished-box {
     /* line 78, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_omega.scss */
     header.main h1:nth-child(2), header.main nav:nth-child(2) {
       margin-right: 0; }
-  /* line 621, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 632, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   header.main nav {
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
@@ -2335,7 +2348,7 @@ section.wished-box {
     -o-transform: translateX(0);
     transform: translateX(0);
     opacity: 1; }
-    /* line 624, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 635, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     header.main nav a {
       float: left;
       display: block;
@@ -2344,7 +2357,7 @@ section.wished-box {
       /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
       header.main nav a:last-child {
         margin-right: 0; }
-  /* line 626, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 637, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   header.main #wished {
     float: left;
     display: block;
@@ -2358,7 +2371,7 @@ section.wished-box {
     /* line 78, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_omega.scss */
     header.main #wished:nth-child(1) {
       margin-right: 0; }
-    /* line 631, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 642, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     header.main #wished span {
       float: left;
       display: block;
@@ -2372,13 +2385,13 @@ section.wished-box {
       header.main #wished span:nth-child(1) {
         margin-right: 0; }
 
-  /* line 639, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 650, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   main section.fonts nav h3 {
     font-size: 9rem; }
-  /* line 642, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 653, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   main section.font-header header {
     padding: 1rem 0 1rem; }
-    /* line 644, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 655, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     main section.font-header header h2 {
       float: left;
       display: block;
@@ -2387,10 +2400,10 @@ section.wished-box {
       /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
       main section.font-header header h2:last-child {
         margin-right: 0; }
-      /* line 647, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 658, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       main section.font-header header h2 a img {
         width: 2rem; }
-    /* line 649, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 660, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     main section.font-header header nav {
       float: left;
       display: block;
@@ -2399,7 +2412,7 @@ section.wished-box {
       /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
       main section.font-header header nav:last-child {
         margin-right: 0; }
-      /* line 651, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 662, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       main section.font-header header nav a {
         float: left;
         display: block;
@@ -2413,7 +2426,7 @@ section.wished-box {
         main section.font-header header nav a:nth-child(4) {
           margin-right: 0; }
 
-  /* line 656, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 667, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   section.wished-box header {
     float: left;
     display: block;
@@ -2422,7 +2435,7 @@ section.wished-box {
     /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
     section.wished-box header:last-child {
       margin-right: 0; }
-    /* line 658, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 669, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box header h2 {
       float: left;
       display: block;
@@ -2432,7 +2445,7 @@ section.wished-box {
       /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
       section.wished-box header h2:last-child {
         margin-right: 0; }
-    /* line 661, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 672, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box header a {
       float: left;
       display: block;
@@ -2445,13 +2458,13 @@ section.wished-box {
       /* line 78, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_omega.scss */
       section.wished-box header a:nth-child(2) {
         margin-right: 0; }
-      /* line 665, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 676, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box header a:nth-child(2) {
         border: none; }
-      /* line 667, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 678, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box header a:nth-child(3) {
         margin-left: 0%; }
-  /* line 669, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 680, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   section.wished-box .contact-form {
     float: left;
     display: block;
@@ -2461,7 +2474,7 @@ section.wished-box {
     /* line 87, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
     section.wished-box .contact-form:last-child {
       margin-right: 0; }
-    /* line 672, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+    /* line 683, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
     section.wished-box .contact-form input {
       float: left;
       display: block;
@@ -2474,7 +2487,7 @@ section.wished-box {
       /* line 78, /Users/pepe/.rvm/gems/ruby-2.2.2@spt/gems/neat-1.7.1/app/assets/stylesheets/grid/_omega.scss */
       section.wished-box .contact-form input:nth-child(2) {
         margin-right: 0; }
-      /* line 676, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+      /* line 687, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box .contact-form input.check-offer {
         float: left;
         display: block;
@@ -2485,22 +2498,22 @@ section.wished-box {
         section.wished-box .contact-form input.check-offer:last-child {
           margin-right: 0; } }
 @media screen and (max-width: 480px) {
-  /* line 680, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 691, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   html {
     font-size: 9.0045px; }
 
-  /* line 682, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 693, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   body {
     min-width: 53rem; }
 
-  /* line 688, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 699, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   main section.fonts nav h3 {
     font-size: 4rem; } }
 @media screen and (max-width: 320px) {
-  /* line 691, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 702, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   body {
     min-width: 35rem; }
 
-  /* line 697, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
+  /* line 708, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
   main section.fonts nav h3 {
     font-size: 5rem; } }

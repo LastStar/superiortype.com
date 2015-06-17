@@ -217,7 +217,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       wishedSpan.removeClass('empty');
       wishedSpan.on('click', showWishedBox);
       hideHelp = function() {
-        $('.faq').hide();
+        $('.faq').removeClass('visible');
         $('.items').show();
         $('.contact-form').show();
         $('.remove-all').show();
@@ -226,7 +226,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       };
       showHelp = function() {
         $('.items').hide();
-        $('.faq').show();
+        $('.faq').addClass('visible');
         $('.contact-form').hide();
         $('.remove-all').addClass('hidden');
         $(this).html('Got it!');
