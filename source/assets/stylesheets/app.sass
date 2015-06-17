@@ -471,7 +471,7 @@ section.wished-box
       +flex(2)
       +align-self(flex-end)
       h2
-        +button-pad
+        +pad(0.5rem $tiny-spacer 0.25rem)
         font-size: 1.5rem
         font-weight: 600
         margin-bottom: 0
@@ -495,7 +495,7 @@ section.wished-box
         border: thin solid $black
     .remove-all
       +order(3)
-      +flex(3)
+      +flex(4)
       +align-self(flex-end)
       text-align: right
       a
@@ -541,13 +541,18 @@ section.wished-box
     input
       +order(1)
       +flex(2)
+      +placeholder
+        color: $black
       border-radius: 1rem
       border: none
       box-shadow: none
       padding: 0.5rem 1rem
       margin: 0 $tiny-spacer 0 0
-      &.check-offer
-        +flex(1)
+      background-color: $light-grey
+    .check-offer
+      +order(2)
+      +flex(1)
+      input
         background-color: $white
         color: $black
   .message
