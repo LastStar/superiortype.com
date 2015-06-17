@@ -213,10 +213,10 @@ main
       header
         +row
         h2
-          +shift(2)
+          +shift(1)
           +span-columns(5)
           padding: 0 2rem
-          font-size: 1.5rem
+          font-size: $big-size
           font-weight: normal
           margin-top: $default-spacer
       .about-address
@@ -227,18 +227,19 @@ main
           +omega
           address
             font-style: normal
-            font-size: 1.25rem
+            font-size: $bigger-size
             margin: $default-spacer $default-spacer
-            padding: $default-spacer
+            padding: $small-spacer
             background-color: $grey
-            border-radius: $default-spacer
+            border-radius: $small-spacer
+            a
+              color: $black
             .social
               padding-top: 1rem
               a
-                +span-columns(2 of 6)
                 border-radius: 1rem
                 border: none
-                padding: 0.25rem 0.5rem
+                padding: 0.25rem $tiny-spacer
                 margin: 0 0.5rem 0 0
                 color: $white
                 font-size: modular-scale(-1, 1rem)
@@ -250,13 +251,13 @@ main
                 &.instagram
                   background-color: #a04aff
           .lost
-            font-size: modular-scale(-1, 1rem)
+            font-size: $bigger-size
             padding: 0 $default-spacer
         .text
           +span-columns(6 of 12)
           padding: $default-spacer 0
           p
-            font-size: 1rem
+            font-size: $bigger-size
             padding: 0 2rem
       .people
         +row
@@ -265,14 +266,16 @@ main
           +span-columns(6)
           +omega(2)
           margin-top: $default-spacer
+          padding: $small-spacer
           .photo
-            padding: $small-spacer
             text-align: center
             img
               border-radius: 50%
           p
-            font-size: 1rem
-            padding: $small-spacer
+            font-size: $bigger-size
+            text-align: center
+            &:nth-child(2)
+              padding-top: $default-spacer
       .studio
         +span-columns(12)
         padding: $small-spacer
@@ -507,6 +510,7 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
 +media($large-desktop)
   html
     font-size: modular-scale(2, 16px)
+    font-weight: lighter
   header.main
     nav
       +transform(translateX(-26rem))
@@ -517,6 +521,7 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
 +media($big-desktop)
   html
     font-size: modular-scale(1, 16px)
+    font-weight: lighter
   header.main
     nav
       +transform(translateX(-18rem))
