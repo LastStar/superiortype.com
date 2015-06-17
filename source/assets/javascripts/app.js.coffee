@@ -393,7 +393,7 @@ if $('#styles .styles').size() > 0
   stylesActive = ->
     $('a.active').removeClass 'active'
     $('a.styles').addClass 'active'
-  details = new Waypoint.Inview {
+  detailsIn = new Waypoint.Inview {
     element: $('#details')[0],
     enter: (direction) ->
       if direction == 'down'
@@ -403,7 +403,7 @@ if $('#styles .styles').size() > 0
       if direction == 'up'
         glyphsActive()
   }
-  glyphs = new Waypoint.Inview {
+  glyphsIn = new Waypoint.Inview {
     element: $('#glyphs')[0],
     exited: (direction) ->
       if direction == 'up'
@@ -413,7 +413,7 @@ if $('#styles .styles').size() > 0
       glyphsActive()
 
   }
-  styles = new Waypoint.Inview {
+  stylesIn = new Waypoint.Inview {
     element: $('#styles')[0],
     enter: (direction) ->
       stylesActive()
