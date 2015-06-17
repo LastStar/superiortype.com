@@ -43,9 +43,11 @@ section.about#details
   - if current_page.data.inuse
     .inuse
       h4 In use
-      figure
-        img src="/assets/images/#{current_page.data.id}-inuse.jpg"
-        figcaption
-          - for p in current_page.data.inuse.split("\n")
-            = p
-            br
+      - for inuse in current_page.data.inuse
+        figure
+          - img = "/assets/images/"+inuse.img
+          img src=img
+          figcaption
+            - for p in inuse.text.split("\n")
+              = p
+              br

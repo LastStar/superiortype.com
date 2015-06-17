@@ -416,20 +416,26 @@ main
           +span-columns(3)
           +omega
         &.opentype
-          +span-columns(12)
+          +row
           padding: 0 $small-spacer
           background-color: $grey
           img
-            width: 100%
+            +span-columns(12)
         &.inuse
-          +span-columns(12)
-          padding: 0 $small-spacer
+          +row
+          +small-pad
           background-color: $black
           color: $white
           figure
-            +pad($default-spacer)
+            +shift(2)
+            +span-columns(10)
+            +small-pad
             img
+              +span-columns(7 of 10)
               border-radius: 1rem
+            figcaption
+              +span-columns(2 of 10)
+
     &#glyphs
       +font-weights
       padding: $default-spacer 2rem
