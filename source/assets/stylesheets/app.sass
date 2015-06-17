@@ -402,11 +402,15 @@ main
     &.about
       font-family: VeganSans
       margin: $default-spacer 0
-      .description
-        +span-columns(9)
-        p.text
-          padding: 0 2rem
-          font-size: 1.5rem
+      #details
+        +row
+        margin-bottom: $default-spacer
+        .description
+          +shift
+          +span-columns(8)
+          p.text
+            padding: 0 2rem
+            font-size: 1.5rem
       div
         h4
           +pad($small-spacer 0)
