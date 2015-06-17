@@ -428,8 +428,8 @@ section.wished-box
     right: -$tiny-spacer
     text-align: center
     img
-      width: 1.5rem
-      height: 1.5rem
+      width: $big-size
+      height: $big-size
   header
     +span-columns(11)
     padding: $small-spacer 0 0
@@ -476,6 +476,11 @@ section.wished-box
     +span-columns(10)
     +shift(1)
     display: none
+    h3
+      font-size: $bigger-size
+    .column
+      +span-columns(5 of 10)
+
   .contact-form
     +span-columns(10)
     +shift(1)
@@ -513,20 +518,20 @@ $large-desktop:  new-breakpoint(min-width 1600px 18)
   header.main
     nav
       +transform(translateX(-26rem))
-  section.font-header
-    header
-      nav
-        +transform(translateX(-16rem))
+  section
+    &.wished-box
+      width: 60vw
+      margin: 10vh 20vw
 +media($big-desktop)
   html
     font-size: modular-scale(1, 16px)
   header.main
     nav
       +transform(translateX(-18rem))
-  section.font-header
-    header
-      nav
-        +transform(translateX(-6rem))
+  section
+    &.wished-box
+      width: 70vw
+      margin: 10vh 15vw
 +media($tablet-portrait)
   html
     font-size: modular-scale(-1, 16px)

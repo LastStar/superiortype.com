@@ -60,6 +60,7 @@ refreshWished = (wished) ->
       $('.faq').hide()
       $('.items').show()
       $('.contact-form').show()
+      $('.remove-all').show()
       $(this).html('What\'s this')
       $(this).on 'click', showHelp
 
@@ -67,6 +68,7 @@ refreshWished = (wished) ->
       $('.items').hide()
       $('.faq').show()
       $('.contact-form').hide()
+      $('.remove-all').hide()
       $(this).html('Got it!')
       $(this).on 'click', hideHelp
 
