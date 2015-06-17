@@ -150,13 +150,13 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 }())
 ;
 (function() {
-  var addToLiked, clearMessage, currentLiked, details, detailsActive, emailIsValid, family, fixHeader, glyphs, glyphsActive, hideLikedBox, inLiked, likedBox, likedClose, likedSpan, refreshLiked, removeFromLiked, renderLiked, showLikedBox, showSlideShow, style, styles, stylesActive, stylesGr;
+  var addToWished, clearMessage, currentWished, details, detailsActive, emailIsValid, family, fixHeader, glyphs, glyphsActive, hideWishedBox, inWished, refreshWished, removeFromWished, renderWished, showSlideShow, showWishedBox, style, styles, stylesActive, stylesGr, wishedBox, wishedClose, wishedSpan;
 
-  likedSpan = $('#liked span');
+  wishedSpan = $('#wished span');
 
-  likedClose = $('.close');
+  wishedClose = $('.close');
 
-  likedBox = $('.liked-box');
+  wishedBox = $('.wished-box');
 
   emailIsValid = function(email) {
     var pattern;
@@ -168,33 +168,33 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     return $('.message').html('');
   };
 
-  hideLikedBox = function() {
-    likedClose.off('click');
-    likedBox.hide('fast', function() {
-      return likedSpan.show();
+  hideWishedBox = function() {
+    wishedClose.off('click');
+    wishedBox.hide('fast', function() {
+      return wishedSpan.show();
     });
     $('main').removeClass('faded');
     $('body').removeClass('faded');
     $('header.main').removeClass('faded');
-    likedSpan.on('click', showLikedBox);
+    wishedSpan.on('click', showWishedBox);
     return clearMessage();
   };
 
-  showLikedBox = function() {
-    likedSpan.hide().off('click');
-    likedBox.show('fast', function() {
+  showWishedBox = function() {
+    wishedSpan.hide().off('click');
+    wishedBox.show('fast', function() {
       $('main').addClass('faded');
       $('body').addClass('faded');
       return $('header.main').addClass('faded');
     });
-    likedClose.on('click', hideLikedBox);
+    wishedClose.on('click', hideWishedBox);
     return $('.contact-form').on('submit', function(e) {
       var email;
       email = $(this).children("input[type='email']").val();
       if (email !== '' && emailIsValid(email)) {
         e.stopPropagation();
         $('.message').html('<h2>Thank you! Check your email soon.</h2>');
-        setTimeout(hideLikedBox, 2500);
+        setTimeout(hideWishedBox, 2500);
       } else {
         $('.message').html('<h2>Please provide email in valid format!</h2>');
         setTimeout(clearMessage, 2500);
@@ -203,19 +203,19 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     });
   };
 
-  refreshLiked = function(liked) {
+  refreshWished = function(wished) {
     var content, hideHelp, showHelp, size;
-    size = liked.length;
+    size = wished.length;
     if (size > 0) {
-      content = 'Liked ';
+      content = 'Wished ';
       if (size === 1) {
         content += '1 item';
       } else {
         content += size + " items";
       }
-      likedSpan.html(content);
-      likedSpan.removeClass('empty');
-      likedSpan.on('click', showLikedBox);
+      wishedSpan.html(content);
+      wishedSpan.removeClass('empty');
+      wishedSpan.on('click', showWishedBox);
       hideHelp = function() {
         $('.faq').hide();
         $('.items').show();
@@ -232,71 +232,71 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       };
       return $('a.help').on('click', showHelp);
     } else {
-      likedSpan.html('');
-      likedSpan.addClass('empty');
-      return $('.like').show();
+      wishedSpan.html('');
+      wishedSpan.addClass('empty');
+      return $('.wish').show();
     }
   };
 
-  currentLiked = function() {
-    return $.localStorage.get('liked');
+  currentWished = function() {
+    return $.localStorage.get('wished');
   };
 
-  inLiked = function(name) {
-    if ($.inArray(name, currentLiked()) === -1) {
+  inWished = function(name) {
+    if ($.inArray(name, currentWished()) === -1) {
       return false;
     } else {
       return true;
     }
   };
 
-  addToLiked = function(name) {
-    var tempLiked;
-    tempLiked = currentLiked();
-    tempLiked.push(name);
-    tempLiked = $.unique(tempLiked);
-    return $.localStorage.set('liked', tempLiked);
+  addToWished = function(name) {
+    var tempWished;
+    tempWished = currentWished();
+    tempWished.push(name);
+    tempWished = $.unique(tempWished);
+    return $.localStorage.set('wished', tempWished);
   };
 
-  removeFromLiked = function(name) {
-    var tempLiked;
-    tempLiked = currentLiked();
-    tempLiked.splice($.inArray(name, currentLiked()), 1);
-    return $.localStorage.set('liked', tempLiked);
+  removeFromWished = function(name) {
+    var tempWished;
+    tempWished = currentWished();
+    tempWished.splice($.inArray(name, currentWished()), 1);
+    return $.localStorage.set('wished', tempWished);
   };
 
-  renderLiked = function() {
+  renderWished = function() {
     var items;
     items = [];
-    $.each(currentLiked(), function(index, item) {
+    $.each(currentWished(), function(index, item) {
       return items.push($("<li><div class='name'>" + item + "</div><a class='remover' data-name='" + item + "'>Remove</a></li>"));
     });
     $('ul.items').html(items);
     return $('.remover').on('click', function() {
       var name;
       name = $(this).data('name');
-      removeFromLiked(name);
+      removeFromWished(name);
       $(this).parent('li').fadeOut();
-      $(".like[data-name='" + name + "']").removeClass('pushed');
-      if (currentLiked().length > 0) {
-        refreshLiked(currentLiked());
-        return renderLiked();
+      $(".wish[data-name='" + name + "']").removeClass('pushed');
+      if (currentWished().length > 0) {
+        refreshWished(currentWished());
+        return renderWished();
       } else {
-        refreshLiked(currentLiked());
-        return hideLikedBox();
+        refreshWished(currentWished());
+        return hideWishedBox();
       }
     });
   };
 
-  if ($.localStorage.get('liked') === null) {
-    $.localStorage.set('liked', []);
+  if ($.localStorage.get('wished') === null) {
+    $.localStorage.set('wished', []);
   } else {
-    $.each($('.like'), function(index, button) {
-      if (inLiked($(button).data('name'))) {
+    $.each($('.wish'), function(index, button) {
+      if (inWished($(button).data('name'))) {
         return $(button).addClass('pushed');
       }
     });
-    refreshLiked(currentLiked());
+    refreshWished(currentWished());
   }
 
   showSlideShow = function() {
@@ -628,24 +628,24 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     return $(this).parent('h3').siblings('.styles').children('h4').html($(this).val());
   });
 
-  if ($('.like').size() > 0) {
-    $('.like').on('click', function() {
+  if ($('.wish').size() > 0) {
+    $('.wish').on('click', function() {
       var name;
       name = $(this).data('name');
-      addToLiked(name);
+      addToWished(name);
       $(this).addClass('pushed');
-      renderLiked();
-      return refreshLiked(currentLiked());
+      renderWished();
+      return refreshWished(currentWished());
     });
   }
 
   $('.remove-all').on('click', function() {
     $.localStorage.removeAll();
     $('.pushed').removeClass('pushed');
-    $.localStorage.set('liked', []);
+    $.localStorage.set('wished', []);
     $('ul.items').html('');
-    refreshLiked(currentLiked());
-    return hideLikedBox();
+    refreshWished(currentWished());
+    return hideWishedBox();
   });
 
   if ($('#styles .styles').size() > 0) {
@@ -656,24 +656,24 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         return $(this).parent().siblings('.tools').children('.apperance').children('.name').addClass('visible');
       }
     });
-    $('.like').addClass('pushed');
+    $('.wish').addClass('pushed');
     $('#styles .styles').show(150, function() {
-      var showLike;
+      var showWish;
       $('#styles .styles').addClass('visible');
-      showLike = function() {
-        $('.like').removeClass('pushed');
-        if ($.localStorage.get('liked') === null) {
-          return $.localStorage.set('liked', []);
+      showWish = function() {
+        $('.wish').removeClass('pushed');
+        if ($.localStorage.get('wished') === null) {
+          return $.localStorage.set('wished', []);
         } else {
-          $.each($('.like'), function(index, button) {
-            if (!inLiked($(button).data('name'))) {
+          $.each($('.wish'), function(index, button) {
+            if (!inWished($(button).data('name'))) {
               return $(button).removeClass('pushed');
             }
           });
-          return refreshLiked(currentLiked());
+          return refreshWished(currentWished());
         }
       };
-      return setTimeout(showLike, 750);
+      return setTimeout(showWish, 750);
     });
     detailsActive = function() {
       $('a.active').removeClass('active');
@@ -706,15 +706,15 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         if (direction === 'up') {
           return stylesActive();
         }
+      },
+      enter: function(direction) {
+        return glyphsActive();
       }
     });
     styles = new Waypoint.Inview({
       element: $('#styles')[0],
       enter: function(direction) {
         return stylesActive();
-      },
-      exited: function(direction) {
-        return glyphsActive();
       }
     });
   }
@@ -729,6 +729,6 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     });
   }
 
-  renderLiked();
+  renderWished();
 
 }).call(this);
