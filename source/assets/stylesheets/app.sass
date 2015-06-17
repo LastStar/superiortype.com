@@ -41,7 +41,7 @@ header.main
     +flex(1)
     h1
       z-index: 10
-      font-size: modular-scale(1, 1rem)
+      font-size: $bigger-size
       display: inline-block
       a
         color: $black
@@ -110,7 +110,7 @@ main
             width: 1000rem
         .tools
           +row
-          font-size: 1rem
+          font-size: $default-size
           padding-bottom: 0.5rem
           .apperance
             +span-columns(4)
@@ -119,7 +119,7 @@ main
               padding: 0.5rem 0.25rem
               font-family: VeganSans
               cursor: pointer
-              font-size: modular-scale(-1, 1rem)
+              font-size: $smaller-size
               &.list
                 opacity: 0.5
               &.open
@@ -150,7 +150,7 @@ main
                 opacity: 0
         h3
           +span-columns(12)
-          font-size: 4rem
+          font-size: $huge-size
           font-weight: normal
           padding: 1.5rem 0
           font-style: normal
@@ -174,7 +174,7 @@ main
             +transform(translateX(0))
           h4
             +span-columns(12)
-            font-size: 2rem
+            font-size: $larger-size
             padding: 1.5rem 0
             margin: 0
             border-top: thin solid $grey
@@ -193,7 +193,7 @@ main
             border: none
             box-shadow: none
             margin-bottom: 0
-            font-size: 2rem
+            font-size: $larger-size
             padding: 0
             +placeholder
               color: $black
@@ -244,7 +244,7 @@ main
                 padding: 0.25rem $tiny-spacer
                 margin: 0 0.5rem 0 0
                 color: $white
-                font-size: modular-scale(-1, 1rem)
+                font-size: $smaller-size
                 text-align: center
                 &.facebook
                   background-color: #0060ff
@@ -324,12 +324,12 @@ main
         +span-columns(5)
         padding: $default-spacer 0
         h3
-          font-size: 5rem
+          font-size: $huge-size
           margin: $default-spacer 0
         .highlite
           color: $white
           h3
-            font-size: 8rem
+            font-size: $epic-size
     &.font-header
       font-family: VeganSans
       padding: 0 2rem
@@ -351,7 +351,7 @@ main
           +order(1)
           +align-self(flex-end)
           display: inline-block
-          font-size: $default-spacer
+          font-size: $large-size
           font-weight: normal
           margin: 0
           &.hrot
