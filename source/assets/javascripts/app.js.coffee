@@ -199,12 +199,14 @@ showSlideShow = ->
           renderWished()
           title.attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
           setTimeout restart, 250
+          wish.unclick()
         snap.click ->
           title.attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
           setTimeout restart, 250
+          snap.unclick()
+        elementToMove.unmouseover()
   returnButtons = (element, item, callback) ->
-    element.mouseover ->
-      null
+    element.unmouseover
     element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, ->
       setTimeout callback, 1500 - item.speed
 
