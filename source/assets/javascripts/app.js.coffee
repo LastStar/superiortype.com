@@ -420,10 +420,9 @@ if $('#styles .styles').size() > 0
   }
 
 
-if $('#foundry')
-  $('.studio img').on 'mouseenter', ->
-    $(this).parent().addClass('hidden')
-    $('.nonstop').addClass('visible').on 'mouseleave', ->
-      $(this).removeClass('visible')
-      $('.studio').removeClass('hidden')
+$('.studio img').on 'mouseenter', ->
+  $(this).parent().addClass('hidden')
+  $('.nonstop').addClass('visible').on 'mouseleave', ->
+    $(this).removeClass('visible')
+    $('.studio').removeClass('hidden')
 renderWished()

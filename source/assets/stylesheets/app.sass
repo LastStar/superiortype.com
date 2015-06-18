@@ -225,26 +225,31 @@ main
         background-color: $light-green
         +row
         .contact-lost
-          +span-columns(6)
+          +span-columns(5)
           +omega
           address
+            +default-pad
+            +transform(translateX(30rem))
             font-style: normal
-            font-size: $bigger-size
+            font-size: $big-size
             margin: $default-spacer $default-spacer
-            padding: $small-spacer
             background-color: $grey
             border-radius: $small-spacer
+            &.visible
+              +transform(translateX(0))
+              +transition-property(transform)
+              +transition-duration($medium-delay)
             a
               color: $black
             .social
               padding-top: 1rem
               a
+                +high-button-pad
                 border-radius: 1rem
                 border: none
-                padding: 0.25rem $tiny-spacer
                 margin: 0 0.5rem 0 0
                 color: $white
-                font-size: $smaller-size
+                font-size: $default-size
                 text-align: center
                 &.facebook
                   background-color: #0060ff
@@ -253,10 +258,11 @@ main
                 &.instagram
                   background-color: #a04aff
           .lost
-            font-size: $bigger-size
+            font-size: $default-size
             padding: 0 $default-spacer
         .text
-          +span-columns(6 of 12)
+          +shift
+          +span-columns(6)
           padding: $default-spacer 0
           p
             font-size: $bigger-size
