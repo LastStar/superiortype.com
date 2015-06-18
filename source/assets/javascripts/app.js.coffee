@@ -175,6 +175,7 @@ showSlideShow = ->
       group = buttons.select 'g#'+item.id
       group.attr { transform: zero }
       buttons.selectAll('g#'+item.id+' > g').attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
+      buttons.select('g#'+item.id+'-title').attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
       moveButton item, 0
 
   moveButton = (item, index) ->
