@@ -1,30 +1,29 @@
+- data = current_page.data
 section.fonts#styles
   nav
-    div class=current_page.data.id
+    div class=data.id
       .styles
-        = partial 'partials/styles', locals: { styles: current_page.data.styles }
-section id='glyphs' class=current_page.data.id
-  table
-    - i = 0
-    - "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghi\"“”‘’‹›«»#(/)[]{|}-–—_.,:;©®™ªº^+-×=<>•".each_codepoint do |c|
-      - if i%5 == 0
-        tr
-      td= c.chr(Encoding::UTF_8)
-      - i += 1
+        = partial 'partials/styles', locals: { styles: data.styles }
+section id='glyphs'
+  select.glyphs
+    - for image in data.charsets
+      option value=image = image.gsub("-", " ").capitalize
+  - for image in data.charsets
+    img class=image src="/assets/images/#{data.id}-glyphs-#{image}.svg"
 section.about
   #details
     .description
-      - for p in current_page.data.details.split("\n")
+      - for p in data.details.split("\n")
         p.text= p
     .features
       p.feature
         strong Styles in font family
         br
-        = current_page.data.styles.size
+        = data.styles.size
       p.feature
         strong Number of glyphs per font
         br
-        = current_page.data.glyphs
+        = data.glyphs
       p.feature
         strong Language Support
         br
@@ -40,11 +39,11 @@ section.about
 
   .opentype
     h4 OpenType features
-    img src="/assets/images/#{current_page.data.id}-opentype.svg"
-  - if current_page.data.inuse
+    img src="/assets/images/#{data.id}-opentype.svg"
+  - if data.inuse
     .inuse
       h4 In use
-      - for inuse in current_page.data.inuse
+      - for inuse in data.inuse
         figure
           - img = "/assets/images/"+inuse.img
           img src=img

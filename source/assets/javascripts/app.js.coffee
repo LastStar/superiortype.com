@@ -425,4 +425,26 @@ $('.studio img').on 'mouseenter', ->
   $('.nonstop').addClass('visible').on 'mouseleave', ->
     $(this).removeClass('visible')
     $('.studio').removeClass('hidden')
+
+if $('address').length > 0
+  address = $('address')
+  removed = false
+  address.addClass('visible')
+  $(window).on 'scroll', ->
+    if !removed && $(window).scrollTop() > ($('address').position().top + $('address').height())
+      address.removeClass('visible')
+      removed = true
+    else if removed && $(window).scrollTop() < ($('address').position().top + $('address').height())
+      address.addClass('visible')
+      removed = false
+
+if $('select.glyphs').size() > 0
+  glyphsSelect = $('select.glyphs')
+  glyphsSelect.children('option:last-child').attr('selected', 'selected')
+  $('#glyphs img:last-child').addClass('visible')
+  glyphsSelect.on 'change', ->
+    $('#glyphs img.visible').removeClass('visible')
+    $(this).parent('#glyphs').children('img.'+$(this).val()).addClass('visible')
+    console.log($(this).val())
+
 renderWished()

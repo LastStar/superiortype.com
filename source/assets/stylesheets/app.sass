@@ -449,13 +449,15 @@ main
     &#glyphs
       +font-weights
       padding: $default-spacer 2rem
-      table
-        border: none
-        td
-          +pad($huge-spacer $default-spacer)
-          border: none
-          text-align: center
-          font-size: 4rem
+      select
+        +appearance(none)
+        +button-pad
+        border-radius: 1rem
+        background: $white
+      img
+        display: none
+        &.visible
+          display: block
 section.wished-box
   +row
   font-family: VeganSans
