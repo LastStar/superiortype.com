@@ -398,21 +398,22 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
             title.attr({
               transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
             });
-            return setTimeout(restart, 250);
+            setTimeout(restart, 250);
+            return wish.unclick();
           });
-          return snap.click(function() {
+          snap.click(function() {
             title.attr({
               transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
             });
-            return setTimeout(restart, 250);
+            setTimeout(restart, 250);
+            return snap.unclick();
           });
+          return elementToMove.unmouseover();
         });
       });
     };
     return returnButtons = function(element, item, callback) {
-      element.mouseover(function() {
-        return null;
-      });
+      element.unmouseover;
       return element.animate({
         transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
       }, item.speed / 2, mina.easeout, function() {
