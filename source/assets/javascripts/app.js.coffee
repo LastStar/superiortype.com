@@ -197,7 +197,6 @@ showSlideShow = ->
             , 750)
     }
   }
-  console.log config
 
   restartDelay = 3000
 
@@ -323,6 +322,8 @@ if $('section.fonts#styles').size() > 0
     offset = parseInt $(this).data('offset')
     console.log offset
     if !isNaN(offset)
+      if $(window).width() > 2000
+        offset += 30
       $('.font-header').addClass('fixed')
       $('.font-header header').addClass('fixed')
       $('#styles').addClass('with-bumper')
@@ -446,6 +447,5 @@ if $('select.glyphs').size() > 0
   glyphsSelect.on 'change', ->
     $('#glyphs img.visible').removeClass('visible')
     $(this).parent('#glyphs').children('img.'+$(this).val()).addClass('visible')
-    console.log($(this).val())
 
 renderWished()
