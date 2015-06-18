@@ -198,7 +198,7 @@ showSlideShow = ->
           renderWished()
           title.attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
           restart()
-        title.click ->
+        snap.click ->
           title.attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
           restart()
 
