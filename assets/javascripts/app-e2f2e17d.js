@@ -401,12 +401,12 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
             setTimeout(restart, 250);
             return wish.unclick();
           });
-          snap.click(function() {
+          title.click(function() {
             title.attr({
               transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
             });
             setTimeout(restart, 250);
-            return snap.unclick();
+            return title.unclick();
           });
           return elementToMove.unmouseover();
         });
