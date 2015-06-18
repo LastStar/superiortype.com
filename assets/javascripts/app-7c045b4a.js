@@ -359,6 +359,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         buttons.selectAll('g#' + item.id + ' > g').attr({
           transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
         });
+        buttons.select('g#' + item.id + '-title').attr({
+          transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
+        });
         return moveButton(item, 0);
       });
     });
