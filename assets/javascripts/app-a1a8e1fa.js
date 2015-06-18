@@ -395,13 +395,13 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
             title.attr({
               transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
             });
-            return restart();
+            return setTimeout(restart, 250);
           });
           return snap.click(function() {
             title.attr({
               transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
             });
-            return restart();
+            return setTimeout(restart, 250);
           });
         });
       });
