@@ -202,6 +202,8 @@ showSlideShow = ->
           title.attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
           setTimeout restart, 250
   returnButtons = (element, item, callback) ->
+    element.mouseover ->
+      null
     element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, ->
       setTimeout callback, 1500 - item.speed
 
