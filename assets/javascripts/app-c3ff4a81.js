@@ -323,99 +323,26 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     config = {
       hrot: {
         id: 'hrot',
+        name: 'Hrot',
         initial: [(width / 2) - 5, 0],
         final: [(width / 2) - halfCircle, height / 7],
         speed: 900
       },
       kundaBook: {
         id: 'kunda-book',
+        name: 'Kunda Book',
         initial: [width + 90, height],
         final: [width / 2, height / 2],
-        speed: 800,
-        showRoom: '/assets/images/kunda-book-show-room.svg',
-        preSlide: function(show) {
-          show.selectAll('g#slide-1 > g').attr({
-            transform: 'translate(-' + width + ', 0)'
-          });
-          show.select('g#slide-2').attr({
-            opacity: 0
-          });
-          return show.select('g#background rect').attr({
-            width: width,
-            height: height,
-            opacity: 0
-          });
-        },
-        showSlide: function(show) {
-          var slides;
-          slides = show.selectAll('g#canvas > g#slide-1 > g').attr({
-            transform: 'translate(-' + width + ', 0)'
-          });
-          return $.each(slides, function(index, slide) {
-            return slide.animate({
-              transform: 'translate(80, ' + (index * 250 - 80) + ')'
-            }, 150 + index * 250);
-          });
-        },
-        changeSlide: function(show) {
-          $.each(show.selectAll('g#slide-1 > g'), function(index, slide) {
-            return slide.animate({
-              transform: 'translate(80, -80)'
-            }, index * 250, mina.easeout, function() {
-              return setTimeout(function() {
-                return slide.animate({
-                  transform: 'translate(' + (index * 850 - 80) + ', -80)'
-                }, 150 + index * 250);
-              }, 550);
-            });
-          });
-          show.select('g#slide-2').animate({
-            opacity: 1,
-            transform: 'translate(100, 439) scale(1.05)'
-          }, 3000, mina.bounce);
-          return show.select('g#background rect').animate({
-            opacity: 1
-          }, 8000, mina.bounce);
-        }
+        speed: 800
       },
       veganSans: {
         id: 'vegan-sans',
+        name: 'Vegan Sans',
         initial: [0, height],
         final: [(width / 2) - 2 * halfCircle, height / 2],
         speed: 700,
         showRoom: '/assets/images/vegan-sans-show-room.svg',
-        color: '#ff0',
-        preSlide: function(show) {
-          show.select('g#slide-1').attr({
-            transform: 'translate(-' + width / 2 + ', 0)'
-          });
-          return show.select('g#slide-2').attr({
-            transform: 'translate(80, ' + height + ')'
-          });
-        },
-        showSlide: function(show) {
-          return show.select('g#slide-1').animate({
-            transform: 'translate(80, 10)'
-          }, 1000, mina.bounce);
-        },
-        changeSlide: function(show) {
-          show.select('g#slide-1').animate({
-            transform: 'translate(80, -' + height + ')'
-          }, 750, mina.easein);
-          return show.select('g#slide-2').animate({
-            transform: 'translate(80, 120)'
-          }, 750, mina.easein, function() {
-            return setTimeout(function() {
-              show.selectAll('g#slide-2 path')[1].animate({
-                transform: 'translate(80, ' + height + ')'
-              }, 350);
-              return show.selectAll('g#slide-2 path')[0].animate({
-                transform: 'scale(2)',
-                fill: '#ff0'
-              }, 350);
-            }, 750);
-          });
-        }
+        color: '#ff0'
       }
     };
     restartDelay = 3000;
@@ -436,14 +363,12 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       });
     });
     moveButton = function(item, index) {
-      var elementToMove, restart, timeout;
+      var elementToMove, restart, title;
       if (index > 11) {
         index = 0;
       }
       elementToMove = buttons.selectAll('g#' + item.id + ' > g')[index];
-      elementToMove.animate({
-        transform: 'translate(' + item.final + ') scale(' + scale.final + ')'
-      }, item.speed, mina.bounce);
+      title = buttons.select('g#' + item.id + '-title');
       restart = function() {
         ++index;
         restartDelay += 100;
@@ -451,26 +376,32 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
           return moveButton(item, index);
         });
       };
-      timeout = setTimeout(restart, restartDelay);
-      return elementToMove.click(function() {
-        return Snap.load('/assets/images/' + item.id + '-show-room.svg', function(canvas) {
-          var show;
-          show = canvas.select('g#' + item.id);
-          item.preSlide(show);
-          return buttons.selectAll('g#canvas > g').animate({
-            opacity: 0
-          }, 150, mina.easeout, function() {
-            var changeSlide;
-            snap.clear();
-            snap.append(show);
-            changeSlide = function() {
-              item.changeSlide(show);
-              return show.click(function() {
-                return document.location = '/fonts/' + item.id;
-              });
-            };
-            item.showSlide(show);
-            return setTimeout(changeSlide, 4000);
+      return elementToMove.animate({
+        transform: 'translate(' + item.final + ') scale(' + scale.final + ')'
+      }, item.speed, mina.bounce, function() {
+        var timeout;
+        timeout = setTimeout(restart, restartDelay);
+        return elementToMove.mouseover(function() {
+          var wish;
+          clearTimeout(timeout);
+          title.attr({
+            transform: 'translate(' + item.final + ') scale(' + scale.final + ')'
+          });
+          wish = title.select('#wish');
+          wish.click(function() {
+            addToWished(item.name);
+            refreshWished(currentWished());
+            renderWished();
+            title.attr({
+              transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
+            });
+            return restart();
+          });
+          return snap.click(function() {
+            title.attr({
+              transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
+            });
+            return restart();
           });
         });
       });
