@@ -407,6 +407,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       });
     };
     return returnButtons = function(element, item, callback) {
+      element.mouseover(function() {
+        return null;
+      });
       return element.animate({
         transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
       }, item.speed / 2, mina.easeout, function() {
