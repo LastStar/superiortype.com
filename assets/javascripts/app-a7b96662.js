@@ -418,7 +418,6 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         }
       }
     };
-    console.log(config);
     restartDelay = 3000;
     buttons = null;
     Snap.load('/assets/images/buttons.svg', function(canvas) {
@@ -590,6 +589,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       offset = parseInt($(this).data('offset'));
       console.log(offset);
       if (!isNaN(offset)) {
+        if ($(window).width() > 2000) {
+          offset += 30;
+        }
         $('.font-header').addClass('fixed');
         $('.font-header header').addClass('fixed');
         $('#styles').addClass('with-bumper');
@@ -752,8 +754,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     $('#glyphs img:last-child').addClass('visible');
     glyphsSelect.on('change', function() {
       $('#glyphs img.visible').removeClass('visible');
-      $(this).parent('#glyphs').children('img.' + $(this).val()).addClass('visible');
-      return console.log($(this).val());
+      return $(this).parent('#glyphs').children('img.' + $(this).val()).addClass('visible');
     });
   }
 
