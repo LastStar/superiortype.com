@@ -16,6 +16,7 @@ html.nojs
     title = current_page.data.title
     meta name="description" content=""
     meta name="viewport" content="width=device-width, initial-scale=1"
+    meta name="viewport" content="width=device-width, minimum-scale=1.0"
 
     / Place favicon.ico and apple-touch-icon.png in the root directory.
 
@@ -30,13 +31,18 @@ html.nojs
         | to improve your experience.
 
     header.main
-      h1
-        a href='/' alt='Superior Type Home' Superior Type
-      nav
-        a href="/custom" Custom
-        a href="/foundry" Foundry
+      .menu
+        h1
+          a href='/' alt='Superior Type Home' Superior Type
+        nav
+          a href="/custom" Custom
+          a href="/foundry" Foundry
+      #wished
+        span.empty
 
     main
       == yield
+    section.wished-box
+      = partial 'partials/wished'
 
     = javascript_include_tag 'app'

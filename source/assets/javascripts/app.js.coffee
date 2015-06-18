@@ -319,7 +319,7 @@ if $('section.fonts#styles').size() > 0
       fixHeader = true
 
 
-  $('.sections a').on 'click', (e) ->
+  $('.sections a.scroll').on 'click', (e) ->
     offset = parseInt $(this).data('offset')
     console.log offset
     if !isNaN(offset)

@@ -589,10 +589,9 @@ $big-desktop:  new-breakpoint(min-width 1340px 12)
 $large-desktop:  new-breakpoint(min-width 1600px 12)
 $huge-desktop:  new-breakpoint(min-width 2500px 12)
 
-+media($big-desktop)
++media($large-desktop)
   html
     font-size: modular-scale(1, 16px)
-+media($large-desktop)
   section
     &.wished-box
       width: 70vw
