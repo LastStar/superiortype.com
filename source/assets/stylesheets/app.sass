@@ -587,31 +587,23 @@ $phone-landscape: new-breakpoint(max-width 480px 4)
 $tablet-portrait: new-breakpoint(max-width 769px 4)
 $big-desktop:  new-breakpoint(min-width 1340px 12)
 $large-desktop:  new-breakpoint(min-width 1600px 12)
-$huge-desktop:  new-breakpoint(min-width 2800px 12)
+$huge-desktop:  new-breakpoint(min-width 2500px 12)
 
-+media($huge-desktop)
-  section
-    &.wished-box
-      width: 40vw
-      margin: 10vh 30vw
-
-+media($large-desktop)
-  html
-    font-size: modular-scale(2, 16px)
-  header.main
-    nav
-      +transform(translateX(-26rem))
-  section
-    &.wished-box
-      width: 60vw
-      margin: 10vh 20vw
 +media($big-desktop)
   html
     font-size: modular-scale(1, 16px)
++media($large-desktop)
   section
     &.wished-box
       width: 70vw
       margin: 10vh 15vw
++media($huge-desktop)
+  html
+    font-size: modular-scale(2, 16px)
+  section
+    &.wished-box
+      width: 60vw
+      margin: 10vh 20vw
 +media($tablet-portrait)
   html
     font-size: modular-scale(-1, 16px)
