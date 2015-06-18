@@ -415,8 +415,9 @@ if $('#styles .styles').size() > 0
   }
   stylesIn = new Waypoint.Inview {
     element: $('#styles')[0],
-    enter: (direction) ->
-      stylesActive()
+    entered: (direction) ->
+      if direction == 'up'
+        stylesActive()
   }
 
 
