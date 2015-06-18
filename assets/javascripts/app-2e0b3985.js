@@ -715,8 +715,10 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     });
     stylesIn = new Waypoint.Inview({
       element: $('#styles')[0],
-      enter: function(direction) {
-        return stylesActive();
+      entered: function(direction) {
+        if (direction === 'up') {
+          return stylesActive();
+        }
       }
     });
   }
