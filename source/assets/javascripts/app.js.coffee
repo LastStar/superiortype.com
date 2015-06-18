@@ -200,10 +200,10 @@ showSlideShow = ->
           title.attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
           setTimeout restart, 250
           wish.unclick()
-        snap.click ->
+        title.click ->
           title.attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
           setTimeout restart, 250
-          snap.unclick()
+          title.unclick()
         elementToMove.unmouseover()
   returnButtons = (element, item, callback) ->
     element.unmouseover
