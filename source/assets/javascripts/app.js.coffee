@@ -8,6 +8,7 @@
 wishedSpan = $('#wished span')
 wishedClose = $('.close')
 wishedBox = $('.wished-box')
+defaultSpeed = 250
 
 emailIsValid = (email) ->
   pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i)
@@ -38,10 +39,10 @@ showWishedBox = ->
     if email != '' and emailIsValid(email)
       e.stopPropagation()
       $('.message').html('<h2>Thank you! Check your email soon.</h2>')
-      setTimeout hideWishedBox, 2500
+      setTimeout hideWishedBox, 10*defaultSpeed
     else
       $('.message').html('<h2>Please provide email in valid format!</h2>')
-      setTimeout clearMessage, 2500
+      setTimeout clearMessage, 10*defaultSpeed
     false
 
 refreshWished = (wished) ->
@@ -162,22 +163,19 @@ showSlideShow = ->
       color: '#ff0'
     }
   }
-
   restartDelay = 3000
-
   buttons = null
-
+  moveToPosition = (element, position, scale) ->
+    element.attr { transform: "translate(#{position}) scale(#{scale})" }
   Snap.load '/assets/images/buttons.svg', (canvas) ->
     buttons = canvas.select 'g#Buttons'
     snap.append buttons
-
     $.each config, (name, item) ->
       group = buttons.select 'g#'+item.id
-      group.attr { transform: zero }
-      buttons.selectAll('g#'+item.id+' > g').attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
-      buttons.select('g#'+item.id+'-title').attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
+      moveToPosition group, zero, ''
+      moveToPosition buttons.selectAll('g#'+item.id+' > g'), item.initial, scale.initial
+      moveToPosition buttons.select('g#'+item.id+'-title'), item.initial, scale.initial
       moveButton item, 0
-
   moveButton = (item, index) ->
     index = 0 if index > 11
     elementToMove = buttons.selectAll('g#'+item.id+' > g')[index]
@@ -190,25 +188,24 @@ showSlideShow = ->
     elementToMove.animate { transform: 'translate('+item.final+') scale('+scale.final+')' }, item.speed, mina.bounce, ->
       timeout = setTimeout restart, restartDelay
       elementToMove.mouseover ->
+        elementToMove.unmouseover()
         clearTimeout timeout
-        title.attr { transform: 'translate('+item.final+') scale('+scale.final+')' }
+        moveToPosition title, item.final, scale.final
         wish = title.select('#wish')
         wish.click ->
           addToWished(item.name)
           refreshWished(currentWished())
           renderWished()
-          title.attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
-          setTimeout restart, 250
+          moveToPosition title, item.initial, scale.initial
+          setTimeout restart, defaultSpeed
           wish.unclick()
         title.click ->
-          title.attr { transform: 'translate('+item.initial+') scale('+scale.initial+')' }
-          setTimeout restart, 250
+          moveToPosition title, item.initial, scale.initial
+          setTimeout restart, defaultSpeed
           title.unclick()
-        elementToMove.unmouseover()
-  returnButtons = (element, item, callback) ->
-    element.unmouseover
-    element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, ->
-      setTimeout callback, 1500 - item.speed
+    returnButtons = (element, item, callback) ->
+      element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, ->
+        setTimeout callback, 6*defaultSpeed - item.speed
 
 
 if $('#show-room').size() > 0
@@ -217,7 +214,6 @@ if $('#show-room').size() > 0
 $(window).resize ->
   showSlideShow()
 
-
 if $('section.fonts').size() > 0
   family = (el) ->
     el.parent().parent().siblings('h3')
@@ -225,7 +221,6 @@ if $('section.fonts').size() > 0
     el.parent().parent().siblings('.styles').children('h4')
   stylesGr = (el) ->
     el.parent().parent().siblings('.styles')
-
   $('.apperance .minus').on 'click', ->
     familySize = (parseInt(family($(this)).css('font-size'))*0.875)+'px'
     family($(this)).css({ 'font-size': familySize })
@@ -243,10 +238,10 @@ if $('section.fonts').size() > 0
       curStylesGr.removeClass('visible')
       hide = ->
         curStylesGr.hide()
-      setTimeout hide, 750
+      setTimeout hide, 3*defaultSpeed
     else
       $(this).addClass('open')
-      stylesGr($(this)).show 150, ->
+      stylesGr($(this)).show defaultSpeed, ->
         $.scrollTo($(this), 'max')
         $(this).addClass('visible')
   $('.fonts').css { opacity: 1 }
@@ -254,17 +249,14 @@ if $('section.fonts').size() > 0
 if $('section.fonts#styles').size() > 0
   style = (el) ->
     el.parent().parent().siblings('h4').children('input')
-
   $('.apperance .minus').on 'click', ->
     styleSize = (parseInt(style($(this)).first().css('font-size'))*0.75)
     $(this).siblings('.size').html(parseInt(styleSize)+'pt')
     style($(this)).css({ 'font-size': styleSize+'px' })
-
   $('.apperance .plus').on 'click', ->
     styleSize = (parseInt(style($(this)).first().css('font-size'))*1.25)
     $(this).siblings('.size').html(parseInt(styleSize)+'pt')
     style($(this)).css({ 'font-size': styleSize+'px' })
-
   fixHeader = true
   $(window).on 'scroll', ->
     topBound = $('header.main').height()
@@ -278,8 +270,6 @@ if $('section.fonts#styles').size() > 0
       $('.font-header header').removeClass('fixed')
       $('#styles').removeClass('with-bumper')
       fixHeader = true
-
-
   $('.sections a.scroll').on 'click', (e) ->
     offset = parseInt $(this).data('offset')
     console.log offset
@@ -290,13 +280,13 @@ if $('section.fonts#styles').size() > 0
       $('.font-header header').addClass('fixed')
       $('#styles').addClass('with-bumper')
       fixHeader = false
-      $(window).scrollTo $($(this).attr('href')), { duration: 300, offset: -offset }
+      $(window).scrollTo $($(this).attr('href')), { duration: defaultSpeed, offset: -offset }
     else
       $('.font-header').removeClass('fixed')
       $('.font-header header').removeClass('fixed')
       $('#styles').removeClass('with-bumper')
       fixHeader = true
-      $(window).scrollTo 0, { duration: 500 }
+      $(window).scrollTo 0, { duration: 2*defaultSpeed }
     $('.sections a.active').removeClass('active')
     $(this).addClass('active')
     e.stopPropagation()
@@ -307,7 +297,7 @@ $('header.main .menu *').on 'mouseenter', ->
 $('header.main').on 'mouseleave', ->
   hideMenu = ->
       $('header.main nav').removeClass('visible')
-  setTimeout hideMenu, 500
+  setTimeout hideMenu, 2*defaultSpeed
 
 $('.fonts input.tester').on 'change', ->
   $(this).parent('h3').siblings('.styles').children('h4').html($(this).val())
@@ -335,7 +325,7 @@ if $('#styles .styles').size() > 0
     else
       $(this).parent().siblings('.tools').children('.apperance').children('.name').addClass('visible')
   $('.wish').addClass('pushed')
-  $('#styles .styles').show 150, ->
+  $('#styles .styles').show defaultSpeed, ->
     $('#styles .styles').addClass('visible')
     showWish = ->
       $('.wish').removeClass('pushed')
@@ -346,7 +336,7 @@ if $('#styles .styles').size() > 0
           if !inWished($(button).data('name'))
             $(button).removeClass('pushed')
         refreshWished currentWished()
-    setTimeout showWish, 750
+    setTimeout showWish, 3*defaultSpeed
   detailsActive = ->
     $('a.active').removeClass 'active'
     $('a.details').addClass 'active'
@@ -382,7 +372,6 @@ if $('#styles .styles').size() > 0
       if direction == 'up'
         stylesActive()
   }
-
 
 $('.studio img').on 'mouseenter', ->
   $(this).parent().addClass('hidden')
