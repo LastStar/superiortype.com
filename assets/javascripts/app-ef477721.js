@@ -150,13 +150,15 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 }())
 ;
 (function() {
-  var addToWished, address, clearMessage, currentWished, detailsActive, detailsIn, emailIsValid, family, fixHeader, glyphsActive, glyphsIn, glyphsSelect, hideWishedBox, inWished, refreshWished, removeFromWished, removed, renderWished, showSlideShow, showWishedBox, style, styles, stylesActive, stylesGr, stylesIn, wishedBox, wishedClose, wishedSpan;
+  var addToWished, address, clearMessage, currentWished, defaultSpeed, detailsActive, detailsIn, emailIsValid, family, fixHeader, glyphsActive, glyphsIn, glyphsSelect, hideWishedBox, inWished, refreshWished, removeFromWished, removed, renderWished, showSlideShow, showWishedBox, style, styles, stylesActive, stylesGr, stylesIn, wishedBox, wishedClose, wishedSpan;
 
   wishedSpan = $('#wished span');
 
   wishedClose = $('.close');
 
   wishedBox = $('.wished-box');
+
+  defaultSpeed = 250;
 
   emailIsValid = function(email) {
     var pattern;
@@ -194,10 +196,10 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       if (email !== '' && emailIsValid(email)) {
         e.stopPropagation();
         $('.message').html('<h2>Thank you! Check your email soon.</h2>');
-        setTimeout(hideWishedBox, 2500);
+        setTimeout(hideWishedBox, 10 * defaultSpeed);
       } else {
         $('.message').html('<h2>Please provide email in valid format!</h2>');
-        setTimeout(clearMessage, 2500);
+        setTimeout(clearMessage, 10 * defaultSpeed);
       }
       return false;
     });
@@ -302,7 +304,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   }
 
   showSlideShow = function() {
-    var buttons, config, halfCircle, height, moveButton, restartDelay, returnButtons, scale, snap, svg, width, zero;
+    var buttons, config, halfCircle, height, moveButton, moveToPosition, restartDelay, scale, snap, svg, width, zero;
     if ($('#show-room').size() === 0) {
       return false;
     }
@@ -347,26 +349,25 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     };
     restartDelay = 3000;
     buttons = null;
+    moveToPosition = function(element, position, scale) {
+      return element.attr({
+        transform: "translate(" + position + ") scale(" + scale + ")"
+      });
+    };
     Snap.load('/assets/images/buttons.svg', function(canvas) {
       buttons = canvas.select('g#Buttons');
       snap.append(buttons);
       return $.each(config, function(name, item) {
         var group;
         group = buttons.select('g#' + item.id);
-        group.attr({
-          transform: zero
-        });
-        buttons.selectAll('g#' + item.id + ' > g').attr({
-          transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
-        });
-        buttons.select('g#' + item.id + '-title').attr({
-          transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
-        });
+        moveToPosition(group, zero, '');
+        moveToPosition(buttons.selectAll('g#' + item.id + ' > g'), item.initial, scale.initial);
+        moveToPosition(buttons.select('g#' + item.id + '-title'), item.initial, scale.initial);
         return moveButton(item, 0);
       });
     });
-    moveButton = function(item, index) {
-      var elementToMove, restart, title;
+    return moveButton = function(item, index) {
+      var elementToMove, restart, returnButtons, title;
       if (index > 11) {
         index = 0;
       }
@@ -379,46 +380,39 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
           return moveButton(item, index);
         });
       };
-      return elementToMove.animate({
+      elementToMove.animate({
         transform: 'translate(' + item.final + ') scale(' + scale.final + ')'
       }, item.speed, mina.bounce, function() {
         var timeout;
         timeout = setTimeout(restart, restartDelay);
         return elementToMove.mouseover(function() {
           var wish;
+          elementToMove.unmouseover();
           clearTimeout(timeout);
-          title.attr({
-            transform: 'translate(' + item.final + ') scale(' + scale.final + ')'
-          });
+          moveToPosition(title, item.final, scale.final);
           wish = title.select('#wish');
           wish.click(function() {
             addToWished(item.name);
             refreshWished(currentWished());
             renderWished();
-            title.attr({
-              transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
-            });
-            setTimeout(restart, 250);
+            moveToPosition(title, item.initial, scale.initial);
+            setTimeout(restart, defaultSpeed);
             return wish.unclick();
           });
-          title.click(function() {
-            title.attr({
-              transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
-            });
-            setTimeout(restart, 250);
+          return title.click(function() {
+            moveToPosition(title, item.initial, scale.initial);
+            setTimeout(restart, defaultSpeed);
             return title.unclick();
           });
-          return elementToMove.unmouseover();
         });
       });
-    };
-    return returnButtons = function(element, item, callback) {
-      element.unmouseover;
-      return element.animate({
-        transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
-      }, item.speed / 2, mina.easeout, function() {
-        return setTimeout(callback, 1500 - item.speed);
-      });
+      return returnButtons = function(element, item, callback) {
+        return element.animate({
+          transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
+        }, item.speed / 2, mina.easeout, function() {
+          return setTimeout(callback, 6 * defaultSpeed - item.speed);
+        });
+      };
     };
   };
 
@@ -471,10 +465,10 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         hide = function() {
           return curStylesGr.hide();
         };
-        return setTimeout(hide, 750);
+        return setTimeout(hide, 3 * defaultSpeed);
       } else {
         $(this).addClass('open');
-        return stylesGr($(this)).show(150, function() {
+        return stylesGr($(this)).show(defaultSpeed, function() {
           $.scrollTo($(this), 'max');
           return $(this).addClass('visible');
         });
@@ -535,7 +529,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         $('#styles').addClass('with-bumper');
         fixHeader = false;
         $(window).scrollTo($($(this).attr('href')), {
-          duration: 300,
+          duration: defaultSpeed,
           offset: -offset
         });
       } else {
@@ -544,7 +538,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         $('#styles').removeClass('with-bumper');
         fixHeader = true;
         $(window).scrollTo(0, {
-          duration: 500
+          duration: 2 * defaultSpeed
         });
       }
       $('.sections a.active').removeClass('active');
@@ -563,7 +557,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     hideMenu = function() {
       return $('header.main nav').removeClass('visible');
     };
-    return setTimeout(hideMenu, 500);
+    return setTimeout(hideMenu, 2 * defaultSpeed);
   });
 
   $('.fonts input.tester').on('change', function() {
@@ -599,7 +593,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       }
     });
     $('.wish').addClass('pushed');
-    $('#styles .styles').show(150, function() {
+    $('#styles .styles').show(defaultSpeed, function() {
       var showWish;
       $('#styles .styles').addClass('visible');
       showWish = function() {
@@ -615,7 +609,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
           return refreshWished(currentWished());
         }
       };
-      return setTimeout(showWish, 750);
+      return setTimeout(showWish, 3 * defaultSpeed);
     });
     detailsActive = function() {
       $('a.active').removeClass('active');
