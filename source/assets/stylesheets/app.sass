@@ -242,6 +242,7 @@ main
               +transition-duration($medium-delay)
             a
               color: $black
+              text-decoration: underline
             .social
               padding-top: 1rem
               a
@@ -261,8 +262,15 @@ main
           .lost
             font-size: $default-size
             padding: 0 $default-spacer
-            a
-              color: $black
+            span
+              display: inline-block
+              line-height: 2
+              +pad(0 $quarter-tiny-spacer)
+              a
+                +button-pad
+                color: $black
+                border-radius: 1rem
+                background-color: $white
         .text
           +shift
           +span-columns(6)

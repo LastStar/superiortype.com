@@ -56,7 +56,6 @@ refreshWished = (wished) ->
     wishedSpan.html content
     wishedSpan.removeClass 'empty'
     wishedSpan.on 'click', showWishedBox
-
     hideHelp = ->
       $('.faq').removeClass('visible')
       $('.items').show()
@@ -64,7 +63,6 @@ refreshWished = (wished) ->
       $('.remove-all').removeClass('hidden')
       $(this).html('What\'s this')
       $(this).on 'click', showHelp
-
     showHelp = ->
       $('.items').hide()
       $('.faq').addClass('visible')
@@ -72,7 +70,6 @@ refreshWished = (wished) ->
       $('.remove-all').addClass('hidden')
       $(this).html('Got it!')
       $(this).on 'click', hideHelp
-
     $('.help a').on 'click', showHelp
   else
     wishedSpan.html ''
@@ -194,20 +191,20 @@ showSlideShow = ->
         wish = title.select('#wish')
         wish.attr { cursor: 'pointer' }
         wish.click ->
+          wish.unclick()
           addToWished(item.name)
           refreshWished(currentWished())
           renderWished()
           moveToPosition title, item.initial, scale.initial
           setTimeout restart, defaultSpeed
-          wish.unclick()
         name = title.select('#name')
         name.attr { cursor: 'pointer' }
         name.click ->
           document.location = '/fonts/'+item.id
         title.click ->
+          title.unclick()
           moveToPosition title, item.initial, scale.initial
           setTimeout restart, defaultSpeed
-          title.unclick()
     returnButtons = (element, item, callback) ->
       element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.ease, ->
         setTimeout callback, 6*defaultSpeed - item.speed
