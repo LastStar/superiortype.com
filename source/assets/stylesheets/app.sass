@@ -300,20 +300,9 @@ main
         display: none
         &.visible
           display: block
-        .text
-          +span-columns(4 of 8)
-          background-color: $yellow
+        img
+          +span-columns(8 of 8)
           border-radius: 2rem
-          height: 40vw
-          width: 100%
-          h3
-            +span-columns(10 of 12)
-            font-size: $epic-size
-            color: $red
-            font-style: italic
-            text-align: center
-            line-height: 1
-            +transform(rotate(-15deg) translate($small-spacer, 8rem))
     &.custom
       +span-columns(12)
       font-family: VeganSans
@@ -525,7 +514,7 @@ section.wished-box
       a
         +grey-hover
         padding: 0.25rem $tiny-spacer
-      .hidden
+      &.hidden
         opacity: 0
   ul.items
     opacity: 1

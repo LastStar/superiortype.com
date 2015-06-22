@@ -61,7 +61,7 @@ refreshWished = (wished) ->
       $('.faq').removeClass('visible')
       $('.items').show()
       $('.contact-form').show()
-      $('.remove-all').show()
+      $('.remove-all').removeClass('hidden')
       $(this).html('What\'s this')
       $(this).on 'click', showHelp
 
