@@ -62,4 +62,5 @@ section.fonts
         .styles
           - for style in font.styles
             - weight = style.split(font[:name]).last.downcase.strip
-            h4 class=weight = style
+            h4 class=weight
+             a href="fonts/#{font[:id]}" = style

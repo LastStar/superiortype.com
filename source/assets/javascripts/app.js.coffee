@@ -207,7 +207,6 @@ showSlideShow = ->
       element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.ease, ->
         setTimeout callback, 6*defaultSpeed - item.speed
 
-
 if $('#show-room').size() > 0
   showSlideShow()
 
