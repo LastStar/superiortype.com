@@ -1957,7 +1957,7 @@ main section {
       -ms-appearance: none;
       -o-appearance: none;
       appearance: none;
-      padding: 0.25rem 1rem;
+      padding: 0.35rem 1rem;
       border-radius: 1rem;
       background: #fff; }
     /* line 451, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
@@ -2075,7 +2075,7 @@ section.wished-box {
       text-align: left; }
       /* line 504, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
       section.wished-box header .help a {
-        padding: 0.25rem 1rem;
+        padding: 0.35rem 1rem;
         border-radius: 1rem;
         border: thin solid #000; }
         /* line 43, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/partials/_mixins.sass */
@@ -2168,7 +2168,7 @@ section.wished-box {
         text-align: right; }
         /* line 534, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/app.sass */
         section.wished-box ul.items li .remove-wrap .remover {
-          padding: 0.25rem 1rem;
+          padding: 0.35rem 1rem;
           text-align: center;
           color: #000; }
           /* line 37, /Users/pepe/Projects/fun/superiortype.com/source/assets/stylesheets/partials/_mixins.sass */
