@@ -143,21 +143,21 @@ showSlideShow = ->
       id: 'hrot'
       name: 'Hrot'
       initial: [(width/2) - 5, 0]
-      final: [(width/2) - halfCircle, height/7]
+      final: [(width/2) - halfCircle, height/7 - height/21]
       speed: 900
     }
     kundaBook: {
       id: 'kunda-book'
       name: 'Kunda Book'
       initial: [(width+90), height]
-      final: [(width/2), height/2]
+      final: [(width/2), height/2 - height/21]
       speed: 800
     }
     veganSans: {
       id: 'vegan-sans'
       name: 'Vegan Sans'
       initial: [0, height]
-      final: [(width/2) - 2*halfCircle, height/2]
+      final: [(width/2) - 2*halfCircle, height/2 - height/21]
       speed: 700
       showRoom: '/assets/images/vegan-sans-show-room.svg'
       color: '#ff0'
@@ -204,7 +204,7 @@ showSlideShow = ->
           setTimeout restart, defaultSpeed
           title.unclick()
     returnButtons = (element, item, callback) ->
-      element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeout, ->
+      element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.ease, ->
         setTimeout callback, 6*defaultSpeed - item.speed
 
 
