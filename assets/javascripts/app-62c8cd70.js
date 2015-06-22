@@ -126,7 +126,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         $('.faq').removeClass('visible');
         $('.items').show();
         $('.contact-form').show();
-        $('.remove-all').show();
+        $('.remove-all').removeClass('hidden');
         $(this).html('What\'s this');
         return $(this).on('click', showHelp);
       };
