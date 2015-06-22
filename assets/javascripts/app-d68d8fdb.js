@@ -299,12 +299,12 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
             cursor: 'pointer'
           });
           wish.click(function() {
+            wish.unclick();
             addToWished(item.name);
             refreshWished(currentWished());
             renderWished();
             moveToPosition(title, item.initial, scale.initial);
-            setTimeout(restart, defaultSpeed);
-            return wish.unclick();
+            return setTimeout(restart, defaultSpeed);
           });
           name = title.select('#name');
           name.attr({
@@ -314,9 +314,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
             return document.location = '/fonts/' + item.id;
           });
           return title.click(function() {
+            title.unclick();
             moveToPosition(title, item.initial, scale.initial);
-            setTimeout(restart, defaultSpeed);
-            return title.unclick();
+            return setTimeout(restart, defaultSpeed);
           });
         });
       });
