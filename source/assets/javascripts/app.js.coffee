@@ -3,7 +3,7 @@
 //= require jquery.scrollTo/jquery.scrollTo.min
 //= require jQuery-Storage-API/jquery.storageapi.min.js
 //= require jquery-waypoints/lib/jquery.waypoints.min.js
-//= require jquery-waypoints/lib/shortcuts/inview.js
+//= require jquery-waypoints/lib/shortcuts/inview.min.js
 
 wishedSpan = $('#wished span')
 wishedClose = $('.close')
@@ -192,6 +192,7 @@ showSlideShow = ->
         clearTimeout timeout
         moveToPosition title, item.final, scale.final
         wish = title.select('#wish')
+        wish.attr { cursor: 'pointer' }
         wish.click ->
           addToWished(item.name)
           refreshWished(currentWished())
@@ -199,6 +200,10 @@ showSlideShow = ->
           moveToPosition title, item.initial, scale.initial
           setTimeout restart, defaultSpeed
           wish.unclick()
+        name = title.select('#name')
+        name.attr { cursor: 'pointer' }
+        name.click ->
+          document.location = '/fonts/'+item.id
         title.click ->
           moveToPosition title, item.initial, scale.initial
           setTimeout restart, defaultSpeed
