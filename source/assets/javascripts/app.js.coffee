@@ -397,8 +397,8 @@ if $('address').length > 0
 
 if $('select.glyphs').size() > 0
   glyphsSelect = $('select.glyphs')
-  glyphsSelect.children('option:last-child').attr('selected', 'selected')
-  $('#glyphs img:last-child').addClass('visible')
+  glyphsSelect.children('option:first-child').attr('selected', 'selected')
+  $('#glyphs img:nth-child(2)').addClass('visible')
   glyphsSelect.on 'change', ->
     $('#glyphs img.visible').removeClass('visible')
     $(this).parent('#glyphs').children('img.'+$(this).val()).addClass('visible')

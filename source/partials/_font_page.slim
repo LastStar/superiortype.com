@@ -7,7 +7,7 @@ section.fonts#styles
 section id='glyphs'
   select.glyphs
     - for image in data.charsets
-      option value=image = image.gsub("-", " ").capitalize
+      option value=image = image.split("-").map(&:capitalize).join(", ")
   - for image in data.charsets
     img class=image src="/assets/images/#{data.id}-glyphs-#{image}.svg"
 section.about
