@@ -48,6 +48,6 @@ section.about
           - img = "/assets/images/"+inuse.img
           img src=img
           figcaption
-            - for p in inuse.text.split("\n")
-              = p
-              br
+            ul
+              - for p in inuse.text.split("\n")
+                li= p

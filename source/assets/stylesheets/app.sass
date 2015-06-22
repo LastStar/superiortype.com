@@ -217,7 +217,7 @@ main
         +row
         h2
           +shift(1)
-          +span-columns(5)
+          +span-columns(6)
           padding: 0 2rem
           font-size: $big-size
           font-weight: normal
@@ -261,6 +261,8 @@ main
           .lost
             font-size: $default-size
             padding: 0 $default-spacer
+            a
+              color: $black
         .text
           +shift
           +span-columns(6)
@@ -446,7 +448,9 @@ main
               border-radius: 1rem
             figcaption
               +span-columns(2 of 10)
-
+              ul
+                li:first-child
+                  font-weight: bold
     &#glyphs
       +font-weights
       padding: $default-spacer 2rem

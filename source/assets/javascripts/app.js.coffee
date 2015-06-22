@@ -386,8 +386,10 @@ $('.studio img').on 'mouseenter', ->
 if $('address').length > 0
   address = $('address')
   removed = false
-  address.addClass('visible')
-  $(window).on 'scroll', ->
+  showAddress = ->
+    address.addClass('visible')
+  setTimeout showAddress, defaultSpeed
+$(window).on 'scroll', ->
     if !removed && $(window).scrollTop() > ($('address').position().top + $('address').height())
       address.removeClass('visible')
       removed = true
