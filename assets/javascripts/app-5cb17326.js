@@ -327,21 +327,21 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         id: 'hrot',
         name: 'Hrot',
         initial: [(width / 2) - 5, 0],
-        final: [(width / 2) - halfCircle, height / 7],
+        final: [(width / 2) - halfCircle, height / 7 - height / 21],
         speed: 900
       },
       kundaBook: {
         id: 'kunda-book',
         name: 'Kunda Book',
         initial: [width + 90, height],
-        final: [width / 2, height / 2],
+        final: [width / 2, height / 2 - height / 21],
         speed: 800
       },
       veganSans: {
         id: 'vegan-sans',
         name: 'Vegan Sans',
         initial: [0, height],
-        final: [(width / 2) - 2 * halfCircle, height / 2],
+        final: [(width / 2) - 2 * halfCircle, height / 2 - height / 21],
         speed: 700,
         showRoom: '/assets/images/vegan-sans-show-room.svg',
         color: '#ff0'
@@ -409,7 +409,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       return returnButtons = function(element, item, callback) {
         return element.animate({
           transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
-        }, item.speed / 2, mina.easeout, function() {
+        }, item.speed / 2, mina.ease, function() {
           return setTimeout(callback, 6 * defaultSpeed - item.speed);
         });
       };
