@@ -349,18 +349,10 @@ if $('#styles .styles').size() > 0
   stylesActive = ->
     $('a.active').removeClass 'active'
     $('a.styles').addClass 'active'
-  inuseIn = new Waypoint.Inview {
-    element: $('#inuse')[0],
-    exited: (direction) ->
-      if direction == 'up'
-        inuseActive()
-  }
   detailsIn = new Waypoint.Inview {
     element: $('#details')[0],
     enter: (direction) ->
-      if direction == 'down'
-        detailsActive()
-    ,
+      detailsActive()
     exited: (direction) ->
       if direction == 'up'
         glyphsActive()
@@ -369,21 +361,14 @@ if $('#styles .styles').size() > 0
   }
   glyphsIn = new Waypoint.Inview {
     element: $('#glyphs')[0],
+    enter: (direction) ->
+      glyphsActive()
     exited: (direction) ->
       if direction == 'up'
         stylesActive()
-    ,
-    enter: (direction) ->
-      glyphsActive()
-
+      else
+        detailsActive
   }
-  stylesIn = new Waypoint.Inview {
-    element: $('#styles')[0],
-    entered: (direction) ->
-      if direction == 'up'
-        stylesActive()
-  }
-
 $('.studio img').on 'mouseenter', ->
   $(this).attr({ src: '/assets/images/non-stop.svg' }).on 'mouseleave', ->
     $(this).attr({ src: '/assets/images/studio.jpg' })
