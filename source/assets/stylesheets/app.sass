@@ -452,7 +452,7 @@ main
                   font-weight: bold
     &#glyphs
       +font-weights
-      padding: $default-spacer 2rem
+      +pad($default-spacer $small-spacer)
       select
         +appearance(none)
         +button-pad
@@ -461,7 +461,9 @@ main
       img
         display: none
         &.visible
+          +pad($default-spacer 0)
           display: block
+          width: 100%
 section.wished-box
   +row
   font-family: VeganSans
