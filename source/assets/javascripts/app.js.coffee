@@ -325,7 +325,7 @@ if $('#styles .styles').size() > 0
   $('.wish').addClass('pushed')
   $('#styles .styles').show defaultSpeed, ->
     $('#styles .styles').addClass('visible')
-    if $(window).scrollTop < $('#styles .styles').height()
+    if $(window).scrollTop() < $('#styles .styles').height()
       stylesActive()
     showWish = ->
       $('.wish').removeClass('pushed')
