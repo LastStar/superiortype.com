@@ -124,17 +124,14 @@ else
 showSlideShow = ->
   return false if $('#show-room').size() == 0
   svg = $('svg')
-  height = $(window).height() - 53
+  height = $(window).height() - $('header.main').height()
   width = svg.width()
   svg.css({ height: height })
-
   snap = Snap "#show-room"
   snap.clear()
-
   zero = 'translate(0, 0)'
   scale = { initial: 0.0001, final: $(window).height()/550 }
   halfCircle = 110*scale.final
-
   config = {
     hrot: {
       id: 'hrot'
@@ -386,13 +383,13 @@ if $('address').length > 0
   showAddress = ->
     address.addClass('visible')
   setTimeout showAddress, defaultSpeed
-$(window).on 'scroll', ->
-    if !removed && $(window).scrollTop() > ($('address').position().top + $('address').height())
-      address.removeClass('visible')
-      removed = true
-    else if removed && $(window).scrollTop() < ($('address').position().top + $('address').height())
-      address.addClass('visible')
-      removed = false
+  $(window).on 'scroll', ->
+      if !removed && $(window).scrollTop() > ($('address').position().top + $('address').height())
+        address.removeClass('visible')
+        removed = true
+      else if removed && $(window).scrollTop() < ($('address').position().top + $('address').height())
+        address.addClass('visible')
+        removed = false
 
 if $('select.glyphs').size() > 0
   glyphsSelect = $('select.glyphs')
