@@ -9,7 +9,7 @@ section id='glyphs'
     - for image in data.charsets
       option value=image = image.split("-").map(&:capitalize).join(", ")
   - for image in data.charsets
-    img class=image src="/assets/images/#{data.id}-glyphs-#{image}.svg"
+    img class=image src="/assets/images/glyphs/#{data.id}/#{image}.svg"
 section.about
   #details
     .description
