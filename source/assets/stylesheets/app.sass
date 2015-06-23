@@ -21,6 +21,8 @@ body
   color: $black
   &.dark
     background-color: $dark-grey
+    header.main .menu a
+      color: $white !important
   &.faded
     overflow: hidden
 h1, h2, h3, h4, h5
@@ -313,29 +315,39 @@ main
           +span-columns(8 of 8)
           border-radius: 2rem
     &.custom
-      +span-columns(12)
       font-family: VeganSans
       h2
-        +span-columns(7)
-        padding: 0 $default-spacer
-        font-size: $big-size
+        +span-columns(10)
+        +shift
+        font-size: $large-size
         font-weight: normal
         margin-top: $default-spacer
+        color: $violet
+      ul.advantages
+        +span-columns(4)
+        +shift
+        li
+          margin-bottom: $small-spacer
+          &:before
+            content: "• "
+            font-size: $bigger-size
+          &.red:before
+            color: $red
+          &.yellow:before
+            color: $yellow
+
       .text
         p
-          +shift(3)
+          +shift
           +span-columns(5)
+          font-size: $bigger-size
       .cases
-        +shift(3)
-        +span-columns(5)
+        +shift(1)
+        +span-columns(11)
         padding: $default-spacer 0
         h3
-          font-size: $huge-size
+          font-size: 15vw
           margin: $default-spacer 0
-        .highlite
-          color: $white
-          h3
-            font-size: $epic-size
     &.font-header
       font-family: VeganSans
       padding: 0 2rem
