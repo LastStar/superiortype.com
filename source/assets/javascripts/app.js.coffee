@@ -335,6 +335,9 @@ if $('#styles .styles').size() > 0
             $(button).removeClass('pushed')
         refreshWished currentWished()
     setTimeout showWish, 3*defaultSpeed
+  inuseActive = ->
+    $('a.active').removeClass 'active'
+    $('a.inuse').addClass 'active'
   detailsActive = ->
     $('a.active').removeClass 'active'
     $('a.details').addClass 'active'
@@ -344,6 +347,12 @@ if $('#styles .styles').size() > 0
   stylesActive = ->
     $('a.active').removeClass 'active'
     $('a.styles').addClass 'active'
+  inuseIn = new Waypoint.Inview {
+    element: $('#inuse')[0],
+    exited: (direction) ->
+      if direction == 'up'
+        inuseActive()
+  }
   detailsIn = new Waypoint.Inview {
     element: $('#details')[0],
     enter: (direction) ->
@@ -353,6 +362,8 @@ if $('#styles .styles').size() > 0
     exited: (direction) ->
       if direction == 'up'
         glyphsActive()
+      else
+        inuseActive()
   }
   glyphsIn = new Waypoint.Inview {
     element: $('#glyphs')[0],
