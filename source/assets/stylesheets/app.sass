@@ -409,13 +409,12 @@ main
 
     &.about
       font-family: VeganSans
-      margin: $default-spacer 0
+      margin: $default-spacer 0 0
       #details
         +row
         margin-bottom: $default-spacer
         .description
-          +shift
-          +span-columns(8)
+          +span-columns(9)
           p.text
             padding: 0 2rem
             font-size: 1.5rem
@@ -433,7 +432,7 @@ main
           background-color: $grey
           img
             +span-columns(12)
-        &.inuse
+        &#inuse
           +row
           +small-pad
           background-color: $black
