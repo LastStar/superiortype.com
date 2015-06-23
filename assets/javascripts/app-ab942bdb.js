@@ -510,6 +510,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     $('#styles .styles').show(defaultSpeed, function() {
       var showWish;
       $('#styles .styles').addClass('visible');
+      if ($(window).scrollTop < $('#styles .styles').height()) {
+        stylesActive();
+      }
       showWish = function() {
         $('.wish').removeClass('pushed');
         if ($.localStorage.get('wished') === null) {
