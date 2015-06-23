@@ -75,7 +75,7 @@ header.main
       background-color: $blue
       text-align: center
       &.empty
-        background-color: $white
+        background-color: rgba(0, 0, 0, 0)
 
 main
   &.faded
@@ -292,28 +292,17 @@ main
           .photo
             img
               border-radius: 50%
-          p
-            font-size: $bigger-size
-            &:nth-child(2)
-              padding-top: $default-spacer
+            p
+              font-size: $bigger-size
       .studio
         +span-columns(8)
         +shift(2)
-        padding: $small-spacer $small-spacer 0
-        &.hidden
-          display: none
         img
+          border: none
           border-radius: 2rem
-      .nonstop
-        +span-columns(8)
-        +shift(2)
-        padding: $small-spacer $small-spacer 0
-        display: none
-        &.visible
-          display: block
-        img
-          +span-columns(8 of 8)
-          border-radius: 2rem
+          padding: 0
+          margin: 0 0 -1vh 0
+          width: 100%
     &.custom
       font-family: VeganSans
       h2

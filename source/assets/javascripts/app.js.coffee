@@ -372,11 +372,8 @@ if $('#styles .styles').size() > 0
   }
 
 $('.studio img').on 'mouseenter', ->
-  $(this).parent().addClass('hidden')
-  $('.nonstop').addClass('visible').on 'mouseleave', ->
-    $(this).removeClass('visible')
-    $('.studio').removeClass('hidden')
-
+  $(this).attr({ src: '/assets/images/non-stop.svg' }).on 'mouseleave', ->
+    $(this).attr({ src: '/assets/images/studio.jpg' })
 if $('address').length > 0
   address = $('address')
   removed = false
