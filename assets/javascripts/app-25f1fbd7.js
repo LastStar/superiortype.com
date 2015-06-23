@@ -213,7 +213,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       return false;
     }
     svg = $('svg');
-    height = $(window).height() - 53;
+    height = $(window).height() - $('header.main').height();
     width = svg.width();
     svg.css({
       height: height
@@ -586,17 +586,16 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       return address.addClass('visible');
     };
     setTimeout(showAddress, defaultSpeed);
+    $(window).on('scroll', function() {
+      if (!removed && $(window).scrollTop() > ($('address').position().top + $('address').height())) {
+        address.removeClass('visible');
+        return removed = true;
+      } else if (removed && $(window).scrollTop() < ($('address').position().top + $('address').height())) {
+        address.addClass('visible');
+        return removed = false;
+      }
+    });
   }
-
-  $(window).on('scroll', function() {
-    if (!removed && $(window).scrollTop() > ($('address').position().top + $('address').height())) {
-      address.removeClass('visible');
-      return removed = true;
-    } else if (removed && $(window).scrollTop() < ($('address').position().top + $('address').height())) {
-      address.addClass('visible');
-      return removed = false;
-    }
-  });
 
   if ($('select.glyphs').size() > 0) {
     glyphsSelect = $('select.glyphs');
