@@ -572,10 +572,12 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   }
 
   $('.studio img').on('mouseenter', function() {
-    $(this).parent().addClass('hidden');
-    return $('.nonstop').addClass('visible').on('mouseleave', function() {
-      $(this).removeClass('visible');
-      return $('.studio').removeClass('hidden');
+    return $(this).attr({
+      src: '/assets/images/non-stop.svg'
+    }).on('mouseleave', function() {
+      return $(this).attr({
+        src: '/assets/images/studio-e0d4d1fc.jpg'
+      });
     });
   });
 
