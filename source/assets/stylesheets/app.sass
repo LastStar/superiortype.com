@@ -243,8 +243,13 @@ main
               +transition-property(transform)
               +transition-duration($medium-delay)
             a
-              color: $black
-              text-decoration: underline
+              color: $white
+              border-radius: 1rem
+              background-color: $dark-grey
+              font-size: $default-size
+              font-weight: normal
+              +pad(0.5rem $small-spacer)
+              +white-hover
             .social
               padding-top: 1rem
               a
@@ -257,10 +262,13 @@ main
                 text-align: center
                 text-decoration: none
                 &.facebook
+                  +white-hover
                   background-color: #0060ff
                 &.twitter
+                  +white-hover
                   background-color: #00beff
                 &.instagram
+                  +white-hover
                   background-color: #a04aff
           .lost
             font-size: $default-size
@@ -271,9 +279,10 @@ main
               +pad(0 $quarter-tiny-spacer)
               a
                 +button-pad
-                color: $black
+                +white-hover
+                color: $white
                 border-radius: 1rem
-                background-color: $white
+                background-color: $light-blue
         .text
           +shift
           +span-columns(6)
