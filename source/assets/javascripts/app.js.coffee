@@ -217,14 +217,15 @@ showSlideShow = ->
                 moveButton currItem, nowMoving[currItem.id]['index']
             nowMoving[currItem.id]['timeout'] = setTimeout cont, currItem.speed
         moveToPosition title, titlePosition, scale.title
-        wish = title.select('#wish')
-        wish.attr { cursor: 'pointer' }
-        $(wish.node).one 'click', ->
-          addToWished(item.name)
-          refreshWished(currentWished())
-          renderWished()
-          moveToPosition title, item.initial, scale.initial
-          finishMovement()
+        if !inWished(item.name)
+          wish = title.select('#wish')
+          wish.attr { opacity: 1 }
+          wish.attr { cursor: 'pointer' }
+          $(wish.node).one 'click', ->
+            addToWished(item.name)
+            refreshWished(currentWished())
+            renderWished()
+            wish.attr { opacity: 0 }
         name = title.select('#name')
         name.attr { cursor: 'pointer' }
         $(name.node).one 'click', ->
