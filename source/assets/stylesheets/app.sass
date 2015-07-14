@@ -219,16 +219,16 @@ main
         +row
         h2
           +shift(1)
-          +span-columns(6)
+          +span-columns(8)
           padding: 0 2rem
-          font-size: $big-size
+          font-size: $larger-size
           font-weight: normal
           margin-top: $default-spacer
       .about-address
         background-color: $light-green
         +row
         .contact-lost
-          +span-columns(5)
+          +span-columns(6)
           +omega
           address
             +default-pad
@@ -242,14 +242,15 @@ main
               +transform(translateX(0))
               +transition-property(transform)
               +transition-duration($medium-delay)
-            a
-              color: $white
-              border-radius: 1rem
-              background-color: $dark-grey
-              font-size: $default-size
-              font-weight: normal
-              +pad(0.5rem $small-spacer)
-              +white-hover
+            .email
+              a
+                color: $white
+                border-radius: 1rem
+                background-color: $dark-grey
+                font-size: $default-size
+                font-weight: normal
+                +high-button-pad
+                +white-hover
             .social
               a
                 +high-button-pad
@@ -284,7 +285,7 @@ main
                 background-color: $light-blue
         .text
           +shift
-          +span-columns(6)
+          +span-columns(5)
           padding: $default-spacer 0
           p
             font-size: $bigger-size
