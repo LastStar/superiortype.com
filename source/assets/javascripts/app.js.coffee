@@ -175,7 +175,7 @@ showSlideShow = ->
       moveButton item, 0
     scroller = snap.circle $('header.main').css('padding-left'), height - 46, 13
     scroller.attr { fill: '#b3b3b3', cursor: 'pointer' }
-    $(scroller.node).one 'click', ->
+    $(scroller.node).on 'click', ->
       $.scrollTo '.fonts', { duration: defaultSpeed }
       scroller.attr { opacity: 0 }
     $(scroller.node).on 'mouseenter', ->
