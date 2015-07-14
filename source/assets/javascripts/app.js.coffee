@@ -130,9 +130,9 @@ showSlideShow = ->
   snap = Snap "#show-room"
   snap.clear()
   zero = 'translate(0, 0)'
-  scale = { initial: 0.0001, final: height/550, title: height/220 }
-  halfCircle = 110*scale.final
-  halfBigCircle = 110*scale.title
+  scale = { initial: 0.0001, final: height/525, title: height/210 }
+  halfCircle = 99*scale.final
+  halfBigCircle = 99*scale.title
   titlePosition = [width/2 - halfBigCircle, 0]
   config = {
     hrot: {
@@ -153,7 +153,7 @@ showSlideShow = ->
       id: 'vegan-sans'
       name: 'Vegan Sans'
       initial: [0, height]
-      final: [(width/2) - 2*halfCircle, height/2 - height/21]
+      final: [(width/2) - 2*halfCircle - 10, height/2 - height/21]
       speed: 700
       showRoom: '/assets/images/vegan-sans-show-room.svg'
       color: '#ff0'
@@ -186,28 +186,8 @@ showSlideShow = ->
         moveButton item, index
     elementToMove.animate { transform: 'translate('+item.final+') scale('+scale.final+')' }, item.speed, mina.bounce, ->
       nowMoving[item.id]['timeout'] = setTimeout restart, restartDelay
-      elementToMove.mouseover ->
-        $.each config, (name, currItem) ->
-          element = nowMoving[currItem.id]['element']
-          element.unmouseover()
-          moveToPosition element, currItem.initial, scale.initial
-          clearTimeout nowMoving[currItem.id]['timeout']
-        moveToPosition title, titlePosition, scale.title
-        wish = title.select('#wish')
-        wish.attr { cursor: 'pointer' }
-        wish.click ->
-          wish.unclick()
-          addToWished(item.name)
-          refreshWished(currentWished())
-          renderWished()
-          moveToPosition title, item.initial, scale.initial
-          setTimeout restart, defaultSpeed
-        name = title.select('#name')
-        name.attr { cursor: 'pointer' }
-        name.click ->
-          document.location = '/fonts/'+item.id
-        $(title.node).one 'mouseleave', ->
-          moveToPosition title, item.initial, scale.initial
+      $(elementToMove.node).one 'mouseenter', ->
+        finishMovement = ->
           $.each config, (name, currItem) ->
             element = nowMoving[currItem.id]['element']
             moveToPosition element, currItem.final, scale.final
@@ -215,6 +195,27 @@ showSlideShow = ->
               returnButtons element, currItem, ->
                 moveButton currItem, nowMoving[currItem.id]['index'] + 1
             nowMoving[currItem.id]['timeout'] = setTimeout cont, currItem.speed
+        $.each config, (name, currItem) ->
+          element = nowMoving[currItem.id]['element']
+          moveToPosition element, currItem.initial, scale.initial
+          clearTimeout nowMoving[currItem.id]['timeout']
+        moveToPosition title, titlePosition, scale.title
+        wish = title.select('#wish')
+        wish.attr { cursor: 'pointer' }
+        $(wish.node).one 'click', ->
+          wish.unclick()
+          addToWished(item.name)
+          refreshWished(currentWished())
+          renderWished()
+          moveToPosition title, item.initial, scale.initial
+          finishMovement()
+        name = title.select('#name')
+        name.attr { cursor: 'pointer' }
+        $(name.node).on 'click', ->
+          document.location = '/fonts/'+item.id
+        $(title.node).one 'mouseleave', ->
+          moveToPosition title, item.initial, scale.initial
+          finishMovement()
     returnButtons = (element, item, callback) ->
       element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.ease, ->
         setTimeout callback, 6*defaultSpeed - item.speed
