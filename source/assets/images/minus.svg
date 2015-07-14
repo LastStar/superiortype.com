@@ -7,9 +7,7 @@
     <g id="Buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
         <g id="minus" sketch:type="MSArtboardGroup">
             <circle id="Oval" fill="#CCCCCC" sketch:type="MSShapeGroup" cx="6.5" cy="6.5" r="6.5"></circle>
-            <text id="−" fill="#000000" sketch:type="MSTextLayer" font-family="Vegan Sans" font-size="10.1162994" font-weight="420">
-                <tspan x="3.75" y="10">−</tspan>
-            </text>
+            <path d="M8.97001049,6.75266789 L8.97001049,5.85231725 L4.25581497,5.85231725 L4.25581497,6.75266789 L8.97001049,6.75266789 Z" id="−" fill="#000000" sketch:type="MSShapeGroup"></path>
         </g>
     </g>
 </svg>
