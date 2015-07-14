@@ -182,6 +182,10 @@ showSlideShow = ->
       scroller.attr { fill: '#000' }
     $(scroller.node).on 'mouseleave', ->
       scroller.attr { fill: '#b3b3b3' }
+    $(window).on 'scroll', ->
+      topBound = $('header.main').height()
+      if $(window).scrollTop() > topBound
+        scroller.remove()
   moveButton = (item, index) ->
     index = 0 if index > 11
     elementToMove = buttons.selectAll('g#'+item.id+' > g')[index]
