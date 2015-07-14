@@ -130,8 +130,10 @@ showSlideShow = ->
   snap = Snap "#show-room"
   snap.clear()
   zero = 'translate(0, 0)'
-  scale = { initial: 0.0001, final: $(window).height()/550 }
+  scale = { initial: 0.0001, final: height/550, title: height/220 }
   halfCircle = 110*scale.final
+  halfBigCircle = 110*scale.title
+  titlePosition = [width/2 - halfBigCircle, 0]
   config = {
     hrot: {
       id: 'hrot'
@@ -161,6 +163,7 @@ showSlideShow = ->
   buttons = null
   moveToPosition = (element, position, scale) ->
     element.attr { transform: "translate(#{position}) scale(#{scale})" }
+  nowMoving = { 'hrot': {}, 'kunda-book': {}, 'vegan-sans': {} }
   Snap.load '/assets/images/buttons.svg', (canvas) ->
     buttons = canvas.select 'g#Buttons'
     snap.append buttons
@@ -174,17 +177,22 @@ showSlideShow = ->
     index = 0 if index > 11
     elementToMove = buttons.selectAll('g#'+item.id+' > g')[index]
     title = buttons.select('g#'+item.id+'-title')
+    nowMoving[item.id]['element'] = elementToMove
+    nowMoving[item.id]['index'] = index
     restart = ->
       ++index
       restartDelay += 100
       returnButtons elementToMove, item, ->
         moveButton item, index
     elementToMove.animate { transform: 'translate('+item.final+') scale('+scale.final+')' }, item.speed, mina.bounce, ->
-      timeout = setTimeout restart, restartDelay
+      nowMoving[item.id]['timeout'] = setTimeout restart, restartDelay
       elementToMove.mouseover ->
-        elementToMove.unmouseover()
-        clearTimeout timeout
-        moveToPosition title, item.final, scale.final
+        $.each config, (name, currItem) ->
+          element = nowMoving[currItem.id]['element']
+          element.unmouseover()
+          moveToPosition element, currItem.initial, scale.initial
+          clearTimeout nowMoving[currItem.id]['timeout']
+        moveToPosition title, titlePosition, scale.title
         wish = title.select('#wish')
         wish.attr { cursor: 'pointer' }
         wish.click ->
@@ -198,10 +206,15 @@ showSlideShow = ->
         name.attr { cursor: 'pointer' }
         name.click ->
           document.location = '/fonts/'+item.id
-        title.click ->
-          title.unclick()
+        $(title.node).one 'mouseleave', ->
           moveToPosition title, item.initial, scale.initial
-          setTimeout restart, defaultSpeed
+          $.each config, (name, currItem) ->
+            element = nowMoving[currItem.id]['element']
+            moveToPosition element, currItem.final, scale.final
+            cont = ->
+              returnButtons element, currItem, ->
+                moveButton currItem, nowMoving[currItem.id]['index'] + 1
+            nowMoving[currItem.id]['timeout'] = setTimeout cont, currItem.speed
     returnButtons = (element, item, callback) ->
       element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.ease, ->
         setTimeout callback, 6*defaultSpeed - item.speed
