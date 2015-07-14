@@ -177,7 +177,7 @@ showSlideShow = ->
     scroller.attr { fill: '#b3b3b3', cursor: 'pointer' }
     $(scroller.node).one 'click', ->
       $.scrollTo '.fonts', { duration: defaultSpeed }
-      scroller.remove()
+      scroller.attr { opacity: 0 }
     $(scroller.node).on 'mouseenter', ->
       scroller.attr { fill: '#000' }
     $(scroller.node).on 'mouseleave', ->
@@ -185,7 +185,9 @@ showSlideShow = ->
     $(window).on 'scroll', ->
       topBound = $('header.main').height()
       if $(window).scrollTop() > topBound
-        scroller.remove()
+        scroller.attr { opacity: 0 }
+      if $(window).scrollTop() < topBound
+        scroller.attr { opacity: 1 }
   moveButton = (item, index) ->
     index = 0 if index > 11
     elementToMove = buttons.selectAll('g#'+item.id+' > g')[index]
