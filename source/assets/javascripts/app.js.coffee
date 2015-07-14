@@ -140,7 +140,7 @@ showSlideShow = ->
       name: 'Hrot'
       initial: [(width/2) - 5, 0]
       final: [(width/2) - halfCircle, height/7 - height/21]
-      speed: 900
+      speed: 800
     }
     kundaBook: {
       id: 'kunda-book'
@@ -154,7 +154,7 @@ showSlideShow = ->
       name: 'Vegan Sans'
       initial: [0, height]
       final: [(width/2) - 2*halfCircle - 10, height/2 - height/21]
-      speed: 700
+      speed: 800
       showRoom: '/assets/images/vegan-sans-show-room.svg'
       color: '#ff0'
     }
@@ -182,28 +182,29 @@ showSlideShow = ->
     restart = ->
       ++index
       restartDelay += 100
+      $(elementToMove.node).off 'mouseenter'
       returnButtons elementToMove, item, ->
         moveButton item, index
     elementToMove.animate { transform: 'translate('+item.final+') scale('+scale.final+')' }, item.speed, mina.bounce, ->
       nowMoving[item.id]['timeout'] = setTimeout restart, restartDelay
       $(elementToMove.node).one 'mouseenter', ->
+        $.each config, (name, currItem) ->
+          clearTimeout nowMoving[currItem.id]['timeout']
+          el = nowMoving[currItem.id]['element']
+          el.stop()
+          moveToPosition el, currItem.initial, scale.initial
         finishMovement = ->
           $.each config, (name, currItem) ->
-            element = nowMoving[currItem.id]['element']
-            moveToPosition element, currItem.final, scale.final
+            el = nowMoving[currItem.id]['element']
+            moveToPosition el, currItem.final, scale.final
             cont = ->
-              returnButtons element, currItem, ->
-                moveButton currItem, nowMoving[currItem.id]['index'] + 1
+              returnButtons el, currItem, ->
+                moveButton currItem, nowMoving[currItem.id]['index']
             nowMoving[currItem.id]['timeout'] = setTimeout cont, currItem.speed
-        $.each config, (name, currItem) ->
-          element = nowMoving[currItem.id]['element']
-          moveToPosition element, currItem.initial, scale.initial
-          clearTimeout nowMoving[currItem.id]['timeout']
         moveToPosition title, titlePosition, scale.title
         wish = title.select('#wish')
         wish.attr { cursor: 'pointer' }
         $(wish.node).one 'click', ->
-          wish.unclick()
           addToWished(item.name)
           refreshWished(currentWished())
           renderWished()
@@ -211,7 +212,7 @@ showSlideShow = ->
           finishMovement()
         name = title.select('#name')
         name.attr { cursor: 'pointer' }
-        $(name.node).on 'click', ->
+        $(name.node).one 'click', ->
           document.location = '/fonts/'+item.id
         $(title.node).one 'mouseleave', ->
           moveToPosition title, item.initial, scale.initial
