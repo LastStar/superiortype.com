@@ -173,7 +173,7 @@ showSlideShow = ->
       moveToPosition buttons.selectAll('g#'+item.id+' > g'), item.initial, scale.initial
       moveToPosition buttons.select('g#'+item.id+'-title'), item.initial, scale.initial
       moveButton item, 0
-    scroller = snap.circle width/2 - 7, height - 46, 13
+    scroller = snap.circle $('header.main').css('padding-left'), height - 46, 13
     scroller.attr { fill: '#b3b3b3' }
     scroller.click ->
       $.scrollTo '.fonts', { duration: defaultSpeed }
