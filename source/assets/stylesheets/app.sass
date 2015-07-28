@@ -446,15 +446,14 @@ main
             +span-columns(12)
         &#inuse
           +row
-          +small-pad
           background-color: $black
           color: $white
-          height: 100vh
+          height: 80vh
           figure
-            +span-columns(12)
-            +pad($huge-spacer 0)
-            position: absolute
+            +pad($huge-spacer 0 0)
             +invisible
+            width: 100vw
+            position: absolute
             &:first-child
               +visible-block
             img
@@ -462,14 +461,15 @@ main
               +span-columns(8 of 12)
               border-radius: 1rem
             figcaption
-              +shift(7)
-              +span-columns(3 of 12)
+              +shift(6)
+              +span-columns(4 of 12)
               +pad($tiny-spacer)
+              position: absolute
+              top: 80%
               color: $black
-              opacity: 0.8
+              opacity: 0
               border-radius: $tiny-spacer 0 0 $tiny-spacer
               background-color: $grey
-              transform: translateY(-8rem)
               ul
                 li:first-child
                   font-weight: bold

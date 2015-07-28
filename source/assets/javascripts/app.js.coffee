@@ -453,6 +453,10 @@ if  inuseCount > 0
     nel = $("#inuse figure[data-order='#{next}']")
     el.hide()
     nel.show()
+  $('#inuse figure img').on 'mouseenter', ->
+    $(this).siblings('figcaption').css({ opacity: 0.8 })
+  $('#inuse figure img').on 'mouseleave', ->
+    $(this).siblings('figcaption').css({ opacity: 0 })
 
 
 $('.studio img').on 'mouseenter', ->
