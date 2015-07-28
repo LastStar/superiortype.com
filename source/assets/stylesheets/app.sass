@@ -356,14 +356,14 @@ main
         position: fixed
         top: 0
         z-index: 10
-        width: 100vw
+        width: 100%
       header
         +display(flex)
         +flex-direction(row)
-        border-bottom: thin solid $grey
-        padding: $default-spacer 0 2rem
+        box-shadow: 0px 3px 2px -2px $grey
+        padding: $default-spacer 0 $default-spacer
         &.fixed
-          padding: 1rem 0 1rem
+          padding: $tiny-spacer 0 $tiny-spacer
         h2
           +flex(2)
           +order(1)
@@ -446,14 +446,13 @@ main
             +span-columns(12)
         &#inuse
           +row
-          background-color: $black
           color: $white
-          height: 80vh
           figure
-            +pad($huge-spacer 0 0)
+            +pad($huge-spacer 0 $default-spacer)
             +invisible
             width: 100vw
             position: absolute
+            background-color: $black
             &:first-child
               +visible-block
             img
@@ -465,7 +464,7 @@ main
               +span-columns(4 of 12)
               +pad($tiny-spacer)
               position: absolute
-              top: 80%
+              top: 60%
               color: $black
               opacity: 0
               border-radius: $tiny-spacer 0 0 $tiny-spacer
@@ -770,9 +769,16 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
         &.font-header
           .sections, .wished
             +invisible
+          header
+            h2
+              a
+                img
+                  width: $tiny-spacer
         &.fonts
           .tools
             +invisible
+          &#styles
+            margin-top: $default-spacer
           nav
             .styles
               .style
@@ -785,7 +791,7 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
         &.about
           #details
             .description, .features
-              +span-columns(4)
+              +span-columns(3)
               font-size: $big-size
             .features
               +pad(0 $tiny-spacer 0 $small-spacer)

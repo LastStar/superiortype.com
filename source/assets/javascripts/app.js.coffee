@@ -126,8 +126,6 @@ showSlideShow = ->
   return false if $('#show-room').size() == 0
   svg = $('#show-room')
   width = svg.width()
-  height = (width + width/4) * 3
-  svg.css({ height: height })
   snap = Snap "#show-room"
   snap.clear()
   moveToPosition = (element, position, scale) ->
@@ -149,9 +147,11 @@ showSlideShow = ->
       }
     }
     scale = width/200
+    height = (250 * 3 + 16) * scale
+    svg.css({ height: height })
     Snap.load '/assets/images/mobile-buttons.svg', (canvas) ->
       buttons = canvas.select 'g#Buttons'
-      top = 30
+      top = 16 * scale
       left = parseInt svg.css('padding-left')
       $.each config, (name, item) ->
         button = buttons.select "g##{item.id}"
@@ -160,7 +160,7 @@ showSlideShow = ->
         $(button.node).one 'click', ->
           document.location = '/fonts/'+item.id
 
-        top += 230 * scale
+        top += 250 * scale
   else
     height = $(window).height() - $('header.main').height()
     svg.css({ height: height })
