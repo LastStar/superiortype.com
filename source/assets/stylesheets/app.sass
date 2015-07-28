@@ -48,6 +48,8 @@ header.main
         color: $black
         &:hover
           color: $black
+    .open-menu
+      +invisible
     nav
       +transform(translateX(-2rem))
       +transition-property(transform, opacity)
@@ -169,7 +171,7 @@ main
           +transition-duration($medium-delay)
           +row
           opacity: 0
-          display: none
+          +invisible
           &.visible
             opacity: 1
             +transform(translateX(0))
@@ -468,7 +470,7 @@ main
         border-radius: 1rem
         background: $white
       img
-        display: none
+        +invisible
         &.visible
           +pad($default-spacer 0)
           display: block
@@ -480,7 +482,7 @@ section.wished-box
   top: 0
   right: 0
   width: 80vw
-  display: none
+  +invisible
   opacity: 1
   overflow: scroll
   margin: 10vh 10vw
@@ -562,7 +564,7 @@ section.wished-box
 
   .faq
     +small-pad
-    display: none
+    +invisible
     &.visible
       display: block
     h3
@@ -605,9 +607,10 @@ section.wished-box
       text-align: center
       padding: 3rem
 
-$phone-portrait: new-breakpoint(max-width 320px 4)
-$phone-landscape: new-breakpoint(max-width 480px 4)
-$tablet-portrait: new-breakpoint(max-width 769px 4)
+$phone-portrait: new-breakpoint(max-width 320px 3)
+$phone-landscape: new-breakpoint(max-width 667px 3)
+$phone-plus-landscape: new-breakpoint(max-width 736px 3)
+$tablet-portrait: new-breakpoint(max-width 769px 3)
 $big-desktop:  new-breakpoint(min-width 1340px 12)
 $large-desktop:  new-breakpoint(min-width 1600px 12)
 $huge-desktop:  new-breakpoint(min-width 2500px 12)
@@ -637,8 +640,6 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
       @include transform(translateX(0))
   main
     section
-      svg#show-room
-        display: none
       &.fonts
         nav
           .tools
@@ -712,23 +713,83 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
         &.check-offer
           +span-columns(2 of 4)
           +shift(1)
-+media($phone-landscape)
++media($phone-plus-landscape)
   html
-    font-size: modular-scale(-2, 16px)
+    font-size: $smaller-size
   body
-    min-width: 53rem
-  main
-    section
-      &.fonts
+    min-width: 34rem
+    header.main
+      margin-top: $default-spacer
+      &.opened
+        box-shadow: 0px $eighth-tiny-spacer $eighth-tiny-spacer #888888
+        padding-bottom: $tiny-spacer
+      .menu
+        h1
+          font-size: $larger-size
+          +span-columns(2)
+        .open-menu
+          +span-columns(1)
+          +omega
+          text-align: right
         nav
-          h3
-            font-size: 4rem
+          +transform(translateY(-$small-spacer))
+          z-index: 1
+          display: inline-block
+          +span-columns(3)
+          &.visible
+            +transform(translateY(0rem))
+          a
+            +span-columns(1 of 3)
+            padding: 0
+            font-size: $big-size
+            &:first-child
+              padding: 0
+              text-align: left
+            &:nth-child(2)
+              text-align: center
+            &:last-child
+              text-align: right
+      #wished
+        +invisible
+    main
+      svg#show-room
+        padding: 0 2rem
+      section
+        &.font-header
+          .sections, .wished
+            +invisible
+        &.fonts
+          .tools
+            +invisible
+          nav
+            .styles
+              .style
+                h4
+                  border: none
+                  &:first-child
+                    padding: $tiny-spacer 0 1.5rem
+        &#glyphs
+          +invisible
+        &.about
+          #details
+            .description, .features
+              +span-columns(4)
+              font-size: $big-size
+            .features
+              +pad(0 $tiny-spacer 0 $small-spacer)
+          .opentype
+            +invisible
+          #inuse
+            +invisible
+
++media($phone-landscape)
+  body
+    main
+      section
+        &.fonts
+          nav
+            h3
+              font-size: $large-size
 +media($phone-portrait)
   body
     min-width: 35rem
-  main
-    section
-      &.fonts
-        nav
-          h3
-            font-size: 5rem

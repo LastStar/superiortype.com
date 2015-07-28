@@ -9,6 +9,7 @@ wishedSpan = $('#wished span')
 wishedClose = $('.close')
 wishedBox = $('.wished-box')
 defaultSpeed = 250
+isMobile = window.screen.availWidth < 750
 
 emailIsValid = (email) ->
   pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i)
@@ -113,7 +114,7 @@ renderWished = ->
       refreshWished(currentWished())
       hideWishedBox()
 
-if $.localStorage.get('wished') == null
+if $.localStorage.get('wished') == null || isMobile
   $.localStorage.set 'wished', []
 else
   $.each $('.wish'), (index, button) ->
@@ -123,119 +124,149 @@ else
 
 showSlideShow = ->
   return false if $('#show-room').size() == 0
-  svg = $('svg')
-  height = $(window).height() - $('header.main').height()
+  svg = $('#show-room')
   width = svg.width()
+  height = (width + width/4) * 3
   svg.css({ height: height })
   snap = Snap "#show-room"
   snap.clear()
-  zero = 'translate(0, 0)'
-  scale = { initial: 0.0001, final: height/525, title: height/210 }
-  halfCircle = 99*scale.final
-  halfBigCircle = 99*scale.title
-  titlePosition = [width/2 - halfBigCircle, 0]
-  config = {
-    hrot: {
-      id: 'hrot'
-      name: 'Hrot'
-      initial: [(width/2) - 5, 0]
-      final: [(width/2) - halfCircle, height/7 - height/21]
-      speed: 800
-    }
-    kundaBook: {
-      id: 'kunda-book'
-      name: 'Kunda Book'
-      initial: [(width+90), height]
-      final: [(width/2), height/2 - height/21]
-      speed: 800
-    }
-    veganSans: {
-      id: 'vegan-sans'
-      name: 'Vegan Sans'
-      initial: [0, height]
-      final: [(width/2) - 2*halfCircle - 10, height/2 - height/21]
-      speed: 800
-      showRoom: '/assets/images/vegan-sans-show-room.svg'
-      color: '#ff0'
-    }
-  }
-  restartDelay = 3000
-  buttons = null
   moveToPosition = (element, position, scale) ->
-    element.attr { transform: "translate(#{position}) scale(#{scale})" }
-  nowMoving = { 'hrot': {}, 'kunda-book': {}, 'vegan-sans': {} }
-  Snap.load '/assets/images/buttons.svg', (canvas) ->
-    buttons = canvas.select 'g#Buttons'
-    snap.append buttons
-    $.each config, (name, item) ->
-      group = buttons.select 'g#'+item.id
-      moveToPosition group, zero, ''
-      moveToPosition buttons.selectAll('g#'+item.id+' > g'), item.initial, scale.initial
-      moveToPosition buttons.select('g#'+item.id+'-title'), item.initial, scale.initial
-      moveButton item, 0
-    scroller = snap.circle $('header.main').css('padding-left'), height - 46, 13
-    scroller.attr { fill: '#b3b3b3', cursor: 'pointer' }
-    $(scroller.node).on 'click', ->
-      $.scrollTo '.fonts', { duration: defaultSpeed }
-      scroller.attr { opacity: 0 }
-    $(scroller.node).on 'mouseenter', ->
-      scroller.attr { fill: '#000' }
-    $(scroller.node).on 'mouseleave', ->
-      scroller.attr { fill: '#b3b3b3' }
-    $(window).on 'scroll', ->
-      topBound = $('header.main').height()
-      if $(window).scrollTop() > topBound
-        scroller.attr { opacity: 0 }
-      if $(window).scrollTop() < topBound
-        scroller.attr { opacity: 1 }
-  moveButton = (item, index) ->
-    index = 0 if index > 11
-    elementToMove = buttons.selectAll('g#'+item.id+' > g')[index]
-    title = buttons.select('g#'+item.id+'-title')
-    nowMoving[item.id]['element'] = elementToMove
-    nowMoving[item.id]['index'] = index
-    restart = ->
-      ++index
-      restartDelay += 100
-      $(elementToMove.node).off 'mouseenter'
-      returnButtons elementToMove, item, ->
-        moveButton item, index
-    elementToMove.animate { transform: 'translate('+item.final+') scale('+scale.final+')' }, item.speed, mina.bounce, ->
-      nowMoving[item.id]['timeout'] = setTimeout restart, restartDelay
-      $(elementToMove.node).one 'mouseenter', ->
-        $.each config, (name, currItem) ->
-          clearTimeout nowMoving[currItem.id]['timeout']
-          el = nowMoving[currItem.id]['element']
-          el.stop()
-          moveToPosition el, currItem.initial, scale.initial
-        finishMovement = ->
-          $.each config, (name, currItem) ->
-            el = nowMoving[currItem.id]['element']
-            moveToPosition el, currItem.final, scale.final
-            cont = ->
-              returnButtons el, currItem, ->
-                moveButton currItem, nowMoving[currItem.id]['index']
-            nowMoving[currItem.id]['timeout'] = setTimeout cont, currItem.speed
-        moveToPosition title, titlePosition, scale.title
-        if !inWished(item.name)
-          wish = title.select('#wish')
-          wish.attr { opacity: 1 }
-          wish.attr { cursor: 'pointer' }
-          $(wish.node).one 'click', ->
-            addToWished(item.name)
-            refreshWished(currentWished())
-            renderWished()
-            wish.attr { opacity: 0 }
-        name = title.select('#name')
-        name.attr { cursor: 'pointer' }
-        $(name.node).one 'click', ->
+    transform = "translate(#{position}) scale(#{scale})"
+    element.attr { transform: transform }
+  if isMobile
+    config = {
+      hrot: {
+        id: 'hrot'
+        name: 'Hrot'
+      }
+      kundaBook: {
+        id: 'kunda-book'
+        name: 'Kunda Book'
+      }
+      veganSans: {
+        id: 'vegan-sans'
+        name: 'Vegan Sans'
+      }
+    }
+    scale = width/200
+    Snap.load '/assets/images/mobile-buttons.svg', (canvas) ->
+      buttons = canvas.select 'g#Buttons'
+      top = 30
+      left = parseInt svg.css('padding-left')
+      $.each config, (name, item) ->
+        button = buttons.select "g##{item.id}"
+        snap.append button
+        moveToPosition button, [left, top], scale
+        $(button.node).one 'click', ->
           document.location = '/fonts/'+item.id
-        $(title.node).one 'mouseleave', ->
-          moveToPosition title, item.initial, scale.initial
-          finishMovement()
-    returnButtons = (element, item, callback) ->
-      element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.ease, ->
-        setTimeout callback, 6*defaultSpeed - item.speed
+
+        top += 230 * scale
+  else
+    height = $(window).height() - $('header.main').height()
+    svg.css({ height: height })
+    zero = 'translate(0, 0)'
+    scale = { initial: 0.0001, final: height/525, title: height/210 }
+    halfCircle = 99*scale.final
+    halfBigCircle = 99*scale.title
+    titlePosition = [width/2 - halfBigCircle, 0]
+    config = {
+      hrot: {
+        id: 'hrot'
+        name: 'Hrot'
+        initial: [(width/2) - 5, 0]
+        final: [(width/2) - halfCircle, height/7 - height/21]
+        speed: 800
+      }
+      kundaBook: {
+        id: 'kunda-book'
+        name: 'Kunda Book'
+        initial: [(width+90), height]
+        final: [(width/2) + 20, height/2 - height/21]
+        speed: 800
+      }
+      veganSans: {
+        id: 'vegan-sans'
+        name: 'Vegan Sans'
+        initial: [0, height]
+        final: [(width/2) - 2*halfCircle - 20, height/2 - height/21]
+        speed: 800
+      }
+    }
+    restartDelay = 3000
+    buttons = null
+    nowMoving = { 'hrot': {}, 'kunda-book': {}, 'vegan-sans': {} }
+    Snap.load '/assets/images/buttons.svg', (canvas) ->
+      buttons = canvas.select 'g#Buttons'
+      snap.append buttons
+      $.each config, (name, item) ->
+        group = buttons.select 'g#'+item.id
+        moveToPosition group, zero, ''
+        moveToPosition buttons.selectAll('g#'+item.id+' > g'), item.initial, scale.initial
+        moveToPosition buttons.select('g#'+item.id+'-title'), item.initial, scale.initial
+        moveButton item, 0
+      scroller = snap.circle $('header.main').css('padding-left'), height - 46, 13
+      scroller.attr { fill: '#b3b3b3', cursor: 'pointer' }
+      $(scroller.node).on 'click', ->
+        $.scrollTo '.fonts', { duration: defaultSpeed }
+        scroller.attr { opacity: 0 }
+      $(scroller.node).on 'mouseenter', ->
+        scroller.attr { fill: '#000' }
+      $(scroller.node).on 'mouseleave', ->
+        scroller.attr { fill: '#b3b3b3' }
+      $(window).on 'scroll', ->
+        topBound = $('header.main').height()
+        if $(window).scrollTop() > topBound
+          scroller.attr { opacity: 0 }
+        if $(window).scrollTop() < topBound
+          scroller.attr { opacity: 1 }
+    moveButton = (item, index) ->
+      index = 0 if index > 11
+      elementToMove = buttons.selectAll('g#'+item.id+' > g')[index]
+      title = buttons.select('g#'+item.id+'-title')
+      nowMoving[item.id]['element'] = elementToMove
+      nowMoving[item.id]['index'] = index
+      restart = ->
+        ++index
+        restartDelay += 100
+        $(elementToMove.node).off 'mouseenter'
+        returnButtons elementToMove, item, ->
+          moveButton item, index
+      elementToMove.animate { transform: 'translate('+item.final+') scale('+scale.final+')' }, item.speed, mina.bounce, ->
+        nowMoving[item.id]['timeout'] = setTimeout restart, restartDelay
+        $(elementToMove.node).one 'mouseenter', ->
+          $.each config, (name, currItem) ->
+            clearTimeout nowMoving[currItem.id]['timeout']
+            el = nowMoving[currItem.id]['element']
+            el.stop()
+            moveToPosition el, currItem.initial, scale.initial
+          finishMovement = ->
+            $.each config, (name, currItem) ->
+              el = nowMoving[currItem.id]['element']
+              moveToPosition el, currItem.final, scale.final
+              cont = ->
+                returnButtons el, currItem, ->
+                  moveButton currItem, nowMoving[currItem.id]['index']
+              nowMoving[currItem.id]['timeout'] = setTimeout cont, currItem.speed
+          moveToPosition title, titlePosition, scale.title
+          if !inWished(item.name)
+            wish = title.select('#wish')
+            wish.attr { opacity: 1 }
+            wish.attr { cursor: 'pointer' }
+            $(wish.node).one 'click', ->
+              addToWished(item.name)
+              refreshWished(currentWished())
+              renderWished()
+              wish.attr { opacity: 0 }
+          name = title.select('#name')
+          name.attr { cursor: 'pointer' }
+          $(name.node).one 'click', ->
+            document.location = '/fonts/'+item.id
+          $(title.node).one 'mouseleave', ->
+            moveToPosition title, item.initial, scale.initial
+            finishMovement()
+      returnButtons = (element, item, callback) ->
+        element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.ease, ->
+          setTimeout callback, 6*defaultSpeed - item.speed
 
 if $('#show-room').size() > 0
   showSlideShow()
@@ -321,12 +352,24 @@ if $('section.fonts#styles').size() > 0
     e.stopPropagation()
     false
 
-$('header.main .menu *').on 'mouseenter', ->
-  $('header.main nav').addClass('visible')
-$('header.main').on 'mouseleave', ->
-  hideMenu = ->
+if isMobile
+  menuOpened = false
+  $('header.main .menu .open-menu').on 'click', ->
+    if menuOpened
       $('header.main nav').removeClass('visible')
-  setTimeout hideMenu, 2*defaultSpeed
+      $('header.main').removeClass('opened')
+      menuOpened = false
+    else
+      $('header.main nav').addClass('visible')
+      $('header.main').addClass('opened')
+      menuOpened = true
+else
+  $('header.main .menu *').on 'mouseenter', ->
+    $('header.main nav').addClass('visible')
+  $('header.main').on 'mouseleave', ->
+    hideMenu = ->
+        $('header.main nav').removeClass('visible')
+    setTimeout hideMenu, 2*defaultSpeed
 
 $('.fonts input.tester').on 'change', ->
   $(this).parent('h3').siblings('.styles').children('h4').html($(this).val())

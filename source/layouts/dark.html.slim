@@ -30,15 +30,7 @@ html.nojs
         a<> href="http://browsehappy.com/" upgrade your browser
         | to improve your experience.
 
-    header.main
-      .menu
-        h1
-          a href='/' alt='Superior Type Home' Superior Type
-        nav
-          a href="/custom" Custom
-          a href="/foundry" Foundry
-      #wished
-        span.empty
+    = partial 'partials/header'
 
     main
       == yield
