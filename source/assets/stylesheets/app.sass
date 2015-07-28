@@ -450,17 +450,24 @@ main
           background-color: $black
           color: $white
           figure
-            +shift(2)
-            +span-columns(10)
+            +span-columns(12)
             +pad($huge-spacer 0)
+            +invisible
             img
-              +span-columns(8 of 10)
+              +shift(2)
+              +span-columns(8 of 12)
               border-radius: 1rem
             figcaption
-              +span-columns(2 of 10)
+              +shift(2)
+              +span-columns(4 of 12)
+              +pad($small-spacer)
+              border-radius: $tiny-spacer
+              background-color: $grey
               ul
                 li:first-child
                   font-weight: bold
+            &:first-child
+              +visible-block
     &#glyphs
       +font-weights
       +pad($default-spacer $small-spacer)
