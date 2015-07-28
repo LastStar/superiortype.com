@@ -216,10 +216,6 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     }
     svg = $('#show-room');
     width = svg.width();
-    height = (width + width / 4) * 3;
-    svg.css({
-      height: height
-    });
     snap = Snap("#show-room");
     snap.clear();
     moveToPosition = function(element, position, scale) {
@@ -245,10 +241,14 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         }
       };
       scale = width / 200;
+      height = (250 * 3 + 16) * scale;
+      svg.css({
+        height: height
+      });
       return Snap.load('/assets/images/mobile-buttons.svg', function(canvas) {
         var buttons, left, top;
         buttons = canvas.select('g#Buttons');
-        top = 30;
+        top = 16 * scale;
         left = parseInt(svg.css('padding-left'));
         return $.each(config, function(name, item) {
           var button;
@@ -258,7 +258,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
           $(button.node).one('click', function() {
             return document.location = '/fonts/' + item.id;
           });
-          return top += 230 * scale;
+          return top += 250 * scale;
         });
       });
     } else {
