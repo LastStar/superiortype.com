@@ -41,8 +41,8 @@ section.about
     h4 OpenType features
     img src="/assets/images/#{data.id}-opentype.svg"
   #inuse
-    - for inuse in data.inuse
-      figure
+    - data.inuse.each_with_index do |inuse, index|
+      figure data-order=index
         - img = "/assets/images/"+inuse.img
         img src=img
         figcaption

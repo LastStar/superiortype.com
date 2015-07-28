@@ -449,25 +449,30 @@ main
           +small-pad
           background-color: $black
           color: $white
+          height: 100vh
           figure
             +span-columns(12)
             +pad($huge-spacer 0)
+            position: absolute
             +invisible
+            &:first-child
+              +visible-block
             img
               +shift(2)
               +span-columns(8 of 12)
               border-radius: 1rem
             figcaption
-              +shift(2)
-              +span-columns(4 of 12)
-              +pad($small-spacer)
+              +shift(7)
+              +span-columns(3 of 12)
+              +pad($tiny-spacer)
+              color: $black
+              opacity: 0.8
               border-radius: $tiny-spacer
               background-color: $grey
+              transform: translateY(-8rem)
               ul
                 li:first-child
                   font-weight: bold
-            &:first-child
-              +visible-block
     &#glyphs
       +font-weights
       +pad($default-spacer $small-spacer)

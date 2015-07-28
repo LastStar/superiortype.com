@@ -443,6 +443,18 @@ if $('#styles .styles').size() > 0
       else
         detailsActive
   }
+
+inuseCount = $('#inuse figure').size()
+if  inuseCount > 0
+  $('#inuse figure').on 'click', ->
+    el = $(this)
+    next = parseInt(el.data('order')) + 1
+    next = 0 if next == inuseCount
+    nel = $("#inuse figure[data-order='#{next}']")
+    el.hide()
+    nel.show()
+
+
 $('.studio img').on 'mouseenter', ->
   $(this).attr({ src: '/assets/images/non-stop.svg' }).on 'mouseleave', ->
     $(this).attr({ src: '/assets/images/studio.jpg' })
