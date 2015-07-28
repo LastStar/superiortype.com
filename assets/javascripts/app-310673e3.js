@@ -710,6 +710,16 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       el.hide();
       return nel.show();
     });
+    $('#inuse figure img').on('mouseenter', function() {
+      return $(this).siblings('figcaption').css({
+        opacity: 0.8
+      });
+    });
+    $('#inuse figure img').on('mouseleave', function() {
+      return $(this).siblings('figcaption').css({
+        opacity: 0
+      });
+    });
   }
 
   $('.studio img').on('mouseenter', function() {
