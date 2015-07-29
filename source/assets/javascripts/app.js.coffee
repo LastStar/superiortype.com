@@ -444,26 +444,29 @@ if $('#styles .styles').size() > 0
 
 inuseCount = $('#inuse figure').size()
 if  inuseCount > 0
-  $('#inuse figure a').on 'click', ->
-    if $(this).hasClass('next')
-      progress = 1
-    else
-      progress = -1
-    el = $(this).parents('figure')
-    next = parseInt(el.data('order')) + progress
-    next = 0 if next == inuseCount
-    next = inuseCount - 1 if next < 0
-    nel = $("#inuse figure[data-order='#{next}']")
-    el.hide()
-    nel.show()
+  if inuseCount > 1
+    $('#inuse figure a').on 'click', ->
+      if $(this).hasClass('next')
+        progress = 1
+      else
+        progress = -1
+      el = $(this).parents('figure')
+      next = parseInt(el.data('order')) + progress
+      next = 0 if next == inuseCount
+      next = inuseCount - 1 if next < 0
+      nel = $("#inuse figure[data-order='#{next}']")
+      el.hide()
+      nel.show()
   $('#inuse figure *').on 'mouseenter', ->
     fig = $(this).parent('figure')
-    fig.children('figcaption').css({ opacity: 0.8 })
-    fig.children('nav').css({ opacity: 0.8 })
+    if inuseCount > 1
+      fig.children('figcaption').css({ opacity: 0.8 })
+      fig.children('nav').css({ opacity: 0.8 })
   $('#inuse figure *').on 'mouseleave', ->
     fig = $(this).parent('figure')
-    fig.children('figcaption').css({ opacity: 0 })
-    fig.children('nav').css({ opacity: 0 })
+    if inuseCount > 1
+      fig.children('figcaption').css({ opacity: 0 })
+      fig.children('nav').css({ opacity: 0 })
 
 $('.studio img').on 'mouseenter', ->
   $(this).attr({ src: '/assets/images/non-stop.svg' }).on 'mouseleave', ->
