@@ -54,7 +54,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
 !function(){"use strict";function t(){}function e(t){this.options=i.Adapter.extend({},e.defaults,t),this.axis=this.options.horizontal?"horizontal":"vertical",this.waypoints=[],this.createWaypoints()}var i=window.Waypoint;e.prototype.createWaypoints=function(){for(var t={vertical:[{down:"enter",up:"exited",offset:"100%"},{down:"entered",up:"exit",offset:"bottom-in-view"},{down:"exit",up:"entered",offset:0},{down:"exited",up:"enter",offset:function(){return-this.adapter.outerHeight()}}],horizontal:[{right:"enter",left:"exited",offset:"100%"},{right:"entered",left:"exit",offset:"right-in-view"},{right:"exit",left:"entered",offset:0},{right:"exited",left:"enter",offset:function(){return-this.adapter.outerWidth()}}]},e=0,i=t[this.axis].length;i>e;e++){var o=t[this.axis][e];this.createWaypoint(o)}},e.prototype.createWaypoint=function(t){var e=this;this.waypoints.push(new i({element:this.options.element,handler:function(t){return function(i){e.options[t[i]].call(this,i)}}(t),offset:t.offset,horizontal:this.options.horizontal}))},e.prototype.destroy=function(){for(var t=0,e=this.waypoints.length;e>t;t++)this.waypoints[t].destroy();this.waypoints=[]},e.defaults={enter:t,entered:t,exit:t,exited:t},i.Inview=e}();
 (function() {
-  var addToWished, address, clearMessage, currentWished, defaultSpeed, detailsActive, detailsIn, emailIsValid, family, fixHeader, glyphsActive, glyphsIn, glyphsSelect, hideWishedBox, inWished, inuseActive, inuseCount, isMobile, menuOpened, refreshWished, removeFromWished, removed, renderWished, showAddress, showSlideShow, showWishedBox, style, styles, stylesActive, stylesGr, wishedBox, wishedClose, wishedSpan;
+  var addToWished, address, clearMessage, currentWished, defaultSpeed, detailsActive, detailsIn, emailIsValid, family, fixHeader, glyphsActive, glyphsIn, glyphsSelect, hideWishedBox, inWished, inuseActive, inuseCount, isMobile, makeHeaderFixed, menuOpened, refreshWished, removeFromWished, removed, renderWished, showAddress, showSlideShow, showWishedBox, style, styles, stylesActive, stylesGr, unmakeHeaderFixed, wishedBox, wishedClose, wishedSpan;
 
   wishedSpan = $('#wished span');
 
@@ -524,20 +524,26 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       });
     });
     fixHeader = true;
+    makeHeaderFixed = function() {
+      $('.font-header').addClass('fixed');
+      $('.font-header header').addClass('fixed');
+      $('#styles').addClass('with-bumper');
+      return fixHeader = false;
+    };
+    unmakeHeaderFixed = function() {
+      $('.font-header').removeClass('fixed');
+      $('.font-header header').removeClass('fixed');
+      $('#styles').removeClass('with-bumper');
+      return fixHeader = true;
+    };
     $(window).on('scroll', function() {
       var topBound;
       topBound = $('header.main').height();
       if (fixHeader && ($(window).scrollTop() > topBound)) {
-        $('.font-header').addClass('fixed');
-        $('.font-header header').addClass('fixed');
-        $('#styles').addClass('with-bumper');
-        fixHeader = false;
+        makeHeaderFixed();
       }
       if (!fixHeader && ($(window).scrollTop() < topBound)) {
-        $('.font-header').removeClass('fixed');
-        $('.font-header header').removeClass('fixed');
-        $('#styles').removeClass('with-bumper');
-        return fixHeader = true;
+        return unmakeHeaderFixed();
       }
     });
     $('.sections a.scroll').on('click', function(e) {
@@ -548,19 +554,13 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         if ($(window).width() > 2000) {
           offset += 30;
         }
-        $('.font-header').addClass('fixed');
-        $('.font-header header').addClass('fixed');
-        $('#styles').addClass('with-bumper');
-        fixHeader = false;
+        makeHeaderFixed();
         $(window).scrollTo($($(this).attr('href')), {
           duration: defaultSpeed,
           offset: -offset
         });
       } else {
-        $('.font-header').removeClass('fixed');
-        $('.font-header header').removeClass('fixed');
-        $('#styles').removeClass('with-bumper');
-        fixHeader = true;
+        unmakeHeaderFixed();
         $(window).scrollTo(0, {
           duration: 2 * defaultSpeed
         });
@@ -699,24 +699,46 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   inuseCount = $('#inuse figure').size();
 
   if (inuseCount > 0) {
-    $('#inuse figure').on('click', function() {
-      var el, nel, next;
-      el = $(this);
-      next = parseInt(el.data('order')) + 1;
+    $('#inuse figure a').on('click', function() {
+      var el, nel, next, progress;
+      if ($(this).hasClass('next')) {
+        progress = 1;
+      } else {
+        progress = -1;
+      }
+      el = $(this).parents('figure');
+      next = parseInt(el.data('order')) + progress;
       if (next === inuseCount) {
         next = 0;
       }
+      if (next < 0) {
+        next = inuseCount - 1;
+      }
       nel = $("#inuse figure[data-order='" + next + "']");
-      el.hide();
-      return nel.show();
+      el.hide().css({
+        opacity: 0
+      });
+      return nel.show().css({
+        opacity: 1
+      });
     });
-    $('#inuse figure img').on('mouseenter', function() {
-      return $(this).siblings('figcaption').css({
+    $('#inuse figure *').on('mouseenter', function() {
+      var fig;
+      fig = $(this).parent('figure');
+      fig.children('figcaption').css({
+        opacity: 0.8
+      });
+      return fig.children('nav').css({
         opacity: 0.8
       });
     });
-    $('#inuse figure img').on('mouseleave', function() {
-      return $(this).siblings('figcaption').css({
+    $('#inuse figure *').on('mouseleave', function() {
+      var fig;
+      fig = $(this).parent('figure');
+      fig.children('figcaption').css({
+        opacity: 0
+      });
+      return fig.children('nav').css({
         opacity: 0
       });
     });

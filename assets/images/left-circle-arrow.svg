@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>left-circle-arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="left-circle-arrow" sketch:type="MSArtboardGroup">
+            <path d="M14,6.99997416 C14,10.8664183 10.8659301,14 6.99997416,14 C3.13401826,14 -2.66453526e-15,10.8664183 -2.66453526e-15,6.99997416 C-2.66453526e-15,3.13352997 3.13401826,-1.77635684e-15 6.99997416,-1.77635684e-15 C10.8659301,-1.77635684e-15 14,3.13352997 14,6.99997416 L14,6.99997416 Z" id="Shape" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path d="M7.80174397,10 L4,6.50050166 L7.80174397,3 L8,3.1824914 L4.39651205,6.50050166 L8,9.81644955 L7.80174397,10 Z" id="Shape" fill="#1D1D1B" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>
