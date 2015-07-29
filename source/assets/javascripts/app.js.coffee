@@ -444,18 +444,26 @@ if $('#styles .styles').size() > 0
 
 inuseCount = $('#inuse figure').size()
 if  inuseCount > 0
-  $('#inuse figure').on 'click', ->
-    el = $(this)
-    next = parseInt(el.data('order')) + 1
+  $('#inuse figure a').on 'click', ->
+    if $(this).hasClass('next')
+      progress = 1
+    else
+      progress = -1
+    el = $(this).parents('figure')
+    next = parseInt(el.data('order')) + progress
     next = 0 if next == inuseCount
+    next = inuseCount - 1 if next < 0
     nel = $("#inuse figure[data-order='#{next}']")
-    el.hide()
-    nel.show()
-  $('#inuse figure img').on 'mouseenter', ->
-    $(this).siblings('figcaption').css({ opacity: 0.8 })
-  $('#inuse figure img').on 'mouseleave', ->
-    $(this).siblings('figcaption').css({ opacity: 0 })
-
+    el.hide().css({ opacity: 0 })
+    nel.show().css({ opacity: 1 })
+  $('#inuse figure *').on 'mouseenter', ->
+    fig = $(this).parent('figure')
+    fig.children('figcaption').css({ opacity: 0.8 })
+    fig.children('nav').css({ opacity: 0.8 })
+  $('#inuse figure *').on 'mouseleave', ->
+    fig = $(this).parent('figure')
+    fig.children('figcaption').css({ opacity: 0 })
+    fig.children('nav').css({ opacity: 0 })
 
 $('.studio img').on 'mouseenter', ->
   $(this).attr({ src: '/assets/images/non-stop.svg' }).on 'mouseleave', ->

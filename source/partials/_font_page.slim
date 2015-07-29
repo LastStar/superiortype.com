@@ -45,6 +45,11 @@ section.about
       figure data-order=index
         - img = "/assets/images/"+inuse.img
         img src=img
+        nav
+          a.previous href='#previous'
+            img src='/assets/images/left-circle-arrow.svg'
+          a.next href='#next'
+            img src='/assets/images/right-circle-arrow.svg'
         figcaption
           ul
             - for p in inuse.text.split("\n")

@@ -458,19 +458,39 @@ main
             width: 100vw
             position: absolute
             background-color: $black
+            opacity: 0
+            +transition-property(opacity)
+            +transition-duration($medium-delay)
             &:first-child
               +visible-block
-            img
+              opacity: 1
+            & > img
               +shift(2)
               +span-columns(8 of 12)
               border-radius: 1rem
+            nav
+              +shift(2)
+              +span-columns(8 of 12)
+              +transition-property(opacity)
+              +transition-duration($small-delay)
+              position: absolute
+              top: 50%
+              opacity: 0
+              a
+                +span-columns(4 of 8)
+                &.next
+                  text-align: right
+                img
+                  margin: 0 $tiny-spacer
+                  width: 2rem
             figcaption
               +shift(2)
-              +span-columns(5 of 12)
-              +pad($default-spacer)
+              +span-columns(4 of 12)
+              +transition-property(opacity)
+              +transition-duration($small-delay)
               position: absolute
-              top: 70%
-              opacity: 0.8
+              top: 75%
+              opacity: 0
               ul
                 +pad($tiny-spacer)
                 color: $black
