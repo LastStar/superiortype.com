@@ -352,15 +352,20 @@ main
       font-family: VeganSans
       padding: 0 2rem
       background-color: $white
+      box-shadow: 0px 5px 3px -3px $grey
       &.fixed
         position: fixed
         top: 0
         z-index: 10
         width: 100%
+        header
+          h2
+            font-size: $big-size
+          .sections, .wished
+            margin-bottom: $half-tiny-spacer
       header
         +display(flex)
         +flex-direction(row)
-        box-shadow: 0px 3px 2px -2px $grey
         padding: $default-spacer 0 $default-spacer
         &.fixed
           padding: $tiny-spacer 0 $tiny-spacer
@@ -460,16 +465,17 @@ main
               +span-columns(8 of 12)
               border-radius: 1rem
             figcaption
-              +shift(6)
-              +span-columns(4 of 12)
-              +pad($tiny-spacer)
+              +shift(2)
+              +span-columns(5 of 12)
+              +pad($default-spacer)
               position: absolute
-              top: 60%
-              color: $black
-              opacity: 0
-              border-radius: $tiny-spacer 0 0 $tiny-spacer
-              background-color: $grey
+              top: 70%
+              opacity: 0.8
               ul
+                +pad($tiny-spacer)
+                color: $black
+                border-radius: $tiny-spacer
+                background-color: $white
                 li:first-child
                   font-weight: bold
     &#glyphs

@@ -318,34 +318,32 @@ if $('section.fonts#styles').size() > 0 && !isMobile
     $(this).siblings('.size').html(parseInt(styleSize)+'pt')
     style($(this)).css({ 'font-size': styleSize+'px' })
   fixHeader = true
+  makeHeaderFixed = ->
+    $('.font-header').addClass('fixed')
+    $('.font-header header').addClass('fixed')
+    $('#styles').addClass('with-bumper')
+    fixHeader = false
+  unmakeHeaderFixed = ->
+    $('.font-header').removeClass('fixed')
+    $('.font-header header').removeClass('fixed')
+    $('#styles').removeClass('with-bumper')
+    fixHeader = true
   $(window).on 'scroll', ->
     topBound = $('header.main').height()
     if fixHeader && ($(window).scrollTop() > topBound)
-      $('.font-header').addClass('fixed')
-      $('.font-header header').addClass('fixed')
-      $('#styles').addClass('with-bumper')
-      fixHeader = false
+      makeHeaderFixed()
     if !fixHeader && ($(window).scrollTop() < topBound)
-      $('.font-header').removeClass('fixed')
-      $('.font-header header').removeClass('fixed')
-      $('#styles').removeClass('with-bumper')
-      fixHeader = true
+      unmakeHeaderFixed()
   $('.sections a.scroll').on 'click', (e) ->
     offset = parseInt $(this).data('offset')
     console.log offset
     if !isNaN(offset)
       if $(window).width() > 2000
         offset += 30
-      $('.font-header').addClass('fixed')
-      $('.font-header header').addClass('fixed')
-      $('#styles').addClass('with-bumper')
-      fixHeader = false
+      makeHeaderFixed()
       $(window).scrollTo $($(this).attr('href')), { duration: defaultSpeed, offset: -offset }
     else
-      $('.font-header').removeClass('fixed')
-      $('.font-header header').removeClass('fixed')
-      $('#styles').removeClass('with-bumper')
-      fixHeader = true
+      unmakeHeaderFixed()
       $(window).scrollTo 0, { duration: 2*defaultSpeed }
     $('.sections a.active').removeClass('active')
     $(this).addClass('active')
