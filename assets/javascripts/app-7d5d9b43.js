@@ -715,12 +715,8 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         next = inuseCount - 1;
       }
       nel = $("#inuse figure[data-order='" + next + "']");
-      el.hide().css({
-        opacity: 0
-      });
-      return nel.show().css({
-        opacity: 1
-      });
+      el.hide();
+      return nel.show();
     });
     $('#inuse figure *').on('mouseenter', function() {
       var fig;
