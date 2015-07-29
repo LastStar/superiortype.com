@@ -43,8 +43,6 @@ section.about
   #inuse
     - data.inuse.each_with_index do |inuse, index|
       figure data-order=index
-        - img = "/assets/images/"+inuse.img
-        img src=img
         nav
           a.previous href='#previous'
             img src='/assets/images/left-circle-arrow.svg'
@@ -54,3 +52,4 @@ section.about
           ul
             - for p in inuse.text.split("\n")
               li= p
+        img src="/assets/images/#{inuse.img}"

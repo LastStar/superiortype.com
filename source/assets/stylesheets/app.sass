@@ -450,27 +450,24 @@ main
           img
             +span-columns(12)
         &#inuse
-          +row
-          color: $white
           figure
-            +pad($huge-spacer 0 $default-spacer)
+            +row
+            +pad($huge-spacer 0 $half-tiny-spacer)
             +invisible
             width: 100vw
             position: absolute
             background-color: $black
-            opacity: 0
             +transition-property(opacity)
             +transition-duration($medium-delay)
             &:first-child
               +visible-block
-              opacity: 1
             & > img
-              +shift(2)
-              +span-columns(8 of 12)
+              margin-left: 17.05961%
+              width: 65.88078%
               border-radius: 1rem
             nav
-              +shift(2)
-              +span-columns(8 of 12)
+              margin-left: 17.05961%
+              width: 65.88078%
               +transition-property(opacity)
               +transition-duration($small-delay)
               position: absolute
@@ -481,15 +478,15 @@ main
                 &.next
                   text-align: right
                 img
-                  margin: 0 $tiny-spacer
+                  margin: 0 $quarter-tiny-spacer
                   width: 2rem
             figcaption
-              +shift(2)
-              +span-columns(4 of 12)
               +transition-property(opacity)
               +transition-duration($small-delay)
+              +pad($half-tiny-spacer)
+              margin-left: 17.05961%
               position: absolute
-              top: 75%
+              top: 78%
               opacity: 0
               ul
                 +pad($tiny-spacer)

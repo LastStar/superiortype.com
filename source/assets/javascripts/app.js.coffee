@@ -454,8 +454,8 @@ if  inuseCount > 0
     next = 0 if next == inuseCount
     next = inuseCount - 1 if next < 0
     nel = $("#inuse figure[data-order='#{next}']")
-    el.hide().css({ opacity: 0 })
-    nel.show().css({ opacity: 1 })
+    el.hide()
+    nel.show()
   $('#inuse figure *').on 'mouseenter', ->
     fig = $(this).parent('figure')
     fig.children('figcaption').css({ opacity: 0.8 })
