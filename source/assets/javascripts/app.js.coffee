@@ -332,7 +332,7 @@ if $('section.fonts#styles').size() > 0 && !isMobile
     topBound = $('header.main').height()
     if fixHeader && ($(window).scrollTop() > topBound)
       makeHeaderFixed()
-    if !fixHeader && ($(window).scrollTop() < topBound)
+    if !fixHeader && ($(window).scrollTop() < 2*topBound)
       unmakeHeaderFixed()
   $('.sections a.scroll').on 'click', (e) ->
     offset = parseInt $(this).data('offset')
