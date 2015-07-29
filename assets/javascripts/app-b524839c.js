@@ -542,7 +542,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       if (fixHeader && ($(window).scrollTop() > topBound)) {
         makeHeaderFixed();
       }
-      if (!fixHeader && ($(window).scrollTop() < topBound)) {
+      if (!fixHeader && ($(window).scrollTop() < 2 * topBound)) {
         return unmakeHeaderFixed();
       }
     });
