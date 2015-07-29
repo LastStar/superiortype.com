@@ -306,7 +306,7 @@ if $('section.fonts').size() > 0
         $(this).addClass('visible')
   $('.fonts').css { opacity: 1 }
 
-if $('section.fonts#styles').size() > 0
+if $('section.fonts#styles').size() > 0 && !isMobile
   style = (el) ->
     el.parent().parent().siblings('h4').children('input')
   $('.apperance .minus').on 'click', ->
