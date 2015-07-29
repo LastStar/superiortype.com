@@ -699,44 +699,50 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   inuseCount = $('#inuse figure').size();
 
   if (inuseCount > 0) {
-    $('#inuse figure a').on('click', function() {
-      var el, nel, next, progress;
-      if ($(this).hasClass('next')) {
-        progress = 1;
-      } else {
-        progress = -1;
-      }
-      el = $(this).parents('figure');
-      next = parseInt(el.data('order')) + progress;
-      if (next === inuseCount) {
-        next = 0;
-      }
-      if (next < 0) {
-        next = inuseCount - 1;
-      }
-      nel = $("#inuse figure[data-order='" + next + "']");
-      el.hide();
-      return nel.show();
-    });
+    if (inuseCount > 1) {
+      $('#inuse figure a').on('click', function() {
+        var el, nel, next, progress;
+        if ($(this).hasClass('next')) {
+          progress = 1;
+        } else {
+          progress = -1;
+        }
+        el = $(this).parents('figure');
+        next = parseInt(el.data('order')) + progress;
+        if (next === inuseCount) {
+          next = 0;
+        }
+        if (next < 0) {
+          next = inuseCount - 1;
+        }
+        nel = $("#inuse figure[data-order='" + next + "']");
+        el.hide();
+        return nel.show();
+      });
+    }
     $('#inuse figure *').on('mouseenter', function() {
       var fig;
       fig = $(this).parent('figure');
-      fig.children('figcaption').css({
-        opacity: 0.8
-      });
-      return fig.children('nav').css({
-        opacity: 0.8
-      });
+      if (inuseCount > 1) {
+        fig.children('figcaption').css({
+          opacity: 0.8
+        });
+        return fig.children('nav').css({
+          opacity: 0.8
+        });
+      }
     });
     $('#inuse figure *').on('mouseleave', function() {
       var fig;
       fig = $(this).parent('figure');
-      fig.children('figcaption').css({
-        opacity: 0
-      });
-      return fig.children('nav').css({
-        opacity: 0
-      });
+      if (inuseCount > 1) {
+        fig.children('figcaption').css({
+          opacity: 0
+        });
+        return fig.children('nav').css({
+          opacity: 0
+        });
+      }
     });
   }
 
