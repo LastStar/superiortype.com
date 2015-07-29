@@ -503,7 +503,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     });
   }
 
-  if ($('section.fonts#styles').size() > 0) {
+  if ($('section.fonts#styles').size() > 0 && !isMobile) {
     style = function(el) {
       return el.parent().parent().siblings('h4').children('input');
     };
