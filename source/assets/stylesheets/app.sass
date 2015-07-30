@@ -306,6 +306,8 @@ main
       .studio
         +span-columns(8)
         +shift(2)
+        h3
+          display: none
         img
           border: none
           border-radius: 2rem
@@ -850,6 +852,12 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
             +span-columns(3)
             +shift(0)
             +pad(0 $small-spacer)
+            h3
+              display: block
+              font-size: $large-size
+              color: $red
+              font-style: italic
+              text-align: center
         &.custom
           h2
             +span-columns(3)
@@ -861,6 +869,44 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
             +shift(0)
             +omega
             +pad(0 $default-spacer)
+        &.contact
+          background-color: $black
+          color: $white
+          height: 93vh
+          address
+            +span-columns(3)
+            +omega
+            +default-pad
+            font-style: normal
+            font-size: $larger-size
+            a
+              color: $white
+            .email
+              +margin($small-spacer 0 0 0)
+              a
+                +long-button-pad
+                color: $white
+                border-radius: $small-spacer
+                background-color: $dark-grey
+                font-size: $big-size
+                font-weight: normal
+            .social
+              div
+                +margin($tiny-spacer 0)
+                a
+                  +long-button-pad
+                  border-radius: $small-spacer
+                  border: none
+                  color: $white
+                  font-size: $big-size
+                  text-align: center
+                  text-decoration: none
+                  &.facebook
+                    background-color: #0060ff
+                  &.twitter
+                    background-color: #00beff
+                  &.instagram
+                    background-color: #a04aff
 
 +media($phone-landscape)
   body

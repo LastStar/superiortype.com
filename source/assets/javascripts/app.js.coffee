@@ -468,9 +468,11 @@ if  inuseCount > 0
       fig.children('figcaption').css({ opacity: 0 })
       fig.children('nav').css({ opacity: 0 })
 
-$('.studio img').on 'mouseenter', ->
-  $(this).attr({ src: '/assets/images/non-stop.svg' }).on 'mouseleave', ->
-    $(this).attr({ src: '/assets/images/studio.jpg' })
+if $('.studio img').size() > 0 && !isMobile
+  $('.studio img').on 'mouseenter', ->
+    $(this).attr({ src: '/assets/images/non-stop.svg' }).on 'mouseleave', ->
+      $(this).attr({ src: '/assets/images/studio.jpg' })
+
 if $('address').length > 0 && !isMobile
   address = $('address')
   removed = false
