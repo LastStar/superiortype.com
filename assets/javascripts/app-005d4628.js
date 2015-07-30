@@ -756,7 +756,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     });
   });
 
-  if ($('address').length > 0) {
+  if ($('address').length > 0 && !isMobile) {
     address = $('address');
     removed = false;
     showAddress = function() {
