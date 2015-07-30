@@ -880,13 +880,13 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
             +omega
             +small-pad
             font-style: normal
-            font-size: $larger-size
+            font-size: $large-size
             a
               color: $white
             .email
               +margin($small-spacer 0 0 0)
               a
-                +long-button-pad
+                +higher-button-pad
                 color: $white
                 border-radius: $small-spacer
                 background-color: $dark-grey
@@ -896,7 +896,7 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
               div
                 +margin($tiny-spacer 0)
                 a
-                  +long-button-pad
+                  +higher-button-pad
                   border-radius: $small-spacer
                   border: none
                   color: $white
@@ -921,3 +921,7 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
 +media($phone-portrait)
   body
     min-width: 35rem
+    main
+      section.contact
+        address
+          font-size: $larger-size
