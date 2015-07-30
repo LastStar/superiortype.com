@@ -361,7 +361,7 @@ main
             font-size: $big-size
             a
               img
-                width: 1rem
+                width: 0.75rem
           .sections, .wished
             margin-bottom: $half-tiny-spacer
       header
@@ -389,6 +389,9 @@ main
           a
             font-weight: 100
             color: $black
+            img
+              +transition-property(width)
+              +transition-duration($small-delay)
             &.next
               padding: 0 2rem 0 0
             &.previous
