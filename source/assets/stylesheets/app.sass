@@ -761,7 +761,7 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
     header.main
       margin-top: $default-spacer
       &.opened
-        box-shadow: 0px $eighth-tiny-spacer $eighth-tiny-spacer #888888
+        box-shadow: 0px 8px 18px -14px $black
         padding-bottom: $tiny-spacer
       .menu
         h1
@@ -828,6 +828,24 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
             +invisible
           #inuse
             +invisible
+        &.foundry
+          header
+            h2
+              +shift(0)
+              +span-columns(3)
+              +omega
+          .about-address
+            .text
+              +shift(0)
+              +span-columns(3)
+              +omega
+            .contact-lost
+              +invisible
+          .people
+            .person
+              +span-columns(3)
+              +omega
+              margin-top: 0
 
 +media($phone-landscape)
   body

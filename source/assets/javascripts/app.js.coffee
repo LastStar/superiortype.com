@@ -471,7 +471,7 @@ if  inuseCount > 0
 $('.studio img').on 'mouseenter', ->
   $(this).attr({ src: '/assets/images/non-stop.svg' }).on 'mouseleave', ->
     $(this).attr({ src: '/assets/images/studio.jpg' })
-if $('address').length > 0
+if $('address').length > 0 && !isMobile
   address = $('address')
   removed = false
   showAddress = ->
