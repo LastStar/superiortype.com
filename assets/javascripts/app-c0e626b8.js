@@ -746,15 +746,17 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     });
   }
 
-  $('.studio img').on('mouseenter', function() {
-    return $(this).attr({
-      src: '/assets/images/non-stop.svg'
-    }).on('mouseleave', function() {
+  if ($('.studio img').size() > 0 && !isMobile) {
+    $('.studio img').on('mouseenter', function() {
       return $(this).attr({
-        src: '/assets/images/studio-e0d4d1fc.jpg'
+        src: '/assets/images/non-stop.svg'
+      }).on('mouseleave', function() {
+        return $(this).attr({
+          src: '/assets/images/studio-e0d4d1fc.jpg'
+        });
       });
     });
-  });
+  }
 
   if ($('address').length > 0 && !isMobile) {
     address = $('address');
