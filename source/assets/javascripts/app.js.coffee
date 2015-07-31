@@ -147,7 +147,7 @@ showSlideShow = ->
       }
     }
     scale = width/200
-    height = (250 * 3 + 64) * scale
+    height = (250 * 3 + 32) * scale
     svg.css({ height: height })
     Snap.load '/assets/images/mobile-buttons.svg', (canvas) ->
       buttons = canvas.select 'g#Buttons'
@@ -272,7 +272,7 @@ if $('#show-room').size() > 0
   showSlideShow()
 
 $(window).resize ->
-  showSlideShow()
+  setTimeout showSlideShow, 50
 
 if $('section.fonts').size() > 0
   family = (el) ->
