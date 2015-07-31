@@ -241,14 +241,14 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         }
       };
       scale = width / 200;
-      height = (250 * 3 + 16) * scale;
+      height = (250 * 3 + 32) * scale;
       svg.css({
         height: height
       });
       return Snap.load('/assets/images/mobile-buttons.svg', function(canvas) {
         var buttons, left, top;
         buttons = canvas.select('g#Buttons');
-        top = 16 * scale;
+        top = 32 * scale;
         left = parseInt(svg.css('padding-left'));
         return $.each(config, function(name, item) {
           var button;
@@ -445,7 +445,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   }
 
   $(window).resize(function() {
-    return showSlideShow();
+    return setTimeout(showSlideShow, 50);
   });
 
   if ($('section.fonts').size() > 0) {
