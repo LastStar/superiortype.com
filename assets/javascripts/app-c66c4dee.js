@@ -445,7 +445,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   }
 
   $(window).resize(function() {
-    return setTimeout(showSlideShow, 50);
+    return setTimeout(showSlideShow, 100);
   });
 
   if ($('section.fonts').size() > 0) {
