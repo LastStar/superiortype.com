@@ -459,13 +459,13 @@ if  inuseCount > 0
       nel.show()
   $('#inuse figure *').on 'mouseenter', ->
     fig = $(this).parent('figure')
+    fig.children('figcaption').css({ opacity: 1 })
     if inuseCount > 1
-      fig.children('figcaption').css({ opacity: 0.8 })
-      fig.children('nav').css({ opacity: 0.8 })
+      fig.children('nav').css({ opacity: 1 })
   $('#inuse figure *').on 'mouseleave', ->
     fig = $(this).parent('figure')
+    fig.children('figcaption').css({ opacity: 0 })
     if inuseCount > 1
-      fig.children('figcaption').css({ opacity: 0 })
       fig.children('nav').css({ opacity: 0 })
 
 if $('.studio img').size() > 0 && !isMobile

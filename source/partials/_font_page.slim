@@ -1,6 +1,7 @@
 - data = current_page.data
 section.fonts#styles
   nav
+    h2.mobile Styles
     div class=data.id
       .styles
         = partial 'partials/styles', locals: { styles: data.styles }
@@ -12,6 +13,7 @@ section id='glyphs'
     img class=image src="/assets/images/glyphs/#{data.id}/#{image}.svg"
 section.about
   #details
+    h2.mobile Details
     .description
       - for p in data.details.split("\n")
         p.text= p
@@ -40,7 +42,7 @@ section.about
   .opentype
     h4 OpenType features
     img src="/assets/images/#{data.id}-opentype.svg"
-  #inuse
+  #inuse class="#{data.id}-hack"
     - data.inuse.each_with_index do |inuse, index|
       figure data-order=index
         nav

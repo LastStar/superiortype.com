@@ -94,6 +94,8 @@ main
       +transition-duration(750ms)
       +font-weights
       nav
+        h2.mobile
+          +invisible
         padding: 0 2rem
         & > .font
           +row
@@ -232,6 +234,7 @@ main
         .contact-lost
           +span-columns(6)
           +omega
+          overflow: hidden
           address
             +default-pad
             +transform(translateX(30rem))
@@ -439,6 +442,8 @@ main
       #details
         +row
         margin-bottom: $default-spacer
+        h2.mobile
+          +invisible
         .description
           +span-columns(9)
           p.text
@@ -462,7 +467,7 @@ main
         &#inuse
           figure
             +row
-            +pad($huge-spacer 0 $half-tiny-spacer)
+            +pad($huge-spacer 0 $huge-spacer)
             +invisible
             width: 100vw
             position: absolute
@@ -481,22 +486,21 @@ main
               +transition-property(opacity)
               +transition-duration($small-delay)
               position: absolute
-              top: 50%
+              top: 45%
               opacity: 0
               a
                 +span-columns(4 of 8)
                 &.next
                   text-align: right
                 img
-                  margin: 0 $quarter-tiny-spacer
                   width: 2rem
             figcaption
               +transition-property(opacity)
               +transition-duration($small-delay)
-              +pad($half-tiny-spacer)
+              +pad(0 0 0 $small-spacer)
               margin-left: 17.05961%
               position: absolute
-              top: 80%
+              top: 69%
               opacity: 0
               ul
                 +pad($tiny-spacer)
@@ -505,6 +509,10 @@ main
                 background-color: $white
                 li:first-child
                   font-weight: bold
+          &.hrot-hack
+            figure
+              figcaption
+                top: 65%
     &#glyphs
       +font-weights
       +pad($default-spacer $small-spacer)
@@ -675,95 +683,21 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
       margin: 10vh 20vw
 +media($tablet-portrait)
   html
-    font-size: modular-scale(-1, 16px)
+    font-size: $smaller-size
   body
     min-width: 53rem
   header
     nav
       opacity: 1
       @include transform(translateX(0))
-  main
-    section
-      &.fonts
-        nav
-          .tools
-            .apperance
-              +span-columns(3)
-            .wished
-              +span-columns(1)
-              +shift(0)
-              +omega
-              span.wish
-                +transform(translateY($tiny-spacer))
-  header.main
-    h1, nav
-      +span-columns(2)
-      +omega(2)
-    nav
-      +transform(translateX(0))
-      opacity: 1
-      a
-        +span-columns(2 of 4)
-    #wished
-      +span-columns(4)
-      +shift(0)
-      +omega(1)
-      margin-bottom: 1rem
-      span
-        +span-columns(2 of 4)
-        +shift(1)
-        +omega(1)
-  main
-    section
-      &.fonts
-        nav
-          h3
-            font-size: 9rem
-      &.font-header
-        header
-          +pad($tiny-spacer 0 $tiny-spacer)
-          h2
-            +span-columns(4)
-            a
-              img
-                width: $small-spacer
-          nav
-            +span-columns(4)
-            a
-              +span-columns(1 of 4)
-              +omega(4)
-              margin-top: $tiny-spacer
-  section.wished-box
-    header
-      +span-columns(4)
-      h2
-        +span-columns(4)
-        +shift(0)
-      a
-        +span-columns(2 of 4)
-        +omega(2)
-        +pad(1rem 0)
-        &:nth-child(2)
-          border: none
-        &:nth-child(3)
-          +shift(0)
-    .contact-form
-      +span-columns(4)
-      +shift(0)
-      input
-        +span-columns(2 of 4)
-        +shift(1)
-        +omega(2)
-        &.check-offer
-          +span-columns(2 of 4)
-          +shift(1)
 +media($phone-plus-landscape)
   html
     font-size: $smaller-size
   body
     min-width: 34rem
     header.main
-      margin-top: $default-spacer
+      margin-top: 0
+      padding-top: $default-spacer
       &.opened
         box-shadow: 0px 8px 18px -14px $black
         padding-bottom: $tiny-spacer
@@ -813,6 +747,9 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
                 img
                   width: $tiny-spacer
         &.fonts
+          nav
+            h2.mobile
+              +mobile-h2
           .tools
             +invisible
           &#styles
@@ -828,6 +765,9 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
           +invisible
         &.about
           #details
+            h2.mobile
+              +mobile-h2
+              +margin(null $small-spacer)
             .description, .features
               +span-columns(3)
               font-size: $big-size
@@ -861,10 +801,12 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
             +pad(0 $small-spacer)
             h3
               display: block
-              font-size: $large-size
+              font-size: $big-size
               color: $red
               font-style: italic
               text-align: center
+            img
+              margin: 0 0 -0.1vh 0
         &.custom
           font-size: $bigger-size
           h2
@@ -878,10 +820,10 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
             +omega
             +pad(0 $default-spacer)
         &.contact
+          +row
           font-family: VeganSans
           background-color: $black
           color: $white
-          height: 93vh
           address
             +span-columns(3)
             +omega
@@ -927,7 +869,12 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
               font-size: $large-size
 +media($phone-portrait)
   body
-    min-width: 35rem
+    min-width: 26rem
+    header.main
+      padding-top: $small-spacer
+      .menu
+        h1
+          font-size: $big-size
     main
       section.contact
         address
