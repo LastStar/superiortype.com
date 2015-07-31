@@ -578,12 +578,13 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       if (menuOpened) {
         $('header.main nav').removeClass('visible');
         $('header.main').removeClass('opened');
-        return menuOpened = false;
+        menuOpened = false;
       } else {
         $('header.main nav').addClass('visible');
         $('header.main').addClass('opened');
-        return menuOpened = true;
+        menuOpened = true;
       }
+      return $('header.main nav').addClass('visible');
     });
   } else {
     $('header.main .menu *').on('mouseenter', function() {
@@ -723,22 +724,22 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     $('#inuse figure *').on('mouseenter', function() {
       var fig;
       fig = $(this).parent('figure');
+      fig.children('figcaption').css({
+        opacity: 1
+      });
       if (inuseCount > 1) {
-        fig.children('figcaption').css({
-          opacity: 0.8
-        });
         return fig.children('nav').css({
-          opacity: 0.8
+          opacity: 1
         });
       }
     });
     $('#inuse figure *').on('mouseleave', function() {
       var fig;
       fig = $(this).parent('figure');
+      fig.children('figcaption').css({
+        opacity: 0
+      });
       if (inuseCount > 1) {
-        fig.children('figcaption').css({
-          opacity: 0
-        });
         return fig.children('nav').css({
           opacity: 0
         });
