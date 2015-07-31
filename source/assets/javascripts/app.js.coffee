@@ -147,11 +147,11 @@ showSlideShow = ->
       }
     }
     scale = width/200
-    height = (250 * 3 + 16) * scale
+    height = (250 * 3 + 64) * scale
     svg.css({ height: height })
     Snap.load '/assets/images/mobile-buttons.svg', (canvas) ->
       buttons = canvas.select 'g#Buttons'
-      top = 16 * scale
+      top = 32 * scale
       left = parseInt svg.css('padding-left')
       $.each config, (name, item) ->
         button = buttons.select "g##{item.id}"
