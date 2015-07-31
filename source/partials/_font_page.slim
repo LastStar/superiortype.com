@@ -13,10 +13,11 @@ section id='glyphs'
     img class=image src="/assets/images/glyphs/#{data.id}/#{image}.svg"
 section.about
   #details
-    h2.mobile Details
+    h2.mobile About
     .description
       - for p in data.details.split("\n")
         p.text= p
+    h2.mobile Details
     .features
       p.feature
         strong Styles in font family

@@ -361,7 +361,6 @@ if isMobile
       $('header.main nav').addClass('visible')
       $('header.main').addClass('opened')
       menuOpened = true
-    $('header.main nav').addClass('visible')
 else
   $('header.main .menu *').on 'mouseenter', ->
     $('header.main nav').addClass('visible')

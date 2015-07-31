@@ -352,6 +352,7 @@ main
         padding: $default-spacer 0
         h3
           font-size: 15vw
+          font-weight: bold
           margin: $default-spacer 0
     &.font-header
       font-family: VeganSans
@@ -747,10 +748,14 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
         padding: 0 2rem
       section
         &.font-header
+          box-shadow: none
+          margin-top: 1.5rem
           .sections, .wished
             +invisible
           header
+            +pad($tiny-spacer 0)
             h2
+              font-size: $larger-size
               a
                 img
                   width: $tiny-spacer
@@ -761,7 +766,7 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
           .tools
             +invisible
           &#styles
-            margin-top: $default-spacer
+            margin-top: $small-spacer
           nav
             .styles
               .style
@@ -773,12 +778,15 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
           +invisible
         &.about
           #details
+            margin-bottom: $tiny-spacer
             h2.mobile
               +mobile-h2
               +margin(null $small-spacer)
             .description, .features
               +span-columns(3)
               font-size: $big-size
+            .description
+              margin-bottom: $default-spacer
             .features
               +pad(0 $tiny-spacer 0 $small-spacer)
           .opentype
@@ -809,24 +817,30 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
             +pad(0 $small-spacer)
             h3
               display: block
-              font-size: $big-size
+              font-size: $large-size
               color: $red
               font-style: italic
               text-align: center
             img
-              margin: 0 0 -0.1vh 0
+              margin: 0 0 -0.25vh 0
         &.custom
           font-size: $bigger-size
           h2
             +span-columns(3)
             +shift(0)
             +omega
-            +pad(0 $default-spacer)
+            +pad(0 $small-spacer)
           ul.advantages, .text p
             +span-columns(3)
             +shift(0)
             +omega
-            +pad(0 $default-spacer)
+            +pad(0 $small-spacer)
+          .cases
+            +shift(0)
+            +span-columns(3)
+            +padding($tiny-spacer $small-spacer)
+            h3
+              margin: $tiny-spacer 0
         &.contact
           +row
           font-family: VeganSans
@@ -884,6 +898,14 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
         h1
           font-size: $big-size
     main
-      section.contact
-        address
-          font-size: $larger-size
+      section
+        &.contact
+          address
+            font-size: $larger-size
+        &.fonts
+          nav
+            .styles
+              h4
+                input[type='text']
+                  font-size: $big-size !important
+
