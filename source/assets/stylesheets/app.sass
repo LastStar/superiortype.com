@@ -30,7 +30,6 @@ h1, h2, h3, h4, h5
 header.main
   +display(flex)
   +flex-direction(row)
-  height: $default-spacer
   &.faded
     opacity: 0.25
   *
@@ -894,6 +893,7 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
   body
     min-width: 26rem
     header.main
+      padding-top: $small-spacer
       .menu
         h1
           font-size: $big-size
