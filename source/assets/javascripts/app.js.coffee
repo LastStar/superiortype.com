@@ -272,7 +272,7 @@ if $('#show-room').size() > 0
   showSlideShow()
 
 $(window).resize ->
-  setTimeout showSlideShow, 50
+  setTimeout showSlideShow, 100
 
 if $('section.fonts').size() > 0
   family = (el) ->
