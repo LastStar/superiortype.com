@@ -578,13 +578,12 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       if (menuOpened) {
         $('header.main nav').removeClass('visible');
         $('header.main').removeClass('opened');
-        menuOpened = false;
+        return menuOpened = false;
       } else {
         $('header.main nav').addClass('visible');
         $('header.main').addClass('opened');
-        menuOpened = true;
+        return menuOpened = true;
       }
-      return $('header.main nav').addClass('visible');
     });
   } else {
     $('header.main .menu *').on('mouseenter', function() {
