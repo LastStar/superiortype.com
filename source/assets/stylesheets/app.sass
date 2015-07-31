@@ -66,6 +66,8 @@ header.main
 
         &:hover
           color: $black
+        &.mobile
+          +invisible
   #wished
     +flex(5)
     +align-self(flex-start)
@@ -774,12 +776,15 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
           +omega
           text-align: right
         nav
-          +transform(translateY(-$small-spacer))
-          z-index: 1
-          display: inline-block
           +span-columns(3)
+          +transform(translateY(-$huge-spacer))
+          +transition-property(transform)
+          +transition-duration(125ms)
+          +invisible
+          z-index: 1
           &.visible
             +transform(translateY(0rem))
+            +visible-block
           a
             +span-columns(1 of 3)
             padding: 0
@@ -791,6 +796,8 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
               text-align: center
             &:last-child
               text-align: right
+            &.mobile
+              +visible-block
       #wished
         +invisible
     main
