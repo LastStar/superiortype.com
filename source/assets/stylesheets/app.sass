@@ -662,11 +662,11 @@ section.wished-box
 $phone-portrait: new-breakpoint(max-width 320px 3)
 $phone-landscape: new-breakpoint(max-width 667px 3)
 $phone-plus-landscape: new-breakpoint(max-width 736px 3)
-$tablet-portrait: new-breakpoint(max-width 769px 3)
+$tablet-portrait: new-breakpoint(max-width 769px 12)
+$tablet-landscape: new-breakpoint(max-width 1024px 123)
 $big-desktop:  new-breakpoint(min-width 1340px 12)
 $large-desktop:  new-breakpoint(min-width 1600px 12)
 $huge-desktop:  new-breakpoint(min-width 2500px 12)
-
 +media($large-desktop)
   html
     font-size: modular-scale(1, 16px)
@@ -681,15 +681,23 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
     &.wished-box
       width: 60vw
       margin: 10vh 20vw
++media($tablet-landscape)
+  header.main
+    .menu
+      nav
+        @include transform(translateX(0))
+        opacity: 1
+  main
+    section.font-header
+      header
+        .wished
+          span.wish
+            padding: 0.25rem 0.5rem
 +media($tablet-portrait)
   html
     font-size: $smaller-size
   body
     min-width: 53rem
-  header
-    nav
-      opacity: 1
-      @include transform(translateX(0))
 +media($phone-plus-landscape)
   html
     font-size: $smaller-size
