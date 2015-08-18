@@ -453,32 +453,30 @@ main
               +transition-property(transform, opacity)
               +transition-duration($medium-delay)
               opacity: 0
-
-    &.about
+    &#details
       font-family: VeganSans
+      +row
       margin: $default-spacer 0 0
-      #details
-        +row
-        margin-bottom: $default-spacer
-        h2.mobile
-          +invisible
-        .description
-          +span-columns(9)
-          p.text
-            padding: 0 2rem
-            font-size: 1.5rem
-        div
-          h4
-            +pad($small-spacer 0)
-            font-size: 1rem
-            font-weight: normal
-          &.features
-            +span-columns(3)
-            +omega
-            +pad(0 $tiny-spacer 0 $big-spacer)
+      h2.mobile
+        +invisible
+      .description
+        +span-columns(9)
+        p.text
+          padding: 0 2rem
+          font-size: $bigger-size
+      div
+        h4
+          +pad($small-spacer 0)
+          font-size: $default-size
+          font-weight: normal
+        &.features
+          +span-columns(3)
+          +omega
+          +pad(0 $tiny-spacer 0 $big-spacer)
     &#opentype
       +row
-      padding: 0 $small-spacer
+      margin-top: $small-spacer
+      padding: $small-spacer
       background-color: $grey
       img
         +span-columns(12)
@@ -578,7 +576,7 @@ section.wished-box
       +align-self(flex-end)
       h2
         +pad(0.5rem $tiny-spacer 0.25rem)
-        font-size: 1.5rem
+        font-size: $big-size
         font-weight: 600
         margin-bottom: 0
         color: $white

@@ -403,6 +403,22 @@ if $('#styles .styles').size() > 0
       $(this).parent().siblings('.tools').children('.apperance').children('.name').addClass('visible')
   $('.wish').addClass('pushed')
   $('.slide').show defaultSpeed, ->
+    deactivate = ->
+      $('a.active').removeClass 'active'
+    activate = (section) ->
+      $("a.#{section}").addClass 'active'
+    inuseActive = ->
+      deactivate()
+      activate 'inuse'
+    detailsActive = ->
+      deactivate()
+      activate 'details'
+    glyphsActive = ->
+      deactivate()
+      activate 'glyphs'
+    stylesActive = ->
+      deactivate()
+      activate 'styles'
     $('.slide').addClass('visible')
     if $(window).scrollTop() < $('#styles .styles').height()
       stylesActive()
@@ -416,38 +432,26 @@ if $('#styles .styles').size() > 0
             $(button).removeClass('pushed')
         refreshWished currentWished()
     setTimeout showWish, 3*defaultSpeed
-  inuseActive = ->
-    $('a.active').removeClass 'active'
-    $('a.inuse').addClass 'active'
-  detailsActive = ->
-    $('a.active').removeClass 'active'
-    $('a.details').addClass 'active'
-  glyphsActive = ->
-    $('a.active').removeClass 'active'
-    $('a.glyphs').addClass 'active'
-  stylesActive = ->
-    $('a.active').removeClass 'active'
-    $('a.styles').addClass 'active'
-  detailsIn = new Waypoint.Inview {
-    element: $('#details')[0],
-    enter: (direction) ->
-      detailsActive()
-    exited: (direction) ->
-      if direction == 'up'
+    detailsIn = new Waypoint.Inview {
+      element: $('#details')[0],
+      enter: (direction) ->
+        detailsActive()
+      exited: (direction) ->
+        if direction == 'up'
+          glyphsActive()
+        else
+          inuseActive()
+    }
+    glyphsIn = new Waypoint.Inview {
+      element: $('#glyphs')[0],
+      enter: (direction) ->
         glyphsActive()
-      else
-        inuseActive()
-  }
-  glyphsIn = new Waypoint.Inview {
-    element: $('#glyphs')[0],
-    enter: (direction) ->
-      glyphsActive()
-    exited: (direction) ->
-      if direction == 'up'
-        stylesActive()
-      else
-        detailsActive
-  }
+      exited: (direction) ->
+        if direction == 'up'
+          stylesActive()
+        else
+          detailsActive()
+    }
 
 inuseCount = $('#inuse figure').size()
 if  inuseCount > 0
