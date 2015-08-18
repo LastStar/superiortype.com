@@ -1,0 +1,248 @@
+$phone-portrait: new-breakpoint(max-width 320px 3)
+$phone-landscape: new-breakpoint(max-width 667px 3)
+$phone-plus-landscape: new-breakpoint(max-width 736px 3)
+$tablet-portrait: new-breakpoint(max-width 769px 12)
+$tablet-landscape: new-breakpoint(max-width 1024px 123)
+$big-desktop:  new-breakpoint(min-width 1340px 12)
+$large-desktop:  new-breakpoint(min-width 1600px 12)
+$huge-desktop:  new-breakpoint(min-width 2500px 12)
++media($large-desktop)
+  html
+    font-size: modular-scale(1, 16px)
+  section
+    &.wished-box
+      width: 70vw
+      margin: 10vh 15vw
++media($huge-desktop)
+  html
+    font-size: modular-scale(2, 16px)
+  section
+    &.wished-box
+      width: 60vw
+      margin: 10vh 20vw
++media($tablet-landscape)
+  header.main
+    .menu
+      nav
+        @include transform(translateX(0))
+        opacity: 1
+  main
+    section.font-header
+      header
+        .wished
+          span.wish
+            padding: 0.25rem 0.5rem
++media($tablet-portrait)
+  html
+    font-size: $smaller-size
+  body
+    min-width: 53rem
++media($phone-plus-landscape)
+  html
+    font-size: $smaller-size
+  body
+    min-width: 34rem
+    header.main
+      margin-top: 0
+      padding-top: $default-spacer
+      &.opened
+        box-shadow: 0px 8px 18px -16px $black
+        padding-bottom: $tiny-spacer
+      .menu
+        h1
+          font-size: $larger-size
+          +span-columns(2)
+        .open-menu
+          +span-columns(1)
+          +omega
+          text-align: right
+        nav
+          +span-columns(3)
+          +transform(translateY(-$huge-spacer))
+          +transition-property(transform)
+          +transition-duration(125ms)
+          +invisible
+          z-index: 1
+          &.visible
+            +transform(translateY(0rem))
+            +visible-block
+          a
+            +span-columns(1 of 3)
+            padding: 0
+            font-size: $big-size
+            &:first-child
+              padding: 0
+              text-align: left
+            &:nth-child(2)
+              text-align: center
+            &:last-child
+              text-align: right
+            &.mobile
+              +visible-block
+      #wished
+        +invisible
+    main
+      svg#show-room
+        padding: 0 2rem
+      section
+        &.font-header
+          box-shadow: none
+          margin-top: 1.5rem
+          .sections, .wished
+            +invisible
+          header
+            +pad($tiny-spacer 0)
+            h2
+              font-size: $larger-size
+              a
+                img
+                  width: $tiny-spacer
+        &.fonts
+          nav
+            h2.mobile
+              +mobile-h2
+          .tools
+            +invisible
+          &#styles
+            margin-top: $small-spacer
+          nav
+            .styles
+              .style
+                h4
+                  border: none
+                  &:first-child
+                    padding: $tiny-spacer 0 1.5rem
+        &#glyphs
+          +invisible
+        &.about
+          #details
+            margin-bottom: $tiny-spacer
+            h2.mobile
+              +mobile-h2
+              +margin(null $small-spacer)
+            .description, .features
+              +span-columns(3)
+              font-size: $big-size
+            .description
+              margin-bottom: $default-spacer
+            .features
+              +pad(0 $tiny-spacer 0 $small-spacer)
+          .opentype
+            +invisible
+          #inuse
+            +invisible
+        &.foundry
+          header
+            h2
+              +shift(0)
+              +span-columns(3)
+              +omega
+          .about-address
+            .text
+              +shift(0)
+              +span-columns(3)
+              +omega
+            .contact-lost
+              +invisible
+          .people
+            .person
+              +span-columns(3)
+              +omega
+              margin-top: 0
+          .studio
+            +span-columns(3)
+            +shift(0)
+            +pad(0 $small-spacer)
+            h3
+              display: block
+              font-size: $large-size
+              color: $red
+              font-style: italic
+              text-align: center
+            img
+              margin: 0 0 -0.25vh 0
+        &.custom
+          font-size: $bigger-size
+          h2
+            +span-columns(3)
+            +shift(0)
+            +omega
+            +pad(0 $small-spacer)
+          ul.advantages, .text p
+            +span-columns(3)
+            +shift(0)
+            +omega
+            +pad(0 $small-spacer)
+          .cases
+            +shift(0)
+            +span-columns(3)
+            +padding($tiny-spacer $small-spacer)
+            h3
+              margin: $tiny-spacer 0
+        &.contact
+          +row
+          font-family: VeganSans
+          background-color: $black
+          color: $white
+          address
+            +span-columns(3)
+            +omega
+            +small-pad
+            font-style: normal
+            font-size: $large-size
+            a
+              color: $white
+            .email
+              +margin($small-spacer 0 0 0)
+              a
+                +higher-button-pad
+                color: $white
+                border-radius: $small-spacer
+                background-color: $dark-grey
+                font-size: $big-size
+                font-weight: normal
+            .social
+              div
+                +margin($tiny-spacer 0)
+                a
+                  +higher-button-pad
+                  border-radius: $small-spacer
+                  border: none
+                  color: $white
+                  font-size: $big-size
+                  text-align: center
+                  text-decoration: none
+                  &.facebook
+                    background-color: #0060ff
+                  &.twitter
+                    background-color: #00beff
+                  &.instagram
+                    background-color: #a04aff
++media($phone-landscape)
+  body
+    main
+      section
+        &.fonts
+          nav
+            h3
+              font-size: $large-size
++media($phone-portrait)
+  body
+    min-width: 26rem
+    header.main
+      padding-top: $small-spacer
+      .menu
+        h1
+          font-size: $big-size
+    main
+      section
+        &.contact
+          address
+            font-size: $larger-size
+        &.fonts
+          nav
+            .styles
+              h4
+                input[type='text']
+                  font-size: $big-size !important
+
