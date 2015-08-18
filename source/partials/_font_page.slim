@@ -1,44 +1,46 @@
 - data = current_page.data
-section.fonts#styles
-  nav
-    h2.mobile Styles
-    div class=data.id
-      .styles
-        = partial 'partials/styles', locals: { styles: data.styles }
-section id='glyphs'
-  select.glyphs
+
+.slide
+  section.fonts#styles
+    nav
+      h2.mobile Styles
+      div class=data.id
+        .styles
+          = partial 'partials/styles', locals: { styles: data.styles }
+  section id='glyphs'
+    select.glyphs
+      - for image in data.charsets
+        option value=image = image.split("-").map(&:capitalize).join(", ")
     - for image in data.charsets
-      option value=image = image.split("-").map(&:capitalize).join(", ")
-  - for image in data.charsets
-    img class=image src="/assets/images/glyphs/#{data.id}/#{image}.svg"
-section.about
-  #details
-    h2.mobile About
-    .description
-      - for p in data.details.split("\n")
-        p.text= p
-    h2.mobile Details
-    .features
-      p.feature
-        strong Styles in font family
-        br
-        = data.styles.size
-      p.feature
-        strong Number of glyphs per font
-        br
-        = data.glyphs
-      p.feature
-        strong Language Support
-        br
-        | Latin Std
-      p.feature
-        strong Designer
-        br
-        | Vojtěch Říha
-      p.feature
-        strong Release year
-        br
-        | 2015
+      img class=image src="/assets/images/glyphs/#{data.id}/#{image}.svg"
+  section.about
+    #details
+      h2.mobile About
+      .description
+        - for p in data.details.split("\n")
+          p.text= p
+      h2.mobile Details
+      .features
+        p.feature
+          strong Styles in font family
+          br
+          = data.styles.size
+        p.feature
+          strong Number of glyphs per font
+          br
+          = data.glyphs
+        p.feature
+          strong Language Support
+          br
+          | Latin Std
+        p.feature
+          strong Designer
+          br
+          | Vojtěch Říha
+        p.feature
+          strong Release year
+          br
+          | 2015
 
   .opentype
     h4 OpenType features

@@ -21,8 +21,10 @@ body
   color: $black
   &.dark
     background-color: $dark-grey
-    header.main .menu a
-      color: $white !important
+    header.main
+      background-color: $dark-grey
+      .menu a
+        color: $white !important
   &.faded
     overflow: hidden
 h1, h2, h3, h4, h5
@@ -30,12 +32,14 @@ h1, h2, h3, h4, h5
 header.main
   +display(flex)
   +flex-direction(row)
+  z-index: 10
+  position: relative
+  background-color: $white
   &.faded
     opacity: 0.25
   *
     font-family: VeganSans
-  margin-top: 1rem
-  padding: 0 2rem
+  padding: 1rem 2rem 0
   .menu
     +flex(3)
     h1
@@ -82,6 +86,16 @@ header.main
 main
   &.faded
     opacity: 0.25
+  .slide
+    z-index: 1
+    position: relative
+    +transform(translateY(-450rem))
+    +transition-property(transform)
+    +transition-duration($long-delay)
+    +transition-timing-function(ease-in-out)
+    +invisible
+    &.visible
+      +transform(translateX(0))
   section
     +row
     svg
@@ -168,15 +182,7 @@ main
             padding: 0
             margin: 0
         .styles
-          +transform(translateX(-50rem))
-          +transition-property(transform, opacity)
-          +transition-duration($medium-delay)
           +row
-          opacity: 0
-          +invisible
-          &.visible
-            opacity: 1
-            +transform(translateX(0))
           h4
             +span-columns(12)
             font-size: $larger-size
@@ -222,6 +228,7 @@ main
       header
         +row
         h2
+          +shift
           +span-columns(8)
           font-size: $larger-size
           font-weight: normal
@@ -363,6 +370,8 @@ main
           font-weight: bold
           margin: $default-spacer 0
     &.font-header
+      position: relative
+      z-index: 10
       font-family: VeganSans
       padding: 0 2rem
       background-color: $white

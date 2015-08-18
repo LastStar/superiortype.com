@@ -402,8 +402,8 @@ if $('#styles .styles').size() > 0
     else
       $(this).parent().siblings('.tools').children('.apperance').children('.name').addClass('visible')
   $('.wish').addClass('pushed')
-  $('#styles .styles').show defaultSpeed, ->
-    $('#styles .styles').addClass('visible')
+  $('.slide').show defaultSpeed, ->
+    $('.slide').addClass('visible')
     if $(window).scrollTop() < $('#styles .styles').height()
       stylesActive()
     showWish = ->
