@@ -42,10 +42,10 @@
           br
           | 2015
 
-  .opentype
+  section#opentype
     h4 OpenType features
     img src="/assets/images/#{data.id}-opentype.svg"
-  #inuse class="#{data.id}-hack"
+  section#inuse class="#{data.id}-hack"
     - data.inuse.each_with_index do |inuse, index|
       figure data-order=index
         nav

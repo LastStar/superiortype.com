@@ -467,70 +467,70 @@ main
           p.text
             padding: 0 2rem
             font-size: 1.5rem
-      div
-        h4
-          +pad($small-spacer 0)
-          font-size: 1rem
-          font-weight: normal
-        &.features
-          +span-columns(3)
-          +omega
-          +pad(0 $tiny-spacer 0 $big-spacer)
-        &.opentype
-          +row
-          padding: 0 $small-spacer
-          background-color: $grey
-          img
-            +span-columns(12)
-        &#inuse
-          figure
-            +row
-            +pad($huge-spacer 0 $huge-spacer)
-            +invisible
-            width: 100vw
-            position: absolute
-            background-color: $black
-            +transition-property(opacity)
-            +transition-duration($medium-delay)
-            &:first-child
-              +visible-block
-            & > img
-              margin-left: 17.05961%
-              width: 65.88078%
-              border-radius: 1rem
-            nav
-              margin-left: 17.05961%
-              width: 65.88078%
-              +transition-property(opacity)
-              +transition-duration($small-delay)
-              position: absolute
-              top: 45%
-              opacity: 0
-              a
-                +span-columns(4 of 8)
-                &.next
-                  text-align: right
-                img
-                  width: 2rem
-            figcaption
-              +transition-property(opacity)
-              +transition-duration($small-delay)
-              +pad(0 0 0 $small-spacer)
-              margin-left: 17.05961%
-              position: absolute
-              top: 69%
-              opacity: 0
-              ul
-                +pad($tiny-spacer)
-                color: $black
-                border-radius: $tiny-spacer
-                background-color: $white
-                li:first-child
-                  font-weight: bold
-          &.hrot-hack
-            figure
-              figcaption
-                top: 65%
+        div
+          h4
+            +pad($small-spacer 0)
+            font-size: 1rem
+            font-weight: normal
+          &.features
+            +span-columns(3)
+            +omega
+            +pad(0 $tiny-spacer 0 $big-spacer)
+    &#opentype
+      +row
+      padding: 0 $small-spacer
+      background-color: $grey
+      img
+        +span-columns(12)
+    &#inuse
+      figure
+        +row
+        +pad($huge-spacer 0 $huge-spacer)
+        +invisible
+        width: 100vw
+        position: absolute
+        background-color: $black
+        +transition-property(opacity)
+        +transition-duration($medium-delay)
+        &:first-child
+          +visible-block
+        & > img
+          margin-left: 17.05961%
+          width: 65.88078%
+          border-radius: 1rem
+        nav
+          margin-left: 17.05961%
+          width: 65.88078%
+          +transition-property(opacity)
+          +transition-duration($small-delay)
+          position: absolute
+          top: 45%
+          opacity: 0
+          a
+            +span-columns(4 of 8)
+            &.next
+              text-align: right
+            img
+              width: 2rem
+        figcaption
+          +transition-property(opacity)
+          +transition-duration($small-delay)
+          +pad(0 0 0 $small-spacer)
+          margin-left: 17.05961%
+          position: absolute
+          top: 69%
+          opacity: 0
+          ul
+            +pad($tiny-spacer)
+            color: $black
+            border-radius: $tiny-spacer
+            background-color: $white
+            li:first-child
+              font-weight: bold
+      &.hrot-hack
+        figure
+          figcaption
+            top: 65%
     &#glyphs
       +font-weights
       +pad($default-spacer $small-spacer)
