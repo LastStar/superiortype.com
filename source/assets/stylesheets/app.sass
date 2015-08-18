@@ -222,9 +222,7 @@ main
       header
         +row
         h2
-          +shift(1)
           +span-columns(8)
-          padding: 0 2rem
           font-size: $larger-size
           font-weight: normal
           margin-top: $default-spacer
@@ -294,7 +292,7 @@ main
           padding: $default-spacer 0
           p
             font-size: $bigger-size
-            padding: 0 2rem
+            padding: 0 2rem 0 0
       .people
         +row
         background-color: $light-green
@@ -320,6 +318,7 @@ main
           margin: 0 0 -1vh 0
           width: 100%
     &.custom
+      +row
       font-family: VeganSans
       h2
         +span-columns(10)
@@ -328,6 +327,21 @@ main
         font-weight: normal
         margin-top: $default-spacer
         color: $violet
+      .text
+        +shift
+        +span-columns(5)
+        p
+          font-size: $bigger-size
+          span.email
+            a
+              +high-button-pad
+              +white-hover
+              color: $white
+              border-radius: 1rem
+              background-color: $black
+              font-size: $default-size
+              font-weight: normal
+
       ul.advantages
         +span-columns(4)
         +shift
@@ -340,12 +354,6 @@ main
             color: $red
           &.yellow:before
             color: $yellow
-
-      .text
-        p
-          +shift
-          +span-columns(5)
-          font-size: $bigger-size
       .cases
         +shift(1)
         +span-columns(11)
