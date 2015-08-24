@@ -292,11 +292,14 @@ main
           .fonts
             +span-columns(10 of 10)
             span
-              +pad(0 $quarter-tiny-spacer)
+              +pad(0 $default-spacer)
               display: inline-block
               line-height: 2
               a
                 color: $white
+                font-size: $huge-size
+                &:hover
+                  color: $black
         .text
           +shift
           +span-columns(5)
