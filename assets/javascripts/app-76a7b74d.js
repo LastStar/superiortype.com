@@ -775,17 +775,20 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   }
 
   if ($('address').length > 0 && !isMobile) {
+    removed = true;
     address = $('address');
-    removed = false;
     showAddress = function() {
+      removed = false;
       return address.addClass('visible');
     };
     setTimeout(showAddress, defaultSpeed);
     $(window).on('scroll', function() {
-      if (!removed && $(window).scrollTop() > ($('address').position().top + $('address').height())) {
+      var offset;
+      offset = address.offset();
+      if (!removed && $(window).scrollTop() > (offset.top + address.height())) {
         address.removeClass('visible');
         return removed = true;
-      } else if (removed && $(window).scrollTop() < ($('address').position().top + $('address').height())) {
+      } else if (removed && $(window).scrollTop() < (offset.top + address.height())) {
         address.addClass('visible');
         return removed = false;
       }
