@@ -229,46 +229,54 @@ main
         +row
         h2
           +shift
-          +span-columns(8)
+          +span-columns(6)
           font-size: $larger-size
           font-weight: normal
           margin-top: $default-spacer
       .about-address
-        background-color: $light-green
         +row
-        .contact-lost
+        background-color: $light-green
+        .text
+          +shift
+          +span-columns(5)
+          padding: $default-spacer 0
+          p
+            font-size: $bigger-size
+        .contact
           +span-columns(6)
           +omega
           overflow: hidden
           address
+            +span-columns(5 of 6)
             +default-pad
-            +transform(translateX(30rem))
+            +transform(translateX(50rem))
             font-style: normal
             font-size: $big-size
-            margin: $default-spacer $default-spacer $tiny-spacer
             background-color: $grey
+            margin: $default-spacer 0 $tiny-spacer
             border-radius: $small-spacer
+            a
+              font-size: $default-size
+              border-radius: $default-size
             &.visible
               +transform(translateX(0))
               +transition-property(transform)
               +transition-duration($medium-delay)
             .email
               a
-                color: $white
-                border-radius: 1rem
-                background-color: $dark-grey
-                font-size: $default-size
-                font-weight: normal
                 +high-button-pad
                 +white-hover
+                color: $white
+                background-color: $dark-grey
+                font-weight: normal
             .social
+              margin-top: $default-size
+              line-height: 1
               a
                 +high-button-pad
-                border-radius: 1rem
                 border: none
-                margin: 0 0.5rem 0 0
+                margin: $smaller-size $default-size 0 0
                 color: $white
-                font-size: $default-size
                 text-align: center
                 text-decoration: none
                 &.facebook
@@ -280,26 +288,24 @@ main
                 &.instagram
                   +white-hover
                   background-color: #a04aff
-          .lost
-            font-size: $default-size
-            padding: 0 $default-spacer
-            span
-              display: inline-block
-              line-height: 2
-              +pad(0 $quarter-tiny-spacer)
-              a
-                +button-pad
-                +white-hover
-                color: $white
-                border-radius: 1rem
-                background-color: $light-blue
-        .text
+        .lost
+          +span-columns(10)
           +shift
-          +span-columns(5)
-          padding: $default-spacer 0
           p
-            font-size: $bigger-size
-            padding: 0 2rem 0 0
+            +span-columns(5 of 10)
+            +omega
+            font-size: $big-size
+          .fonts
+            +span-columns(10 of 10)
+            span
+              +pad(0 $default-spacer 0 0)
+              display: inline-block
+              line-height: 1.5
+              a
+                color: $white
+                font-size: $epic-size
+                &:hover
+                  color: $black
       .people
         +row
         background-color: $light-green
