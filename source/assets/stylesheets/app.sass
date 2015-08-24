@@ -236,8 +236,8 @@ main
       .about-address
         background-color: $light-green
         +row
-        .contact-lost
-          +span-columns(6)
+        .contact
+          +span-columns(5)
           +omega
           overflow: hidden
           address
@@ -248,27 +248,28 @@ main
             margin: $default-spacer $default-spacer $tiny-spacer
             background-color: $grey
             border-radius: $small-spacer
+            a
+              font-size: $default-size
+              border-radius: $default-size
             &.visible
               +transform(translateX(0))
               +transition-property(transform)
               +transition-duration($medium-delay)
             .email
               a
-                color: $white
-                border-radius: 1rem
-                background-color: $dark-grey
-                font-size: $default-size
-                font-weight: normal
                 +high-button-pad
                 +white-hover
+                color: $white
+                background-color: $dark-grey
+                font-weight: normal
             .social
+              margin-top: $default-size
+              line-height: 1
               a
                 +high-button-pad
-                border-radius: 1rem
                 border: none
-                margin: 0 0.5rem 0 0
+                margin: $smaller-size $default-size 0 0
                 color: $white
-                font-size: $default-size
                 text-align: center
                 text-decoration: none
                 &.facebook
@@ -280,19 +281,22 @@ main
                 &.instagram
                   +white-hover
                   background-color: #a04aff
-          .lost
-            font-size: $default-size
-            padding: 0 $default-spacer
+        .lost
+          +span-columns(10)
+          +shift
+          padding: 0 $small-spacer
+          p
+            +span-columns(5 of 10)
+            +omega
+            font-size: $big-size
+          .fonts
+            +span-columns(10 of 10)
             span
+              +pad(0 $quarter-tiny-spacer)
               display: inline-block
               line-height: 2
-              +pad(0 $quarter-tiny-spacer)
               a
-                +button-pad
-                +white-hover
                 color: $white
-                border-radius: 1rem
-                background-color: $light-blue
         .text
           +shift
           +span-columns(5)
