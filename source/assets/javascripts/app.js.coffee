@@ -129,6 +129,7 @@ showSlideShow = ->
   width = svg.width()
   snap = Snap "#show-room"
   snap.clear()
+  $('.font .styles').hide()
   moveToPosition = (element, position, scale) ->
     transform = "translate(#{position}) scale(#{scale})"
     element.attr { transform: transform }
