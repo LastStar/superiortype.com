@@ -486,18 +486,20 @@ if $('.studio img').size() > 0 && !isMobile
       $(this).attr({ src: '/assets/images/studio.jpg' })
 
 if $('address').length > 0 && !isMobile
+  removed = true
   address = $('address')
-  removed = false
   showAddress = ->
+    removed = false
     address.addClass('visible')
   setTimeout showAddress, defaultSpeed
   $(window).on 'scroll', ->
-      if !removed && $(window).scrollTop() > ($('address').position().top + $('address').height())
-        address.removeClass('visible')
-        removed = true
-      else if removed && $(window).scrollTop() < ($('address').position().top + $('address').height())
-        address.addClass('visible')
-        removed = false
+    offset = address.offset()
+    if !removed && $(window).scrollTop() > (offset.top + address.height())
+      address.removeClass('visible')
+      removed = true
+    else if removed && $(window).scrollTop() < (offset.top + address.height())
+      address.addClass('visible')
+      removed = false
 
 if $('select.glyphs').size() > 0
   glyphsSelect = $('select.glyphs')

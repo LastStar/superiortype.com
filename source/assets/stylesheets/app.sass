@@ -250,6 +250,8 @@ main
             +span-columns(5 of 6)
             +default-pad
             +transform(translateX(50rem))
+            +transition-property(transform)
+            +transition-duration($medium-delay)
             font-style: normal
             font-size: $big-size
             background-color: $grey
@@ -259,9 +261,7 @@ main
               font-size: $default-size
               border-radius: $default-size
             &.visible
-              +transform(translateX(0))
-              +transition-property(transform)
-              +transition-duration($medium-delay)
+              +transform(translateX(0rem))
             .email
               a
                 +high-button-pad
