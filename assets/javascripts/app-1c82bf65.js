@@ -220,6 +220,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     width = svg.width();
     snap = Snap("#show-room");
     snap.clear();
+    $('.font .styles').hide();
     moveToPosition = function(element, position, scale) {
       var transform;
       transform = "translate(" + position + ") scale(" + scale + ")";
