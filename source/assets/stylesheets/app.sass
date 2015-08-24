@@ -243,16 +243,17 @@ main
           p
             font-size: $bigger-size
         .contact
-          +span-columns(5)
+          +span-columns(6)
           +omega
           overflow: hidden
           address
+            +span-columns(5 of 6)
             +default-pad
-            +transform(translateX(30rem))
+            +transform(translateX(50rem))
             font-style: normal
             font-size: $big-size
-            margin: $default-spacer $default-spacer $tiny-spacer
             background-color: $grey
+            margin: $default-spacer 0 $tiny-spacer
             border-radius: $small-spacer
             a
               font-size: $default-size
