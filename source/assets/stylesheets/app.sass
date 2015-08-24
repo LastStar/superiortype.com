@@ -229,13 +229,19 @@ main
         +row
         h2
           +shift
-          +span-columns(8)
+          +span-columns(6)
           font-size: $larger-size
           font-weight: normal
           margin-top: $default-spacer
       .about-address
-        background-color: $light-green
         +row
+        background-color: $light-green
+        .text
+          +shift
+          +span-columns(5)
+          padding: $default-spacer 0
+          p
+            font-size: $bigger-size
         .contact
           +span-columns(5)
           +omega
@@ -284,7 +290,6 @@ main
         .lost
           +span-columns(10)
           +shift
-          padding: 0 $small-spacer
           p
             +span-columns(5 of 10)
             +omega
@@ -292,21 +297,14 @@ main
           .fonts
             +span-columns(10 of 10)
             span
-              +pad(0 $default-spacer)
+              +pad(0 $default-spacer 0 0)
               display: inline-block
-              line-height: 2
+              line-height: 1.5
               a
                 color: $white
-                font-size: $huge-size
+                font-size: $epic-size
                 &:hover
                   color: $black
-        .text
-          +shift
-          +span-columns(5)
-          padding: $default-spacer 0
-          p
-            font-size: $bigger-size
-            padding: 0 2rem 0 0
       .people
         +row
         background-color: $light-green
