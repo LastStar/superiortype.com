@@ -273,7 +273,7 @@ showSlideShow = ->
             moveToPosition title, item.initial, scale.initial
             finishMovement()
       returnButtons = (element, item, callback) ->
-        element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.ease, ->
+        element.animate { transform: 'translate('+item.initial+') scale('+scale.initial+')' }, item.speed/2, mina.easeIn, ->
           setTimeout callback, 6*defaultSpeed - item.speed
 
 if $('#show-room').size() > 0

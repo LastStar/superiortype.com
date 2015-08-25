@@ -15,7 +15,7 @@
 html
   font-size: 16px
 body
-  font-size: 1rem
+  +default-font
   min-width: 64rem
   margin: auto
   color: $black
@@ -44,7 +44,7 @@ header.main
     +flex(3)
     h1
       z-index: 10
-      font-size: $bigger-size
+      +bigger-font
       display: inline-block
       a
         color: $black
@@ -129,7 +129,7 @@ main
             width: 1000rem
         .tools
           +row
-          font-size: $default-size
+          +default-font
           padding-bottom: 0.5rem
           .apperance
             +span-columns(4)
@@ -138,7 +138,7 @@ main
               padding: 0.5rem 0.25rem
               font-family: VeganSans
               cursor: pointer
-              font-size: $smaller-size
+              +smaller-font
               &.list
                 opacity: 0.5
               &.open
@@ -169,7 +169,7 @@ main
                 opacity: 0
         h3
           +span-columns(12)
-          font-size: $huge-size
+          +huge-font
           font-weight: normal
           padding: 1.5rem 0
           font-style: normal
@@ -185,7 +185,7 @@ main
           +row
           h4
             +span-columns(12)
-            font-size: $larger-size
+            +larger-font
             padding: 1.5rem 0
             margin: 0
             border-top: thin solid $grey
@@ -206,7 +206,7 @@ main
             border: none
             box-shadow: none
             margin-bottom: 0
-            font-size: $larger-size
+            +larger-font
             padding: 0
             +placeholder
               color: $black
@@ -230,7 +230,7 @@ main
         h2
           +shift
           +span-columns(6)
-          font-size: $larger-size
+          +larger-font
           font-weight: normal
           margin-top: $default-spacer
       .about-address
@@ -241,7 +241,7 @@ main
           +span-columns(5)
           padding: $default-spacer 0
           p
-            font-size: $bigger-size
+            +bigger-font
         .contact
           +span-columns(6)
           +omega
@@ -253,12 +253,12 @@ main
             +transition-property(transform)
             +transition-duration($medium-delay)
             font-style: normal
-            font-size: $big-size
+            +big-font
             background-color: $grey
             margin: $default-spacer 0 $tiny-spacer
             border-radius: $small-spacer
             a
-              font-size: $default-size
+              +default-font
               border-radius: $default-size
             &.visible
               +transform(translateX(0rem))
@@ -294,7 +294,7 @@ main
           p
             +span-columns(5 of 10)
             +omega
-            font-size: $big-size
+            +big-font
           .fonts
             +span-columns(10 of 10)
             span
@@ -303,7 +303,8 @@ main
               line-height: 1.5
               a
                 color: $white
-                font-size: $epic-size
+                +epic-font
+                padding: 0 $tiny-spacer 0 0
                 &:hover
                   color: $black
       .people
@@ -318,7 +319,7 @@ main
             img
               border-radius: 50%
             p
-              font-size: $bigger-size
+              +bigger-font
       .studio
         +span-columns(8)
         +shift(2)
@@ -336,7 +337,7 @@ main
       h2
         +span-columns(10)
         +shift
-        font-size: $large-size
+        +large-font
         font-weight: normal
         margin-top: $default-spacer
         color: $violet
@@ -344,7 +345,7 @@ main
         +shift
         +span-columns(5)
         p
-          font-size: $bigger-size
+          +bigger-font
           span.email
             a
               +high-button-pad
@@ -352,7 +353,7 @@ main
               color: $white
               border-radius: 1rem
               background-color: $black
-              font-size: $default-size
+              +default-font
               font-weight: normal
 
       ul.advantages
@@ -362,7 +363,7 @@ main
           margin-bottom: $small-spacer
           &:before
             content: "• "
-            font-size: $bigger-size
+            +bigger-font
           &.red:before
             color: $red
           &.yellow:before
@@ -389,7 +390,7 @@ main
         width: 100%
         header
           h2
-            font-size: $big-size
+            +big-font
             a
               img
                 width: 0.75rem
@@ -407,8 +408,8 @@ main
           +align-self(flex-end)
           +transition-property(font-size)
           +transition-duration($small-delay)
+          +large-font
           display: inline-block
-          font-size: $large-size
           font-weight: normal
           margin: 0
           &.hrot
@@ -469,11 +470,11 @@ main
         +span-columns(9)
         p.text
           padding: 0 2rem
-          font-size: $bigger-size
+          +bigger-font
       div
         h4
           +pad($small-spacer 0)
-          font-size: $default-size
+          +default-font
           font-weight: normal
         &.features
           +span-columns(3)
@@ -582,7 +583,7 @@ section.wished-box
       +align-self(flex-end)
       h2
         +pad(0.5rem $tiny-spacer 0.25rem)
-        font-size: $big-size
+        +big-font
         font-weight: 600
         margin-bottom: 0
         color: $white
@@ -642,7 +643,7 @@ section.wished-box
     &.visible
       display: block
     h3
-      font-size: $bigger-size
+      +bigger-font
     .text
       +display(flex)
       .column
@@ -677,7 +678,7 @@ section.wished-box
     +shift(1)
     h2
       font-family: VeganSans
-      font-size: modular-scale(2, 1rem)
+      +big-font
       text-align: center
       padding: 3rem
 
