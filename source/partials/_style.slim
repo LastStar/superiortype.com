@@ -1,6 +1,8 @@
-        .style
-          = partial 'tools', locals: { name: name }
-          h4
-            - weight = locals[:name].split(current_page.data.name).last.downcase.strip
-            input class=weight type='text' data-name=locals[:name] placeholder=locals[:name]
+.style
+  = partial 'tools', locals: { name: name }
+  h4
+    - weight = locals[:name].split(current_page.data.name).last.downcase.strip
+    input class=weight type='text' data-name=locals[:name] placeholder=locals[:name]
+  .wish-box
+    = partial 'wish_style', locals: { name: name }
 
