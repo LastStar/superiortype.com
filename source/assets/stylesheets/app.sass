@@ -244,20 +244,36 @@ main
                   background-color: $blue
                   h5
                     font-weight: normal
+                    margin: 0 0 $tiny-spacer
                 &.premium
                   background-color: $blue
                   h5
-                    margin: 0 0 $tiny-spacer
+                    margin: 0 0 $small-spacer
                 &.superior
                   background-color: $dark-blue
                   color: $white
                   h5
                     +larger-font
-                    margin: 0 0 $huge-spacer
                     font-weight: 900
                   .price
                     color: $black
                     margin: $half-tiny-spacer 0
+                  p
+                    +bigger-font
+                .description
+                  opacity: 0
+                  +transition-property(opacity)
+                  +transition-duration($medium-delay)
+                  &:hover
+                    opacity: 1
+              a.help
+                +button-pad
+                +black-hover
+                +smaller-font
+                margin: $half-tiny-spacer
+                border: thin solid $black
+                border-radius: 1rem
+                color: $black
       &#styles
         .vegan-sans, .kunda-book, .hrot
           input[type=text]

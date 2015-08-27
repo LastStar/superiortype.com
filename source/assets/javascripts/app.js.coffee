@@ -383,10 +383,8 @@ $('.fonts input.tester').on 'change', ->
 if $('.wish').size() > 0
   $('.wish').on 'click', ->
     name = $(this).data('name')
-    addToWished name
     $(this).addClass('pushed')
-    renderWished()
-    refreshWished(currentWished())
+    $(this).parents('.style').children('.wish-box').addClass('visible')
 
 $('.remove-all').on 'click', ->
   $.localStorage.removeAll()
