@@ -14,3 +14,6 @@ gem "coffee-script"
 gem "middleman-gh-pages" # GitHub Pages deployment
 gem "middleman-livereload"
 gem "middleman-minify-html"
+
+# Javascript runtime
+gem 'therubyracer'
