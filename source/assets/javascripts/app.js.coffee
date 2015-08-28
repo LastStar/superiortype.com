@@ -397,6 +397,7 @@ if $('.wish').size() > 0
       wishBox.addClass('visible')
       showPackages = ->
         wishBox.children('div').addClass('visible')
+        $.scrollTo wishButton.parents('.style'), { duration: 'slow', offset: -$('.font-header').height() - 3 }
       setTimeout showPackages, 10
       name = wishButton.data('name')
       $('.wish-box.visible > div').on 'click', ->
