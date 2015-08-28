@@ -52,9 +52,9 @@ refreshWished = (wished) ->
   if size > 0
     content = 'Wished '
     if size == 1
-      content += '1 item'
+      content += '1 Superior'
     else
-      content += "#{size} items"
+      content += "#{size} Superiors"
     wishedSpan.html content
     wishedSpan.removeClass 'empty'
     wishedSpan.on 'click', showWishedBox
@@ -81,33 +81,42 @@ refreshWished = (wished) ->
 currentWished = ->
   $.localStorage.get 'wished'
 
-inWished = (name) ->
-  if $.inArray(name, currentWished()) == -1
+itemToObject = (name, pkg) ->
+  JSON.stringify({ name: name, package: pkg })
+
+inWished = (name, pkg) ->
+  item = itemToObject name, pkg
+  if $.inArray(item, currentWished()) == -1
     false
   else
     true
 
-addToWished = (name) ->
+addToWished = (name, pkg) ->
   tempWished = currentWished()
-  tempWished.push(name)
+  tempWished.push(itemToObject(name, pkg))
   tempWished = $.unique tempWished
   $.localStorage.set 'wished', tempWished
+  renderWished
 
-removeFromWished = (name) ->
+removeFromWished = (name, pkg) ->
   tempWished = currentWished()
-  tempWished.splice($.inArray(name, currentWished()), 1)
+  item = itemToObject name, pkg
+  tempWished.splice($.inArray(item, currentWished()), 1)
   $.localStorage.set 'wished', tempWished
 
 renderWished = ->
   items = []
   $.each currentWished(), (index, item) ->
-    items.push $("<li><div class='name'>#{item}</div><div class='remove-wrap'><a class='remover' data-name='#{item}'>Remove</a></div></li>")
+    item = JSON.parse(item)
+    name = item.name
+    pkg = item.package
+    items.push $("<li><div class='name'>#{name}</div><div class='package'>#{pkg}</div><div class='remove-wrap'><a class='remover' data-name='#{name}' data-package='#{pkg}'>Remove</a></div></li>")
   $('ul.items').html items
   $('.remover').on 'click', ->
     name = $(this).data 'name'
-    removeFromWished name
+    pkg = $(this).data 'package'
+    removeFromWished name, pkg
     $(this).parent('li').fadeOut()
-    $(".wish[data-name='#{name}']").removeClass('pushed')
     if currentWished().length > 0
       refreshWished(currentWished())
       renderWished()
@@ -118,9 +127,6 @@ renderWished = ->
 if $.localStorage.get('wished') == null || isMobile
   $.localStorage.set 'wished', []
 else
-  $.each $('.wish'), (index, button) ->
-    if inWished($(button).data('name'))
-      $(button).addClass('pushed')
   refreshWished currentWished()
 
 showSlideShow = ->
@@ -256,15 +262,6 @@ showSlideShow = ->
                   moveButton currItem, nowMoving[currItem.id]['index']
               nowMoving[currItem.id]['timeout'] = setTimeout cont, currItem.speed
           moveToPosition title, titlePosition, scale.title
-          if !inWished(item.name)
-            wish = title.select('#wish')
-            wish.attr { opacity: 1 }
-            wish.attr { cursor: 'pointer' }
-            $(wish.node).one 'click', ->
-              addToWished(item.name)
-              refreshWished(currentWished())
-              renderWished()
-              wish.attr { opacity: 0 }
           name = title.select('#name')
           name.attr { cursor: 'pointer' }
           $(name.node).one 'click', ->
@@ -382,9 +379,35 @@ $('.fonts input.tester').on 'change', ->
 
 if $('.wish').size() > 0
   $('.wish').on 'click', ->
-    name = $(this).data('name')
-    $(this).addClass('pushed')
-    $(this).parents('.style').children('.wish-box').addClass('visible')
+    wishButton = $(this)
+    hideWishBox = ->
+      wishButton.html(wishButton.data('normal'))
+      wishButton.removeClass('pushed')
+      hideBox = ->
+        $('.wish-box.visible').removeClass('visible')
+      $('.wish-box.visible > div').removeClass('visible')
+      setTimeout hideBox, 750
+    if wishButton.hasClass('pushed')
+      hideWishBox()
+    else
+      wishButton.html(wishButton.data('alternate'))
+      wishButton.addClass('pushed')
+      $('.wish-box.visible').removeClass('visible')
+      wishBox = wishButton.parents('.style').children('.wish-box')
+      wishBox.addClass('visible')
+      showPackages = ->
+        wishBox.children('div').addClass('visible')
+      setTimeout showPackages, 10
+      name = wishButton.data('name')
+      $('.wish-box.visible > div').on 'click', ->
+        if pkg = $(this).data('package')
+          addToWished(name, pkg)
+        else
+          addToWished 'All', 'Superior'
+        hideWishBox()
+        refreshWished(currentWished())
+        renderWished()
+
 
 $('.remove-all').on 'click', ->
   $.localStorage.removeAll()

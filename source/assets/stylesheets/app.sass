@@ -152,8 +152,8 @@ main
               &.visible
                 opacity: 1
           .wished
-            +shift(7)
-            +span-columns(1)
+            +shift(6)
+            +span-columns(2)
             +omega
             text-align: right
             span.wish
@@ -163,10 +163,7 @@ main
               &:hover
                 background-color: $blue
               &.pushed
-                +transform(translateY(-$small-spacer))
-                +transition-property(transform, opacity)
-                +transition-duration($medium-delay)
-                opacity: 0
+                background-color: $blue
         h3
           +span-columns(12)
           +huge-font
@@ -200,20 +197,25 @@ main
             .tools
               padding: 0.25rem 0
             .wish-box
-              +flex-direction(row)
-              +align-items(flex-end)
-              vertical-align: bottom
               clear: both
               display: none
               &.visible
                 +display(flex)
+                +flex-direction(row)
+                +align-items(flex-end)
               *
                 font-family: VeganSans
               & > div
+                +transition-property(transform)
+                +transition-duration($medium-delay)
+                +transform-origin(bottom)
+                +transform(scaleY(0))
                 margin: $half-tiny-spacer
                 padding: $tiny-spacer
                 border-radius: $tiny-spacer
                 width: 21%
+                &.visible
+                  +transform(scaleY(1))
                 h5
                   +big-font
                   float: left
@@ -236,7 +238,6 @@ main
                   +smaller-font
                 &.demo
                   background-color: $lighter-grey
-                  height: $big-spacer
                   h5
                     font-style: italic
                     font-weight: 300
@@ -261,9 +262,9 @@ main
                   p
                     +bigger-font
                 .description
-                  opacity: 0
                   +transition-property(opacity)
                   +transition-duration($medium-delay)
+                  opacity: 0
                   &:hover
                     opacity: 1
               a.help
@@ -699,9 +700,12 @@ section.wished-box
       padding-top: 0.75rem
       .name
         +order(1)
-        +flex(6)
+        +flex(4)
+      .package
+        +order(2)
+        +flex(2)
       .remove-wrap
-        +order(1)
+        +order(2)
         +flex(1)
         text-align: right
         .remover,
