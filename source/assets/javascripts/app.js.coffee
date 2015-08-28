@@ -380,11 +380,13 @@ $('.fonts input.tester').on 'change', ->
 if $('.wish').size() > 0
   $('.wish').on 'click', ->
     wishButton = $(this)
+    style = wishButton.parents('.style')
     hideWishBox = ->
       wishButton.html(wishButton.data('normal'))
       wishButton.removeClass('pushed')
       hideBox = ->
         $('.wish-box.visible').removeClass('visible')
+        style.siblings('.style').css {opacity: 1 }
       $('.wish-box.visible > div').removeClass('visible')
       setTimeout hideBox, 750
     if wishButton.hasClass('pushed')
@@ -392,22 +394,24 @@ if $('.wish').size() > 0
     else
       wishButton.html(wishButton.data('alternate'))
       wishButton.addClass('pushed')
-      $('.wish-box.visible').removeClass('visible')
-      wishBox = wishButton.parents('.style').children('.wish-box')
-      wishBox.addClass('visible')
-      showPackages = ->
-        wishBox.children('div').addClass('visible')
-        $.scrollTo wishButton.parents('.style'), { duration: 'slow', offset: -$('.font-header').height() - 3 }
-      setTimeout showPackages, 10
-      name = wishButton.data('name')
-      $('.wish-box.visible > div').on 'click', ->
-        if pkg = $(this).data('package')
-          addToWished(name, pkg)
-        else
-          addToWished 'All', 'Superior'
-        hideWishBox()
-        refreshWished(currentWished())
-        renderWished()
+      style.siblings('.style').css {opacity: 0.25 }
+      niceShow = ->
+        wishBox = wishButton.parents('.style').children('.wish-box')
+        wishBox.addClass('visible')
+        showPackages = ->
+          wishBox.children('div').addClass('visible')
+        setTimeout showPackages, 100
+        name = wishButton.data('name')
+        $('.wish-box.visible > div').on 'click', ->
+          if pkg = $(this).data('package')
+            addToWished(name, pkg)
+          else
+            addToWished 'All', 'Superior'
+          hideWishBox()
+          refreshWished(currentWished())
+          renderWished()
+
+      $.scrollTo style, { duration: 90, offset: -$('.font-header').height() - 3, onAfter: niceShow }
 
 
 $('.remove-all').on 'click', ->
