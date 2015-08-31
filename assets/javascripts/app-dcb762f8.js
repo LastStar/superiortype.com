@@ -54,7 +54,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
 !function(){"use strict";function t(){}function e(t){this.options=i.Adapter.extend({},e.defaults,t),this.axis=this.options.horizontal?"horizontal":"vertical",this.waypoints=[],this.createWaypoints()}var i=window.Waypoint;e.prototype.createWaypoints=function(){for(var t={vertical:[{down:"enter",up:"exited",offset:"100%"},{down:"entered",up:"exit",offset:"bottom-in-view"},{down:"exit",up:"entered",offset:0},{down:"exited",up:"enter",offset:function(){return-this.adapter.outerHeight()}}],horizontal:[{right:"enter",left:"exited",offset:"100%"},{right:"entered",left:"exit",offset:"right-in-view"},{right:"exit",left:"entered",offset:0},{right:"exited",left:"enter",offset:function(){return-this.adapter.outerWidth()}}]},e=0,i=t[this.axis].length;i>e;e++){var o=t[this.axis][e];this.createWaypoint(o)}},e.prototype.createWaypoint=function(t){var e=this;this.waypoints.push(new i({element:this.options.element,handler:function(t){return function(i){e.options[t[i]].call(this,i)}}(t),offset:t.offset,horizontal:this.options.horizontal}))},e.prototype.destroy=function(){for(var t=0,e=this.waypoints.length;e>t;t++)this.waypoints[t].destroy();this.waypoints=[]},e.defaults={enter:t,entered:t,exit:t,exited:t},i.Inview=e}();
 (function() {
-  var addToWished, address, clearMessage, currentWished, defaultSpeed, emailIsValid, family, fixHeader, glyphsSelect, hideWishedBox, inWished, inuseCount, isMobile, isSafariFirst, makeHeaderFixed, menuOpened, refreshWished, removeFromWished, removed, renderWished, showAddress, showSlideShow, showWishedBox, style, styles, stylesGr, unmakeHeaderFixed, wishedBox, wishedClose, wishedSpan;
+  var addToWished, address, clearMessage, currentWished, defaultSpeed, emailIsValid, family, fixHeader, glyphsSelect, hideWishedBox, inWished, inuseCount, isMobile, isSafariFirst, itemToObject, makeHeaderFixed, menuOpened, refreshWished, removeFromWished, removed, renderWished, showAddress, showSlideShow, showWishedBox, style, styles, stylesGr, unmakeHeaderFixed, wishedBox, wishedClose, wishedSpan;
 
   wishedSpan = $('#wished span');
 
@@ -119,9 +119,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     if (size > 0) {
       content = 'Wished ';
       if (size === 1) {
-        content += '1 item';
+        content += '1 Superior';
       } else {
-        content += size + " items";
+        content += size + " Superiors";
       }
       wishedSpan.html(content);
       wishedSpan.removeClass('empty');
@@ -154,26 +154,37 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     return $.localStorage.get('wished');
   };
 
-  inWished = function(name) {
-    if ($.inArray(name, currentWished()) === -1) {
+  itemToObject = function(name, pkg) {
+    return JSON.stringify({
+      name: name,
+      "package": pkg
+    });
+  };
+
+  inWished = function(name, pkg) {
+    var item;
+    item = itemToObject(name, pkg);
+    if ($.inArray(item, currentWished()) === -1) {
       return false;
     } else {
       return true;
     }
   };
 
-  addToWished = function(name) {
+  addToWished = function(name, pkg) {
     var tempWished;
     tempWished = currentWished();
-    tempWished.push(name);
+    tempWished.push(itemToObject(name, pkg));
     tempWished = $.unique(tempWished);
-    return $.localStorage.set('wished', tempWished);
+    $.localStorage.set('wished', tempWished);
+    return renderWished;
   };
 
-  removeFromWished = function(name) {
-    var tempWished;
+  removeFromWished = function(name, pkg) {
+    var item, tempWished;
     tempWished = currentWished();
-    tempWished.splice($.inArray(name, currentWished()), 1);
+    item = itemToObject(name, pkg);
+    tempWished.splice($.inArray(item, currentWished()), 1);
     return $.localStorage.set('wished', tempWished);
   };
 
@@ -181,15 +192,19 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     var items;
     items = [];
     $.each(currentWished(), function(index, item) {
-      return items.push($("<li><div class='name'>" + item + "</div><div class='remove-wrap'><a class='remover' data-name='" + item + "'>Remove</a></div></li>"));
+      var name, pkg;
+      item = JSON.parse(item);
+      name = item.name;
+      pkg = item["package"];
+      return items.push($("<li><div class='name'>" + name + "</div><div class='package'>" + pkg + "</div><div class='remove-wrap'><a class='remover' data-name='" + name + "' data-package='" + pkg + "'>Remove</a></div></li>"));
     });
     $('ul.items').html(items);
     return $('.remover').on('click', function() {
-      var name;
+      var name, pkg;
       name = $(this).data('name');
-      removeFromWished(name);
+      pkg = $(this).data('package');
+      removeFromWished(name, pkg);
       $(this).parent('li').fadeOut();
-      $(".wish[data-name='" + name + "']").removeClass('pushed');
       if (currentWished().length > 0) {
         refreshWished(currentWished());
         return renderWished();
@@ -203,11 +218,6 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   if ($.localStorage.get('wished') === null || isMobile) {
     $.localStorage.set('wished', []);
   } else {
-    $.each($('.wish'), function(index, button) {
-      if (inWished($(button).data('name'))) {
-        return $(button).addClass('pushed');
-      }
-    });
     refreshWished(currentWished());
   }
 
@@ -387,7 +397,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         }, item.speed, mina.bounce, function() {
           nowMoving[item.id]['timeout'] = setTimeout(restart, restartDelay);
           return $(elementToMove.node).one('mouseenter', function() {
-            var finishMovement, name, wish;
+            var finishMovement, name;
             $.each(config, function(name, currItem) {
               var el;
               clearTimeout(nowMoving[currItem.id]['timeout']);
@@ -409,23 +419,6 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
               });
             };
             moveToPosition(title, titlePosition, scale.title);
-            if (!inWished(item.name)) {
-              wish = title.select('#wish');
-              wish.attr({
-                opacity: 1
-              });
-              wish.attr({
-                cursor: 'pointer'
-              });
-              $(wish.node).one('click', function() {
-                addToWished(item.name);
-                refreshWished(currentWished());
-                renderWished();
-                return wish.attr({
-                  opacity: 0
-                });
-              });
-            }
             name = title.select('#name');
             name.attr({
               cursor: 'pointer'
@@ -442,7 +435,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         return returnButtons = function(element, item, callback) {
           return element.animate({
             transform: 'translate(' + item.initial + ') scale(' + scale.initial + ')'
-          }, item.speed / 2, mina.ease, function() {
+          }, item.speed / 2, mina.easeIn, function() {
             return setTimeout(callback, 6 * defaultSpeed - item.speed);
           });
         };
@@ -614,12 +607,57 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
   if ($('.wish').size() > 0) {
     $('.wish').on('click', function() {
-      var name;
-      name = $(this).data('name');
-      addToWished(name);
-      $(this).addClass('pushed');
-      renderWished();
-      return refreshWished(currentWished());
+      var hideWishBox, niceShow, wishButton;
+      wishButton = $(this);
+      style = wishButton.parents('.style');
+      hideWishBox = function() {
+        var hideBox;
+        wishButton.html(wishButton.data('normal'));
+        wishButton.removeClass('pushed');
+        hideBox = function() {
+          $('.wish-box.visible').removeClass('visible');
+          return style.siblings('.style').css({
+            opacity: 1
+          });
+        };
+        $('.wish-box.visible > div').removeClass('visible');
+        return setTimeout(hideBox, 750);
+      };
+      if (wishButton.hasClass('pushed')) {
+        return hideWishBox();
+      } else {
+        wishButton.html(wishButton.data('alternate'));
+        wishButton.addClass('pushed');
+        style.siblings('.style').css({
+          opacity: 0.25
+        });
+        niceShow = function() {
+          var name, showPackages, wishBox;
+          wishBox = wishButton.parents('.style').children('.wish-box');
+          wishBox.addClass('visible');
+          showPackages = function() {
+            return wishBox.children('div').addClass('visible');
+          };
+          setTimeout(showPackages, 100);
+          name = wishButton.data('name');
+          return $('.wish-box.visible > div').on('click', function() {
+            var pkg;
+            if (pkg = $(this).data('package')) {
+              addToWished(name, pkg);
+            } else {
+              addToWished('All', 'Superior');
+            }
+            hideWishBox();
+            refreshWished(currentWished());
+            return renderWished();
+          });
+        };
+        return $.scrollTo(style, {
+          duration: 90,
+          offset: -$('.font-header').height() - 3,
+          onAfter: niceShow
+        });
+      }
     });
   }
 
