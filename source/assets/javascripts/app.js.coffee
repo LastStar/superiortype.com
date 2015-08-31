@@ -20,32 +20,34 @@ clearMessage = ->
   $('.message').html('')
 
 hideWishedBox = ->
-  wishedClose.off 'click'
-  wishedBox.hide 'fast', ->
+  wishedBox.removeClass('visible')
+  wishedBox.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ->
+    wishedClose.off 'click'
     wishedSpan.show()
-  $('main').removeClass('faded')
-  $('body').removeClass('faded')
-  $('header.main').removeClass('faded')
-  wishedSpan.on 'click', showWishedBox
-  clearMessage()
+    $('main').removeClass('faded')
+    $('body').removeClass('faded')
+    $('header.main').removeClass('faded')
+    wishedSpan.on 'click', showWishedBox
+    clearMessage()
 
 showWishedBox = ->
   wishedSpan.hide().off 'click'
-  wishedBox.show 'fast', ->
+  wishedBox.addClass('visible')
+  wishedBox.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ->
     $('main').addClass('faded')
     $('body').addClass('faded')
     $('header.main').addClass('faded')
-  wishedClose.on 'click', hideWishedBox
-  $('.contact-form').on 'submit', (e) ->
-    email = $(this).children("input[type='email']").val()
-    if email != '' and emailIsValid(email)
-      e.stopPropagation()
-      $('.message').html('<h2>Thank you! Check your email soon.</h2>')
-      setTimeout hideWishedBox, 10*defaultSpeed
-    else
-      $('.message').html('<h2>Please provide email in valid format!</h2>')
-      setTimeout clearMessage, 10*defaultSpeed
-    false
+    wishedClose.on 'click', hideWishedBox
+    $('.contact-form').on 'submit', (e) ->
+      email = $(this).children("input[type='email']").val()
+      if email != '' and emailIsValid(email)
+        e.stopPropagation()
+        $('.message').html('<h2>Thank you! Check your email soon.</h2>')
+        setTimeout hideWishedBox, 10*defaultSpeed
+      else
+        $('.message').html('<h2>Please provide email in valid format!</h2>')
+        setTimeout clearMessage, 10*defaultSpeed
+      false
 
 refreshWished = (wished) ->
   size = wished.length

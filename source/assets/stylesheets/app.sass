@@ -628,11 +628,16 @@ main
           width: 100%
 section.wished-box
   +row
-  font-family: VeganSans
-  +invisible
+  +transition-property(max-height)
+  +transition-duration($medium-delay)
+  +transform-origin(top)
+  max-height: 0
   opacity: 1
   overflow: scroll
   background-color: $blue
+  font-family: VeganSans
+  &.visible
+    max-height: 200rem
   .close
     position: absolute
     top: $half-tiny-spacer
