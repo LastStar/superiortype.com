@@ -47,11 +47,12 @@ html.nojs
         a<> href="http://browsehappy.com/" upgrade your browser
         | to improve your experience.
 
+    section.wished-box
+      = partial 'partials/wished'
+
     = partial 'partials/header'
 
     main
       == yield
-    section.wished-box
-      = partial 'partials/wished'
 
     = javascript_include_tag 'app'
