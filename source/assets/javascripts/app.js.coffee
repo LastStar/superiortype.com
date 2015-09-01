@@ -22,6 +22,7 @@ clearMessage = ->
 hideWishedBox = ->
   wishedBox.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ->
     wishedClose.off 'click'
+    $('main').off 'click'
     wishedSpan.show()
     $('main').removeClass('faded')
     $('body').removeClass('faded')
@@ -38,6 +39,7 @@ showWishedBox = ->
   $('header.main').addClass('faded')
   wishedBox.addClass('visible')
   wishedClose.one 'click', hideWishedBox
+  $('main').one 'click', hideWishedBox
   $('.contact-form').on 'submit', (e) ->
     email = $(this).children("input[type='email']").val()
     if email != '' and emailIsValid(email)
