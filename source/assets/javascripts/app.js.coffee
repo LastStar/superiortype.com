@@ -383,9 +383,10 @@ $('.fonts input.tester').on 'change', ->
 
 if $('.wish').size() > 0
   clickableWish = ->
-    $('.wish').on 'click', (e) ->
+    $('.wish').one 'click', (e) ->
       e.stopPropagation()
       wishButton = $(this)
+      wishBox = wishButton.parents('.style').children('.wish-box')
       style = wishButton.parents('.style')
       otherStyles = style.siblings('.style')
       hideWishBox = ->
@@ -395,36 +396,37 @@ if $('.wish').size() > 0
           $('.wish-box.visible').removeClass('visible')
           style.siblings('.style').removeClass('faded').off 'click'
           otherStyles.find('.wish').show()
-        $('.wish-box.visible > div').removeClass('visible')
-        setTimeout hideBox, 750
+        packageBoxes  = $('.wish-box.visible > div')
+        packageBoxes.removeClass('visible')
+        packageBoxes.first().one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ->
+          packageBoxes.first().off "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd"
+          hideBox()
         wishButton.off 'click'
         clickableWish()
-      if wishButton.hasClass('pushed')
+      wishButton.html(wishButton.data('alternate'))
+      wishButton.addClass('pushed').one 'click', ->
         hideWishBox()
-      else
-        wishButton.html(wishButton.data('alternate'))
-        wishButton.addClass('pushed')
-        otherStyles.find('.wish').hide().off 'click'
-        otherStyles.addClass('faded').one 'click', (e) ->
-          e.stopPropagation()
+      otherStyles.find('.wish').hide().off 'click'
+      otherStyles.addClass('faded').one 'click', (e) ->
+        e.stopPropagation()
+        hideWishBox()
+        false
+      niceShow = ->
+        name = wishButton.data('name')
+        showPackages = ->
+          wishBox.children('div').addClass('visible')
+        wishBox.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ->
+          showPackages()
+        wishBox.addClass('visible')
+        $('.wish-box.visible > div').on 'click', ->
+          if pkg = $(this).data('package')
+            addToWished(name, pkg)
+          else
+            addToWished 'All', 'Superior'
           hideWishBox()
-          false
-        niceShow = ->
-          wishBox = wishButton.parents('.style').children('.wish-box')
-          wishBox.addClass('visible')
-          showPackages = ->
-            wishBox.children('div').addClass('visible')
-          setTimeout showPackages, 100
-          name = wishButton.data('name')
-          $('.wish-box.visible > div').on 'click', ->
-            if pkg = $(this).data('package')
-              addToWished(name, pkg)
-            else
-              addToWished 'All', 'Superior'
-            hideWishBox()
-            refreshWished(currentWished())
-            renderWished()
-        $.scrollTo style, { duration: 90, offset: -$('.font-header').height() - 3, onAfter: niceShow }
+          refreshWished(currentWished())
+          renderWished()
+      $.scrollTo style, { duration: 90, offset: -$('.font-header').height() - 3, onAfter: niceShow }
   clickableWish()
 
 

@@ -202,30 +202,40 @@ main
             .tools
               padding: 0.25rem 0
             .wish-box
+              +display(flex)
+              +flex-direction(row)
+              +align-items(flex-end)
+              +transition-property(max-height)
+              +transition-duration($small-delay)
+              +transform-origin(bottom)
               clear: both
-              display: none
+              max-height: 0
+              opacity: 0
               &.visible
-                +display(flex)
-                +flex-direction(row)
-                +align-items(flex-end)
+                max-height: 20rem
+                opacity: 1
               *
                 font-family: VeganSans
               & > div
-                +transition-property(transform)
-                +transition-duration($medium-delay)
+                +transition-property(max-height)
+                +transition-duration($small-delay)
                 +transform-origin(bottom)
-                +transform(scaleY(0))
                 margin: $half-tiny-spacer
                 padding: $tiny-spacer
                 border-radius: $tiny-spacer
                 width: 21%
+                max-height: 0
                 &.visible
                   +transform(scaleY(1))
+                  max-height: 20rem
+                  h5
+                    opacity: 1
                 h5
                   +big-font
                   float: left
                   width: 70%
                   margin: 0 0 $small-spacer 0
+                  opacity: 0
                 .price
                   +smaller-font
                   float: left
