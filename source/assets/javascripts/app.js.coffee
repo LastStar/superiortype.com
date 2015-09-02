@@ -398,12 +398,11 @@ if $('.wish').size() > 0
           otherStyles.find('.wish').show()
         packageBoxes  = $('.wish-box.visible > div')
         packageBoxes.removeClass('visible')
-        packageBoxes.first().one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ->
-          packageBoxes.first().off "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd"
+        packageBoxes.last().on "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", (e) ->
+          $(this).off "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd"
           hideBox()
         wishButton.off 'click'
         clickableWish()
-      wishButton.html(wishButton.data('alternate'))
       wishButton.addClass('pushed').one 'click', ->
         hideWishBox()
       otherStyles.find('.wish').hide().off 'click'
@@ -412,12 +411,12 @@ if $('.wish').size() > 0
         hideWishBox()
         false
       niceShow = ->
+        wishButton.html(wishButton.data('alternate'))
         name = wishButton.data('name')
+        wishBox.addClass('visible')
         showPackages = ->
           wishBox.children('div').addClass('visible')
-        wishBox.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ->
-          showPackages()
-        wishBox.addClass('visible')
+        setTimeout showPackages, 100
         $('.wish-box.visible > div').on 'click', ->
           if pkg = $(this).data('package')
             addToWished(name, pkg)
