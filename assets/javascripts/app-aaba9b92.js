@@ -628,14 +628,13 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
           };
           packageBoxes = $('.wish-box.visible > div');
           packageBoxes.removeClass('visible');
-          packageBoxes.first().one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
-            packageBoxes.first().off("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd");
+          packageBoxes.last().on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(e) {
+            $(this).off("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd");
             return hideBox();
           });
           wishButton.off('click');
           return clickableWish();
         };
-        wishButton.html(wishButton.data('alternate'));
         wishButton.addClass('pushed').one('click', function() {
           return hideWishBox();
         });
@@ -647,14 +646,13 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         });
         niceShow = function() {
           var name, showPackages;
+          wishButton.html(wishButton.data('alternate'));
           name = wishButton.data('name');
+          wishBox.addClass('visible');
           showPackages = function() {
             return wishBox.children('div').addClass('visible');
           };
-          wishBox.one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
-            return showPackages();
-          });
-          wishBox.addClass('visible');
+          setTimeout(showPackages, 100);
           return $('.wish-box.visible > div').on('click', function() {
             var pkg;
             if (pkg = $(this).data('package')) {
