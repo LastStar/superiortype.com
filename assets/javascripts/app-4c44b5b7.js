@@ -610,14 +610,15 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
   if ($('.wish').size() > 0) {
     clickableWish = function() {
-      return $('.wish').on('click', function(e) {
-        var hideWishBox, niceShow, otherStyles, wishButton;
+      return $('.wish').one('click', function(e) {
+        var hideWishBox, niceShow, otherStyles, wishBox, wishButton;
         e.stopPropagation();
         wishButton = $(this);
+        wishBox = wishButton.parents('.style').children('.wish-box');
         style = wishButton.parents('.style');
         otherStyles = style.siblings('.style');
         hideWishBox = function() {
-          var hideBox;
+          var hideBox, packageBoxes;
           wishButton.html(wishButton.data('normal'));
           wishButton.removeClass('pushed');
           hideBox = function() {
@@ -625,49 +626,52 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
             style.siblings('.style').removeClass('faded').off('click');
             return otherStyles.find('.wish').show();
           };
-          $('.wish-box.visible > div').removeClass('visible');
-          setTimeout(hideBox, 750);
+          packageBoxes = $('.wish-box.visible > div');
+          packageBoxes.removeClass('visible');
+          packageBoxes.first().one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
+            packageBoxes.first().off("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd");
+            return hideBox();
+          });
           wishButton.off('click');
           return clickableWish();
         };
-        if (wishButton.hasClass('pushed')) {
+        wishButton.html(wishButton.data('alternate'));
+        wishButton.addClass('pushed').one('click', function() {
           return hideWishBox();
-        } else {
-          wishButton.html(wishButton.data('alternate'));
-          wishButton.addClass('pushed');
-          otherStyles.find('.wish').hide().off('click');
-          otherStyles.addClass('faded').one('click', function(e) {
-            e.stopPropagation();
-            hideWishBox();
-            return false;
-          });
-          niceShow = function() {
-            var name, showPackages, wishBox;
-            wishBox = wishButton.parents('.style').children('.wish-box');
-            wishBox.addClass('visible');
-            showPackages = function() {
-              return wishBox.children('div').addClass('visible');
-            };
-            setTimeout(showPackages, 100);
-            name = wishButton.data('name');
-            return $('.wish-box.visible > div').on('click', function() {
-              var pkg;
-              if (pkg = $(this).data('package')) {
-                addToWished(name, pkg);
-              } else {
-                addToWished('All', 'Superior');
-              }
-              hideWishBox();
-              refreshWished(currentWished());
-              return renderWished();
-            });
+        });
+        otherStyles.find('.wish').hide().off('click');
+        otherStyles.addClass('faded').one('click', function(e) {
+          e.stopPropagation();
+          hideWishBox();
+          return false;
+        });
+        niceShow = function() {
+          var name, showPackages;
+          name = wishButton.data('name');
+          showPackages = function() {
+            return wishBox.children('div').addClass('visible');
           };
-          return $.scrollTo(style, {
-            duration: 90,
-            offset: -$('.font-header').height() - 3,
-            onAfter: niceShow
+          wishBox.one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
+            return showPackages();
           });
-        }
+          wishBox.addClass('visible');
+          return $('.wish-box.visible > div').on('click', function() {
+            var pkg;
+            if (pkg = $(this).data('package')) {
+              addToWished(name, pkg);
+            } else {
+              addToWished('All', 'Superior');
+            }
+            hideWishBox();
+            refreshWished(currentWished());
+            return renderWished();
+          });
+        };
+        return $.scrollTo(style, {
+          duration: 90,
+          offset: -$('.font-header').height() - 3,
+          onAfter: niceShow
+        });
       });
     };
     clickableWish();
