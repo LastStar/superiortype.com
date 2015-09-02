@@ -338,15 +338,17 @@ main
           +omega
           overflow: hidden
           address
+            +shift(1)
             +span-columns(5 of 6)
             +default-pad
             +transform(translateX(50rem))
             +transition-property(transform)
             +transition-duration($medium-delay)
-            font-style: normal
             +big-font
+            font-style: normal
             background-color: $grey
-            margin: $default-spacer 0 $tiny-spacer
+            margin-top: $default-spacer
+            margin-bottom: $tiny-spacer
             border-radius: $small-spacer
             a
               +default-font
@@ -393,8 +395,8 @@ main
               display: inline-block
               line-height: 1.5
               a
+                +huge-font
                 color: $white
-                +epic-font
                 padding: 0 $tiny-spacer 0 0
                 &:hover
                   color: $black
