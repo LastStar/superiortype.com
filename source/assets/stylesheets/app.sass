@@ -212,32 +212,35 @@ main
                 font-family: VeganSans
               & > div
                 +transition-property(transform)
-                +transition-duration($medium-delay)
+                +transition-duration($small-delay)
                 +transform-origin(bottom)
                 +transform(scaleY(0))
                 margin: $half-tiny-spacer
                 padding: $tiny-spacer
                 border-radius: $tiny-spacer
                 width: 21%
+                &:hover
+                  .description
+                    opacity: 1
                 &.visible
                   +transform(scaleY(1))
+                  +transition-duration($medium-delay)
                   h5
                     opacity: 1
                 h5
                   +big-font
                   float: left
-                  width: 70%
-                  margin: 0 0 $small-spacer 0
+                  width: 61%
+                  margin: 0 0 $tiny-spacer
                   opacity: 0
                 .price
-                  +smaller-font
                   float: left
-                  width: 30%
+                  width: 39%
                   margin: $quarter-tiny-spacer 0
                   background-color: $white
                   text-align: center
                   border-radius: $tiny-spacer
-                  padding: $eighth-tiny-spacer $quarter-tiny-spacer
+                  padding: $quarter-tiny-spacer $half-tiny-spacer
                 h6
                   clear: both
                   +smaller-font
@@ -247,34 +250,36 @@ main
                 &.demo
                   background-color: $lighter-grey
                   h5
+                    margin: 0
                     font-style: italic
                     font-weight: 300
+                    width: 74%
+                  .price
+                    width: 26%
+                    margin: 0.3rem 0 0.25rem 0
                 &.basic
                   background-color: $blue
                   h5
                     font-weight: normal
-                    margin: 0 0 $tiny-spacer
                 &.premium
                   background-color: $blue
-                  h5
-                    margin: 0 0 $small-spacer
+                  .description
+                    margin-bottom: 2rem
                 &.superior
                   background-color: $dark-blue
                   color: $white
                   h5
-                    +larger-font
                     font-weight: 900
+                    width: 71%
                   .price
+                    width: 29%
                     color: $black
-                    margin: $half-tiny-spacer 0
-                  p
-                    +bigger-font
+                  .description
+                    margin-bottom: 9rem
                 .description
                   +transition-property(opacity)
-                  +transition-duration($medium-delay)
+                  +transition-duration($small-delay)
                   opacity: 0
-                  &:hover
-                    opacity: 1
               a.help
                 +button-pad
                 +black-hover
