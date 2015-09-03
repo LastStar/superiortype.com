@@ -735,6 +735,12 @@ section.wished-box
       &.total
         td
           border: none
+          &.price
+            text-align: right
+            font-weight: bold
+            span.amount
+              +display(inline-block)
+              padding-left: $huge-spacer
           &.checkout
             text-align: right
             input

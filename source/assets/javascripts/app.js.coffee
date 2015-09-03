@@ -96,6 +96,7 @@ removeFromWished = (name, pkg) ->
 prototypeLine = $('table.items tbody tr.prototype').remove()
 renderWished = ->
   items = []
+  price = 0
   $.each currentWished(), (index, item) ->
     item = JSON.parse(item)
     name = item.name
@@ -103,9 +104,11 @@ renderWished = ->
     line = prototypeLine.clone().removeClass('prototype').addClass('item')
     line.children('.name').html name
     line.find(".package select option[value='#{pkg}']").attr 'selected', 'selected'
+    price = price + 60
     items.push line
   $('table.items tbody tr.item').remove()
   $('table.items tbody').prepend items
+  $('table.items tbody .total .price .amount').text "$#{price}"
   $('.remover').on 'click', ->
     name = $(this).data 'name'
     pkg = $(this).data 'package'
