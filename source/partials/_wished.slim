@@ -1,12 +1,46 @@
 header
   h2 Superior Wish list
   .close
-    a href='#' Continue wishing
-
-.remove-all
-  a href='#' Remove all
+    a href='#' I wish more
 
 form action='#checkout'
-  ul.items
-  input type='submit' value='checkout'
-
+  table.items
+    thead
+      tr
+        th
+        th Package
+        th License
+        th Users
+        th.price Price
+        th.remove-all
+          a href='#' Remove all
+    tbody
+      tr.prototype
+        td.name
+        td.package
+          select name='package'
+            option value='demo' Demo
+            option value='basic' Basic
+            option value='Premium' Premium
+        td.license
+          select name='license'
+            option value='print' Print
+            option value='web' Web
+            option value='print+web' Print + Web
+            option value='app' Application
+        td.users
+          select name='print'
+            option value='1_5' 1 - 5
+            option value='6_20' 6 - 20
+            option value='20_100' 20 - 100
+            option value='100' More than 100
+        td.price $60
+        td.remove-wrap
+          a.remover Remove
+      tr.total
+        td colspan='3'
+        td colspan='2'
+          | Total
+          span 200$
+        td.checkout
+          input type='submit' value='Checkout'

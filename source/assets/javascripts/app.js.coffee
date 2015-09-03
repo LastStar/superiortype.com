@@ -62,21 +62,6 @@ refreshWished = (wished) ->
     wishedSpan.html content
     wishedSpan.removeClass 'empty'
     wishedSpan.on 'click', showWishedBox
-    hideHelp = ->
-      $('.faq').removeClass('visible')
-      $('.items').show()
-      $('.contact-form').show()
-      $('.remove-all').removeClass('hidden')
-      $(this).html('What\'s this')
-      $(this).on 'click', showHelp
-    showHelp = ->
-      $('.items').hide()
-      $('.faq').addClass('visible')
-      $('.contact-form').hide()
-      $('.remove-all').addClass('hidden')
-      $(this).html('Got it!')
-      $(this).on 'click', hideHelp
-    $('.help a').on 'click', showHelp
   else
     wishedSpan.html ''
     wishedSpan.addClass 'empty'
@@ -108,14 +93,19 @@ removeFromWished = (name, pkg) ->
   tempWished.splice($.inArray(item, currentWished()), 1)
   $.localStorage.set 'wished', tempWished
 
+prototypeLine = $('table.items tbody tr.prototype').remove()
 renderWished = ->
   items = []
   $.each currentWished(), (index, item) ->
     item = JSON.parse(item)
     name = item.name
     pkg = item.package
-    items.push $("<li><div class='name'>#{name}</div><div class='package'>#{pkg}</div><div class='remove-wrap'><a class='remover' data-name='#{name}' data-package='#{pkg}'>Remove</a></div></li>")
-  $('ul.items').html items
+    line = prototypeLine.clone().removeClass('prototype').addClass('item')
+    line.children('.name').html name
+    line.find(".package select option[value='#{pkg}']").attr 'selected', 'selected'
+    items.push line
+  $('table.items tbody tr.item').remove()
+  $('table.items tbody').prepend items
   $('.remover').on 'click', ->
     name = $(this).data 'name'
     pkg = $(this).data 'package'

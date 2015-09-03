@@ -222,6 +222,7 @@ main
                 padding: $tiny-spacer
                 border-radius: $tiny-spacer
                 width: 23%
+                cursor: pointer
                 &:hover
                   .description
                     opacity: 1
@@ -645,7 +646,6 @@ main
           display: block
           width: 100%
 section.wished-box
-  +row
   +transition-property(max-height)
   +transition-duration($medium-delay)
   +transform-origin(top)
@@ -653,7 +653,7 @@ section.wished-box
   max-height: 0
   opacity: 1
   overflow: scroll
-  background-color: $blue
+  background-color: $light-blue
   font-family: VeganSans
   &.visible
     max-height: 200rem
@@ -679,6 +679,7 @@ section.wished-box
       a
         +grey-hover
         +button-pad
+        background-color: $light-grey
         color: $black
   .remove-all
     text-align: right
@@ -689,29 +690,56 @@ section.wished-box
       color: $black
     &.hidden
       opacity: 0
-  ul.items
-    opacity: 1
-    +pad($tiny-spacer $small-spacer)
-    li
-      +display(flex)
+  table.items
+    +margin($tiny-spacer $small-spacer)
+    width: auto
+    thead
+      border: none
+      tr
+        border: none
+        th
+          +button-pad
+          &:last-child
+            padding-right: 0
+          &.price
+            text-align: right
+            padding-right: 0
+    tr
+      &.prototype
+        display: none
       height: $default-spacer
       border-top: $thin-border
-      padding-top: 0.75rem
-      .name
-        +order(1)
-        +flex(4)
-      .package
-        +order(2)
-        +flex(2)
-      .remove-wrap
-        +order(2)
-        +flex(1)
-        text-align: right
-        .remover,
-          +grey-hover
-          +button-pad
-          text-align: center
-          color: $black
-      &:last-child
-        border-bottom: $thin-border
+      td
+        select
+          +appearance(none)
+          +pad(0.35rem $default-spacer 0.35rem $tiny-spacer)
+          border-radius: 1rem
+          border: none
+          background: url('/assets/images/down-arrow.svg') $white no-repeat center right $half-tiny-spacer
+        &.name
+          width: 25vw
+        &.package, &.license, &.users
+          width: 12vw
+        &.price
+          width: 23vw
+          text-align: right
+        &.remove-wrap
+          width: 12vw
+          text-align: right
+          .remover,
+            +grey-hover
+            +button-pad
+            text-align: center
+            color: $black
+      &.total
+        td
+          border: none
+          &.checkout
+            text-align: right
+            input
+              +button-pad
+              +background($white)
+              +hover($black, $light-yellow)
+              border-radius: 1rem
+              color: $black
 @import partials/responsive

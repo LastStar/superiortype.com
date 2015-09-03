@@ -27,24 +27,20 @@
   .black
     font-weight: 800
 
+=hover($color, $background-color)
+  border-radius: 1rem
+  &:hover
+    background-color: $background-color
+    color: $color
+    cursor: pointer
 =white-hover
-  &:hover
-    border-radius: 1rem
-    background-color: $white
-    color: $black
-    cursor: pointer
+  +hover($black, $white)
 =grey-hover
-  &:hover
-    border-radius: 1rem
-    background-color: $dark-grey
-    color: $black
-    cursor: pointer
+  +hover($black, $dark-grey)
 =black-hover
-  &:hover
-    border-radius: 1rem
-    background-color: $black
-    color: $white
-    cursor: pointer
+  +hover($white, $black)
+=light-blue-hover
+  +hover($black, $light-blue)
 =default-pad
   +pad($default-spacer)
 =small-pad
@@ -52,7 +48,7 @@
 =button-pad
   +pad(0.35rem $tiny-spacer)
 =high-button-pad
-  +pad(0.5rem $tiny-spacer)
+  +pad($half-tiny-spacer $tiny-spacer)
 =higher-button-pad
   +pad(0.75rem $small-spacer)
 =invisible
