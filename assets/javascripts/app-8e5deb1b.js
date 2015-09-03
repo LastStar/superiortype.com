@@ -54,7 +54,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
 !function(){"use strict";function t(){}function e(t){this.options=i.Adapter.extend({},e.defaults,t),this.axis=this.options.horizontal?"horizontal":"vertical",this.waypoints=[],this.createWaypoints()}var i=window.Waypoint;e.prototype.createWaypoints=function(){for(var t={vertical:[{down:"enter",up:"exited",offset:"100%"},{down:"entered",up:"exit",offset:"bottom-in-view"},{down:"exit",up:"entered",offset:0},{down:"exited",up:"enter",offset:function(){return-this.adapter.outerHeight()}}],horizontal:[{right:"enter",left:"exited",offset:"100%"},{right:"entered",left:"exit",offset:"right-in-view"},{right:"exit",left:"entered",offset:0},{right:"exited",left:"enter",offset:function(){return-this.adapter.outerWidth()}}]},e=0,i=t[this.axis].length;i>e;e++){var o=t[this.axis][e];this.createWaypoint(o)}},e.prototype.createWaypoint=function(t){var e=this;this.waypoints.push(new i({element:this.options.element,handler:function(t){return function(i){e.options[t[i]].call(this,i)}}(t),offset:t.offset,horizontal:this.options.horizontal}))},e.prototype.destroy=function(){for(var t=0,e=this.waypoints.length;e>t;t++)this.waypoints[t].destroy();this.waypoints=[]},e.defaults={enter:t,entered:t,exit:t,exited:t},i.Inview=e}();
 (function() {
-  var addToWished, address, clearMessage, clickableWish, currentWished, defaultSpeed, emailIsValid, family, fixHeader, glyphsSelect, hideWishedBox, inWished, inuseCount, isMobile, isSafariFirst, itemToObject, makeHeaderFixed, menuOpened, refreshWished, removeFromWished, removed, renderWished, showAddress, showSlideShow, showWishedBox, style, styles, stylesGr, unmakeHeaderFixed, wishedBox, wishedClose, wishedSpan;
+  var addToWished, address, clearMessage, clickableWish, currentWished, defaultSpeed, emailIsValid, family, fixHeader, glyphsSelect, hideWishedBox, inWished, inuseCount, isMobile, isSafariFirst, itemToObject, makeHeaderFixed, menuOpened, prototypeLine, refreshWished, removeFromWished, removed, renderWished, showAddress, showSlideShow, showWishedBox, style, styles, stylesGr, unmakeHeaderFixed, wishedBox, wishedClose, wishedSpan;
 
   wishedSpan = $('#wished span');
 
@@ -117,7 +117,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   };
 
   refreshWished = function(wished) {
-    var content, hideHelp, showHelp, size;
+    var content, size;
     size = wished.length;
     if (size > 0) {
       content = 'Wished ';
@@ -128,24 +128,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       }
       wishedSpan.html(content);
       wishedSpan.removeClass('empty');
-      wishedSpan.on('click', showWishedBox);
-      hideHelp = function() {
-        $('.faq').removeClass('visible');
-        $('.items').show();
-        $('.contact-form').show();
-        $('.remove-all').removeClass('hidden');
-        $(this).html('What\'s this');
-        return $(this).on('click', showHelp);
-      };
-      showHelp = function() {
-        $('.items').hide();
-        $('.faq').addClass('visible');
-        $('.contact-form').hide();
-        $('.remove-all').addClass('hidden');
-        $(this).html('Got it!');
-        return $(this).on('click', hideHelp);
-      };
-      return $('.help a').on('click', showHelp);
+      return wishedSpan.on('click', showWishedBox);
     } else {
       wishedSpan.html('');
       wishedSpan.addClass('empty');
@@ -191,17 +174,26 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     return $.localStorage.set('wished', tempWished);
   };
 
+  prototypeLine = $('table.items tbody tr.prototype').remove();
+
   renderWished = function() {
-    var items;
+    var items, price;
     items = [];
+    price = 0;
     $.each(currentWished(), function(index, item) {
-      var name, pkg;
+      var line, name, pkg;
       item = JSON.parse(item);
       name = item.name;
       pkg = item["package"];
-      return items.push($("<li><div class='name'>" + name + "</div><div class='package'>" + pkg + "</div><div class='remove-wrap'><a class='remover' data-name='" + name + "' data-package='" + pkg + "'>Remove</a></div></li>"));
+      line = prototypeLine.clone().removeClass('prototype').addClass('item');
+      line.children('.name').html(name);
+      line.find(".package select option[value='" + pkg + "']").attr('selected', 'selected');
+      price = price + 60;
+      return items.push(line);
     });
-    $('ul.items').html(items);
+    $('table.items tbody tr.item').remove();
+    $('table.items tbody').prepend(items);
+    $('table.items tbody .total .price .amount').text("$" + price);
     return $('.remover').on('click', function() {
       var name, pkg;
       name = $(this).data('name');
