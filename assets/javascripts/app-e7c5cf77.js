@@ -122,9 +122,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     if (size > 0) {
       content = 'Wished ';
       if (size === 1) {
-        content += '1 Superior';
+        content += '1 item';
       } else {
-        content += size + " Superiors";
+        content += size + " items";
       }
       wishedSpan.html(content);
       wishedSpan.removeClass('empty');
@@ -194,7 +194,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     $('table.items tbody tr.item').remove();
     $('table.items tbody').prepend(items);
     $('table.items tbody .total .price .amount').text("$" + price);
-    return $('.remover').on('click', function() {
+    $('.remover').on('click', function() {
       var name, pkg;
       name = $(this).data('name');
       pkg = $(this).data('package');
@@ -207,6 +207,39 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         refreshWished(currentWished());
         return hideWishedBox();
       }
+    });
+    return $('#wish-list').on('submit', function(e) {
+      $(this).addClass('filled');
+      $(this).find('.checkout').hide();
+      $(this).find('.remove-all').hide();
+      $(this).find('.remove-wrap').hide();
+      $('#back').addClass('visible');
+      $(this).find('td select').each(function(i) {
+        var val;
+        val = $("<span class='val'>" + ($(this).find('option:selected').html()) + "</span>");
+        return $(this).hide().after(val);
+      });
+      $(this).on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
+        var title;
+        $('.wished-box').addClass('checking-out');
+        title = $('.wished-box header h2');
+        title.html(title.data('alternate'));
+        $('#checkout').addClass('active');
+        $.each($countries, function(code, country) {
+          var opt;
+          opt = $("<option value='" + code + "'>" + country + "</option>");
+          return $('select#countries').append(opt);
+        });
+        return $('#countries').on('change', function() {
+          $('#states').find('option').remove();
+          return $.each($states[$(this).val()], function(code, state) {
+            var opt;
+            opt = $("<option value='" + code + "'>" + state + "</option>");
+            return $('#states').append(opt);
+          });
+        });
+      });
+      return e.preventDefault();
     });
   };
 
