@@ -15,5 +15,8 @@ gem "middleman-gh-pages" # GitHub Pages deployment
 gem "middleman-livereload"
 gem "middleman-minify-html"
 
+# Mine
+gem 'countlist', git: 'git@github.com:LastStar/countlist.git'
+
 # Javascript runtime
 gem 'therubyracer'

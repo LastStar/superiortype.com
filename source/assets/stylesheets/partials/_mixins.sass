@@ -76,3 +76,18 @@
   font-size: $huge-size
 =epic-font
   font-size: $epic-size
+=arrow-select
+  +appearance(none)
+  +pad(0.35rem $default-spacer 0.35rem $tiny-spacer)
+  font-family: VeganSans
+  border-radius: 1rem
+  border: none
+  background: url('/assets/images/down-arrow.svg') $white no-repeat center right $half-tiny-spacer
+  margin-bottom: 0
+=button($background-color, $hover-color, $color: $black)
+  +button-pad
+  color: $color
+  border-radius: 1rem
+  background-color: $background-color
+  &:hover
+    background-color: $hover-color

@@ -1,3 +1,4 @@
+require 'countlist'
 ######################################################################
 # General settings.
 ######################################################################
@@ -50,4 +51,24 @@ configure :build do
   activate :minify_css
   #activate :minify_javascript
   activate :gzip, exts: %w(.js .css .html .htm .svg .ttf .otf .woff .eot)
+end
+
+######################################################################
+# Helpers
+######################################################################
+helpers do
+  def countries_json
+    extend Countlist::Countries
+    importance('CZ', 'US', 'GB', 'DE')
+    JSON.generate countries
+  end
+
+  def states_json
+    extend Countlist::Countries
+    states = {}
+    countries_with_states.each do |country|
+      states[country] = states(country)
+    end
+    JSON.generate states
+  end
 end

@@ -56,9 +56,9 @@ refreshWished = (wished) ->
   if size > 0
     content = 'Wished '
     if size == 1
-      content += '1 Superior'
+      content += '1 item'
     else
-      content += "#{size} Superiors"
+      content += "#{size} items"
     wishedSpan.html content
     wishedSpan.removeClass 'empty'
     wishedSpan.on 'click', showWishedBox
@@ -120,6 +120,30 @@ renderWished = ->
     else
       refreshWished(currentWished())
       hideWishedBox()
+  $('#wish-list').on 'submit', (e) ->
+    $(this).addClass('filled')
+    $(this).find('.checkout').hide()
+    $(this).find('.remove-all').hide()
+    $(this).find('.remove-wrap').hide()
+    $('#back').addClass('visible')
+    $(this).find('td select').each (i) ->
+      val = $("<span class='val'>#{$(this).find('option:selected').html()}</span>")
+      $(this).hide().after val
+    $(this).on "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ->
+      $('.wished-box').addClass('checking-out')
+      title = $('.wished-box header h2')
+      title.html(title.data('alternate'))
+      $('#checkout').addClass('active')
+      $.each $countries, (code, country) ->
+        opt = $("<option value='#{code}'>#{country}</option>")
+        $('select#countries').append opt
+      $('#countries').on 'change', ->
+        $('#states').find('option').remove()
+        $.each $states[$(this).val()], (code, state) ->
+          opt = $("<option value='#{code}'>#{state}</option>")
+          $('#states').append opt
+    e.preventDefault()
+
 
 if $.localStorage.get('wished') == null || isMobile
   $.localStorage.set 'wished', []

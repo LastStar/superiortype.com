@@ -657,6 +657,9 @@ section.wished-box
   font-family: VeganSans
   &.visible
     max-height: 200rem
+    &.checking-out
+      background-color: $light-yellow
+      height: 100vh
   header
     +display(flex)
     +justify-content(space-between)
@@ -692,13 +695,16 @@ section.wished-box
       opacity: 0
   table.items
     +margin($tiny-spacer $small-spacer)
-    width: auto
+    width: calc(100% - #{$bigger-spacer})
+    +smaller-font
     thead
       border: none
       tr
         border: none
         th
           +button-pad
+          border-bottom: $thin-border
+          text-align: center
           &:last-child
             padding-right: 0
           &.price
@@ -708,25 +714,20 @@ section.wished-box
       &.prototype
         display: none
       height: $default-spacer
-      border-top: $thin-border
+      border: none
       td
-        select
-          +appearance(none)
-          +pad(0.35rem $default-spacer 0.35rem $tiny-spacer)
-          font-family: VeganSans
-          border-radius: 1rem
-          border: none
-          background: url('/assets/images/down-arrow.svg') $white no-repeat center right $half-tiny-spacer
-          margin-bottom: 0
+        border-bottom: $thin-border
+        text-align: center
         &.name
-          width: 25vw
+          +default-font
+          text-align: left
+          font-weight: bold
+          width: 50vw
         &.package, &.license, &.users
-          width: 12vw
         &.price
-          width: 23vw
+          width: 13vw
           text-align: right
         &.remove-wrap
-          width: 12vw
           text-align: right
           .remover,
             +grey-hover
@@ -739,11 +740,13 @@ section.wished-box
           &.price
             text-align: right
             font-weight: bold
+            border-bottom: $thin-border
             span.amount
               +display(inline-block)
               padding-left: $huge-spacer
           &.checkout
             text-align: right
+            border-bottom: $thin-border
             input
               +button-pad
               +background($white)
@@ -751,4 +754,58 @@ section.wished-box
               border-radius: 1rem
               color: $black
               font-family: VeganSans
+        #back
+          display: none
+          &.visible
+            +button($light-blue, $white)
+            display: inline-block
+
+  form#wish-list
+    +span-columns(12)
+    +transition-property(width)
+    +transition-duration($medium-delay)
+    select
+      +arrow-select
+    & *
+      font-family: VeganSans
+    &.filled
+      +span-columns(6)
+      td.name
+        +smaller-font
+  form#checkout
+    +display(none)
+    select
+      +arrow-select
+    & *
+      font-family: VeganSans
+    &.active
+      +display(block)
+      +span-columns(6)
+      +omega
+    .column
+      +shift
+      +span-columns(2 of 6)
+      +omega(2)
+      label
+        input
+          border-radius: $half-tiny-spacer
+          border: none
+          box-shadow: none
+      hr
+        border: none
+        margin: $default-spacer
+    .pay-box
+      +span-columns(5 of 6)
+      .eula
+        input
+          &[type='checkbox']
+            +appearance(none)
+            padding: $half-tiny-spacer
+            background: url('/assets/images/check-unchecked.svg') no-repeat center
+            &:checked
+              background: url('/assets/images/check-checked.svg') no-repeat center
+          &.pay
+            +button($orange, $white)
+            margin: 0 $default-spacer
+
 @import partials/responsive

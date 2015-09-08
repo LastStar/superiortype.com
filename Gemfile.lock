@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:LastStar/countlist.git
+  revision: 520a714b9451cf3c9721332834e82c0c922ab440
+  specs:
+    countlist (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -151,6 +157,7 @@ DEPENDENCIES
   bitters
   bourbon
   coffee-script
+  countlist!
   middleman
   middleman-gh-pages
   middleman-livereload
