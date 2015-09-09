@@ -690,9 +690,9 @@ section.wished-box
       tr
         border: none
         th
-          +button-pad
           border-bottom: $thin-border
-          text-align: center
+          text-align: left
+          font-weight: normal
           &:last-child
             padding-right: 0
           &.price
@@ -713,11 +713,11 @@ section.wished-box
       border: none
       td
         border-bottom: $thin-border
-        text-align: center
+        text-align: left
         &.name
           +default-font
           text-align: left
-          font-weight: bold
+          font-weight: 600
           width: 50vw
         &.package, &.license, &.users
         &.price
@@ -736,13 +736,11 @@ section.wished-box
           &.price
             text-align: right
             font-weight: 900
-            border-bottom: $thin-border
             span.amount
               +display(inline-block)
-              padding-left: $huge-spacer
+              padding-left: $bigger-spacer
           &.checkout
             text-align: right
-            border-bottom: $thin-border
             input
               +button-pad
               +background($white)
@@ -779,11 +777,15 @@ section.wished-box
       +span-columns(6)
       +omega
     .column
-      +shift
-      +span-columns(2 of 6)
+      +span-columns(3 of 6)
       +omega(2)
+      padding-right: $default-spacer
       label
+        +smaller-font
+        &.grey
+          color: $grey
         input
+          +default-font
           border-radius: $half-tiny-spacer
           border: none
           box-shadow: none
@@ -791,17 +793,22 @@ section.wished-box
         border: none
         margin: $default-spacer
     .pay-box
-      +span-columns(5 of 6)
       .eula
         input
-          &[type='checkbox']
-            +appearance(none)
-            padding: $half-tiny-spacer
-            background: url('/assets/images/check-unchecked.svg') no-repeat center
-            &:checked
-              background: url('/assets/images/check-checked.svg') no-repeat center
-          &.pay
-            +button($orange, $white)
-            margin: 0 $default-spacer
+          +appearance(none)
+          background: url('/assets/images/check-unchecked.svg') no-repeat center
+          background-size: 1.5rem 1.5rem
+          padding: 0.75rem
+          &:checked
+            background: url('/assets/images/check-checked.svg') no-repeat center
+            background-size: 1.5rem 1.5rem
+          &:focus
+            outline: none
+      input.pay
+        +bordered-button($white, $orange, $black, $orange)
+        display: none
+        margin: $default-spacer 0
+        .visible
+          display: inline-block
 
 @import partials/responsive

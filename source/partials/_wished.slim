@@ -34,15 +34,14 @@ form#wish-list action='#checkout'
             option value='6_20' 6 - 20
             option value='20_100' 20 - 100
             option value='100' More than 100
-        td.price $60
+        td.price 60 USD
         td.remove-wrap
           a.remover Remove
       tr.total
         td colspan='3'
-          a#back Back to Wish list
         td.price colspan='2'
           | Total
-          span.amount $200
+          span.amount 200 USD
         td.checkout
           input type='submit' value='Checkout'
 
@@ -50,19 +49,19 @@ form#checkout action='pay'
   .column
     label
       | First name
-      input name='first-name' type='text'
+      input required='required' name='first-name' type='text'
     label
       | Last name
-      input name='last-name' type='text'
-    label
+      input required='required' name='last-name' type='text'
+    label.grey
       | Company
       input name='company' type='text'
     label
       | Street
-      input name='street' type='text'
+      input required='required' name='street' type='text'
     label
       | City
-      input name='City' type='text'
+      input required='required' name='City' type='text'
     label
       | Country
       select#countries name='country'
@@ -71,27 +70,23 @@ form#checkout action='pay'
       select#states name='state'
     label
       | Zip/Postal code
-      input name='City' type='text'
+      input required='required' name='City' type='text'
   .column
     label
       | Email addres
-      input name='email' type='email'
-    label
+      input required='required' name='email' type='email'
+    label.grey
       | Phone number
       input name='phone' type='text'
     hr
-    label
-      | Currency
-      select#currencies name='currency'
-        option value='CZK' Czech crown
-        option value='EUR' Euro
-        option value='USD' US Dollar
     .pay-box
       label.eula
-        input type='checkbox' name='eula'
         | I agree with&nbsp;
         a href='#eula' terms and conditions
-        input.pay type='submit' value='Pay'
+        br
+        br
+        input type='checkbox' name='eula'
+      input.pay type='submit' value='Confirm'
 
 script
   | var $countries =

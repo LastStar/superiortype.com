@@ -103,12 +103,15 @@ renderWished = ->
     pkg = item.package
     line = prototypeLine.clone().removeClass('prototype').addClass('item')
     line.children('.name').html name
-    line.find(".package select option[value='#{pkg}']").attr 'selected', 'selected'
+    if pkg == 'Superior'
+      line.find('.package select').remove()
+    else
+      line.find(".package select option[value='#{pkg}']").attr 'selected', 'selected'
     price = price + 60
     items.push line
   $('table.items tbody tr.item').remove()
   $('table.items tbody').prepend items
-  $('table.items tbody .total .price .amount').text "$#{price}"
+  $('table.items tbody .total .price .amount').text "#{price} USD"
   $('.remover').on 'click', ->
     name = $(this).data 'name'
     pkg = $(this).data 'package'
@@ -142,6 +145,11 @@ renderWished = ->
         $.each $states[$(this).val()], (code, state) ->
           opt = $("<option value='#{code}'>#{state}</option>")
           $('#states').append opt
+      $('.eula input').on 'change', ->
+        if $(this).prop('checked')
+          $('input.pay').show()
+        else
+          $('input.pay').hide()
     e.preventDefault()
 
 
@@ -438,7 +446,7 @@ if $('.wish').size() > 0
           if pkg = $(this).data('package')
             addToWished(name, pkg)
           else
-            addToWished 'All', 'Superior'
+            addToWished 'Superior', 'Superior'
           hideWishBox()
           refreshWished(currentWished())
           renderWished()
