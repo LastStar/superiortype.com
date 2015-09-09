@@ -680,19 +680,7 @@ section.wished-box
       +align-self(flex-start)
       text-align: right
       a
-        +grey-hover
-        +button-pad
-        background-color: $light-grey
-        color: $black
-  .remove-all
-    text-align: right
-    +pad(0 $small-spacer)
-    a
-      +grey-hover
-      +button-pad
-      color: $black
-    &.hidden
-      opacity: 0
+        +button($grey, $white)
   table.items
     +margin($tiny-spacer $small-spacer)
     width: calc(100% - #{$bigger-spacer})
@@ -710,6 +698,14 @@ section.wished-box
           &.price
             text-align: right
             padding-right: 0
+          &.remove-all
+            text-align: right
+            a
+              +grey-hover
+              +button-pad
+              color: $black
+            &.hidden
+              opacity: 0
     tr
       &.prototype
         display: none
@@ -739,7 +735,7 @@ section.wished-box
           border: none
           &.price
             text-align: right
-            font-weight: bold
+            font-weight: 900
             border-bottom: $thin-border
             span.amount
               +display(inline-block)
