@@ -187,13 +187,17 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       pkg = item["package"];
       line = prototypeLine.clone().removeClass('prototype').addClass('item');
       line.children('.name').html(name);
-      line.find(".package select option[value='" + pkg + "']").attr('selected', 'selected');
+      if (pkg === 'Superior') {
+        line.find('.package select').remove();
+      } else {
+        line.find(".package select option[value='" + pkg + "']").attr('selected', 'selected');
+      }
       price = price + 60;
       return items.push(line);
     });
     $('table.items tbody tr.item').remove();
     $('table.items tbody').prepend(items);
-    $('table.items tbody .total .price .amount').text("$" + price);
+    $('table.items tbody .total .price .amount').text(price + " USD");
     $('.remover').on('click', function() {
       var name, pkg;
       name = $(this).data('name');
@@ -230,13 +234,20 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
           opt = $("<option value='" + code + "'>" + country + "</option>");
           return $('select#countries').append(opt);
         });
-        return $('#countries').on('change', function() {
+        $('#countries').on('change', function() {
           $('#states').find('option').remove();
           return $.each($states[$(this).val()], function(code, state) {
             var opt;
             opt = $("<option value='" + code + "'>" + state + "</option>");
             return $('#states').append(opt);
           });
+        });
+        return $('.eula input').on('change', function() {
+          if ($(this).prop('checked')) {
+            return $('input.pay').show();
+          } else {
+            return $('input.pay').hide();
+          }
         });
       });
       return e.preventDefault();
@@ -683,7 +694,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
             if (pkg = $(this).data('package')) {
               addToWished(name, pkg);
             } else {
-              addToWished('All', 'Superior');
+              addToWished('Superior', 'Superior');
             }
             hideWishBox();
             refreshWished(currentWished());
