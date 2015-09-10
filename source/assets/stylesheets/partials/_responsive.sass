@@ -3,16 +3,16 @@ $phone-landscape: new-breakpoint(max-width 667px 3)
 $phone-plus-landscape: new-breakpoint(max-width 736px 3)
 $tablet-portrait: new-breakpoint(max-width 769px 12)
 $tablet-landscape: new-breakpoint(max-width 1024px 12)
-$small-desktop:  new-breakpoint(min-width 1024px 12)
-$big-desktop:  new-breakpoint(min-width 1440px 12)
-$large-desktop:  new-breakpoint(min-width 1600px 12)
+$small-desktop:  new-breakpoint(max-width 1390px min-width 1024px 12)
+$big-desktop:  new-breakpoint(max-width 1600px min-width 1391px 12)
+$large-desktop:  new-breakpoint(max-width 2500px min-width 1601px 12)
 $huge-desktop:  new-breakpoint(min-width 2500px 12)
 +media($small-desktop)
   html
-    font-size: modular-scale(-1, 16px)
+    font-size: $base-font-size
 +media($big-desktop)
   html
-    font-size: modular-scale(1, 16px)
+    font-size: modular-scale(1, $base-font-size)
   main
     section.fonts nav .styles .style .wish-box
       +default-font
@@ -22,12 +22,14 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
         .price
           +default-font
 +media($large-desktop)
+  html
+    font-size: modular-scale(1, $base-font-size)
   section
     address
       font-size: $big-size !important
 +media($huge-desktop)
   html
-    font-size: modular-scale(2, 16px)
+    font-size: modular-scale(2, $base-font-size)
   section
     address
       font-size: $big-size !important
@@ -36,7 +38,7 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
         font-size: $bigger-size !important
 +media($tablet-landscape)
   html
-    font-size: modular-scale(-1, 16px)
+    font-size: modular-scale(-1, $base-font-size)
   header.main
     .menu
       nav
