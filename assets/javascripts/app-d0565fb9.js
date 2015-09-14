@@ -58,7 +58,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
   wishedButton = $('#wished button');
 
-  wishedClose = $('.close');
+  wishedClose = $('.close a');
 
   wishedBox = $('.wished-box');
 
@@ -100,20 +100,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     $('header.main').addClass('faded');
     wishedBox.addClass('visible');
     wishedClose.one('click', hideWishedBox);
-    $('main').one('click', hideWishedBox);
-    return $('.contact-form').on('submit', function(e) {
-      var email;
-      email = $(this).children("input[type='email']").val();
-      if (email !== '' && emailIsValid(email)) {
-        e.stopPropagation();
-        $('.message').html('<h2>Thank you! Check your email soon.</h2>');
-        setTimeout(hideWishedBox, 10 * defaultSpeed);
-      } else {
-        $('.message').html('<h2>Please provide email in valid format!</h2>');
-        setTimeout(clearMessage, 10 * defaultSpeed);
-      }
-      return false;
-    });
+    return $('main').one('click', hideWishedBox);
   };
 
   refreshWished = function(wished) {
@@ -216,7 +203,6 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       $(this).find('.checkout').hide();
       $(this).find('.remove-all').hide();
       $(this).find('.remove-wrap').hide();
-      $('#back').addClass('visible');
       $(this).find('td select').each(function(i) {
         var val;
         val = $("<span class='val'>" + ($(this).find('option:selected').html()) + "</span>");
@@ -241,19 +227,37 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
             return $('#states').append(opt);
           });
         });
-        return $('.eula input').on('change', function() {
+        $('.eula input').on('change', function() {
           if ($(this).prop('checked')) {
-            return $('input.pay').show();
+            return $('input.pay').addClass('visible');
           } else {
-            return $('input.pay').hide();
+            return $('input.pay').removeClass('visible');
           }
         });
+        return wishedClose.html(wishedClose.data('alternate'));
+      });
+      wishedClose.off('click').one('click', function() {
+        var title, wishList;
+        wishList = $('#wish-list');
+        wishList.off("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd");
+        wishList.removeClass('filled');
+        wishList.find('.checkout').show();
+        wishList.find('.remove-all').show();
+        wishList.find('.remove-wrap').show();
+        wishList.find('td select').show();
+        wishList.find('span.val').remove();
+        $('.wished-box').removeClass('checking-out');
+        title = $('.wished-box header h2');
+        title.html(title.data('normal'));
+        $('#checkout').removeClass('active');
+        wishedClose.html(wishedClose.data('normal'));
+        return wishedClose.one('click', hideWishedBox);
       });
       return e.preventDefault();
     });
   };
 
-  if ($.localStorage.get('wished') === null || isMobile) {
+  if (currentWished() === null || isMobile) {
     $.localStorage.set('wished', []);
   } else {
     refreshWished(currentWished());
@@ -756,7 +760,6 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       if ($(window).scrollTop() < $('#styles .styles').height()) {
         stylesActive();
       }
-      $.localStorage.set('wished', []);
       detailsIn = new Waypoint.Inview({
         element: $('#details')[0],
         enter: function(direction) {
