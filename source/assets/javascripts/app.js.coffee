@@ -6,7 +6,7 @@
 //= require jquery-waypoints/lib/shortcuts/inview.min.js
 
 wishedButton = $('#wished button')
-wishedClose = $('.close')
+wishedClose = $('.close a')
 wishedBox = $('.wished-box')
 defaultSpeed = 250
 isMobile = window.screen.availWidth < 750
@@ -40,16 +40,6 @@ showWishedBox = ->
   wishedBox.addClass('visible')
   wishedClose.one 'click', hideWishedBox
   $('main').one 'click', hideWishedBox
-  $('.contact-form').on 'submit', (e) ->
-    email = $(this).children("input[type='email']").val()
-    if email != '' and emailIsValid(email)
-      e.stopPropagation()
-      $('.message').html('<h2>Thank you! Check your email soon.</h2>')
-      setTimeout hideWishedBox, 10*defaultSpeed
-    else
-      $('.message').html('<h2>Please provide email in valid format!</h2>')
-      setTimeout clearMessage, 10*defaultSpeed
-    false
 
 refreshWished = (wished) ->
   size = wished.length
@@ -127,7 +117,6 @@ renderWished = ->
     $(this).find('.checkout').hide()
     $(this).find('.remove-all').hide()
     $(this).find('.remove-wrap').hide()
-    $('#back').addClass('visible')
     $(this).find('td select').each (i) ->
       val = $("<span class='val'>#{$(this).find('option:selected').html()}</span>")
       $(this).hide().after val
@@ -146,13 +135,29 @@ renderWished = ->
           $('#states').append opt
       $('.eula input').on 'change', ->
         if $(this).prop('checked')
-          $('input.pay').show()
+          $('input.pay').addClass('visible')
         else
-          $('input.pay').hide()
+          $('input.pay').removeClass('visible')
+      wishedClose.html(wishedClose.data('alternate'))
+    wishedClose.off('click').one 'click', ->
+      wishList = $('#wish-list')
+      wishList.off "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd"
+      wishList.removeClass('filled')
+      wishList.find('.checkout').show()
+      wishList.find('.remove-all').show()
+      wishList.find('.remove-wrap').show()
+      wishList.find('td select').show()
+      wishList.find('span.val').remove()
+      $('.wished-box').removeClass('checking-out')
+      title = $('.wished-box header h2')
+      title.html(title.data('normal'))
+      $('#checkout').removeClass('active')
+      wishedClose.html(wishedClose.data('normal'))
+      wishedClose.one 'click', hideWishedBox
     e.preventDefault()
 
 
-if $.localStorage.get('wished') == null || isMobile
+if currentWished() == null || isMobile
   $.localStorage.set 'wished', []
 else
   refreshWished currentWished()
@@ -488,7 +493,6 @@ if $('#styles .styles').size() > 0
     $('.slide').addClass('visible')
     if $(window).scrollTop() < $('#styles .styles').height()
       stylesActive()
-    $.localStorage.set 'wished', []
     detailsIn = new Waypoint.Inview {
       element: $('#details')[0],
       enter: (direction) ->

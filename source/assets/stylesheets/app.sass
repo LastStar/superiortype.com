@@ -675,7 +675,7 @@ section.wished-box
       a
         +button($grey, $white)
   table.items
-    +margin($tiny-spacer $small-spacer)
+    +margin(0 $small-spacer)
     width: calc(100% - #{$bigger-spacer})
     +smaller-font
     thead
@@ -683,6 +683,8 @@ section.wished-box
       tr
         border: none
         th
+          padding: 0 0 $half-tiny-spacer
+          vertical-align: top
           border-bottom: $thin-border
           text-align: left
           font-weight: normal
@@ -747,56 +749,63 @@ section.wished-box
             +button($light-blue, $white)
             display: inline-block
 
-  form#wish-list
-    +span-columns(12)
-    +transition-property(width)
-    +transition-duration($medium-delay)
-    select
-      +arrow-select
-    & *
-      font-family: VeganSans
-    &.filled
-      +span-columns(6)
-      td.name
-        +smaller-font
-  form#checkout
-    +display(none)
-    select
-      +arrow-select
-    & *
-      font-family: VeganSans
-    &.active
-      +display(block)
-      +span-columns(6)
-      +omega
-    .column
-      +span-columns(3 of 6)
-      +omega(2)
-      padding-right: $default-spacer
-      label
-        +smaller-font
-        &.grey
-          color: $grey
-        input
-          +default-font
-          border-radius: $half-tiny-spacer
+  form
+    margin: 2rem 0
+    &#wish-list
+      +span-columns(12)
+      +transition-property(width)
+      +transition-duration($medium-delay)
+      select
+        +arrow-select
+      & *
+        font-family: VeganSans
+      &.filled
+        +span-columns(6)
+        td.name
+          +smaller-font
+    &#checkout
+      +display(none)
+      select
+        +arrow-select
+      & *
+        font-family: VeganSans
+      &.active
+        +display(block)
+        +span-columns(6)
+        +omega
+      .column
+        +span-columns(3 of 6)
+        +omega(2)
+        padding-right: $default-spacer
+        label
+          +smaller-font
+          font-weight: normal
+          &.grey
+            color: $grey
+          input
+            +bigger-font
+            border-radius: $half-tiny-spacer
+            border: none
+            box-shadow: none
+        hr
           border: none
-          box-shadow: none
-      hr
-        border: none
-        margin: $default-spacer
-    .pay-box
-      .eula
-        input
-          +appearance(none)
-          background: url('/assets/images/check-unchecked.svg') no-repeat center
-          background-size: 1.5rem 1.5rem
-          padding: 0.75rem
-          &:checked
-            background: url('/assets/images/check-checked.svg') no-repeat center
+          margin: $default-spacer
+      .pay-box
+        .eula
+          input
+            +appearance(none)
+            background: url('/assets/images/check-unchecked.svg') no-repeat center
             background-size: 1.5rem 1.5rem
-      input.pay
-        +bordered-button($white, $orange, $black, $orange)
-        margin: $default-spacer 0
+            padding: 0.75rem
+            &:checked
+              background: url('/assets/images/check-checked.svg') no-repeat center
+              background-size: 1.5rem 1.5rem
+        input.pay
+          display: none
+          +bigger-font
+          +bordered-button($white, $orange, $black, $orange)
+          margin: $default-spacer 0
+          &.visible
+            display: inline-block
 
 @import partials/responsive
