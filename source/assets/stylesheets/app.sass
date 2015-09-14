@@ -29,6 +29,13 @@ body
     overflow: hidden
 h1, h2, h3, h4, h5
   font-family: VeganSans
+button, input
+  font-weight: normal
+  font-family: VeganSans !important
+  &:focus
+    outline: none
+
+
 header.main
   +display(flex)
   +flex-direction(row)
@@ -76,13 +83,10 @@ header.main
     +flex(5)
     +align-self(flex-start)
     text-align: right
-    span
-      +wished
-      background-color: $blue
-      text-align: center
+    button
+      +bordered-button($white, $blue, $black, $blue)
       &.empty
-        background-color: rgba(0, 0, 0, 0)
-
+        opacity: 0
 main
   position: relative
   z-index: 1
@@ -119,8 +123,9 @@ main
           border-top: thin solid $grey
           .tools
             .wished
-              span.wish
+              button.wish
                 +transform(translateY(5rem))
+                +bordered-button($white, $blue, $black, $blue)
           h3 a
             display: block
             overflow: hidden
@@ -158,13 +163,11 @@ main
             +span-columns(2)
             +omega
             text-align: right
-            span.wish
-              +wished
+            button.wish
+              +bordered-button($white, $light-blue, $black, $light-blue)
               +transform(translateY($small-spacer))
               border: solid thin $blue
               &:hover
-                background-color: $blue
-              &.pushed
                 background-color: $blue
         h3
           +span-columns(12)
@@ -543,16 +546,8 @@ main
           +align-self(flex-end)
           text-align: right
           margin-bottom: $tiny-spacer
-          span.wish
-            +wished
-            border: solid thin $blue
-            &:hover
-              background-color: $blue
-            &.pushed
-              +transform(translateY(-$small-spacer))
-              +transition-property(transform, opacity)
-              +transition-duration($medium-delay)
-              opacity: 0
+          button.wish
+            +bordered-button($white, $blue, $black, $blue)
     &#details
       font-family: VeganSans
       +row
@@ -800,8 +795,6 @@ section.wished-box
           &:checked
             background: url('/assets/images/check-checked.svg') no-repeat center
             background-size: 1.5rem 1.5rem
-          &:focus
-            outline: none
       input.pay
         +bordered-button($white, $orange, $black, $orange)
         margin: $default-spacer 0

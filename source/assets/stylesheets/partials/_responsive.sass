@@ -13,14 +13,6 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
 +media($big-desktop)
   html
     font-size: modular-scale(1, $base-font-size)
-  main
-    section.fonts nav .styles .style .wish-box
-      +default-font
-      & > div
-        h5
-          +big-font
-        .price
-          +default-font
 +media($large-desktop)
   html
     font-size: modular-scale(1, $base-font-size)
@@ -48,7 +40,7 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
     section.font-header
       header
         .wished
-          span.wish
+          button.wish
             padding: 0.25rem 0.5rem
 +media($tablet-portrait)
   body

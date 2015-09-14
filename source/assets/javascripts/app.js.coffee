@@ -5,7 +5,7 @@
 //= require jquery-waypoints/lib/jquery.waypoints.min.js
 //= require jquery-waypoints/lib/shortcuts/inview.min.js
 
-wishedSpan = $('#wished span')
+wishedButton = $('#wished button')
 wishedClose = $('.close')
 wishedBox = $('.wished-box')
 defaultSpeed = 250
@@ -23,17 +23,17 @@ hideWishedBox = ->
   wishedBox.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ->
     wishedClose.off 'click'
     $('main').off 'click'
-    wishedSpan.show()
+    wishedButton.show()
     $('main').removeClass('faded')
     $('body').removeClass('faded')
     $('header.main').removeClass('faded')
-    wishedSpan.one 'click', showWishedBox
+    wishedButton.one 'click', showWishedBox
     clearMessage()
   wishedBox.removeClass('visible')
 
 showWishedBox = ->
   wishedBox.off "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd"
-  wishedSpan.hide().off 'click'
+  wishedButton.hide().off 'click'
   $('main').addClass('faded')
   $('body').addClass('faded')
   $('header.main').addClass('faded')
@@ -59,13 +59,12 @@ refreshWished = (wished) ->
       content += '1 item'
     else
       content += "#{size} items"
-    wishedSpan.html content
-    wishedSpan.removeClass 'empty'
-    wishedSpan.on 'click', showWishedBox
+    wishedButton.html content
+    wishedButton.removeClass 'empty'
+    wishedButton.on 'click', showWishedBox
   else
-    wishedSpan.html ''
-    wishedSpan.addClass 'empty'
-    $('.wish').show()
+    wishedButton.html ''
+    wishedButton.addClass 'empty'
 
 currentWished = ->
   $.localStorage.get 'wished'
@@ -489,16 +488,7 @@ if $('#styles .styles').size() > 0
     $('.slide').addClass('visible')
     if $(window).scrollTop() < $('#styles .styles').height()
       stylesActive()
-    showWish = ->
-      $('.wish').removeClass('pushed')
-      if $.localStorage.get('wished') == null
-        $.localStorage.set 'wished', []
-      else
-        $.each $('.wish'), (index, button) ->
-          if !inWished($(button).data('name'))
-            $(button).removeClass('pushed')
-        refreshWished currentWished()
-    setTimeout showWish, 3*defaultSpeed
+    $.localStorage.set 'wished', []
     detailsIn = new Waypoint.Inview {
       element: $('#details')[0],
       enter: (direction) ->
