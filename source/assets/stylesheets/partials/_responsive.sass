@@ -148,6 +148,8 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
         &#inuse
           +invisible
         &.foundry
+          & > *
+            padding: 0 1rem
           header
             h2
               +shift(0)
@@ -158,8 +160,18 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
               +shift(0)
               +span-columns(3)
               +omega
-            .contact-lost
+            .contact
               +invisible
+            .lost
+              +shift(0)
+              +span-columns(3)
+              +omega
+              p
+                +bigger-font
+                +span-columns(3 of 3)
+              .fonts
+                span
+                  padding: 0 1rem 0 0
           .people
             .person
               +span-columns(3)
