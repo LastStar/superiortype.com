@@ -124,29 +124,28 @@ $huge-desktop:  new-breakpoint(min-width 2500px 12)
           nav
             .styles
               .style
+                border: none
                 h4
-                  border: none
                   &:first-child
                     padding: $tiny-spacer 0 1.5rem
         &#glyphs
           +invisible
-        &.about
-          #details
-            margin-bottom: $tiny-spacer
-            h2.mobile
-              +mobile-h2
-              +margin(null $small-spacer)
-            .description, .features
-              +span-columns(3)
-              font-size: $big-size
-            .description
-              margin-bottom: $default-spacer
-            .features
-              +pad(0 $tiny-spacer 0 $small-spacer)
-          .opentype
-            +invisible
-          #inuse
-            +invisible
+        &#details
+          margin-bottom: $tiny-spacer
+          h2.mobile
+            +mobile-h2
+            +margin(null $small-spacer)
+          .description, .features
+            +span-columns(3)
+            font-size: $big-size
+          .description
+            margin-bottom: $default-spacer
+          .features
+            +pad(0 $tiny-spacer 0 $small-spacer)
+        &#opentype
+          +invisible
+        &#inuse
+          +invisible
         &.foundry
           header
             h2
