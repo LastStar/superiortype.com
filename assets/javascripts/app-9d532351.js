@@ -54,9 +54,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
 !function(){"use strict";function t(){}function e(t){this.options=i.Adapter.extend({},e.defaults,t),this.axis=this.options.horizontal?"horizontal":"vertical",this.waypoints=[],this.createWaypoints()}var i=window.Waypoint;e.prototype.createWaypoints=function(){for(var t={vertical:[{down:"enter",up:"exited",offset:"100%"},{down:"entered",up:"exit",offset:"bottom-in-view"},{down:"exit",up:"entered",offset:0},{down:"exited",up:"enter",offset:function(){return-this.adapter.outerHeight()}}],horizontal:[{right:"enter",left:"exited",offset:"100%"},{right:"entered",left:"exit",offset:"right-in-view"},{right:"exit",left:"entered",offset:0},{right:"exited",left:"enter",offset:function(){return-this.adapter.outerWidth()}}]},e=0,i=t[this.axis].length;i>e;e++){var o=t[this.axis][e];this.createWaypoint(o)}},e.prototype.createWaypoint=function(t){var e=this;this.waypoints.push(new i({element:this.options.element,handler:function(t){return function(i){e.options[t[i]].call(this,i)}}(t),offset:t.offset,horizontal:this.options.horizontal}))},e.prototype.destroy=function(){for(var t=0,e=this.waypoints.length;e>t;t++)this.waypoints[t].destroy();this.waypoints=[]},e.defaults={enter:t,entered:t,exit:t,exited:t},i.Inview=e}();
 (function() {
-  var addToWished, address, clearMessage, clickableWish, currentWished, defaultSpeed, emailIsValid, family, fixHeader, glyphsSelect, hideWishedBox, inWished, inuseCount, isMobile, isSafariFirst, itemToObject, makeHeaderFixed, menuOpened, prototypeLine, refreshWished, removeFromWished, removed, renderWished, showAddress, showSlideShow, showWishedBox, style, styles, stylesGr, unmakeHeaderFixed, wishedBox, wishedClose, wishedSpan;
+  var addToWished, address, clearMessage, clickableWish, currentWished, defaultSpeed, emailIsValid, family, fixHeader, glyphsSelect, hideWishedBox, inWished, inuseCount, isMobile, isSafariFirst, itemToObject, makeHeaderFixed, menuOpened, prototypeLine, refreshWished, removeFromWished, removed, renderWished, showAddress, showSlideShow, showWishedBox, style, styles, stylesGr, unmakeHeaderFixed, wishedBox, wishedButton, wishedClose;
 
-  wishedSpan = $('#wished span');
+  wishedButton = $('#wished button');
 
   wishedClose = $('.close');
 
@@ -82,11 +82,11 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     wishedBox.one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
       wishedClose.off('click');
       $('main').off('click');
-      wishedSpan.show();
+      wishedButton.show();
       $('main').removeClass('faded');
       $('body').removeClass('faded');
       $('header.main').removeClass('faded');
-      wishedSpan.one('click', showWishedBox);
+      wishedButton.one('click', showWishedBox);
       return clearMessage();
     });
     return wishedBox.removeClass('visible');
@@ -94,7 +94,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
   showWishedBox = function() {
     wishedBox.off("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd");
-    wishedSpan.hide().off('click');
+    wishedButton.hide().off('click');
     $('main').addClass('faded');
     $('body').addClass('faded');
     $('header.main').addClass('faded');
@@ -126,13 +126,12 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       } else {
         content += size + " items";
       }
-      wishedSpan.html(content);
-      wishedSpan.removeClass('empty');
-      return wishedSpan.on('click', showWishedBox);
+      wishedButton.html(content);
+      wishedButton.removeClass('empty');
+      return wishedButton.on('click', showWishedBox);
     } else {
-      wishedSpan.html('');
-      wishedSpan.addClass('empty');
-      return $('.wish').show();
+      wishedButton.html('');
+      return wishedButton.addClass('empty');
     }
   };
 
@@ -730,7 +729,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     });
     $('.wish').addClass('pushed');
     $('.slide').show(defaultSpeed, function() {
-      var activate, deactivate, detailsActive, detailsIn, glyphsActive, glyphsIn, inuseActive, showWish, stylesActive;
+      var activate, deactivate, detailsActive, detailsIn, glyphsActive, glyphsIn, inuseActive, stylesActive;
       deactivate = function() {
         return $('a.active').removeClass('active');
       };
@@ -757,20 +756,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       if ($(window).scrollTop() < $('#styles .styles').height()) {
         stylesActive();
       }
-      showWish = function() {
-        $('.wish').removeClass('pushed');
-        if ($.localStorage.get('wished') === null) {
-          return $.localStorage.set('wished', []);
-        } else {
-          $.each($('.wish'), function(index, button) {
-            if (!inWished($(button).data('name'))) {
-              return $(button).removeClass('pushed');
-            }
-          });
-          return refreshWished(currentWished());
-        }
-      };
-      setTimeout(showWish, 3 * defaultSpeed);
+      $.localStorage.set('wished', []);
       detailsIn = new Waypoint.Inview({
         element: $('#details')[0],
         enter: function(direction) {
